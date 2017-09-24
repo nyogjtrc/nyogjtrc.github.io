@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Sat, 23 Sep 2017 17:09:19 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Sep 2017 13:36:35 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用 Hugo 發佈部落格</title>
+      <link>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</guid>
+      <description>Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現</description>
+    </item>
     
     <item>
       <title>The First Hugo Post</title>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.28-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="用 Hugo 發佈部落格" />
+<meta property="og:description" content="Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/" />
+
+
+
+<meta property="article:published_time" content="2017-09-24T13:36:35&#43;08:00"/>
+<meta property="article:modified_time" content="2017-09-24T13:36:35&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="用 Hugo 發佈部落格"/>
+<meta name="twitter:description" content="Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現"/>
+
+
+
+<meta itemprop="name" content="用 Hugo 發佈部落格">
+<meta itemprop="description" content="Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現">
+
+
+<meta itemprop="dateModified" content="2017-09-24T13:36:35&#43;08:00" />
+<meta itemprop="wordCount" content="450">
+
+
+
+<meta itemprop="keywords" content="hugo,github,golang,blog," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+
+<title>
+
+
+     用 Hugo 發佈部落格 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> 用 Hugo 發佈部落格 </h1>
+    <div class="content"> 
+
+<p>Hugo 是用 Go 開發的靜態網站產生器</p>
+
+<p>我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具</p>
+
+<p>稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用</p>
+
+<p>最後是發現了 Hugo，評估過上手難易度後，決定就用他來試試了</p>
+
+<h1 id="安裝">安裝</h1>
+
+<p>go get 安裝法</p>
+
+<pre><code class="language-shell">go get -v github.com/gohugoio/hugo
+</code></pre>
+
+<h1 id="建立網站">建立網站</h1>
+
+<p>建立一個名為 blog 的網站</p>
+
+<pre><code class="language-shell">hugo new site blog
+</code></pre>
+
+<h1 id="config-檔">config 檔</h1>
+
+<p>預設是產生 <code>config.toml</code>，還支援 yaml, json 格式</p>
+
+<p>我決定要使用 yaml 格式，所以要自己修改一下</p>
+
+<h1 id="選網站主題">選網站主題</h1>
+
+<p>在 <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> 上有超過百個主題可以選擇</p>
+
+<p>把 theme 加入 config 檔，再加上 theme 所需要的設定</p>
+
+<pre><code class="language-yaml">theme: hugo-dusk
+
+menu:
+     main:
+...
+</code></pre>
+
+<h1 id="建立新文章">建立新文章</h1>
+
+<p>建立新的文章前要先來安排一下檔案存放的結構，我想要依照年份跟月份來分資料夾放</p>
+
+<p>產生新文章的 command 就會如下</p>
+
+<pre><code class="language-shell">hugo new posts/2017/09/the-first-hugo-post.md
+</code></pre>
+
+<p>接下來就是開啟妳的編輯器來寫文章</p>
+
+<h1 id="用內建的-web-server-檢查成品">用內建的 Web Server 檢查成品</h1>
+
+<p>多加個 -D 的參數 render 草稿:</p>
+
+<pre><code class="language-shell">hugo server -D
+</code></pre>
+
+<h1 id="產出靜態檔案">產出靜態檔案</h1>
+
+<pre><code class="language-shell">hugo
+</code></pre>
+
+<p>指令就只有上面這樣的簡單，產出的靜態檔案預設會在 public 資料夾下</p>
+
+<p>想要改位置就是設是 config</p>
+
+<pre><code class="language-yaml">publishDir: my-public-project
+</code></pre>
+
+<h1 id="發佈">發佈</h1>
+
+<p>要使用 github page 的方法很多，我看了不少人都是將 public 資料夾切 subtree，或是用 submodule，但是我覺得都太麻煩了</p>
+
+<p>把 <code>publishDir</code> 指到其他的 git repository</p>
+
+<p>github page 設定使用 master branch</p>
+
+<p>操作只要 git commit, git push 這些基本的指令就可以了</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://gohugo.io/">Hugo</a></li>
+</ul>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/hugo">#hugo</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/github">#github</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/golang">#golang</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/blog">#blog</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Sep 24, 2017 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+
