@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Sun, 24 Sep 2017 13:36:35 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 04 Oct 2017 18:11:31 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>交換 Left Ctrl 跟 CapsLock 的位置，救救你的左手小指</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</link>
+      <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</guid>
+      <description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool $ sudo apt install gnome-tweak-tool 開啟 gnome-tweak-tool</description>
+    </item>
     
     <item>
       <title>用 Hugo 發佈部落格</title>
