@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Wed, 04 Oct 2017 18:11:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Oct 2017 13:34:47 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang Test All Testing in Project</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
+      <description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
+    </item>
     
     <item>
       <title>交換 Left Ctrl 跟 CapsLock 的位置，救救你的左手小指</title>
