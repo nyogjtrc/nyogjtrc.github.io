@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.33-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="Fix Date Time of Photo Exif Meta Data" />
+<meta property="og:description" content="某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/" />
+
+
+
+<meta property="article:published_time" content="2018-01-14T01:25:15&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-14T01:25:15&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Fix Date Time of Photo Exif Meta Data"/>
+<meta name="twitter:description" content="某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有"/>
+
+
+
+<meta itemprop="name" content="Fix Date Time of Photo Exif Meta Data">
+<meta itemprop="description" content="某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有">
+
+
+<meta itemprop="datePublished" content="2018-01-14T01:25:15&#43;08:00" />
+<meta itemprop="dateModified" content="2018-01-14T01:25:15&#43;08:00" />
+<meta itemprop="wordCount" content="194">
+
+
+
+<meta itemprop="keywords" content="exif," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-43264564-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     Fix Date Time of Photo Exif Meta Data 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> Fix Date Time of Photo Exif Meta Data </h1>
+    <div class="content"> 
+
+<p>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒</p>
+
+<p>只能回家想辦法再修正時間，畢竟照片不能重拍啊</p>
+
+<p>要在 Linux 上處理 EXIF 的話，有個工具叫 <code>exiftool</code> 可以用</p>
+
+<h2 id="安裝">安裝</h2>
+
+<pre><code>$ sudo apt install libimage-exiftool-perl
+</code></pre>
+
+<h2 id="要看-exif">要看 EXIF</h2>
+
+<p>看所有的 EXIF 資料</p>
+
+<pre><code>$ exiftool -a -u -g1 IMG_001.jpg
+</code></pre>
+
+<p>看 EXIF 日期資料</p>
+
+<pre><code>$ exiftool -AllDate IMG_001.jpg
+</code></pre>
+
+<h2 id="要改-exif">要改 EXIF</h2>
+
+<p>要改時間可以直接指定日期</p>
+
+<pre><code>$ exiftool DateTimeOriginal='2018:01:01 12:11:10' IMG_001.jpg
+</code></pre>
+
+<p>或是加減時間</p>
+
+<pre><code>$ exiftool DateTimeOriginal-=2:0:0 -TimeZone=+08:00 IMG_001.jpg
+</code></pre>
+
+<p>有修改 EXIF 時， exiftool 會幫你複製一份原始檔案，並在檔案加上 <code>_original</code></p>
+
+<p>如果不想要備份的話，指令上多加個 <code>-overwrite_original</code> 就可以了</p>
+
+<h2 id="清-exif">清 EXIF</h2>
+
+<pre><code>$ exiftool -all= image.jpg
+</code></pre>
+
+<hr />
+
+<h3 id="reference">Reference</h3>
+
+<p><a href="http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/">http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/</a>
+<a href="http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html">http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html</a></p>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/exif">#exif</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Jan 14, 2018 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+
