@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</loc>
+    <lastmod>2017-04-15T01:09:42+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/blog/</loc>
     <lastmod>2017-09-24T13:36:35+08:00</lastmod>
     <priority>0</priority>
@@ -81,6 +86,12 @@
   <url>
     <loc>https://nyogjtrc.github.io/tags/hugo/</loc>
     <lastmod>2017-09-24T13:36:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/linux/</loc>
+    <lastmod>2017-04-15T01:09:42+08:00</lastmod>
     <priority>0</priority>
   </url>
   

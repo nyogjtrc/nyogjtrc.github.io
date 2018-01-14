@@ -66,5 +66,14 @@
       <description>Hello Hugo This is my first post using hugo.</description>
     </item>
     
+    <item>
+      <title>在 Linux 上處理圖檔</title>
+      <link>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</link>
+      <pubDate>Sat, 15 Apr 2017 01:09:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</guid>
+      <description>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工</description>
+    </item>
+    
   </channel>
 </rss>
