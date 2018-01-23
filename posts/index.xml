@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Sun, 14 Jan 2018 01:25:15 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jan 2018 22:45:54 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Try Spf13 Vim</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</link>
+      <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
+      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
+    </item>
     
     <item>
       <title>Fix Date Time of Photo Exif Meta Data</title>

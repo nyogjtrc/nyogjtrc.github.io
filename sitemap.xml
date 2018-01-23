@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</loc>
+    <lastmod>2018-01-23T22:45:54+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</loc>
     <lastmod>2018-01-14T01:25:15+08:00</lastmod>
   </url>
@@ -97,13 +102,13 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2018-01-14T01:25:15+08:00</lastmod>
+    <lastmod>2018-01-23T22:45:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2018-01-14T01:25:15+08:00</lastmod>
+    <lastmod>2018-01-23T22:45:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -122,6 +127,12 @@
   <url>
     <loc>https://nyogjtrc.github.io/tags/test/</loc>
     <lastmod>2017-10-12T13:34:47+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/vim/</loc>
+    <lastmod>2018-01-23T22:45:54+08:00</lastmod>
     <priority>0</priority>
   </url>
   
