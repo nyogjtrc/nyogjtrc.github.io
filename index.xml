@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Tue, 23 Jan 2018 22:45:54 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jan 2018 16:11:13 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Try Tmux</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</link>
+      <pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</guid>
+      <description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6</description>
+    </item>
     
     <item>
       <title>Try Spf13 Vim</title>
