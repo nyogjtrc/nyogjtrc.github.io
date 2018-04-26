@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/ssh/</link>
+    <description>Recent content in Ssh on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Thu, 09 Nov 2017 13:24:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>複製 ssh key 到遠端機器</title>
+      <link>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</link>
+      <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</guid>
+      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指</description>
+    </item>
+    
+  </channel>
+</rss>

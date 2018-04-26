@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/golang/</link>
+    <description>Recent content in Golang on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Thu, 12 Oct 2017 13:34:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang Test All Testing in Project</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
+      <description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
+    </item>
+    
+    <item>
+      <title>用 Hugo 發佈部落格</title>
+      <link>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</guid>
+      <description>Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現</description>
+    </item>
+    
+  </channel>
+</rss>

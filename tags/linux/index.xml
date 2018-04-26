@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Sat, 10 Feb 2018 22:24:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Set Sudo on Debian</title>
+      <link>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
+    </item>
+    
+    <item>
+      <title>在 Linux 上處理圖檔</title>
+      <link>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</link>
+      <pubDate>Sat, 15 Apr 2017 01:09:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</guid>
+      <description>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工</description>
+    </item>
+    
+  </channel>
+</rss>

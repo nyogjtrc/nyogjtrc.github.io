@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Test on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/test/</link>
+    <description>Recent content in Test on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Thu, 12 Oct 2017 13:34:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang Test All Testing in Project</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
+      <description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
+    </item>
+    
+  </channel>
+</rss>

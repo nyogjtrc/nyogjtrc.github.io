@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Exif on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/exif/</link>
+    <description>Recent content in Exif on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 14 Jan 2018 01:25:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/exif/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fix Date Time of Photo Exif Meta Data</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</link>
+      <pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</guid>
+      <description>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有</description>
+    </item>
+    
+  </channel>
+</rss>

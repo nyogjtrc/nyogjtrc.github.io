@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sudo on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/sudo/</link>
+    <description>Recent content in Sudo on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Sat, 10 Feb 2018 22:24:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/sudo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Set Sudo on Debian</title>
+      <link>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
+    </item>
+    
+  </channel>
+</rss>

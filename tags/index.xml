@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/</link>
+    <description>Recent content in Tags on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 24 Sep 2017 13:36:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog</title>
+      <link>https://nyogjtrc.github.io/tags/blog/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Capslock</title>
+      <link>https://nyogjtrc.github.io/tags/capslock/</link>
+      <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/capslock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctrl</title>
+      <link>https://nyogjtrc.github.io/tags/ctrl/</link>
+      <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/ctrl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>https://nyogjtrc.github.io/tags/debian/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exif</title>
+      <link>https://nyogjtrc.github.io/tags/exif/</link>
+      <pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/exif/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://nyogjtrc.github.io/tags/github/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://nyogjtrc.github.io/tags/golang/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://nyogjtrc.github.io/tags/hugo/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://nyogjtrc.github.io/tags/linux/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssh</title>
+      <link>https://nyogjtrc.github.io/tags/ssh/</link>
+      <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sudo</title>
+      <link>https://nyogjtrc.github.io/tags/sudo/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/sudo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://nyogjtrc.github.io/tags/test/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tmux</title>
+      <link>https://nyogjtrc.github.io/tags/tmux/</link>
+      <pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/tmux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://nyogjtrc.github.io/tags/vim/</link>
+      <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
