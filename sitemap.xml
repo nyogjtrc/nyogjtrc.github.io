@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</loc>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</loc>
     <lastmod>2018-02-10T22:24:57+08:00</lastmod>
   </url>
@@ -97,6 +102,12 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/evernote/</loc>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/exif/</loc>
     <lastmod>2018-01-14T01:25:15+08:00</lastmod>
     <priority>0</priority>
@@ -127,14 +138,20 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/nixnote/</loc>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2018-02-10T22:24:57+08:00</lastmod>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2018-02-10T22:24:57+08:00</lastmod>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   

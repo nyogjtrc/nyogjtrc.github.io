@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nixnote on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/nixnote/</link>
+    <description>Recent content in Nixnote on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 06 May 2018 18:32:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/nixnote/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Evernote Tools: NixNote2 &amp; Evernote Shortcuts</title>
+      <link>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</link>
+      <pubDate>Sun, 06 May 2018 18:32:55 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</guid>
+      <description>Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。 web client 的基本功能已經很好用了，只是想</description>
+    </item>
+    
+  </channel>
+</rss>

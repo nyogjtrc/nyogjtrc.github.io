@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
+    <lastBuildDate>Mon, 20 Mar 2017 22:47:43 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu Change Timezone</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</link>
+      <pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
+      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &#39;Asia/Taipei&#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu - Setting Locale Failed</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</link>
+      <pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
+      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MONETARY = &amp;quot;en_GB.UTF-8&amp;quot;, LC_ADDRESS = &amp;quot;en_GB.UTF-8&amp;quot;, LC_TELEPHONE = &amp;quot;en_GB.UTF-8&amp;quot;, LC_NAME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MEASUREMENT = &amp;quot;en_GB.UTF-8&amp;quot;,</description>
+    </item>
+    
+  </channel>
+</rss>
