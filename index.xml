@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Mon, 16 Jul 2018 11:31:19 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Jul 2018 14:33:06 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>記錄目前慣用的服務跟工具</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</link>
+      <pubDate>Mon, 23 Jul 2018 14:33:06 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</guid>
+      <description>語言/框架: 前端: react/redux/Semantic UI React 設計元件，不再是過去設計模版的方式 後端: php/lumen, golang/echo php 快速開發 go 效能優秀，善於處理並發工作 編輯器 vim: 工程師最好的伙伴 vscode: 第三方套</description>
+    </item>
     
     <item>
       <title>在 Terminal 上的跳舞鸚鵡</title>
