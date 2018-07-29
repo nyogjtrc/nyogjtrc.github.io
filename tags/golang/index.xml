@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Mon, 09 Jul 2018 14:14:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jul 2018 15:50:07 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Error Handling in Golang</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</link>
+      <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
+      <description>Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
+    </item>
     
     <item>
       <title>Try gRPC, grpc-gateway With Go</title>

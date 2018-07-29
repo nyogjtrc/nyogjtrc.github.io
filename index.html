@@ -8,7 +8,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.40-DEV" />
+<meta name="generator" content="Hugo 0.41-DEV" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/">
 <base href="https://nyogjtrc.github.io/" />
@@ -19,7 +19,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-07-23T14:33:06&#43;08:00"/>
+<meta property="og:updated_time" content="2018-07-26T15:50:07&#43;08:00"/>
 
 
 
@@ -115,6 +115,39 @@ ga('send', 'pageview');
 
 
   
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/'> Error Handling in Golang</a> </h2>
+    <div class="meta">
+      Jul 26, 2018 - 1 minutes
+    </div>
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/golang">#golang</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/error">#error</a>
+      </div>
+    
+</div>
+
+  </header>
+
+  <div class="summary"> Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err </div>
+
+  <footer>
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/'><nobr>Read more ...</nobr></a>
+  </div>
+  </footer>
+
+</article>
+
+
     <article class="post-preview">
 
   <header>
@@ -233,43 +266,6 @@ ga('send', 'pageview');
   <footer>
   <div class="rmore">
     <a href='https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/'><nobr>Read more ...</nobr></a>
-  </div>
-  </footer>
-
-</article>
-
-
-    <article class="post-preview">
-
-  <header>
-    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/'> Set Sudo on Debian</a> </h2>
-    <div class="meta">
-      Feb 10, 2018 - 1 minutes
-    </div>
-    
-<div class="tags">
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/sudo">#sudo</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/debian">#debian</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/linux">#linux</a>
-      </div>
-    
-</div>
-
-  </header>
-
-  <div class="summary"> 安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試 </div>
-
-  <footer>
-  <div class="rmore">
-    <a href='https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/'><nobr>Read more ...</nobr></a>
   </div>
   </footer>
 

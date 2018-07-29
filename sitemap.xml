@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</loc>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</loc>
     <lastmod>2018-07-23T14:33:06+08:00</lastmod>
   </url>
@@ -117,6 +122,12 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/error/</loc>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/evernote/</loc>
     <lastmod>2018-05-06T18:32:55+08:00</lastmod>
     <priority>0</priority>
@@ -136,7 +147,7 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/golang/</loc>
-    <lastmod>2018-07-09T14:14:03+08:00</lastmod>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,13 +177,13 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2018-07-23T14:33:06+08:00</lastmod>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2018-07-23T14:33:06+08:00</lastmod>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
     <priority>0</priority>
   </url>
   
