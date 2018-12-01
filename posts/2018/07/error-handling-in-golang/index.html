@@ -7,30 +7,15 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.41-DEV" />
+<meta name="generator" content="Hugo 0.53-DEV" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/">
 <base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="Error Handling in Golang" />
 <meta property="og:description" content="Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/" />
-
-
-
-<meta property="article:published_time" content="2018-07-26T15:50:07&#43;08:00"/>
-
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/" /><meta property="article:published_time" content="2018-07-26T15:50:07&#43;08:00"/>
 <meta property="article:modified_time" content="2018-07-26T15:50:07&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Error Handling in Golang"/>
@@ -55,12 +40,16 @@
 <link rel="stylesheet" href="css/color-dark.css" />
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-43264564-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <title>

@@ -7,30 +7,15 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.41-DEV" />
+<meta name="generator" content="Hugo 0.53-DEV" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/">
 <base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="複製 ssh key 到遠端機器" />
 <meta property="og:description" content="發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/" />
-
-
-
-<meta property="article:published_time" content="2017-11-09T13:24:42&#43;08:00"/>
-
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/" /><meta property="article:published_time" content="2017-11-09T13:24:42&#43;08:00"/>
 <meta property="article:modified_time" content="2017-11-09T13:24:42&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="複製 ssh key 到遠端機器"/>
@@ -44,7 +29,7 @@
 
 <meta itemprop="datePublished" content="2017-11-09T13:24:42&#43;08:00" />
 <meta itemprop="dateModified" content="2017-11-09T13:24:42&#43;08:00" />
-<meta itemprop="wordCount" content="158">
+<meta itemprop="wordCount" content="163">
 
 
 
@@ -55,12 +40,16 @@
 <link rel="stylesheet" href="css/color-dark.css" />
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-43264564-2', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 <title>
