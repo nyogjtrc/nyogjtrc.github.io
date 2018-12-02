@@ -174,5 +174,23 @@
       <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MONETARY = &amp;quot;en_GB.UTF-8&amp;quot;, LC_ADDRESS = &amp;quot;en_GB.UTF-8&amp;quot;, LC_TELEPHONE = &amp;quot;en_GB.UTF-8&amp;quot;, LC_NAME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MEASUREMENT = &amp;quot;en_GB.UTF-8&amp;quot;,</description>
     </item>
     
+    <item>
+      <title>Vim - Global Command g</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</link>
+      <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+    </item>
+    
+    <item>
+      <title>Getting Things Done - GTD 介紹</title>
+      <link>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</link>
+      <pubDate>Sun, 22 Jan 2017 15:29:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</guid>
+      <description>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。</description>
+    </item>
+    
   </channel>
 </rss>

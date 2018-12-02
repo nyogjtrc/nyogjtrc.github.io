@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.53-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="Vim - Global Command g" />
+<meta property="og:description" content="最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/" /><meta property="article:published_time" content="2017-03-12T04:56:43&#43;08:00"/>
+<meta property="article:modified_time" content="2017-03-12T04:56:43&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vim - Global Command g"/>
+<meta name="twitter:description" content="最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每"/>
+
+
+
+<meta itemprop="name" content="Vim - Global Command g">
+<meta itemprop="description" content="最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每">
+
+
+<meta itemprop="datePublished" content="2017-03-12T04:56:43&#43;08:00" />
+<meta itemprop="dateModified" content="2017-03-12T04:56:43&#43;08:00" />
+<meta itemprop="wordCount" content="154">
+
+
+
+<meta itemprop="keywords" content="vim," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     Vim - Global Command g 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> Vim - Global Command g </h1>
+    <div class="content"> 
+
+<p>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令</p>
+
+<p>global command :g</p>
+
+<pre><code class="language-vim">:[range]g/pattern/cmd
+</code></pre>
+
+<p>針對特別的 <em>range</em> (預設是整個檔案)，找出符合 <em>pattern</em> 的每一行，執行 <em>cmd</em> 的處理</p>
+
+<h2 id="example">Example</h2>
+
+<p>刪掉符合的每一行</p>
+
+<pre><code class="language-vim">:g/pattern/d
+</code></pre>
+
+<p>刪掉「不」符合的每一行</p>
+
+<pre><code class="language-vim">:g!/pattern/d
+:v/pattern/d
+</code></pre>
+
+<p>刪掉所有的空白行</p>
+
+<pre><code class="language-vim">:g/^\s*$/d
+</code></pre>
+
+<p>符合的每一行移到檔案結尾</p>
+
+<pre><code class="language-vim">:g/pattern/m$
+</code></pre>
+
+<p>反轉整份文件</p>
+
+<pre><code class="language-vim">:g/^/m0
+</code></pre>
+
+<p>在符合 pattern 的每一行行尾加上「mytext」</p>
+
+<pre><code class="language-vim">:g/pattern/s/$/mytext
+</code></pre>
+
+<h3 id="reference">Reference</h3>
+
+<p><a href="http://vim.wikia.com/wiki/Power_of_g">http://vim.wikia.com/wiki/Power_of_g</a></p>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/vim">#vim</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Mar 12, 2017 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+

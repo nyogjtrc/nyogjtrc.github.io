@@ -21,5 +21,14 @@
       <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
     </item>
     
+    <item>
+      <title>Vim - Global Command g</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</link>
+      <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+    </item>
+    
   </channel>
 </rss>

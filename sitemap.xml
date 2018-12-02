@@ -98,6 +98,16 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</loc>
+    <lastmod>2017-03-12T04:56:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</loc>
+    <lastmod>2017-01-22T15:29:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/blog/</loc>
     <lastmod>2017-09-24T13:36:35+08:00</lastmod>
     <priority>0</priority>
@@ -165,6 +175,12 @@
   <url>
     <loc>https://nyogjtrc.github.io/tags/grpc/</loc>
     <lastmod>2018-07-09T14:14:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/gtd/</loc>
+    <lastmod>2017-01-22T15:29:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
