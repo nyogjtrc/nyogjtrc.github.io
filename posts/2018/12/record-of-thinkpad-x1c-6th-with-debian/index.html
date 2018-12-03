@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.53-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄" />
+<meta property="og:description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/" /><meta property="article:published_time" content="2018-12-03T14:53:59&#43;08:00"/>
+<meta property="article:modified_time" content="2018-12-03T14:53:59&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄"/>
+<meta name="twitter:description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot"/>
+
+
+
+<meta itemprop="name" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄">
+<meta itemprop="description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot">
+
+
+<meta itemprop="datePublished" content="2018-12-03T14:53:59&#43;08:00" />
+<meta itemprop="dateModified" content="2018-12-03T14:53:59&#43;08:00" />
+<meta itemprop="wordCount" content="413">
+
+
+
+<meta itemprop="keywords" content="debian," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     ThinkPad X1 Carbon 6th 的 Debian 安裝記錄 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> ThinkPad X1 Carbon 6th 的 Debian 安裝記錄 </h1>
+    <div class="content"> 
+
+<p>入手 ThinkPad X1c 來當工作機</p>
+
+<p>在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後，
+就把 OS 換成 Debian 了</p>
+
+<h2 id="安裝-debian-之前">安裝 Debian 之前</h2>
+
+<p>更新 BIOS 到目前最新的版本 1.34</p>
+
+<p>調整以下的設定:</p>
+
+<ul>
+<li>Security -&gt; Secure Boot - Set to &ldquo;Disabled&rdquo;</li>
+<li>Config -&gt; Power -&gt; Sleep State - Set to &ldquo;Linux&rdquo;</li>
+<li>Config -&gt; Thunderbolt BIOS Assist Mode - Set to &ldquo;Enabled&rdquo;</li>
+</ul>
+
+<h2 id="安裝-debian">安裝 Debian</h2>
+
+<p>Linux Distribute: Debian testing</p>
+
+<p>Partition: whole disk with LVM</p>
+
+<p>Desktop: gnome</p>
+
+<h2 id="安裝-debian-之後">安裝 Debian 之後</h2>
+
+<h2 id="設定-sudo">設定 sudo</h2>
+
+<pre><code># adduser nyo sudo
+# reboot
+</code></pre>
+
+<h2 id="修改-apt-source-list">修改 apt source list</h2>
+
+<p>source list 加入 contrib non-free</p>
+
+<pre><code>deb http://deb.debian.org/debian/ buster main contrib non-free
+deb-src http://deb.debian.org/debian/ buster main contrib non-free
+
+deb http://security.debian.org/debian-security buster/updates main contrib non-free
+deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
+</code></pre>
+
+<p><code>$ sudo apt install aptitude</code></p>
+
+<h2 id="安裝-firmware-microcode-fwupd">安裝 firmware, microcode, fwupd</h2>
+
+<p>wifi, bluetooth 等裝置需要的 firmware</p>
+
+<p><code>$ sudo apt install firmware-iwlwifi firmware-misc-nonfree</code></p>
+
+<p>Intel microcode</p>
+
+<p><code>$ sudo apt install intel-microcode</code></p>
+
+<p>fwup BIOS 更新軟體</p>
+
+<p><code>$ sudo apt install fwupd</code></p>
+
+<h2 id="下載自己的-dotfiles">下載自己的 dotfiles</h2>
+
+<p>建立 ssh key: <code>$ ssh-keygen -t rsa -b 4096</code></p>
+
+<pre><code>$ sudo apt install -y git
+$ git clone git@github.com:nyogjtrc/dotfiles.git .dotfiles
+</code></pre>
+
+<h2 id="安裝常用的-cli-程式">安裝常用的 cli 程式</h2>
+
+<p><code>$ ~/.dotfiles/installation/basic.sh</code></p>
+
+<p><a href="https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh">https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh</a></p>
+
+<h2 id="安裝-gcin-輸入法">安裝 gcin 輸入法</h2>
+
+<pre><code class="language-sh">$ sudo apt install gcin
+$ sudo im-config
+</code></pre>
+
+<p>放置嘸蝦米 gtab 到 <code>~/.gcin/</code></p>
+
+<h2 id="gdm3-停用-wayland">gdm3 停用 Wayland</h2>
+
+<p>過程遇到一些問題，像是登入畫面無法正常顯示，輸入法未啟動等等</p>
+
+<p>最後是停用 Wayland 就正常</p>
+
+<p>修改 <code>/etc/gdm3/daemon.conf</code></p>
+
+<pre><code>[daemon]
+# Uncomment the line below to force the login screen to use Xorg
+WaylandEnable=false
+</code></pre>
+
+<h2 id="安裝-gnome-sell-extension">安裝 gnome sell extension</h2>
+
+<p><a href="posts/2018/12/gnome-shell-extensions-currently-using">目前使用中的 GNOME Shell Extensions</a></p>
+
+<h2 id="設定-gnome-桌面主題">設定 gnome 桌面主題</h2>
+
+<p>NumixPack: <a href="https://www.opendesktop.org/p/1137261/">https://www.opendesktop.org/p/1137261/</a></p>
+
+<p>截圖
+<img src="posts/2018/12/Screenshot_from_2018-12-02_20-46-54.png" alt="" /></p>
+
+<h2 id="安裝防火牆">安裝防火牆</h2>
+
+<pre><code class="language-sh">$ sudo apt install ufw
+$ sudo ufw enable
+</code></pre>
+
+<h2 id="grub-開機時間">grub 開機時間</h2>
+
+<p><code>sudo vi /etc/default/grub</code></p>
+
+<p>預設為 5 秒 <code>GRUB_TIMEOUT=5</code> 改成 1 秒 <code>GRUB_TIMEOUT=1</code></p>
+
+<p>存檔後更新 grub: <code>sudo update-grub</code></p>
+
+<h2 id="待處理">待處理</h2>
+
+<ul>
+<li>電源管理</li>
+<li>SSD 優化</li>
+</ul>
+
+<h2 id="目前不支援的装置">目前不支援的装置</h2>
+
+<ul>
+<li>4G Fibocom L850-GL</li>
+<li>Fingerprint Reader</li>
+</ul>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6">https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6</a>)</li>
+<li><a href="https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5">https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5</a></li>
+</ul>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/debian">#debian</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Dec 3, 2018 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+
