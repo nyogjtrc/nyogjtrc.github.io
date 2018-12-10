@@ -6,11 +6,20 @@
     <description>Recent content on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <copyright>Copyright (c) 2017 nyogjtrc.</copyright>
-    <lastBuildDate>Mon, 03 Dec 2018 14:53:59 +0800</lastBuildDate>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Mon, 10 Dec 2018 11:34:35 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>查詢 Linux 上的一些 Unique ID</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</link>
+      <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
+      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
+    </item>
     
     <item>
       <title>ThinkPad X1 Carbon 6th 的 Debian 安裝記錄</title>
