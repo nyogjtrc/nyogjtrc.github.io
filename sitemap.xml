@@ -103,6 +103,11 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</loc>
+    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</loc>
     <lastmod>2017-03-20T22:47:43+08:00</lastmod>
   </url>
@@ -113,13 +118,29 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</loc>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</loc>
     <lastmod>2017-03-12T04:56:43+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</loc>
+    <lastmod>2017-03-04T15:46:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</loc>
     <lastmod>2017-01-22T15:29:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/aws/</loc>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -146,8 +167,20 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/date/</loc>
+    <lastmod>2017-03-04T15:46:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/debian/</loc>
     <lastmod>2018-12-14T23:20:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ec2/</loc>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -230,6 +263,12 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/react/</loc>
+    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/restful/</loc>
     <lastmod>2018-07-09T14:14:03+08:00</lastmod>
     <priority>0</priority>
@@ -255,7 +294,7 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/</loc>
-    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -286,6 +325,12 @@
   <url>
     <loc>https://nyogjtrc.github.io/tags/vim/</loc>
     <lastmod>2018-01-23T22:45:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/webpack/</loc>
+    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.53-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/linux-command-date/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="Linux 指令 date" />
+<meta property="og:description" content="今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &#39;yesterday&#39;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/linux-command-date/" /><meta property="article:published_time" content="2017-03-04T15:46:00&#43;08:00"/>
+<meta property="article:modified_time" content="2017-03-04T15:46:00&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 指令 date"/>
+<meta name="twitter:description" content="今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &#39;yesterday&#39;"/>
+
+
+
+<meta itemprop="name" content="Linux 指令 date">
+<meta itemprop="description" content="今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &#39;yesterday&#39;">
+
+
+<meta itemprop="datePublished" content="2017-03-04T15:46:00&#43;08:00" />
+<meta itemprop="dateModified" content="2017-03-04T15:46:00&#43;08:00" />
+<meta itemprop="wordCount" content="193">
+
+
+
+<meta itemprop="keywords" content="linux,date," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     Linux 指令 date 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> Linux 指令 date </h1>
+    <div class="content"> 
+
+<p>今天要來和 linux 約會(誤</p>
+
+<hr />
+
+<p>date 是用來看時間或是設定時間用的指令</p>
+
+<p>不加任何的參數可以直接看目前的時間</p>
+
+<pre><code class="language-bash">$ date
+Sat  4 Mar 23:52:51 CST 2017
+</code></pre>
+
+<h2 id="參數">參數</h2>
+
+<p><code>-d STRING</code> 輸出字串所描述的日期</p>
+
+<pre><code class="language-bash">$ date -d 'yesterday'
+Sat  4 Mar 00:29:53 CST 2017
+</code></pre>
+
+<p><code>-I[FMT]</code> 用 ISO 8601 的格式輸出
+FMT 預設為 date 輸出日期而已，FMT 為 s 時會輸出到秒</p>
+
+<pre><code class="language-bash">$ date -Is
+2017-03-05T01:08:35+08:00
+</code></pre>
+
+<p><code>+FORMAT</code> 輸出指定格式</p>
+
+<pre><code class="language-bash">$ date +'%F %a'
+2017-03-05 Sun
+</code></pre>
+
+<p>然後就可以用來製造你想要的日期列表了</p>
+
+<pre><code class="language-bash">$ MYLIST=(&quot;next sun&quot; &quot;next sat&quot; &quot; next fri&quot; &quot;next thu&quot; &quot;next wed&quot; &quot;next tue&quot; &quot;next mon&quot;);
+for i in 0 1 2 3 4 5 6; do date -d &quot;${MYLIST[$i]}&quot; +&quot;%F %a&quot;; done;
+2017-03-12 Sun
+2017-03-11 Sat
+2017-03-10 Fri
+2017-03-09 Thu
+2017-03-08 Wed
+2017-03-07 Tue
+2017-03-06 Mon
+</code></pre>
+
+<h3 id="reference">Reference</h3>
+
+<p><code>man date</code></p>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/linux">#linux</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/date">#date</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Mar 4, 2017 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+
