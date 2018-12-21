@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restful on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/restful/</link>
+    <description>Recent content in Restful on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Mon, 09 Jul 2018 14:14:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Try gRPC, grpc-gateway With Go</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</link>
+      <pubDate>Mon, 09 Jul 2018 14:14:03 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</guid>
+      <description>什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開</description>
+    </item>
+    
+  </channel>
+</rss>

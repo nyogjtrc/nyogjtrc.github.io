@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Error on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/error/</link>
+    <description>Recent content in Error on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Thu, 26 Jul 2018 15:50:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/error/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Error Handling in Golang</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</link>
+      <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
+      <description>Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
+    </item>
+    
+  </channel>
+</rss>

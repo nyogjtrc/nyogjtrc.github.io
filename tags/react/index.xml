@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/react/</link>
+    <description>Recent content in React on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Fri, 31 Mar 2017 14:15:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Webpack 2.2 Sample - f2e-jacket</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</link>
+      <pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
+      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
+    </item>
+    
+  </channel>
+</rss>

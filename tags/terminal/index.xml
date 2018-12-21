@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminal on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/terminal/</link>
+    <description>Recent content in Terminal on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Mon, 16 Jul 2018 11:31:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在 Terminal 上的跳舞鸚鵡</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</link>
+      <pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
+      <description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
+    </item>
+    
+  </channel>
+</rss>

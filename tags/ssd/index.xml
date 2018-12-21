@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssd on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/ssd/</link>
+    <description>Recent content in Ssd on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Fri, 14 Dec 2018 23:20:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/ssd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>X1c 6th 在 Debian 裡優化 SSD</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</link>
+      <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
+      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
+    </item>
+    
+  </channel>
+</rss>
