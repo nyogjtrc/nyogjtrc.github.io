@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</loc>
+    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</loc>
     <lastmod>2018-12-30T15:01:29+08:00</lastmod>
   </url>
@@ -209,7 +214,7 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/github/</loc>
-    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
+    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -257,13 +262,13 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
+    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
+    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
