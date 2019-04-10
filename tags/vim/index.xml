@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Tue, 23 Jan 2018 22:45:54 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 10 Apr 2019 16:22:20 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>離開 spf13-vim 的日子</title>
+      <link>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</link>
+      <pubDate>Wed, 10 Apr 2019 16:22:20 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</guid>
+      <description>前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim</description>
+    </item>
     
     <item>
       <title>Try Spf13 Vim</title>

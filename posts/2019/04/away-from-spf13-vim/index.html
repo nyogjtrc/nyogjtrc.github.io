@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.53-DEV" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/">
+<base href="https://nyogjtrc.github.io/" />
+<meta property="og:title" content="離開 spf13-vim 的日子" />
+<meta property="og:description" content="前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/" /><meta property="article:published_time" content="2019-04-10T16:22:20&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-10T16:22:20&#43;08:00"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="離開 spf13-vim 的日子"/>
+<meta name="twitter:description" content="前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim"/>
+
+
+
+<meta itemprop="name" content="離開 spf13-vim 的日子">
+<meta itemprop="description" content="前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim">
+
+
+<meta itemprop="datePublished" content="2019-04-10T16:22:20&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-10T16:22:20&#43;08:00" />
+<meta itemprop="wordCount" content="528">
+
+
+
+<meta itemprop="keywords" content="vim," />
+
+
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/color-dark.css" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     離開 spf13-vim 的日子 
+
+</title>
+
+<script src="js/highlight.min.js"></script>
+<link rel="stylesheet" href="css/tomorrow-night.min.css" />
+<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+</div>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> 離開 spf13-vim 的日子 </h1>
+    <div class="content"> 
+
+<h2 id="前言">前言</h2>
+
+<p>回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 <a href="https://github.com/spf13/spf13-vim">spf13-vim</a>，便開始的了快樂的 vim 生活。</p>
+
+<p>spf13-vim 用了數個月之後，熟悉了不少的設定方式，也調整不少符合自己習慣的設定。</p>
+
+<p>移掉一些老舊的套件，掛上一些新套件。</p>
+
+<p>但是 spf-13 原作終究是停止維護的，要一直從 spf13 擴充做調整會被受限。</p>
+
+<p>所以，決定是時候自己重新組織適合自己的工作環境。也記錄一下這次我是怎麼調效我的 vimrc 的。</p>
+
+<h2 id="vim-基本設定">vim 基本設定</h2>
+
+<p>主要是參考 spf13-vim 的，畢竟多數的習慣是雷同的</p>
+
+<h2 id="vim-套件">vim 套件</h2>
+
+<p>要尋找套件可以到 <a href="https://vimawesome.com/">https://vimawesome.com/</a> 上面尋找。</p>
+
+<p>首先是套件管理，從幾個之名的工具中，選一下自己滿意的。</p>
+
+<p>這次選擇使用 <code>junegunn/vim-plug</code></p>
+
+<p>再來是 UI 改善：</p>
+
+<ul>
+<li>scrooloose/nerdtree</li>
+<li>majutsushi/tagbar</li>
+<li>vim-airline/vim-airline</li>
+<li>luochen1990/rainbow</li>
+<li>shougo/denite.nvim</li>
+</ul>
+
+<p>colorscheme 的話，個人喜歡 <code>morhetz/gruvbox</code></p>
+
+<p>整合工具，整合 git, lint, tmux 等等的工具：</p>
+
+<ul>
+<li>airblade/vim-gitgutter</li>
+<li>w0rp/ale</li>
+<li>christoomey/vim-tmux-navigator</li>
+<li>benmills/vimux</li>
+</ul>
+
+<p>自動完成，選擇沒那麼肥大的 deoplete：</p>
+
+<ul>
+<li>Shougo/deoplete.nvim</li>
+<li>Shougo/neosnippet.vim</li>
+</ul>
+
+<p>程式語言，幾乎每個程式語言都會有自己的開發輔助工具，而 vim 套件就是負責整合：</p>
+
+<ul>
+<li>fatih/vim-go</li>
+<li>StanAngeloff/php.vim</li>
+<li>phpactor/phpactor</li>
+<li>2072/php-indenting-for-vim</li>
+</ul>
+
+<h2 id="key-map">key map</h2>
+
+<p>先把 leader key 換成自己習慣的：</p>
+
+<pre><code class="language-vim">let mapleader = ',' &quot; Replace leader to ',', default leader is '\'
+</code></pre>
+
+<p>再來就是有海量的快捷鍵要設定跟記憶，</p>
+
+<p>好在大部份作者會給一些範本，也可以在網上路參加別人的設定。</p>
+
+<h2 id="後續">後續</h2>
+
+<p>最後就是一寫程式一邊視自己的習慣調整設定</p>
+
+<h2 id="結語">結語</h2>
+
+<p>我的 vimrc 在我的 dotfiles 裡面 <a href="https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc">https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc</a></p>
+
+<p>回顧一下四年前自己整理曾經整理過的 vimrc ，當時才只有 87 行。</p>
+
+<p>目前整理的有 436 行，資訊量成長 5 倍！！！</p>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/vim">#vim</a>
+      </div>
+    
+</div>
+
+    <div class="date"> Apr 10, 2019 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</body>
+</html>
+
