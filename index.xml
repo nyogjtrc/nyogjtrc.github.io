@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Wed, 10 Apr 2019 16:22:20 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jul 2019 01:01:55 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>php 的邏輯運算子  and vs &amp;&amp;</title>
+      <link>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</link>
+      <pubDate>Fri, 19 Jul 2019 01:01:55 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</guid>
+      <description>邏輯運算子 php 的邏輯運算子除了 &amp;amp;&amp;amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想</description>
+    </item>
     
     <item>
       <title>離開 spf13-vim 的日子</title>
