@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</loc>
     <lastmod>2019-07-19T01:01:55+08:00</lastmod>
   </url>
@@ -223,6 +228,12 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/font/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/github/</loc>
     <lastmod>2019-02-05T14:31:33+08:00</lastmod>
     <priority>0</priority>
@@ -272,7 +283,7 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2019-07-19T01:01:55+08:00</lastmod>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -284,7 +295,7 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2019-07-19T01:01:55+08:00</lastmod>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Fri, 19 Jul 2019 01:01:55 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 00:23:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>記錄目前正在使用的字型</title>
+      <link>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</link>
+      <pubDate>Tue, 23 Jul 2019 00:23:44 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</guid>
+      <description>每天都要看螢幕超過八小時的情況下，漸漸的想對自己的好一點，找一些讓自己眼睛比較舒服的字型。 一個每天都要盯著 terminal 的工程師，更是要選個看得清楚又容</description>
+    </item>
     
     <item>
       <title>php 的邏輯運算子  and vs &amp;&amp;</title>
