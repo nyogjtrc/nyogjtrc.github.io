@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="php 的邏輯運算子  and vs &amp;&amp;" />
 <meta property="og:description" content="邏輯運算子 php 的邏輯運算子除了 &amp;&amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/" /><meta property="article:published_time" content="2019-07-19T01:01:55&#43;08:00"/>
-<meta property="article:modified_time" content="2019-07-19T01:01:55&#43;08:00"/>
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/" />
+<meta property="article:published_time" content="2019-07-19T01:01:55+08:00" />
+<meta property="article:modified_time" content="2019-07-19T01:01:55+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="php 的邏輯運算子  and vs &amp;&amp;"/>
 <meta name="twitter:description" content="邏輯運算子 php 的邏輯運算子除了 &amp;&amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想"/>
-
 
 
 <meta itemprop="name" content="php 的邏輯運算子  and vs &amp;&amp;">
@@ -36,8 +35,11 @@
 <meta itemprop="keywords" content="php," />
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -58,10 +60,6 @@ if (!doNotTrack) {
      php 的邏輯運算子  and vs &amp;&amp; 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -87,7 +85,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -95,7 +92,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -103,6 +100,9 @@ if (!doNotTrack) {
   
 
   
+
+</div>
+
 
 </div>
 
@@ -123,47 +123,38 @@ if (!doNotTrack) {
 <p>而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想像的不一樣的成果</p>
 
 <h3 id="使用">使用 &amp;&amp;</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+$a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">false</span>;
 
-$a = true &amp;&amp; false;
+<span style="color:#75715e">// equal
+</span><span style="color:#75715e"></span>$a <span style="color:#f92672">=</span> (<span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">false</span>);
 
-// equal
-$a = (true &amp;&amp; false);
-
-// $a: false
-</code></pre>
-
+<span style="color:#75715e">// $a: false
+</span></code></pre></div>
 <h3 id="使用-and">使用 and</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
+$a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">false</span>;
 
-$a = true and false;
+<span style="color:#75715e">// equal
+</span><span style="color:#75715e"></span>($a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">false</span>;
 
-// equal
-($a = true) and false;
-
-// $a: true
-</code></pre>
-
+<span style="color:#75715e">// $a: true
+</span></code></pre></div>
 <p>&rdquo;=&rdquo; 優先順序高於 &ldquo;and&rdquo; &ldquo;or&rdquo;</p>
 
 <h2 id="and-跟-or-的其他用途">and 跟 or 的其他用途</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
-<pre><code class="language-php">&lt;?php
-
-do_something() and success() or failure();
-</code></pre>
-
+<span style="color:#a6e22e">do_something</span>() <span style="color:#66d9ef">and</span> <span style="color:#a6e22e">success</span>() <span style="color:#66d9ef">or</span> <span style="color:#a6e22e">failure</span>();
+</code></pre></div>
 <p>do_something() 成功的話會執行 success()，失敗的話會執行 failure()</p>
 
 <p>類似 bash 中常見的用法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cmd1 <span style="color:#f92672">&amp;&amp;</span> cmd2 <span style="color:#f92672">||</span> cmd3
 
-<pre><code class="language-sh">$ cmd1 &amp;&amp; cmd2 || cmd3
-
-$ test -d ./project || mkdir ./project
-</code></pre>
-
+$ test -d ./project <span style="color:#f92672">||</span> mkdir ./project</code></pre></div>
 <h3 id="reference">Reference</h3>
 
 <ul>
@@ -184,7 +175,7 @@ $ test -d ./project || mkdir ./project
     
 </div>
 
-    <div class="date"> Jul 19, 2019 </div>
+    <div class="date"> 19 Jul 2019 </div>
   </div>
 
 </footer>
@@ -223,6 +214,8 @@ $ test -d ./project || mkdir ./project
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/01/try-tmux/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="Try Tmux" />
 <meta property="og:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/01/try-tmux/" /><meta property="article:published_time" content="2018-01-25T16:11:13&#43;08:00"/>
-<meta property="article:modified_time" content="2018-01-25T16:11:13&#43;08:00"/>
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/01/try-tmux/" />
+<meta property="article:published_time" content="2018-01-25T16:11:13+08:00" />
+<meta property="article:modified_time" content="2018-01-25T16:11:13+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Try Tmux"/>
 <meta name="twitter:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6"/>
-
 
 
 <meta itemprop="name" content="Try Tmux">
@@ -36,8 +35,11 @@
 <meta itemprop="keywords" content="tmux," />
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -58,10 +60,6 @@ if (!doNotTrack) {
      Try Tmux 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -87,7 +85,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -95,7 +92,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -103,6 +100,9 @@ if (!doNotTrack) {
   
 
   
+
+</div>
+
 
 </div>
 
@@ -149,8 +149,7 @@ sudo mv tmux-${VERSION} /usr/local/src
 <h2 id="tmux-conf">tmux.conf</h2>
 
 <p>放上幾個我覺得實用的設定</p>
-
-<pre><code class="language-tmux">set -g default-terminal &quot;screen-256color&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-tmux" data-lang="tmux">set -g default-terminal &#34;screen-256color&#34;
 
 # enable mouse
 set -g mouse on
@@ -162,12 +161,10 @@ set -g prefix C-a
 bind-key C-a send-prefix
 
 # &lt;prefix&gt; + r | reloading config
-bind-key r source-file ~/.tmux.conf \; display-message &quot;Yo~! .tmux.conf reloaded!&quot;
+bind-key r source-file ~/.tmux.conf \; display-message &#34;Yo~! .tmux.conf reloaded!&#34;
 
-bind-key \ split-window -h -c '#{pane_current_path}'
-bind-key - split-window -v -c '#{pane_current_path}'
-</code></pre>
-
+bind-key \ split-window -h -c &#39;#{pane_current_path}&#39;
+bind-key - split-window -v -c &#39;#{pane_current_path}&#39;</code></pre></div>
 <h3 id="prefix">prefix</h3>
 
 <p>預設是 ctrl + b，不過上面的設定我改成 ctrl + a，目前使用是算順手<br />
@@ -246,7 +243,7 @@ d dettach
     
 </div>
 
-    <div class="date"> Jan 25, 2018 </div>
+    <div class="date"> 25 Jan 2018 </div>
   </div>
 
 </footer>
@@ -285,6 +282,8 @@ d dettach
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

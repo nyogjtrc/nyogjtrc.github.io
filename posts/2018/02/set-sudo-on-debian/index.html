@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="Set Sudo on Debian" />
 <meta property="og:description" content="安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/" /><meta property="article:published_time" content="2018-02-10T22:24:57&#43;08:00"/>
-<meta property="article:modified_time" content="2018-02-10T22:24:57&#43;08:00"/>
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/" />
+<meta property="article:published_time" content="2018-02-10T22:24:57+08:00" />
+<meta property="article:modified_time" content="2018-02-10T22:24:57+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Set Sudo on Debian"/>
 <meta name="twitter:description" content="安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試"/>
-
 
 
 <meta itemprop="name" content="Set Sudo on Debian">
@@ -36,8 +35,11 @@
 <meta itemprop="keywords" content="sudo,debian,linux," />
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -58,10 +60,6 @@ if (!doNotTrack) {
      Set Sudo on Debian 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -87,7 +85,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -95,7 +92,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -103,6 +100,9 @@ if (!doNotTrack) {
   
 
   
+
+</div>
+
 
 </div>
 
@@ -119,21 +119,12 @@ if (!doNotTrack) {
 <h2 id="安裝-sudo">安裝 sudo</h2>
 
 <p>切換到 root 安裝</p>
-
-<pre><code class="language-cli"># su -
-# apt install sudo
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli"># su -
+# apt install sudo</code></pre></div>
 <h2 id="設定-sudoer">設定 sudoer</h2>
-
-<pre><code class="language-cli"># usermod -aG sudo nyo
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli"># usermod -aG sudo nyo</code></pre></div>
 <p>設定好之後，登入並用 <code>sudo</code> 隨意打個指令試試</p>
-
-<pre><code class="language-cli">$ sudo ls -l /root
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli">$ sudo ls -l /root</code></pre></div>
 <p>成功！</p>
 
 <h3 id="reference">Reference</h3>
@@ -161,7 +152,7 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Feb 10, 2018 </div>
+    <div class="date"> 10 Feb 2018 </div>
   </div>
 
 </footer>
@@ -200,6 +191,8 @@ if (!doNotTrack) {
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

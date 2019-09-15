@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="AWS - 無法登入 EC2 Instance 的解決方案" />
 <meta property="og:description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/" /><meta property="article:published_time" content="2017-03-17T11:10:00&#43;08:00"/>
-<meta property="article:modified_time" content="2017-03-17T11:10:00&#43;08:00"/>
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/" />
+<meta property="article:published_time" content="2017-03-17T11:10:00+08:00" />
+<meta property="article:modified_time" content="2017-03-17T11:10:00+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AWS - 無法登入 EC2 Instance 的解決方案"/>
 <meta name="twitter:description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以"/>
-
 
 
 <meta itemprop="name" content="AWS - 無法登入 EC2 Instance 的解決方案">
@@ -36,8 +35,11 @@
 <meta itemprop="keywords" content="AWS,EC2," />
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -58,10 +60,6 @@ if (!doNotTrack) {
      AWS - 無法登入 EC2 Instance 的解決方案 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -87,7 +85,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -95,7 +92,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -103,6 +100,9 @@ if (!doNotTrack) {
   
 
   
+
+</div>
+
 
 </div>
 
@@ -152,29 +152,23 @@ if (!doNotTrack) {
 <li>登入 temp instance</li>
 <li>接下來要 mount volume</li>
 <li>使用 <code>lsblk</code> 指令，看到 /dev/sdf 的 device name 以 <code>xvdf</code> 顯示，然後磁區名稱會是 xvdf1 (/dev/xvdf1)</li>
-<li>下 mount 指令</li>
-</ol>
 
-<pre><code class="language-bash">$ sudo mkdir /mnt/tempvol
-$ sudo mount /dev/xvdf1 /mnt/tempvol
-</code></pre>
+<li><p>下 mount 指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /mnt/tempvol
+$ sudo mount /dev/xvdf1 /mnt/tempvol</code></pre></div></li>
 
-<ol>
-<li>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</li>
+<li><p>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</p></li>
 </ol>
 
 <h3 id="硬碟裝回原-instance">硬碟裝回原 Instance</h3>
 
 <ol>
-<li>資料解救完畢後 umount</li>
-</ol>
+<li><p>資料解救完畢後 umount</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol</code></pre></div></li>
 
-<pre><code class="language-bash">$ sudo umount /mnt/tempvol
-</code></pre>
+<li><p><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></p></li>
 
-<ol>
-<li><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></li>
-<li>重新 <strong>Start instance</strong></li>
+<li><p>重新 <strong>Start instance</strong></p></li>
 </ol>
 
 <h3 id="reference">Reference</h3>
@@ -197,7 +191,7 @@ $ sudo mount /dev/xvdf1 /mnt/tempvol
     
 </div>
 
-    <div class="date"> Mar 17, 2017 </div>
+    <div class="date"> 17 Mar 2017 </div>
   </div>
 
 </footer>
@@ -236,6 +230,8 @@ $ sudo mount /dev/xvdf1 /mnt/tempvol
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

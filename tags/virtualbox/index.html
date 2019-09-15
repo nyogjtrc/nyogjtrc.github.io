@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/tags/virtualbox/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="Virtualbox" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nyogjtrc.github.io/tags/virtualbox/" />
-<meta property="og:updated_time" content="2018-12-30T15:01:29&#43;08:00"/>
+
+<meta property="og:updated_time" content="2018-12-30T15:01:29+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Virtualbox"/>
 <meta name="twitter:description" content=""/>
-
 
 
 <meta itemprop="name" content="Virtualbox">
@@ -28,8 +27,11 @@
 
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -50,10 +52,6 @@ if (!doNotTrack) {
      Virtualbox 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -79,7 +77,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -87,7 +84,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -99,22 +96,26 @@ if (!doNotTrack) {
 </div>
 
 
+</div>
+
+
 </header>
 
 
-<h2 class="content-list-title">
-    <a href="https://nyogjtrc.github.io/tags/virtualbox/" class="linktopost">Virtualbox</a>
+<h2 class="term-list-title">
+    <a href="https://nyogjtrc.github.io/tags/virtualbox/" class="linktopost">tag: Virtualbox</a>
 </h2>
 
-<div class="content-list">
 
-<div class="content-list-date">2018</div>
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/">
-    <div class="post-list"> <h3 class="title"> Install Virtualbox 5.2 On Debian Testing </h3> </div>
-    </a>
-    
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/'> Install Virtualbox 5.2 On Debian Testing</a> </h2>
+    <div class="meta">
+      <div class="date">
+      30 Dec, 2018 - 1 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -127,12 +128,21 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Dec 30, 2018 </div>
-</div>
+    </div>
 
-  
+  </header>
 
-</div>
+  <div class="summary">
+    增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
 
 
   <footer>
@@ -165,6 +175,8 @@ if (!doNotTrack) {
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

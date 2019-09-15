@@ -7,29 +7,31 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/tags/error/">
-<base href="https://nyogjtrc.github.io/" />
-<meta property="og:title" content="Error" />
+<meta property="og:title" content="error" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nyogjtrc.github.io/tags/error/" />
-<meta property="og:updated_time" content="2018-07-26T15:50:07&#43;08:00"/>
+
+<meta property="og:updated_time" content="2018-07-26T15:50:07+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Error"/>
+<meta name="twitter:title" content="error"/>
 <meta name="twitter:description" content=""/>
 
 
-
-<meta itemprop="name" content="Error">
+<meta itemprop="name" content="error">
 <meta itemprop="description" content="">
 
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -47,13 +49,9 @@ if (!doNotTrack) {
 <title>
 
 
-     Error 
+     error 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -79,7 +77,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -87,7 +84,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -99,22 +96,26 @@ if (!doNotTrack) {
 </div>
 
 
+</div>
+
+
 </header>
 
 
-<h2 class="content-list-title">
-    <a href="https://nyogjtrc.github.io/tags/error/" class="linktopost">Error</a>
+<h2 class="term-list-title">
+    <a href="https://nyogjtrc.github.io/tags/error/" class="linktopost">tag: error</a>
 </h2>
 
-<div class="content-list">
 
-<div class="content-list-date">2018</div>
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/">
-    <div class="post-list"> <h3 class="title"> Error Handling in Golang </h3> </div>
-    </a>
-    
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/'> Error Handling in Golang</a> </h2>
+    <div class="meta">
+      <div class="date">
+      26 Jul, 2018 - 1 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -127,12 +128,21 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Jul 26, 2018 </div>
-</div>
+    </div>
 
-  
+  </header>
 
-</div>
+  <div class="summary">
+    Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
 
 
   <footer>
@@ -165,6 +175,8 @@ if (!doNotTrack) {
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

@@ -7,20 +7,19 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/">
-<base href="https://nyogjtrc.github.io/" />
 <meta property="og:title" content="Ubuntu - Setting Locale Failed" />
 <meta property="og:description" content="在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &quot;en_GB.UTF-8&quot;, LC_MONETARY = &quot;en_GB.UTF-8&quot;, LC_ADDRESS = &quot;en_GB.UTF-8&quot;, LC_TELEPHONE = &quot;en_GB.UTF-8&quot;, LC_NAME = &quot;en_GB.UTF-8&quot;, LC_MEASUREMENT = &quot;en_GB.UTF-8&quot;," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/" /><meta property="article:published_time" content="2017-03-20T22:40:37&#43;08:00"/>
-<meta property="article:modified_time" content="2017-03-20T22:40:37&#43;08:00"/>
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/" />
+<meta property="article:published_time" content="2017-03-20T22:40:37+08:00" />
+<meta property="article:modified_time" content="2017-03-20T22:40:37+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu - Setting Locale Failed"/>
 <meta name="twitter:description" content="在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &quot;en_GB.UTF-8&quot;, LC_MONETARY = &quot;en_GB.UTF-8&quot;, LC_ADDRESS = &quot;en_GB.UTF-8&quot;, LC_TELEPHONE = &quot;en_GB.UTF-8&quot;, LC_NAME = &quot;en_GB.UTF-8&quot;, LC_MEASUREMENT = &quot;en_GB.UTF-8&quot;,"/>
-
 
 
 <meta itemprop="name" content="Ubuntu - Setting Locale Failed">
@@ -36,8 +35,11 @@
 <meta itemprop="keywords" content="ubuntu," />
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -58,10 +60,6 @@ if (!doNotTrack) {
      Ubuntu - Setting Locale Failed 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -87,7 +85,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -95,7 +92,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -103,6 +100,9 @@ if (!doNotTrack) {
   
 
   
+
+</div>
+
 
 </div>
 
@@ -138,13 +138,10 @@ locale: Cannot set LC_ALL to default locale: No such file or directory
 <p>原因是在 ssh login 時，傳送過去的編碼資料不存在於遠端主機所導致</p>
 
 <p>解決方法很簡單，把編碼的資料建立起來就可以了</p>
-
-<pre><code class="language-bash">$ sudo locale-gen en_GB.UTF-8
-Generating locales (this might take a while)...
-  en_GB.UTF-8... done
-Generation complete.
-</code></pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo locale-gen en_GB.UTF-8
+Generating locales <span style="color:#f92672">(</span>this might take a <span style="color:#66d9ef">while</span><span style="color:#f92672">)</span>...
+  en_GB.UTF-8... <span style="color:#66d9ef">done</span>
+Generation complete.</code></pre></div>
 <h3 id="reference">Reference</h3>
 
 <p><a href="https://ubuntuforums.org/showthread.php?t=1346581">https://ubuntuforums.org/showthread.php?t=1346581</a>
@@ -162,7 +159,7 @@ Generation complete.
     
 </div>
 
-    <div class="date"> Mar 20, 2017 </div>
+    <div class="date"> 20 Mar 2017 </div>
   </div>
 
 </footer>
@@ -201,6 +198,8 @@ Generation complete.
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>

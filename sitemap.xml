@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/font/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</loc>
     <lastmod>2019-07-23T00:23:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/php/</loc>
+    <lastmod>2019-07-19T01:01:55+08:00</lastmod>
   </url>
   
   <url>
@@ -13,8 +38,18 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/vim/</loc>
+    <lastmod>2019-04-10T16:22:20+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</loc>
     <lastmod>2019-04-10T16:22:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/github/</loc>
+    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
   </url>
   
   <url>
@@ -23,13 +58,33 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/debian/</loc>
+    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</loc>
     <lastmod>2018-12-30T15:01:29+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/virtualbox/</loc>
+    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ssd/</loc>
+    <lastmod>2018-12-14T23:20:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</loc>
     <lastmod>2018-12-14T23:20:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/linux/</loc>
+    <lastmod>2018-12-10T11:34:35+08:00</lastmod>
   </url>
   
   <url>
@@ -43,12 +98,27 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/gnome/</loc>
+    <lastmod>2018-12-01T21:03:36+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</loc>
     <lastmod>2018-12-01T21:03:36+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/error/</loc>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</loc>
+    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/golang/</loc>
     <lastmod>2018-07-26T15:50:07+08:00</lastmod>
   </url>
   
@@ -58,8 +128,23 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/terminal/</loc>
+    <lastmod>2018-07-16T11:31:19+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</loc>
     <lastmod>2018-07-16T11:31:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/grpc/</loc>
+    <lastmod>2018-07-09T14:14:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/restful/</loc>
+    <lastmod>2018-07-09T14:14:03+08:00</lastmod>
   </url>
   
   <url>
@@ -68,13 +153,33 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/evernote/</loc>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</loc>
+    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/nixnote/</loc>
     <lastmod>2018-05-06T18:32:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</loc>
     <lastmod>2018-02-10T22:24:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/sudo/</loc>
+    <lastmod>2018-02-10T22:24:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/tmux/</loc>
+    <lastmod>2018-01-25T16:11:13+08:00</lastmod>
   </url>
   
   <url>
@@ -88,8 +193,18 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/exif/</loc>
+    <lastmod>2018-01-14T01:25:15+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</loc>
     <lastmod>2018-01-14T01:25:15+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ssh/</loc>
+    <lastmod>2017-11-09T13:24:42+08:00</lastmod>
   </url>
   
   <url>
@@ -103,8 +218,33 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/test/</loc>
+    <lastmod>2017-10-12T13:34:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/capslock/</loc>
+    <lastmod>2017-10-04T18:11:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ctrl/</loc>
+    <lastmod>2017-10-04T18:11:31+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</loc>
     <lastmod>2017-10-04T18:11:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/blog/</loc>
+    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/hugo/</loc>
+    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
   </url>
   
   <url>
@@ -128,8 +268,23 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/react/</loc>
+    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/webpack/</loc>
+    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</loc>
     <lastmod>2017-03-31T14:15:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ubuntu/</loc>
+    <lastmod>2017-03-20T22:47:43+08:00</lastmod>
   </url>
   
   <url>
@@ -143,13 +298,28 @@
   </url>
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/aws/</loc>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</loc>
+    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ec2/</loc>
     <lastmod>2017-03-17T11:10:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</loc>
     <lastmod>2017-03-12T04:56:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/date/</loc>
+    <lastmod>2017-03-04T15:46:00+08:00</lastmod>
   </url>
   
   <url>
@@ -163,218 +333,12 @@
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/tags/aws/</loc>
-    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/blog/</loc>
-    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/capslock/</loc>
-    <lastmod>2017-10-04T18:11:31+08:00</lastmod>
-    <priority>0</priority>
+    <loc>https://nyogjtrc.github.io/tags/gtd/</loc>
+    <lastmod>2017-01-22T15:29:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ctrl/</loc>
-    <lastmod>2017-10-04T18:11:31+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/date/</loc>
-    <lastmod>2017-03-04T15:46:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/debian/</loc>
-    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ec2/</loc>
-    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/error/</loc>
-    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/evernote/</loc>
-    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/exif/</loc>
-    <lastmod>2018-01-14T01:25:15+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/font/</loc>
-    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/github/</loc>
-    <lastmod>2019-02-05T14:31:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/gnome/</loc>
-    <lastmod>2018-12-01T21:03:36+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/golang/</loc>
-    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/grpc/</loc>
-    <lastmod>2018-07-09T14:14:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/gtd/</loc>
-    <lastmod>2017-01-22T15:29:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/hugo/</loc>
-    <lastmod>2017-09-24T13:36:35+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/linux/</loc>
-    <lastmod>2018-12-10T11:34:35+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/nixnote/</loc>
-    <lastmod>2018-05-06T18:32:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/php/</loc>
-    <lastmod>2019-07-19T01:01:55+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2019-07-23T00:23:44+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/react/</loc>
-    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/restful/</loc>
-    <lastmod>2018-07-09T14:14:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ssd/</loc>
-    <lastmod>2018-12-14T23:20:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ssh/</loc>
-    <lastmod>2017-11-09T13:24:42+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/sudo/</loc>
-    <lastmod>2018-02-10T22:24:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
-    <lastmod>2017-03-17T11:10:00+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/terminal/</loc>
-    <lastmod>2018-07-16T11:31:19+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/test/</loc>
-    <lastmod>2017-10-12T13:34:47+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/tmux/</loc>
-    <lastmod>2018-01-25T16:11:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ubuntu/</loc>
-    <lastmod>2017-03-20T22:47:43+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/vim/</loc>
-    <lastmod>2019-04-10T16:22:20+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/virtualbox/</loc>
-    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/webpack/</loc>
-    <lastmod>2017-03-31T14:15:00+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
 </urlset>

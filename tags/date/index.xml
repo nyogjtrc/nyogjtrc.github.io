@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Date on Nyo&#39;s Study Book</title>
+    <title>date on Nyo&#39;s Study Book</title>
     <link>https://nyogjtrc.github.io/tags/date/</link>
-    <description>Recent content in Date on Nyo&#39;s Study Book</description>
+    <description>Recent content in date on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
@@ -18,7 +18,7 @@
       <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &#39;yesterday&#39;</description>
+      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
     </item>
     
   </channel>

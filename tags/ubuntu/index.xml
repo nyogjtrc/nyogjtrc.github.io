@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ubuntu on Nyo&#39;s Study Book</title>
+    <title>ubuntu on Nyo&#39;s Study Book</title>
     <link>https://nyogjtrc.github.io/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on Nyo&#39;s Study Book</description>
+    <description>Recent content in ubuntu on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
@@ -18,7 +18,7 @@
       <pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
-      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &#39;Asia/Taipei&#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
+      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
     </item>
     
     <item>

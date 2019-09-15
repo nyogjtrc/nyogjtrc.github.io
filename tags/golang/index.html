@@ -7,29 +7,31 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.53-DEV" />
+<meta name="generator" content="Hugo 0.58.1" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/tags/golang/">
-<base href="https://nyogjtrc.github.io/" />
-<meta property="og:title" content="Golang" />
+<meta property="og:title" content="golang" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nyogjtrc.github.io/tags/golang/" />
-<meta property="og:updated_time" content="2018-07-26T15:50:07&#43;08:00"/>
+
+<meta property="og:updated_time" content="2018-07-26T15:50:07+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Golang"/>
+<meta name="twitter:title" content="golang"/>
 <meta name="twitter:description" content=""/>
 
 
-
-<meta itemprop="name" content="Golang">
+<meta itemprop="name" content="golang">
 <meta itemprop="description" content="">
 
 
 
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/color-dark.css" />
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
 
 
 <script type="application/javascript">
@@ -47,13 +49,9 @@ if (!doNotTrack) {
 <title>
 
 
-     Golang 
+     golang 
 
 </title>
-
-<script src="js/highlight.min.js"></script>
-<link rel="stylesheet" href="css/tomorrow-night.min.css" />
-<script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -79,7 +77,6 @@ if (!doNotTrack) {
     
 
   </nav>
-</div>
 
   
 <div class="social-links-header">
@@ -87,7 +84,7 @@ if (!doNotTrack) {
   
 
   
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
   
 
   
@@ -99,22 +96,26 @@ if (!doNotTrack) {
 </div>
 
 
+</div>
+
+
 </header>
 
 
-<h2 class="content-list-title">
-    <a href="https://nyogjtrc.github.io/tags/golang/" class="linktopost">Golang</a>
+<h2 class="term-list-title">
+    <a href="https://nyogjtrc.github.io/tags/golang/" class="linktopost">tag: golang</a>
 </h2>
 
-<div class="content-list">
 
-<div class="content-list-date">2018</div>
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/">
-    <div class="post-list"> <h3 class="title"> Error Handling in Golang </h3> </div>
-    </a>
-    
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/'> Error Handling in Golang</a> </h2>
+    <div class="meta">
+      <div class="date">
+      26 Jul, 2018 - 1 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -127,15 +128,31 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Jul 26, 2018 </div>
-</div>
+    </div>
 
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/">
-    <div class="post-list"> <h3 class="title"> Try gRPC, grpc-gateway With Go </h3> </div>
-    </a>
-    
+  </header>
+
+  <div class="summary">
+    Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
+
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/'> Try gRPC, grpc-gateway With Go</a> </h2>
+    <div class="meta">
+      <div class="date">
+      9 Jul, 2018 - 2 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -152,18 +169,31 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Jul 9, 2018 </div>
-</div>
+    </div>
 
-  
+  </header>
 
-<div class="content-list-date">2017</div>
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/">
-    <div class="post-list"> <h3 class="title"> Golang Test All Testing in Project </h3> </div>
-    </a>
-    
+  <div class="summary">
+    什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
+
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/'> Golang Test All Testing in Project</a> </h2>
+    <div class="meta">
+      <div class="date">
+      12 Oct, 2017 - 1 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -176,15 +206,31 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Oct 12, 2017 </div>
-</div>
+    </div>
 
-  
-  <div class="content-item">
-    <a href="https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/">
-    <div class="post-list"> <h3 class="title"> 用 Hugo 發佈部落格 </h3> </div>
-    </a>
-    
+  </header>
+
+  <div class="summary">
+    想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
+
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/'> 用 Hugo 發佈部落格</a> </h2>
+    <div class="meta">
+      <div class="date">
+      24 Sep, 2017 - 1 minutes
+      </div>
+      
 <div class="tags">
     
       <div class="tag">
@@ -205,12 +251,21 @@ if (!doNotTrack) {
     
 </div>
 
-    <div class="date"> Sep 24, 2017 </div>
-</div>
+    </div>
 
-  
+  </header>
 
-</div>
+  <div class="summary">
+    Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
 
 
   <footer>
@@ -243,6 +298,8 @@ if (!doNotTrack) {
   </div>
 
   </footer>
+
+</div> 
 
 </body>
 </html>
