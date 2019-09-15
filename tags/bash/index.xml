@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>terminal on Nyo&#39;s Study Book</title>
-    <link>https://nyogjtrc.github.io/tags/terminal/</link>
-    <description>Recent content in terminal on Nyo&#39;s Study Book</description>
+    <title>bash on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/bash/</link>
+    <description>Recent content in bash on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
     <lastBuildDate>Sun, 15 Sep 2019 13:15:40 +0800</lastBuildDate>
     
-	<atom:link href="https://nyogjtrc.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nyogjtrc.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</guid>
       <description>記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯</description>
-    </item>
-    
-    <item>
-      <title>在 Terminal 上的跳舞鸚鵡</title>
-      <link>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</link>
-      <pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
-      <description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
     </item>
     
   </channel>
