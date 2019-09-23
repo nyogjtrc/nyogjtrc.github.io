@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.58.1" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/">
+<meta property="og:title" content="Log Rotate With Zap Logger" />
+<meta property="og:description" content="github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/" />
+<meta property="article:published_time" content="2019-09-23T23:53:18+08:00" />
+<meta property="article:modified_time" content="2019-09-23T23:53:18+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Log Rotate With Zap Logger"/>
+<meta name="twitter:description" content="github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap"/>
+
+
+<meta itemprop="name" content="Log Rotate With Zap Logger">
+<meta itemprop="description" content="github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap">
+
+
+<meta itemprop="datePublished" content="2019-09-23T23:53:18&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-23T23:53:18&#43;08:00" />
+<meta itemprop="wordCount" content="196">
+
+
+
+<meta itemprop="keywords" content="golang,zap,logger," />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     Log Rotate With Zap Logger 
+
+</title>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> Log Rotate With Zap Logger </h1>
+    <div class="content"> <p>github.com/uber-go/zap, zap 是目前我比較常用的 logger package</p>
+
+<p>在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理</p>
+
+<p>zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package</p>
+
+<p>zap 官方的 FAQ 中 <a href="https://github.com/uber-go/zap/blob/master/FAQ.md#does-zap-support-log-rotation">zap/FAQ.md</a></p>
+
+<p>就有一個基本的 example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
+    <span style="color:#a6e22e">Filename</span>:   <span style="color:#e6db74">&#34;/var/log/myapp/foo.log&#34;</span>,
+    <span style="color:#a6e22e">MaxSize</span>:    <span style="color:#ae81ff">500</span>, <span style="color:#75715e">// megabytes
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">MaxBackups</span>: <span style="color:#ae81ff">3</span>,
+    <span style="color:#a6e22e">MaxAge</span>:     <span style="color:#ae81ff">28</span>, <span style="color:#75715e">// days
+</span><span style="color:#75715e"></span>})
+<span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(
+    <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewJSONEncoder</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewProductionEncoderConfig</span>()),
+    <span style="color:#a6e22e">w</span>,
+    <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>,
+)
+<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)</code></pre></div>
+<p>如果要設定成把 log message 同時寫到檔案跟畫面的話，則要使用使用 zapcore.NewMultiWriteSyncer(&hellip;)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">writeFile</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
+    <span style="color:#a6e22e">Filename</span>: <span style="color:#e6db74">&#34;service.log&#34;</span>,
+    <span style="color:#a6e22e">MaxSize</span>:  <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// megabytes
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">MaxAge</span>:   <span style="color:#ae81ff">28</span>, <span style="color:#75715e">// days
+</span><span style="color:#75715e"></span>})
+<span style="color:#a6e22e">writeStdout</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>)
+
+<span style="color:#a6e22e">core</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewCore</span>(
+  <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewJSONEncoder</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">NewProductionEncoderConfig</span>()),
+  <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">NewMultiWriteSyncer</span>(<span style="color:#a6e22e">writeFile</span>, <span style="color:#a6e22e">writeStdout</span>),
+  <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>,
+)
+
+<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)</code></pre></div>
+<p>上面設定的 logger 會缺少 caller 跟 stack trace 的資訊，需要再加入 options</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(
+    <span style="color:#a6e22e">core</span>,
+    <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddCaller</span>(),
+    <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddStacktrace</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">ErrorLevel</span>),
+)</code></pre></div> </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/golang">#golang</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/zap">#zap</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/logger">#logger</a>
+      </div>
+    
+</div>
+
+    <div class="date"> 23 Sep 2019 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</div> 
+
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zap on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/zap/</link>
+    <description>Recent content in zap on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Mon, 23 Sep 2019 23:53:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/zap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Log Rotate With Zap Logger</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</link>
+      <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</guid>
+      <description>github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/golang/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/logger/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/zap/</loc>
+    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/bash/</loc>
     <lastmod>2019-09-15T13:15:40+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</loc>
-    <lastmod>2019-09-15T13:15:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2019-09-15T13:15:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2019-09-15T13:15:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2019-09-15T13:15:40+08:00</lastmod>
   </url>
   
@@ -129,11 +149,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</loc>
-    <lastmod>2018-07-26T15:50:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/golang/</loc>
     <lastmod>2018-07-26T15:50:07+08:00</lastmod>
   </url>
   

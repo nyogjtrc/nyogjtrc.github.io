@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Thu, 26 Jul 2018 15:50:07 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2019 23:53:18 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Log Rotate With Zap Logger</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</link>
+      <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</guid>
+      <description>github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap</description>
+    </item>
     
     <item>
       <title>Error Handling in Golang</title>
