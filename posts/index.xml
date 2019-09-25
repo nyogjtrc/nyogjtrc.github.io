@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Mon, 23 Sep 2019 23:53:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Sep 2019 00:48:40 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Mac 上使用 GNU Commands</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</link>
+      <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</guid>
+      <description>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。 macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大 這讓習慣以 Linux 開發程式的</description>
+    </item>
     
     <item>
       <title>Log Rotate With Zap Logger</title>

@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Mon, 23 Sep 2019 23:53:18 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Sep 2019 00:48:40 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gnu</title>
+      <link>https://nyogjtrc.github.io/tags/gnu/</link>
+      <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/gnu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://nyogjtrc.github.io/tags/linux/</link>
+      <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mac</title>
+      <link>https://nyogjtrc.github.io/tags/mac/</link>
+      <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/mac/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -117,15 +144,6 @@
       <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/ssd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://nyogjtrc.github.io/tags/linux/</link>
-      <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
