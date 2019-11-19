@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Thu, 26 Sep 2019 00:48:40 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 20 Nov 2019 00:42:43 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Amazon Linux 2 上安裝 Docker</title>
+      <link>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</link>
+      <pubDate>Wed, 20 Nov 2019 00:42:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</guid>
+      <description>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum</description>
+    </item>
     
     <item>
       <title>在 Mac 上使用 GNU Commands</title>

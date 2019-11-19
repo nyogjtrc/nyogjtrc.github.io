@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWS on Nyo&#39;s Study Book</title>
-    <link>https://nyogjtrc.github.io/tags/aws/</link>
-    <description>Recent content in AWS on Nyo&#39;s Study Book</description>
+    <title>docker on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/docker/</link>
+    <description>Recent content in docker on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
     <lastBuildDate>Wed, 20 Nov 2019 00:42:43 +0800</lastBuildDate>
     
-	<atom:link href="https://nyogjtrc.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nyogjtrc.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</guid>
       <description>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum</description>
-    </item>
-    
-    <item>
-      <title>AWS - 無法登入 EC2 Instance 的解決方案</title>
-      <link>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</link>
-      <pubDate>Fri, 17 Mar 2017 11:10:00 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</guid>
-      <description>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以</description>
     </item>
     
   </channel>
