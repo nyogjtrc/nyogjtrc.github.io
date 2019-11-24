@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/python/</link>
+    <description>Recent content in python on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 24 Nov 2019 20:35:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>配置開發 Python 的 vim 環境</title>
+      <link>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</link>
+      <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
+      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
+    </item>
+    
+  </channel>
+</rss>
