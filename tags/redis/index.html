@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/tags/redis/">
+<meta property="og:title" content="redis" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nyogjtrc.github.io/tags/redis/" />
+
+<meta property="og:updated_time" content="2019-12-29T17:47:45+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="redis"/>
+<meta name="twitter:description" content=""/>
+
+
+<meta itemprop="name" content="redis">
+<meta itemprop="description" content="">
+
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     redis 
+
+</title>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<h2 class="term-list-title">
+    <a href="https://nyogjtrc.github.io/tags/redis/" class="linktopost">tag: redis</a>
+</h2>
+
+
+    <article class="post-preview">
+
+  <header>
+    <h2 class="title"> <a href='https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/'> 刪除 Redis 中符合 Pattern 的 Key</a> </h2>
+    <div class="meta">
+      <div class="date">
+      29 Dec, 2019 - 1 minutes
+      </div>
+      
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/redis">#redis</a>
+      </div>
+    
+</div>
+
+    </div>
+
+  </header>
+
+  <div class="summary">
+    用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，
+  </div>
+
+  <div class="rmore">
+    <a href='https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/' class="rmore">Read more</a>
+  </div>
+
+
+</article>
+
+
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</div> 
+
+</body>
+</html>
+

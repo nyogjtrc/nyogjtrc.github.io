@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/redis/</link>
+    <description>Recent content in redis on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 29 Dec 2019 17:47:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>刪除 Redis 中符合 Pattern 的 Key</title>
+      <link>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</link>
+      <pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
+      <description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
+    </item>
+    
+  </channel>
+</rss>

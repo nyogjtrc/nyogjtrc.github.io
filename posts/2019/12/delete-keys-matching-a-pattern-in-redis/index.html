@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/">
+<meta property="og:title" content="刪除 Redis 中符合 Pattern 的 Key" />
+<meta property="og:description" content="用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/" />
+<meta property="article:published_time" content="2019-12-29T17:47:45+08:00" />
+<meta property="article:modified_time" content="2019-12-29T17:47:45+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="刪除 Redis 中符合 Pattern 的 Key"/>
+<meta name="twitter:description" content="用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，"/>
+
+
+<meta itemprop="name" content="刪除 Redis 中符合 Pattern 的 Key">
+<meta itemprop="description" content="用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，">
+
+
+<meta itemprop="datePublished" content="2019-12-29T17:47:45&#43;08:00" />
+<meta itemprop="dateModified" content="2019-12-29T17:47:45&#43;08:00" />
+<meta itemprop="wordCount" content="120">
+
+
+
+<meta itemprop="keywords" content="redis," />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     刪除 Redis 中符合 Pattern 的 Key 
+
+</title>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> 刪除 Redis 中符合 Pattern 的 Key </h1>
+    <div class="content"> 
+
+<p>用 redis-cli 組合一個清除的指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ redis-cli --scan --pattern users:* | xargs redis-cli unlink</code></pre></div>
+<ol>
+<li>用 scan 找出要刪的 key</li>
+<li>透過 xargs 傳給 unlink 刪掉 key</li>
+</ol>
+
+<h3 id="keys-vs-scan">KEYS vs SCAN</h3>
+
+<p>一樣都會掃過所有的 key，scan 不會阻塞整個 server，而是迭代的收集結果</p>
+
+<h3 id="del-vs-unlink">DEL vs UNLINK</h3>
+
+<p>一樣都是刪除 key ，差別在於 unlink 是非阻塞的刪除，會以非同步的方式回收記憶體</p>
+
+<h3 id="referece">Referece</h3>
+
+<ul>
+<li><a href="https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/">https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/</a></li>
+<li><a href="https://redis.io/commands/scan">https://redis.io/commands/scan</a></li>
+<li><a href="https://redis.io/commands/unlink">https://redis.io/commands/unlink</a></li>
+</ul>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/redis">#redis</a>
+      </div>
+    
+</div>
+
+    <div class="date"> 29 Dec 2019 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</div> 
+
+</body>
+</html>
+
