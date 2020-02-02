@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Sun, 29 Dec 2019 17:47:45 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2020 12:37:15 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git</title>
+      <link>https://nyogjtrc.github.io/tags/git/</link>
+      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://nyogjtrc.github.io/tags/github/</link>
+      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab</title>
+      <link>https://nyogjtrc.github.io/tags/gitlab/</link>
+      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/gitlab/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>redis</title>
@@ -144,15 +171,6 @@
       <pubDate>Fri, 19 Jul 2019 01:01:55 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>https://nyogjtrc.github.io/tags/github/</link>
-      <pubDate>Tue, 05 Feb 2019 14:31:33 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/github/</guid>
       <description></description>
     </item>
     
