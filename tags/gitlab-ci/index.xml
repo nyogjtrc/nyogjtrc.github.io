@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gitlab on Nyo&#39;s Study Book</title>
-    <link>https://nyogjtrc.github.io/tags/gitlab/</link>
-    <description>Recent content in gitlab on Nyo&#39;s Study Book</description>
+    <title>gitlab-ci on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/gitlab-ci/</link>
+    <description>Recent content in gitlab-ci on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
     <lastBuildDate>Sun, 09 Feb 2020 22:29:39 +0800</lastBuildDate>
     
-	<atom:link href="https://nyogjtrc.github.io/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nyogjtrc.github.io/tags/gitlab-ci/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</guid>
       <description>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個</description>
-    </item>
-    
-    <item>
-      <title>比較 Git Workflows</title>
-      <link>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</link>
-      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</guid>
-      <description>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。 這邊整理一下目前常見的幾種 git 分支管理策略。 Git flow 出處: https://nvie.com/posts/a-successful-git-branching-model/ 分支</description>
     </item>
     
   </channel>

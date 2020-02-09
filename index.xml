@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Sun, 02 Feb 2020 12:37:15 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 09 Feb 2020 22:29:39 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>架設自己的 Gitlab-CI</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</link>
+      <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</guid>
+      <description>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個</description>
+    </item>
     
     <item>
       <title>比較 Git Workflows</title>
