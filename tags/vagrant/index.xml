@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vagrant on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/vagrant/</link>
+    <description>Recent content in vagrant on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sat, 30 May 2015 16:14:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用 Vagrant 建立開發環境</title>
+      <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
+      <pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
+      <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
+    </item>
+    
+  </channel>
+</rss>

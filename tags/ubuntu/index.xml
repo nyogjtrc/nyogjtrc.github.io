@@ -30,5 +30,14 @@
       <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MONETARY = &amp;quot;en_GB.UTF-8&amp;quot;, LC_ADDRESS = &amp;quot;en_GB.UTF-8&amp;quot;, LC_TELEPHONE = &amp;quot;en_GB.UTF-8&amp;quot;, LC_NAME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MEASUREMENT = &amp;quot;en_GB.UTF-8&amp;quot;,</description>
     </item>
     
+    <item>
+      <title>用 Vagrant 建立開發環境</title>
+      <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
+      <pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
+      <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
+    </item>
+    
   </channel>
 </rss>

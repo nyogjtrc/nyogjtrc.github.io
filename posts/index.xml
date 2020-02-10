@@ -372,5 +372,14 @@
       <description>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。</description>
     </item>
     
+    <item>
+      <title>用 Vagrant 建立開發環境</title>
+      <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
+      <pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
+      <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
+    </item>
+    
   </channel>
 </rss>

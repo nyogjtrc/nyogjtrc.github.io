@@ -21,5 +21,14 @@
       <description>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum</description>
     </item>
     
+    <item>
+      <title>用 Vagrant 建立開發環境</title>
+      <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
+      <pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
+      <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
+    </item>
+    
   </channel>
 </rss>
