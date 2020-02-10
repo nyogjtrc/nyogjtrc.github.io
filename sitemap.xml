@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/debian/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/firefox/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-02-10T23:06:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/ci/</loc>
     <lastmod>2020-02-09T22:29:39+08:00</lastmod>
   </url>
@@ -14,21 +44,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/gitlab-ci/</loc>
-    <lastmod>2020-02-09T22:29:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-02-09T22:29:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-02-09T22:29:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-02-09T22:29:39+08:00</lastmod>
   </url>
   
@@ -175,11 +190,6 @@
   <url>
     <loc>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</loc>
     <lastmod>2019-02-05T14:31:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/debian/</loc>
-    <lastmod>2018-12-30T15:01:29+08:00</lastmod>
   </url>
   
   <url>

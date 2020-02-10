@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Sun, 09 Feb 2020 22:29:39 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2020 23:06:49 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Install Lastest Firefox on Debian</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</link>
+      <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
+      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
+    </item>
     
     <item>
       <title>架設自己的 Gitlab-CI</title>
