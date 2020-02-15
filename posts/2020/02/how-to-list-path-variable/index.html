@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/">
+<meta property="og:title" content="把 PATH 變數列成清單" />
+<meta property="og:description" content="在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &quot;:&quot; &quot;\n&quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &quot;${PATH//:/$&#39;\n&#39;}&quot; echo -e &quot;${PATH//:/\n}&quot;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/" />
+<meta property="article:published_time" content="2020-02-15T21:04:39+08:00" />
+<meta property="article:modified_time" content="2020-02-15T21:04:39+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="把 PATH 變數列成清單"/>
+<meta name="twitter:description" content="在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &quot;:&quot; &quot;\n&quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &quot;${PATH//:/$&#39;\n&#39;}&quot; echo -e &quot;${PATH//:/\n}&quot;"/>
+
+
+<meta itemprop="name" content="把 PATH 變數列成清單">
+<meta itemprop="description" content="在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &quot;:&quot; &quot;\n&quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &quot;${PATH//:/$&#39;\n&#39;}&quot; echo -e &quot;${PATH//:/\n}&quot;">
+
+
+<meta itemprop="datePublished" content="2020-02-15T21:04:39&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-15T21:04:39&#43;08:00" />
+<meta itemprop="wordCount" content="107">
+
+
+
+<meta itemprop="keywords" content="bash,linux," />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     把 PATH 變數列成清單 
+
+</title>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> 把 PATH 變數列成清單 </h1>
+    <div class="content"> 
+
+<p>在 Linux 的 Shell 環境中，要查看 <code>PATH</code> 變數時，通常都是 <code>echo $PATH</code></p>
+
+<p>當 <code>PATH</code> variable 中包含太多資料夾時，跟本看不懂</p>
+
+<p>改以清單的方式顯示 <code>PATH</code> 內容</p>
+
+<pre><code>$ echo $PATH | tr &quot;:&quot; &quot;\n&quot;
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+</code></pre>
+
+<pre><code>echo &quot;${PATH//:/$'\n'}&quot;
+</code></pre>
+
+<pre><code>echo -e &quot;${PATH//:/\n}&quot;
+</code></pre>
+
+<p>直接用 echo 的方式好像會因 echo 的版本而有差異</p>
+
+<p>列成清單之後發現一堆重複的路徑…</p>
+
+<hr />
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/40599997/how-to-list-path">https://stackoverflow.com/questions/40599997/how-to-list-path</a></li>
+</ul>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/bash">#bash</a>
+      </div>
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/linux">#linux</a>
+      </div>
+    
+</div>
+
+    <div class="date"> 15 Feb 2020 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</div> 
+
+</body>
+</html>
+
