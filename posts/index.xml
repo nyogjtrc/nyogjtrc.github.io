@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Sat, 15 Feb 2020 21:04:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 00:41:26 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的工作管理方法</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</link>
+      <pubDate>Wed, 19 Feb 2020 00:41:26 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</guid>
+      <description>在軟體資訊領域，要不停的更新資訊。日常生活中也有著不少的事情要處理。 寫筆記成為健忘的我不可少的重要工具。 不停的摸索，參考 GTD 等方法，拜讀電腦玩</description>
+    </item>
     
     <item>
       <title>把 PATH 變數列成清單</title>

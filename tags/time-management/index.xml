@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GTD on Nyo&#39;s Study Book</title>
-    <link>https://nyogjtrc.github.io/tags/gtd/</link>
-    <description>Recent content in GTD on Nyo&#39;s Study Book</description>
+    <title>time management on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/time-management/</link>
+    <description>Recent content in time management on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
     <lastBuildDate>Wed, 19 Feb 2020 00:41:26 +0800</lastBuildDate>
     
-	<atom:link href="https://nyogjtrc.github.io/tags/gtd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nyogjtrc.github.io/tags/time-management/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +19,6 @@
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</guid>
       <description>在軟體資訊領域，要不停的更新資訊。日常生活中也有著不少的事情要處理。 寫筆記成為健忘的我不可少的重要工具。 不停的摸索，參考 GTD 等方法，拜讀電腦玩</description>
-    </item>
-    
-    <item>
-      <title>Getting Things Done - GTD 介紹</title>
-      <link>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</link>
-      <pubDate>Sun, 22 Jan 2017 15:29:00 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</guid>
-      <description>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。</description>
     </item>
     
   </channel>
