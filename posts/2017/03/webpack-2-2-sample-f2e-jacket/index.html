@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/">
 <meta property="og:title" content="Webpack 2.2 Sample - f2e-jacket" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Webpack 2.2 Sample - f2e-jacket">
 <meta itemprop="description" content="不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一">
-
-
 <meta itemprop="datePublished" content="2017-03-31T14:15:00&#43;08:00" />
 <meta itemprop="dateModified" content="2017-03-31T14:15:00&#43;08:00" />
 <meta itemprop="wordCount" content="281">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="webpack,react," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,30 +109,20 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Webpack 2.2 Sample - f2e-jacket </h1>
-    <div class="content"> 
-
-<p>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具</p>
-
+    <div class="content"> <p>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具</p>
 <p>專案在此: f2e-jacket <a href="https://github.com/nyogjtrc/f2e-jacket">https://github.com/nyogjtrc/f2e-jacket</a></p>
-
 <p>使用方法:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone git@github.com:nyogjtrc/f2e-jacket.git
 $ cd f2e-jacket/
 $ yarn
-$ yarn start</code></pre></div>
-<p>在製作的一開始，我以為我只要認識一下 webpack 的新版用法就好。沒想到當我要把 react 加進去的時候，事情就變的有點精彩了。</p>
-
+$ yarn start
+</code></pre></div><p>在製作的一開始，我以為我只要認識一下 webpack 的新版用法就好。沒想到當我要把 react 加進去的時候，事情就變的有點精彩了。</p>
 <p>離我上次建置環境的時候，react 的大版本號一樣是 15。嗯，這個還好。react-router 在上次我看的時候是 2.x.x，而現在是 4.0.0，跳了兩個版本，寫法變的完全不一樣，全部重新認識。好在最後放 semantic-ui 的時候沒有遇到什麼奇怪的問題。</p>
-
-<h2 id="what-s-inside">What&rsquo;s inside</h2>
-
+<h2 id="whats-inside">What&rsquo;s inside</h2>
 <p>目前在 v0.1.1 裡面包括 react, react-router, semantic-ui 這幾個 library</p>
-
 <p>在建立這個工具的途中，發現 facebook 有製作一個 react 專用的工具 <a href="https://github.com/facebookincubator/create-react-app">https://github.com/facebookincubator/create-react-app</a>
 也是可以直接拿來用的…</p>
-
 <h3 id="reference">Reference</h3>
-
 <p><a href="https://github.com/nyogjtrc/f2e-jacket">https://github.com/nyogjtrc/f2e-jacket</a>
 <a href="https://webpack.js.org/">https://webpack.js.org/</a>
 <a href="https://github.com/facebookincubator/create-react-app">https://github.com/facebookincubator/create-react-app</a></p>

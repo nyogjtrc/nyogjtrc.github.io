@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/">
 <meta property="og:title" content="查詢 Linux 上的一些 Unique ID" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="查詢 Linux 上的一些 Unique ID">
 <meta itemprop="description" content="每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html">
-
-
 <meta itemprop="datePublished" content="2018-12-10T11:34:35&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-10T11:34:35&#43;08:00" />
 <meta itemprop="wordCount" content="71">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="linux," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,45 +109,25 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 查詢 Linux 上的一些 Unique ID </h1>
-    <div class="content"> 
-
-<p>每台機器都會有一些自己唯一的 id</p>
-
+    <div class="content"> <p>每台機器都會有一些自己唯一的 id</p>
 <p>在開發程式中，可能會有需要用來分辨機器</p>
-
 <h2 id="machine-id">machine-id</h2>
-
 <pre><code>$ cat /etc/machine-id
 
 $ cat /var/lib/dbus/machine-id
-</code></pre>
-
-<h2 id="product-uuid">product_uuid</h2>
-
+</code></pre><h2 id="product_uuid">product_uuid</h2>
 <pre><code>$ sudo cat /sys/class/dmi/id/product_uuid
-</code></pre>
-
-<h2 id="mac-address">MAC address</h2>
-
+</code></pre><h2 id="mac-address">MAC address</h2>
 <pre><code>$ ip link
-</code></pre>
-
-<h2 id="hard-disk-uuid">Hard Disk UUID</h2>
-
+</code></pre><h2 id="hard-disk-uuid">Hard Disk UUID</h2>
 <pre><code>$ blkid
 
 $ ls -l /dev/disk/by-uuid
-</code></pre>
-
-<h2 id="random-uuid">random UUID</h2>
-
+</code></pre><h2 id="random-uuid">random UUID</h2>
 <pre><code>$ cat /proc/sys/kernel/random/uuid
 
 $ uuidgen
-</code></pre>
-
-<h3 id="reference">Reference</h3>
-
+</code></pre><h3 id="reference">Reference</h3>
 <p><a href="https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/">https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/</a>
 <a href="http://0pointer.de/blog/projects/ids.html">http://0pointer.de/blog/projects/ids.html</a>
 <a href="https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/">https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/</a></p>

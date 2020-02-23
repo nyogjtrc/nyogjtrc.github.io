@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/">
 <meta property="og:title" content="Error Handling in Golang" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Error Handling in Golang">
 <meta itemprop="description" content="Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err">
-
-
 <meta itemprop="datePublished" content="2018-07-26T15:50:07&#43;08:00" />
 <meta itemprop="dateModified" content="2018-07-26T15:50:07&#43;08:00" />
 <meta itemprop="wordCount" content="410">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="golang,error," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,21 +109,13 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Error Handling in Golang </h1>
-    <div class="content"> 
-
-<h2 id="golang-原生的-error-type">Golang 原生的 Error Type</h2>
-
+    <div class="content"> <h2 id="golang-原生的-error-type">Golang 原生的 Error Type</h2>
 <p>先認識 golang 的 error interface</p>
-
 <pre><code>type error interface {
     Error() string
 }
-</code></pre>
-
-<p>只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError</p>
-
+</code></pre><p>只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError</p>
 <p><a href="https://golang.org/pkg/os/#PathError">https://golang.org/pkg/os/#PathError</a></p>
-
 <pre><code>// PathError records an error and the operation and file path that caused it.
 type PathError struct {
 	Op   string
@@ -135,22 +124,13 @@ type PathError struct {
 }
 
 func (e *PathError) Error() string { return e.Op + &quot; &quot; + e.Path + &quot;: &quot; + e.Err.Error() }
-</code></pre>
-
-<h2 id="建立自己程式裡的-error-struct">建立自己程式裡的 Error struct</h2>
-
+</code></pre><h2 id="建立自己程式裡的-error-struct">建立自己程式裡的 Error struct</h2>
 <p>依照使用情境 error strcut</p>
-
 <h3 id="restful-api-error">RESTful API Error</h3>
-
 <p>RESTful API 除了訊息之後，要幫各種情況的錯誤加上編號，方便程式做後續的應對</p>
-
 <p>並可以把其他來源的錯誤一並放入，方便追蹤錯誤</p>
-
 <p>strcut fields: code, message, error</p>
-
 <p>example:</p>
-
 <pre><code>// AppError struct with code and message
 type AppError struct {
 	code    int
@@ -182,18 +162,11 @@ func (e *AppError) Message() string {
 func (e *AppError) ErrorSummry() string {
 	return fmt.Sprintf(&quot;%d: %s, [%s]&quot;, e.code, e.message, e.err.Error())
 }
-</code></pre>
-
-<h3 id="api-gateway-error">API Gateway Error</h3>
-
+</code></pre><h3 id="api-gateway-error">API Gateway Error</h3>
 <p>Gateway 公開提供服務在網路上，有時候會有安全性的需要，要隱藏一些內部錯誤訊息</p>
-
 <p>但是維運上還是會需要有足夠的資訊來了解服務當下的狀況，可以放一個內部的代碼，多一點線索</p>
-
 <p>strcut fields: code, message, internal code</p>
-
 <p>example:</p>
-
 <pre><code>// Error for gateway
 type Error struct {
 	code      int
@@ -210,14 +183,9 @@ func New(code int, message string, interCode int) *Error {
 func (e *Error) Error() string {
 	return fmt.Sprintf(&quot;%d: %s (%d)&quot;, e.code, e.message, e.interCode)
 }
-</code></pre>
-
-<h3 id="full-example">Full Example</h3>
-
+</code></pre><h3 id="full-example">Full Example</h3>
 <p><a href="https://github.com/nyogjtrc/practice-go/tree/master/error-code">https://github.com/nyogjtrc/practice-go/tree/master/error-code</a></p>
-
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://blog.golang.org/error-handling-and-go">https://blog.golang.org/error-handling-and-go</a></li>
 <li><a href="https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee">https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee</a></li>

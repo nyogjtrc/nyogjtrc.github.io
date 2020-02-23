@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/">
 <meta property="og:title" content="php 的邏輯運算子  and vs &amp;&amp;" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="php 的邏輯運算子  and vs &amp;&amp;">
 <meta itemprop="description" content="邏輯運算子 php 的邏輯運算子除了 &amp;&amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想">
-
-
 <meta itemprop="datePublished" content="2019-07-19T01:01:55&#43;08:00" />
 <meta itemprop="dateModified" content="2019-07-19T01:01:55&#43;08:00" />
 <meta itemprop="wordCount" content="191">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="php," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,17 +109,11 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> php 的邏輯運算子  and vs &amp;&amp; </h1>
-    <div class="content"> 
-
-<h2 id="邏輯運算子">邏輯運算子</h2>
-
+    <div class="content"> <h2 id="邏輯運算子">邏輯運算子</h2>
 <p>php 的邏輯運算子除了 &amp;&amp; 跟 || 之外，還有 and 跟 or</p>
-
 <p>他們之間的差異在有不同的優先順序 <a href="https://www.php.net/manual/en/language.operators.precedence.php">Precedence</a></p>
-
 <p>而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想像的不一樣的成果</p>
-
-<h3 id="使用">使用 &amp;&amp;</h3>
+<h3 id="使用-">使用 &amp;&amp;</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
 $a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">false</span>;
@@ -131,8 +122,7 @@ $a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> 
 </span><span style="color:#75715e"></span>$a <span style="color:#f92672">=</span> (<span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">false</span>);
 
 <span style="color:#75715e">// $a: false
-</span></code></pre></div>
-<h3 id="使用-and">使用 and</h3>
+</span></code></pre></div><h3 id="使用-and">使用 and</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
 $a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">false</span>;
@@ -141,22 +131,17 @@ $a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> 
 </span><span style="color:#75715e"></span>($a <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>) <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">false</span>;
 
 <span style="color:#75715e">// $a: true
-</span></code></pre></div>
-<p>&rdquo;=&rdquo; 優先順序高於 &ldquo;and&rdquo; &ldquo;or&rdquo;</p>
-
+</span></code></pre></div><p>&ldquo;=&rdquo; 優先順序高於 &ldquo;and&rdquo; &ldquo;or&rdquo;</p>
 <h2 id="and-跟-or-的其他用途">and 跟 or 的其他用途</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
 
 <span style="color:#a6e22e">do_something</span>() <span style="color:#66d9ef">and</span> <span style="color:#a6e22e">success</span>() <span style="color:#66d9ef">or</span> <span style="color:#a6e22e">failure</span>();
-</code></pre></div>
-<p>do_something() 成功的話會執行 success()，失敗的話會執行 failure()</p>
-
+</code></pre></div><p>do_something() 成功的話會執行 success()，失敗的話會執行 failure()</p>
 <p>類似 bash 中常見的用法</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ cmd1 <span style="color:#f92672">&amp;&amp;</span> cmd2 <span style="color:#f92672">||</span> cmd3
 
-$ test -d ./project <span style="color:#f92672">||</span> mkdir ./project</code></pre></div>
-<h3 id="reference">Reference</h3>
-
+$ test -d ./project <span style="color:#f92672">||</span> mkdir ./project
+</code></pre></div><h3 id="reference">Reference</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/5998309/logical-operators-or-or">https://stackoverflow.com/questions/5998309/logical-operators-or-or</a></li>
 <li><a href="https://www.php.net/manual/en/language.operators.precedence.php">https://www.php.net/manual/en/language.operators.precedence.php</a></li>

@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/">
 <meta property="og:title" content="Log Rotate With Zap Logger" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Log Rotate With Zap Logger">
 <meta itemprop="description" content="github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap">
-
-
 <meta itemprop="datePublished" content="2019-09-23T23:53:18&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-23T23:53:18&#43;08:00" />
 <meta itemprop="wordCount" content="196">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="golang,zap,logger," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -113,13 +110,9 @@ if (!doNotTrack) {
 <article class="post">
     <h1 class="title"> Log Rotate With Zap Logger </h1>
     <div class="content"> <p>github.com/uber-go/zap, zap 是目前我比較常用的 logger package</p>
-
 <p>在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理</p>
-
 <p>zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package</p>
-
 <p>zap 官方的 FAQ 中 <a href="https://github.com/uber-go/zap/blob/master/FAQ.md#does-zap-support-log-rotation">zap/FAQ.md</a></p>
-
 <p>就有一個基本的 example</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">w</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
     <span style="color:#a6e22e">Filename</span>:   <span style="color:#e6db74">&#34;/var/log/myapp/foo.log&#34;</span>,
@@ -132,8 +125,8 @@ if (!doNotTrack) {
     <span style="color:#a6e22e">w</span>,
     <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>,
 )
-<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)</code></pre></div>
-<p>如果要設定成把 log message 同時寫到檔案跟畫面的話，則要使用使用 zapcore.NewMultiWriteSyncer(&hellip;)</p>
+<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)
+</code></pre></div><p>如果要設定成把 log message 同時寫到檔案跟畫面的話，則要使用使用 zapcore.NewMultiWriteSyncer(&hellip;)</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">writeFile</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zapcore</span>.<span style="color:#a6e22e">AddSync</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">lumberjack</span>.<span style="color:#a6e22e">Logger</span>{
     <span style="color:#a6e22e">Filename</span>: <span style="color:#e6db74">&#34;service.log&#34;</span>,
     <span style="color:#a6e22e">MaxSize</span>:  <span style="color:#ae81ff">10</span>, <span style="color:#75715e">// megabytes
@@ -147,13 +140,14 @@ if (!doNotTrack) {
   <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">InfoLevel</span>,
 )
 
-<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)</code></pre></div>
-<p>上面設定的 logger 會缺少 caller 跟 stack trace 的資訊，需要再加入 options</p>
+<span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(<span style="color:#a6e22e">core</span>)
+</code></pre></div><p>上面設定的 logger 會缺少 caller 跟 stack trace 的資訊，需要再加入 options</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">logger</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">New</span>(
     <span style="color:#a6e22e">core</span>,
     <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddCaller</span>(),
     <span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">AddStacktrace</span>(<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">ErrorLevel</span>),
-)</code></pre></div> </div>
+)
+</code></pre></div> </div>
     <footer class="post-footer">
 
   <div class="post-footer-data">

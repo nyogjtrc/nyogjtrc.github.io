@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/">
 <meta property="og:title" content="X1c 6th 在 Debian 裡優化 SSD" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="X1c 6th 在 Debian 裡優化 SSD">
 <meta itemprop="description" content="SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份">
-
-
 <meta itemprop="datePublished" content="2018-12-14T23:20:57&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-14T23:20:57&#43;08:00" />
 <meta itemprop="wordCount" content="202">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="ssd,debian," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,61 +109,33 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> X1c 6th 在 Debian 裡優化 SSD </h1>
-    <div class="content"> 
-
-<h2 id="ssd-優化的幾個要點">SSD 優化的幾個要點</h2>
-
+    <div class="content"> <h2 id="ssd-優化的幾個要點">SSD 優化的幾個要點</h2>
 <ul>
 <li>啟用 SSD 的 Trim 功能</li>
 <li>減少非必要的寫入動作</li>
 <li>掛載暫存資料夾到 Ram 上</li>
 </ul>
-
 <h2 id="啟用排程-trim">啟用排程 Trim</h2>
-
 <pre><code>$ sudo systemctl enable fstrim.timer
 Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer.
-</code></pre>
-
-<p>ps. 不建議使用 /etc/fstab 的 discard 選項</p>
-
+</code></pre><p>ps. 不建議使用 /etc/fstab 的 discard 選項</p>
 <h2 id="增加-mount-options">增加 Mount Options</h2>
-
 <p>修改前備份 fstab</p>
-
 <pre><code>sudo cp /etc/fstab /etc/fstab.bak
-</code></pre>
-
-<p>修改 <code>/etc/fstab</code>，mount options 增加 <code>noatime</code></p>
-
+</code></pre><p>修改 <code>/etc/fstab</code>，mount options 增加 <code>noatime</code></p>
 <p>mount options 的說明可以在 <code>man mount</code> 查到</p>
-
 <h2 id="啟用-lvm-trim">啟用 LVM Trim</h2>
-
 <p>修改 <code>/etc/lvm/lvm.conf</code>， <code>issue_discards = 0</code> 為 <code>issue_discards = 1</code></p>
-
 <h2 id="掛載-tmpfs">掛載 tmpfs</h2>
-
 <p>將 /tmp 掛載到 tmpfs 上</p>
-
 <p>sudo vi /etc/fstab 加上以下設定</p>
-
 <pre><code>tmpfs   /tmp    tmpfs   defaults,noatime,nodev,nosuid,mode=1777,size=2G 0       0
-</code></pre>
-
-<h2 id="測試-ssd-速度">測試 ssd 速度</h2>
-
+</code></pre><h2 id="測試-ssd-速度">測試 ssd 速度</h2>
 <pre><code>sudo hdparm -Tt --direct /dev/nvme0n1
-</code></pre>
-
-<h2 id="nvme">NVMe</h2>
-
+</code></pre><h2 id="nvme">NVMe</h2>
 <p>要查看 NVMe SSD 的資訊無法使用 hdparm 查詢，要安裝 nvme-cli</p>
-
-<hr />
-
+<hr>
 <h3 id="referece">Referece</h3>
-
 <ul>
 <li><a href="https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/">https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/</a></li>
 <li><a href="http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto">http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto</a></li>

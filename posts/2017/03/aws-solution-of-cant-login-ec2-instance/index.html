@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/">
 <meta property="og:title" content="AWS - 無法登入 EC2 Instance 的解決方案" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="AWS - 無法登入 EC2 Instance 的解決方案">
 <meta itemprop="description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以">
-
-
 <meta itemprop="datePublished" content="2017-03-17T11:10:00&#43;08:00" />
 <meta itemprop="dateModified" content="2017-03-17T11:10:00&#43;08:00" />
 <meta itemprop="wordCount" content="430">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="AWS,EC2," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,24 +109,16 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> AWS - 無法登入 EC2 Instance 的解決方案 </h1>
-    <div class="content"> 
-
-<p>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過</p>
-
+    <div class="content"> <p>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過</p>
 <p>還好意外翻到官方文件上有一篇可以解決方案可以試試。最後成功了，救回不少時間</p>
-
 <p>這個做法的感覺就像是把電腦的硬碟拔下來裝到別台去讀取資料，詳細流程如以下記錄：</p>
-
 <h3 id="記錄">記錄</h3>
-
 <ol>
 <li>查看 Instance 的資訊，把 instance ID, AMI ID, Availability Zone, Root device 記錄下來</li>
 <li>點擊 Root device，把 <strong>EBS ID</strong> 記錄下來</li>
 <li>把 Instance 關機，選 Actions -&gt; Instance State -&gt; <strong>Stop</strong></li>
 </ol>
-
 <h3 id="建立新的-instance">建立新的 Instance</h3>
-
 <ol>
 <li>點擊 <strong>Launch Instance</strong></li>
 <li>選擇跟剛剛記錄下來一樣的 AMI</li>
@@ -137,42 +126,34 @@ if (!doNotTrack) {
 <li>在 Add Tags 加上 Name=Temp</li>
 <li>到 Review 頁面點擊 <strong>Launch Instances</strong></li>
 </ol>
-
 <h3 id="將虛擬硬碟裝到新的-instance-上">將虛擬硬碟裝到新的 Instance 上</h3>
-
-<ol>
+<ol start="5">
 <li>到 console 左側的功能列表選 Volumes</li>
 <li>找到原 instance 的 volume 卸載，選 Actions -&gt; <strong>Detach Volume</strong>，然後等它處理完畢</li>
 <li>把同個 volume 掛載到 temp instance 上，選 Actions -&gt; <strong>Attach Volume</strong> -&gt; 選 temp instance -&gt; 記錄 Device name (ex. /dev/sdf) -&gt; 點 <strong>Yes, Attach</strong></li>
 </ol>
-
 <h3 id="登入-instance-掛載硬碟">登入 Instance 掛載硬碟</h3>
-
-<ol>
+<ol start="8">
 <li>登入 temp instance</li>
 <li>接下來要 mount volume</li>
 <li>使用 <code>lsblk</code> 指令，看到 /dev/sdf 的 device name 以 <code>xvdf</code> 顯示，然後磁區名稱會是 xvdf1 (/dev/xvdf1)</li>
-
-<li><p>下 mount 指令</p>
+<li>下 mount 指令</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /mnt/tempvol
-$ sudo mount /dev/xvdf1 /mnt/tempvol</code></pre></div></li>
-
-<li><p>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</p></li>
+$ sudo mount /dev/xvdf1 /mnt/tempvol
+</code></pre></div><ol start="12">
+<li>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</li>
 </ol>
-
 <h3 id="硬碟裝回原-instance">硬碟裝回原 Instance</h3>
-
-<ol>
-<li><p>資料解救完畢後 umount</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol</code></pre></div></li>
-
-<li><p><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></p></li>
-
-<li><p>重新 <strong>Start instance</strong></p></li>
+<ol start="13">
+<li>資料解救完畢後 umount</li>
 </ol>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol
+</code></pre></div><ol start="14">
+<li><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></li>
+<li>重新 <strong>Start instance</strong></li>
+</ol>
 <h3 id="reference">Reference</h3>
-
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair</a></p>
  </div>
     <footer class="post-footer">

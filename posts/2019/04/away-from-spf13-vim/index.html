@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/">
 <meta property="og:title" content="離開 spf13-vim 的日子" />
@@ -24,16 +24,13 @@
 
 <meta itemprop="name" content="離開 spf13-vim 的日子">
 <meta itemprop="description" content="前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim">
-
-
 <meta itemprop="datePublished" content="2019-04-10T16:22:20&#43;08:00" />
 <meta itemprop="dateModified" content="2019-04-10T16:22:20&#43;08:00" />
-<meta itemprop="wordCount" content="528">
+<meta itemprop="wordCount" content="538">
 
 
 
 <meta itemprop="keywords" content="vim," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,34 +109,19 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 離開 spf13-vim 的日子 </h1>
-    <div class="content"> 
-
-<h2 id="前言">前言</h2>
-
+    <div class="content"> <h2 id="前言">前言</h2>
 <p>回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 <a href="https://github.com/spf13/spf13-vim">spf13-vim</a>，便開始的了快樂的 vim 生活。</p>
-
 <p>spf13-vim 用了數個月之後，熟悉了不少的設定方式，也調整不少符合自己習慣的設定。</p>
-
 <p>移掉一些老舊的套件，掛上一些新套件。</p>
-
 <p>但是 spf-13 原作終究是停止維護的，要一直從 spf13 擴充做調整會被受限。</p>
-
 <p>所以，決定是時候自己重新組織適合自己的工作環境。也記錄一下這次我是怎麼調效我的 vimrc 的。</p>
-
 <h2 id="vim-基本設定">vim 基本設定</h2>
-
 <p>主要是參考 spf13-vim 的，畢竟多數的習慣是雷同的</p>
-
 <h2 id="vim-套件">vim 套件</h2>
-
 <p>要尋找套件可以到 <a href="https://vimawesome.com/">https://vimawesome.com/</a> 上面尋找。</p>
-
 <p>首先是套件管理，從幾個之名的工具中，選一下自己滿意的。</p>
-
 <p>這次選擇使用 <code>junegunn/vim-plug</code></p>
-
 <p>再來是 UI 改善：</p>
-
 <ul>
 <li>scrooloose/nerdtree</li>
 <li>majutsushi/tagbar</li>
@@ -147,52 +129,36 @@ if (!doNotTrack) {
 <li>luochen1990/rainbow</li>
 <li>shougo/denite.nvim</li>
 </ul>
-
 <p>colorscheme 的話，個人喜歡 <code>morhetz/gruvbox</code></p>
-
 <p>整合工具，整合 git, lint, tmux 等等的工具：</p>
-
 <ul>
 <li>airblade/vim-gitgutter</li>
 <li>w0rp/ale</li>
 <li>christoomey/vim-tmux-navigator</li>
 <li>benmills/vimux</li>
 </ul>
-
 <p>自動完成，選擇沒那麼肥大的 deoplete：</p>
-
 <ul>
 <li>Shougo/deoplete.nvim</li>
 <li>Shougo/neosnippet.vim</li>
 </ul>
-
 <p>程式語言，幾乎每個程式語言都會有自己的開發輔助工具，而 vim 套件就是負責整合：</p>
-
 <ul>
 <li>fatih/vim-go</li>
 <li>StanAngeloff/php.vim</li>
 <li>phpactor/phpactor</li>
 <li>2072/php-indenting-for-vim</li>
 </ul>
-
 <h2 id="key-map">key map</h2>
-
 <p>先把 leader key 換成自己習慣的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mapleader</span> = <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#75715e">&#34; Replace leader to &#39;,&#39;, default leader is &#39;\&#39;</span></code></pre></div>
-<p>再來就是有海量的快捷鍵要設定跟記憶，</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mapleader</span> = <span style="color:#e6db74">&#39;,&#39;</span> <span style="color:#75715e">&#34; Replace leader to &#39;,&#39;, default leader is &#39;\&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>再來就是有海量的快捷鍵要設定跟記憶，</p>
 <p>好在大部份作者會給一些範本，也可以在網上路參加別人的設定。</p>
-
 <h2 id="後續">後續</h2>
-
 <p>最後就是一寫程式一邊視自己的習慣調整設定</p>
-
 <h2 id="結語">結語</h2>
-
 <p>我的 vimrc 在我的 dotfiles 裡面 <a href="https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc">https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc</a></p>
-
 <p>回顧一下四年前自己整理曾經整理過的 vimrc ，當時才只有 87 行。</p>
-
 <p>目前整理的有 436 行，資訊量成長 5 倍！！！</p>
  </div>
     <footer class="post-footer">

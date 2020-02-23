@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/">
 <meta property="og:title" content="Try gRPC, grpc-gateway With Go" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Try gRPC, grpc-gateway With Go">
 <meta itemprop="description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開">
-
-
 <meta itemprop="datePublished" content="2018-07-09T14:14:03&#43;08:00" />
 <meta itemprop="dateModified" content="2018-07-09T14:14:03&#43;08:00" />
 <meta itemprop="wordCount" content="914">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="gRPC,golang,RESTful," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,10 +109,7 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Try gRPC, grpc-gateway With Go </h1>
-    <div class="content"> 
-
-<h2 id="什麼是-grpc">什麼是 gRPC</h2>
-
+    <div class="content"> <h2 id="什麼是-grpc">什麼是 gRPC</h2>
 <ul>
 <li>Google 推出的 RPC framework</li>
 <li>採用 Google 制定的 protocol buffers 當作資料傳輸格式</li>
@@ -123,15 +117,10 @@ if (!doNotTrack) {
 <li>比 RESTful API 更快、更有效率</li>
 <li>更多請參考官網: <a href="https://grpc.io/">grpc / grpc.io</a></li>
 </ul>
-
 <h2 id="安裝">安裝</h2>
-
 <p>開始寫 gRPC 服務之前，要先安裝一些 protocol buffer 的工具</p>
-
 <h3 id="protocol-buffer-compiler">protocol buffer compiler</h3>
-
 <p>以下是快速安裝的腳本:</p>
-
 <pre><code>#!/bin/bash
 
 VERSION=&quot;3.6.0&quot;
@@ -142,28 +131,21 @@ curl -LO &quot;https://github.com/google/protobuf/releases/download/v$VERSION/$F
 sudo unzip -u $FILENAME -d /usr/local bin/protoc include/*
 
 rm $FILENAME
-</code></pre>
-
-<p>也可以直接去官網下載: <a href="https://github.com/google/protobuf/releases">https://github.com/google/protobuf/releases</a></p>
-
+</code></pre><p>也可以直接去官網下載: <a href="https://github.com/google/protobuf/releases">https://github.com/google/protobuf/releases</a></p>
 <p>測試一下沒有安裝成功</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ protoc --version
-libprotoc <span style="color:#ae81ff">3</span>.6.0</code></pre></div>
-<h3 id="plugin-for-genrate-go-code">plugin for genrate go code</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u github.com/golang/protobuf/protoc-gen-go</code></pre></div>
-<h3 id="grpc-package-for-go">gRPC package for go</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u google.golang.org/grpc</code></pre></div>
-<h2 id="開始寫-grpc-服務">開始寫 gRPC 服務</h2>
-
+libprotoc 3.6.0
+</code></pre></div><h3 id="plugin-for-genrate-go-code">plugin for genrate go code</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u github.com/golang/protobuf/protoc-gen-go
+</code></pre></div><h3 id="grpc-package-for-go">gRPC package for go</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u google.golang.org/grpc
+</code></pre></div><h2 id="開始寫-grpc-服務">開始寫 gRPC 服務</h2>
 <p>要有一個完整的 gRPC 服務，首先要寫 proto file 定義好服務提供的方法跟傳輸的資料格式</p>
-
 <p>再由工具產生 pb.go 程式碼，最後跟著 pb.go 實作 server 跟 client 程式了</p>
-
 <h3 id="1-建立-proto-文件">1. 建立 proto 文件</h3>
-
 <p>這裡簡單寫一個 echo service</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir proto; vi proto/echo.proto</code></pre></div>
-<pre><code>syntax = &quot;proto3&quot;;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir proto; vi proto/echo.proto
+</code></pre></div><pre><code>syntax = &quot;proto3&quot;;
 
 package proto;
 
@@ -174,29 +156,18 @@ message EchoMessage {
 service EchoServer {
   rpc Echo (EchoMessage) returns (EchoMessage) {}
 }
-</code></pre>
-
-<p>更多的語法請參考: <a href="https://developers.google.com/protocol-buffers/docs/proto3">Language Guide (proto3)</a></p>
-
+</code></pre><p>更多的語法請參考: <a href="https://developers.google.com/protocol-buffers/docs/proto3">Language Guide (proto3)</a></p>
 <h3 id="2-產生-go-程式碼">2. 產生 go 程式碼</h3>
-
 <p>借由 protoc 產生程式碼</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ protoc --go_out<span style="color:#f92672">=</span>plugins<span style="color:#f92672">=</span>grpc:. proto/*.proto</code></pre></div>
-<p>會產生 <code>echo.pb.go</code> 裡面包括 server 端的 interface 跟 client 端的 程式</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ protoc --go_out<span style="color:#f92672">=</span>plugins<span style="color:#f92672">=</span>grpc:. proto/*.proto
+</code></pre></div><p>會產生 <code>echo.pb.go</code> 裡面包括 server 端的 interface 跟 client 端的 程式</p>
 <h3 id="3-建立-server-程式">3. 建立 server 程式</h3>
-
 <p>開始實作 EchoServer</p>
-
 <p>import 剛剛產生的 echo.pb.go</p>
-
 <pre><code>import (
 	pb &quot;github.com/nyogjtrc/grpc-example/proto&quot;
 )
-</code></pre>
-
-<p>實作 Server 跟 方法:</p>
-
+</code></pre><p>實作 Server 跟 方法:</p>
 <pre><code>type echoServer struct{}
 
 // Echo
@@ -205,10 +176,7 @@ func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMess
 	reply.Value = &quot;echo:&quot; + in.Value
 	return reply, nil
 }
-</code></pre>
-
-<p>完整程式碼:</p>
-
+</code></pre><p>完整程式碼:</p>
 <pre><code>package main
 
 import (
@@ -244,10 +212,7 @@ func main() {
 	pb.RegisterEchoServiceServer(s, &amp;echoServer{})
 	s.Serve(lis)
 }
-</code></pre>
-
-<h3 id="4-建立-client-程式">4. 建立 client 程式</h3>
-
+</code></pre><h3 id="4-建立-client-程式">4. 建立 client 程式</h3>
 <pre><code>package main
 
 import (
@@ -284,43 +249,25 @@ func main() {
 		fmt.Println(r.Value)
 	}
 }
-</code></pre>
-
-<h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client</h3>
-
+</code></pre><h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client</h3>
 <p>執行 server</p>
-
 <pre><code>$ go run server/main.go
 grpc example echo server :8888
-</code></pre>
-
-<p>執行 client</p>
-
+</code></pre><p>執行 client</p>
 <pre><code>$ go run client/main.go
 Enter text: 123
 echo:123
 
 Enter text: hello
 echo:hello
-</code></pre>
-
-<h2 id="增加-grpc-gateway">增加 gRPC gateway</h2>
-
+</code></pre><h2 id="增加-grpc-gateway">增加 gRPC gateway</h2>
 <p><a href="https://github.com/grpc-ecosystem/grpc-gateway">https://github.com/grpc-ecosystem/grpc-gateway</a></p>
-
 <p>grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API</p>
-
 <p>轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了</p>
-
 <h3 id="1-要安裝的-plugin">1. 要安裝的 plugin</h3>
-
 <pre><code>go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
-</code></pre>
-
-<h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option</h3>
-
+</code></pre><h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option</h3>
 <p>就是把 RESTful 的 router 寫進來</p>
-
 <pre><code>syntax = &quot;proto3&quot;;
 
 package proto;
@@ -339,10 +286,7 @@ service EchoService {
     };
   }
 }
-</code></pre>
-
-<h3 id="3-產生-pb-go-pb-gw-go">3. 產生 pb.go, pb.gw.go</h3>
-
+</code></pre><h3 id="3-產生-pbgo-pbgwgo">3. 產生 pb.go, pb.gw.go</h3>
 <pre><code>protoc -I/usr/local/include -I. \
     -I$(GOPATH)/src \
     -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -351,12 +295,8 @@ protoc -I/usr/local/include -I. \
     -I$(GOPATH)/src \
     -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
     --grpc-gateway_out=logtostderr=true:. proto/*.proto
-</code></pre>
-
-<h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點</h3>
-
+</code></pre><h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點</h3>
 <p>把 gRPC 服務加入 proxy 裡面</p>
-
 <pre><code>func gatewayServer() {
 	fmt.Println(&quot;RESTful echo server :9999&quot;)
 	grpcAddr := &quot;localhost:8888&quot;
@@ -373,16 +313,10 @@ protoc -I/usr/local/include -I. \
 
 	http.ListenAndServe(&quot;:9999&quot;, mux)
 }
-</code></pre>
-
-<h3 id="5-實測">5. 實測</h3>
-
+</code></pre><h3 id="5-實測">5. 實測</h3>
 <pre><code>$ curl -X POST http://localhost:9999/echo/echo -H 'Content-Type: application/json' -d '{ &quot;value&quot;: &quot;hi, how are you?&quot; }'
 {&quot;value&quot;:&quot;echo:hi, how are you?&quot;}
-</code></pre>
-
-<h2 id="小結">小結</h2>
-
+</code></pre><h2 id="小結">小結</h2>
 <ul>
 <li>這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟</li>
 <li>proto 檔案類似 router</li>
@@ -390,11 +324,8 @@ protoc -I/usr/local/include -I. \
 <li>有 gateway 可以轉成 RESTful API 讓測試更方便了</li>
 <li>一些 server 的設定還要花時間微調</li>
 </ul>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://grpc.io/docs/tutorials/basic/go.html">grpc /</a></li>
 <li><a href="https://developers.google.com/protocol-buffers/">Protocol Buffers  |  Google Developers</a></li>

@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/">
 <meta property="og:title" content="在 Linux 上處理圖檔" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="在 Linux 上處理圖檔">
 <meta itemprop="description" content="想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工">
-
-
 <meta itemprop="datePublished" content="2017-04-15T01:09:42&#43;08:00" />
 <meta itemprop="dateModified" content="2017-04-15T01:09:42&#43;08:00" />
 <meta itemprop="wordCount" content="260">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="Linux," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,29 +109,22 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 在 Linux 上處理圖檔 </h1>
-    <div class="content"> 
-
-<p>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具</p>
-
+    <div class="content"> <p>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具</p>
 <p>可以直接在 command line 上處理圖檔的工具:
 <strong>convert</strong></p>
-
 <p>convert 功能之多，我剛看到時也嚇了一下，可以轉換檔案格式，可以縮放圖片，可以使用濾鏡，可以旋轉圖片等等。不過有沒有比較輕量我也不太清楚，至少我可以快速的得到我要的結果。</p>
-
 <h2 id="使用範例">使用範例</h2>
-
 <p>把 png 檔轉成 jpg 檔</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.png image.jpg</code></pre></div>
-<p>轉 90 度</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -rotate <span style="color:#ae81ff">90</span> modified-image.jpg</code></pre></div>
-<p>調整圖片壓縮品質</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -quality <span style="color:#ae81ff">50</span> modified-image.jpg</code></pre></div>
-<p>把所有圖片調整成高度 200</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#66d9ef">for</span> file in *.jpg; <span style="color:#66d9ef">do</span> convert <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -resize x200 <span style="color:#e6db74">&#34;s-</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
-<p>在圖片上寫字</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -font courier -fill white -pointsize <span style="color:#ae81ff">20</span> -annotate +50+50 <span style="color:#e6db74">&#39;Writing&#39;</span> write-image.jpg</code></pre></div>
-<h3 id="reference">Reference</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.png image.jpg
+</code></pre></div><p>轉 90 度</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -rotate <span style="color:#ae81ff">90</span> modified-image.jpg
+</code></pre></div><p>調整圖片壓縮品質</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -quality <span style="color:#ae81ff">50</span> modified-image.jpg
+</code></pre></div><p>把所有圖片調整成高度 200</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#66d9ef">for</span> file in *.jpg; <span style="color:#66d9ef">do</span> convert <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -resize x200 <span style="color:#e6db74">&#34;s-</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>在圖片上寫字</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -font courier -fill white -pointsize <span style="color:#ae81ff">20</span> -annotate +50+50 <span style="color:#e6db74">&#39;Writing&#39;</span> write-image.jpg
+</code></pre></div><h3 id="reference">Reference</h3>
 <ul>
 <li><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick command line examples – part 1</a></li>
 <li><a href="https://www.imagemagick.org/script/convert.php">Command-line Tools: Convert @ ImageMagick</a></li>

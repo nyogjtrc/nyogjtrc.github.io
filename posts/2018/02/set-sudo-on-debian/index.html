@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/">
 <meta property="og:title" content="Set Sudo on Debian" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Set Sudo on Debian">
 <meta itemprop="description" content="安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試">
-
-
 <meta itemprop="datePublished" content="2018-02-10T22:24:57&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-10T22:24:57&#43;08:00" />
 <meta itemprop="wordCount" content="82">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="sudo,debian,linux," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,23 +109,17 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Set Sudo on Debian </h1>
-    <div class="content"> 
-
-<p>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定</p>
-
+    <div class="content"> <p>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定</p>
 <h2 id="安裝-sudo">安裝 sudo</h2>
-
 <p>切換到 root 安裝</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli"># su -
-# apt install sudo</code></pre></div>
-<h2 id="設定-sudoer">設定 sudoer</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli"># usermod -aG sudo nyo</code></pre></div>
-<p>設定好之後，登入並用 <code>sudo</code> 隨意打個指令試試</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cli" data-lang="cli">$ sudo ls -l /root</code></pre></div>
-<p>成功！</p>
-
+<pre><code class="language-cli" data-lang="cli"># su -
+# apt install sudo
+</code></pre><h2 id="設定-sudoer">設定 sudoer</h2>
+<pre><code class="language-cli" data-lang="cli"># usermod -aG sudo nyo
+</code></pre><p>設定好之後，登入並用 <code>sudo</code> 隨意打個指令試試</p>
+<pre><code class="language-cli" data-lang="cli">$ sudo ls -l /root
+</code></pre><p>成功！</p>
 <h3 id="reference">Reference</h3>
-
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart">https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart</a>
 <a href="https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian">https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian</a></p>
  </div>

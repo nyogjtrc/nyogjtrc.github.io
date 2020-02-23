@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/">
 <meta property="og:title" content="架設自己的 Gitlab-CI" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="架設自己的 Gitlab-CI">
 <meta itemprop="description" content="公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個">
-
-
 <meta itemprop="datePublished" content="2020-02-09T22:29:39&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-09T22:29:39&#43;08:00" />
 <meta itemprop="wordCount" content="507">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="gitlab,gitlab-ci,ci," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,44 +109,24 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 架設自己的 Gitlab-CI </h1>
-    <div class="content"> 
-
-<p>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。</p>
-
+    <div class="content"> <p>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。</p>
 <p>一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時，
 突然覺得沒有 CI/CD 的 Gitlab 跟本是個廢物。</p>
-
 <p>所以我自己試著重新安裝了一台 Gitlab + Gitlab-CI。</p>
-
 <h2 id="用-apt-在-ubuntu-上安裝-gitlab">用 APT 在 Ubuntu 上安裝 gitlab</h2>
-
 <p>先安裝基本的套件</p>
-
 <pre><code>sudo apt-get update
 sudo apt-get install -y curl openssh-server ca-certificates
-</code></pre>
-
-<p>加入 gitlab 套件庫</p>
-
+</code></pre><p>加入 gitlab 套件庫</p>
 <pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-</code></pre>
-
-<p>安裝 gitlab</p>
-
+</code></pre><p>安裝 gitlab</p>
 <pre><code>sudo EXTERNAL_URL=&quot;https://gitlab.example.com&quot; apt-get install gitlab-ce
 
-</code></pre>
-
-<p>安裝完畢之後，就可以開 Browser 登入 Gitlab 了，預設的帳號是 root</p>
-
+</code></pre><p>安裝完畢之後，就可以開 Browser 登入 Gitlab 了，預設的帳號是 root</p>
 <p>我用 vm 試過之後，覺得用這方法當要更新時，可能會有點麻煩，所以就改試 Docker 的方法</p>
-
 <h2 id="用-docker-執行-gitlab">用 Docker 執行 gitlab</h2>
-
 <p>前置作業就是在 server 上安裝 docker</p>
-
 <p>接來執行以下 docker 指令，就有一個 gitlab 服務了</p>
-
 <pre><code>sudo docker run --detach \
   --hostname gitlab.example.com \
   --publish 443:443 --publish 80:80 --publish 22:22 \
@@ -159,22 +136,14 @@ sudo apt-get install -y curl openssh-server ca-certificates
   --volume /srv/gitlab/logs:/var/log/gitlab \
   --volume /srv/gitlab/data:/var/opt/gitlab \
   gitlab/gitlab-ce:latest
-</code></pre>
-
-<h2 id="用-docker-安裝-gitlab-runner">用 Docker 安裝 gitlab runner</h2>
-
+</code></pre><h2 id="用-docker-安裝-gitlab-runner">用 Docker 安裝 gitlab runner</h2>
 <p>執行以下 docker 指令</p>
-
 <pre><code>docker run -d --name gitlab-runner --restart always \
   -v /srv/gitlab-runner/config:/etc/gitlab-runner \
   -v /var/run/docker.sock:/var/run/docker.sock \
   gitlab/gitlab-runner:latest
-</code></pre>
-
-<h2 id="用-docker-compose-安裝-gitlab-gitlab-ci">用 docker-compose 安裝 gitlab+gitlab-ci</h2>
-
+</code></pre><h2 id="用-docker-compose-安裝-gitlabgitlab-ci">用 docker-compose 安裝 gitlab+gitlab-ci</h2>
 <p>直接使用 docker-compose 更直接快速的執行 gitlab 跟 runner 服務</p>
-
 <pre><code>version: &quot;3&quot;
 services:
   web:
@@ -198,39 +167,21 @@ services:
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/srv/gitlab-runner/config:/etc/gitlab-runner'
-</code></pre>
-
-<p>如果要更新，只要兩個指令</p>
-
+</code></pre><p>如果要更新，只要兩個指令</p>
 <pre><code>docker-compose pull
 docker-compose up -d
-</code></pre>
-
-<h2 id="把-runner-註冊到-gitlab-裡">把 runner 註冊到 gitlab 裡</h2>
-
+</code></pre><h2 id="把-runner-註冊到-gitlab-裡">把 runner 註冊到 gitlab 裡</h2>
 <p>先到 Admin Area &gt; Overview &gt; Runners 頁面，找到 registration token</p>
-
 <p>執行 register 指令</p>
-
 <pre><code>docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
-</code></pre>
-
-<p>選項請參考官網 <a href="https://docs.gitlab.com/runner/register/">https://docs.gitlab.com/runner/register/</a></p>
-
+</code></pre><p>選項請參考官網 <a href="https://docs.gitlab.com/runner/register/">https://docs.gitlab.com/runner/register/</a></p>
 <p>如果 Gitlab 有啟用 SSL，你可能需要帶上 crt file</p>
-
 <pre><code>docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
   --tls-ca-file=/srv/gitlab/config/ssl/gitlab.example.com.crt
-</code></pre>
-
-<p>回到 Admin Area &gt; Overview &gt; Runners 頁面，看到 runner 的資料出現了。</p>
-
+</code></pre><p>回到 Admin Area &gt; Overview &gt; Runners 頁面，看到 runner 的資料出現了。</p>
 <p>之後就是試用 Gitlab-CI 的時間了！</p>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://about.gitlab.com/install/">https://about.gitlab.com/install/</a></li>
 <li><a href="https://docs.gitlab.com/omnibus/docker/">https://docs.gitlab.com/omnibus/docker/</a></li>

@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/">
 <meta property="og:title" content="在 Amazon Linux 2 上安裝 Docker" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="在 Amazon Linux 2 上安裝 Docker">
 <meta itemprop="description" content="最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum">
-
-
 <meta itemprop="datePublished" content="2019-11-20T00:42:43&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-20T00:42:43&#43;08:00" />
 <meta itemprop="wordCount" content="167">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="docker,aws," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,38 +109,35 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 在 Amazon Linux 2 上安裝 Docker </h1>
-    <div class="content"> 
-
-<p>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！</p>
-
+    <div class="content"> <p>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！</p>
 <p>原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS</p>
-
 <p>沒辦法直接使用一般的 yum 去安裝</p>
-
 <p>而是提供 <code>amazon-linux-extras</code> 這個工具讓你來使用</p>
-
 <h2 id="在-amazon-linux-2-安裝-docker">在 Amazon Linux 2 安裝 docker</h2>
-
-<ol>
-<li><p>安裝 docker</p>
+<ol start="0">
+<li>安裝 docker</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo yum update -y
 
-$ sudo amazon-linux-extras install docker</code></pre></div></li>
-
-<li><p>啟用 docker 服務</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo service docker start</code></pre></div></li>
-
-<li><p>將 ec2-user 加入 docker 群組</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo usermod -a -G docker ec2-user</code></pre></div></li>
-
-<li><p>加入群組後要登出再登入才會生效</p></li>
-
-<li><p>最後做個簡單的測試</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker info</code></pre></div></li>
+$ sudo amazon-linux-extras install docker
+</code></pre></div><ol start="0">
+<li>啟用 docker 服務</li>
 </ol>
-
-<h3 id="reference">Reference</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo service docker start
+</code></pre></div><ol start="0">
+<li>將 ec2-user 加入 docker 群組</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo usermod -a -G docker ec2-user
+</code></pre></div><ol start="0">
+<li>
+<p>加入群組後要登出再登入才會生效</p>
+</li>
+<li>
+<p>最後做個簡單的測試</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker info
+</code></pre></div><h3 id="reference">Reference</h3>
 <ul>
 <li><a href="https://docs.aws.amazon.com/zh_tw/AmazonECS/latest/developerguide/docker-basics.html">Amazon ECS 的 Docker 基本概念</a></li>
 </ul>

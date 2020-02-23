@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/">
 <meta property="og:title" content="Install Lastest Firefox on Debian" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Install Lastest Firefox on Debian">
 <meta itemprop="description" content="Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo">
-
-
 <meta itemprop="datePublished" content="2020-02-10T23:06:49&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-10T23:06:49&#43;08:00" />
 <meta itemprop="wordCount" content="93">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="firefox,debian," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,24 +109,14 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Install Lastest Firefox on Debian </h1>
-    <div class="content"> 
-
-<p>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距</p>
-
+    <div class="content"> <p>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距</p>
 <p>想要使用最新的 Firefox  就是，直接從官網下載安裝！！！</p>
-
 <h2 id="下載">下載</h2>
-
 <pre><code>$ tar xvf firefox-72.0.2.tar.bz2
 $ sudo mv firefox /opt
-</code></pre>
-
-<h2 id="建立-firefox-desktop">建立 firefox.desktop</h2>
-
+</code></pre><h2 id="建立-firefoxdesktop">建立 firefox.desktop</h2>
 <pre><code>$ sudo vi /usr/share/applications/firefox-stable.desktop
-</code></pre>
-
-<pre><code>[Desktop Entry]
+</code></pre><pre><code>[Desktop Entry]
 Name=Firefox Stable
 Comment=Web Browser
 Exec=/opt/firefox/firefox %u
@@ -139,14 +126,9 @@ Icon=/opt/firefox/browser/chrome/icons/default/default128.png
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
 StartupNotify=true
-</code></pre>
-
-<p>然後享用 Firefox</p>
-
-<hr />
-
+</code></pre><p>然後享用 Firefox</p>
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://wiki.debian.org/Firefox">https://wiki.debian.org/Firefox</a></li>
 </ul>

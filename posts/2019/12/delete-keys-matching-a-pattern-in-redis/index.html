@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/">
 <meta property="og:title" content="刪除 Redis 中符合 Pattern 的 Key" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="刪除 Redis 中符合 Pattern 的 Key">
 <meta itemprop="description" content="用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，">
-
-
 <meta itemprop="datePublished" content="2019-12-29T17:47:45&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-29T17:47:45&#43;08:00" />
 <meta itemprop="wordCount" content="120">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="redis," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,25 +109,17 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 刪除 Redis 中符合 Pattern 的 Key </h1>
-    <div class="content"> 
-
-<p>用 redis-cli 組合一個清除的指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ redis-cli --scan --pattern users:* | xargs redis-cli unlink</code></pre></div>
-<ol>
+    <div class="content"> <p>用 redis-cli 組合一個清除的指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ redis-cli --scan --pattern users:* | xargs redis-cli unlink
+</code></pre></div><ol>
 <li>用 scan 找出要刪的 key</li>
 <li>透過 xargs 傳給 unlink 刪掉 key</li>
 </ol>
-
 <h3 id="keys-vs-scan">KEYS vs SCAN</h3>
-
 <p>一樣都會掃過所有的 key，scan 不會阻塞整個 server，而是迭代的收集結果</p>
-
 <h3 id="del-vs-unlink">DEL vs UNLINK</h3>
-
 <p>一樣都是刪除 key ，差別在於 unlink 是非阻塞的刪除，會以非同步的方式回收記憶體</p>
-
 <h3 id="referece">Referece</h3>
-
 <ul>
 <li><a href="https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/">https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/</a></li>
 <li><a href="https://redis.io/commands/scan">https://redis.io/commands/scan</a></li>

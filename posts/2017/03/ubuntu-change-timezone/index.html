@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/">
 <meta property="og:title" content="Ubuntu Change Timezone" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Ubuntu Change Timezone">
 <meta itemprop="description" content="改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &#39;Asia/Taipei&#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20">
-
-
 <meta itemprop="datePublished" content="2017-03-20T22:47:43&#43;08:00" />
 <meta itemprop="dateModified" content="2017-03-20T22:47:43&#43;08:00" />
 <meta itemprop="wordCount" content="94">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="ubuntu," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,21 +109,18 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Ubuntu Change Timezone </h1>
-    <div class="content"> 
-
-<p>改變 Ubuntu 的時區，請使用以下指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo dpkg-reconfigure tzdata</code></pre></div>
-<p>接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊</p>
+    <div class="content"> <p>改變 Ubuntu 的時區，請使用以下指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo dpkg-reconfigure tzdata
+</code></pre></div><p>接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo dpkg-reconfigure tzdata
 
 Current default time zone: <span style="color:#e6db74">&#39;Asia/Taipei&#39;</span>
-Local time is now:      Mon <span style="color:#ae81ff">20</span> Mar <span style="color:#ae81ff">22</span>:32:45 CST <span style="color:#ae81ff">2017</span>.
-Universal Time is now:  Mon Mar <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">14</span>:32:45 UTC <span style="color:#ae81ff">2017</span>.</code></pre></div>
-<p>再 date 看一下時間是否正確</p>
+Local time is now:      Mon <span style="color:#ae81ff">20</span> Mar 22:32:45 CST 2017.
+Universal Time is now:  Mon Mar <span style="color:#ae81ff">20</span> 14:32:45 UTC 2017.
+</code></pre></div><p>再 date 看一下時間是否正確</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ date
-Mon <span style="color:#ae81ff">20</span> Mar <span style="color:#ae81ff">22</span>:32:48 CST <span style="color:#ae81ff">2017</span></code></pre></div>
-<h3 id="reference">Reference</h3>
-
+Mon <span style="color:#ae81ff">20</span> Mar 22:32:48 CST <span style="color:#ae81ff">2017</span>
+</code></pre></div><h3 id="reference">Reference</h3>
 <p><a href="http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux">http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux</a></p>
  </div>
     <footer class="post-footer">

@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/">
 <meta property="og:title" content="比較 Git Workflows" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="比較 Git Workflows">
 <meta itemprop="description" content="團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。 這邊整理一下目前常見的幾種 git 分支管理策略。 Git flow 出處: https://nvie.com/posts/a-successful-git-branching-model/ 分支">
-
-
 <meta itemprop="datePublished" content="2020-02-02T12:37:15&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-02T12:37:15&#43;08:00" />
 <meta itemprop="wordCount" content="588">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="git,github,gitlab," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,58 +109,42 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 比較 Git Workflows </h1>
-    <div class="content"> 
-
-<p>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。</p>
-
+    <div class="content"> <p>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。</p>
 <p>這邊整理一下目前常見的幾種 git 分支管理策略。</p>
-
 <h2 id="git-flow">Git flow</h2>
-
-<p><img src="https://nyogjtrc.github.io/posts/2020/02/git-flow.png" alt="" /></p>
-
+<p><img src="https://nyogjtrc.github.io/posts/2020/02/git-flow.png" alt=""></p>
 <p>出處: <a href="https://nvie.com/posts/a-successful-git-branching-model/">https://nvie.com/posts/a-successful-git-branching-model/</a></p>
-
 <p>分支策略:</p>
-
 <ul>
 <li>分成主要分支跟支援分支，依照你當下的情況來決定要使用哪種分支</li>
 <li>主要分支
-
 <ul>
 <li>master: 穩定的隨時可以釋出到正式環境的版本</li>
 <li>develop: 開發的基礎分支</li>
-</ul></li>
+</ul>
+</li>
 <li>支援分支
-
 <ul>
 <li>feature: 增加新的功能時使用的分支，從 develop 分支出來，合併到 develop 分支</li>
 <li>release: 當要對開發完成的功能做最終調整準備合併到 master 時使用的分支，從 develop 分支出來，合併到 develop 跟 master 分支</li>
 <li>hotfix: 當 master 有需要馬上排除的狀況時使用的分支，從 master 分支出來，合併到 master 跟 develop 分支</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>特色:</p>
-
 <ul>
 <li>分支的使用情境分類清楚</li>
 <li>相對複雜，沒那麼適合 CI/CD</li>
 <li>維護兩個主要分支的成本較高</li>
 <li>如果是小型簡單的專案，master 跟 develop 分支的差別就很小，不太需要維持兩個分支</li>
 </ul>
-
 <h2 id="github-flow">Github flow</h2>
-
-<p><img src="https://nyogjtrc.github.io/posts/2020/02/github-flow.png" alt="" /></p>
-
+<p><img src="https://nyogjtrc.github.io/posts/2020/02/github-flow.png" alt=""></p>
 <p>出處: <a href="https://guides.github.com/introduction/flow/">https://guides.github.com/introduction/flow/</a></p>
-
 <p>分支策略:</p>
-
 <ul>
 <li>主要分支只有 master</li>
 <li>流程
-
 <ul>
 <li>建立一個分支</li>
 <li>新增提交</li>
@@ -171,68 +152,52 @@ if (!doNotTrack) {
 <li>討論與檢視程式碼</li>
 <li>部署</li>
 <li>合併</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>特色:</p>
-
 <ul>
 <li>簡單</li>
 <li>適合 CI/CD</li>
 <li>master 保持在隨時可以部署的狀態</li>
 <li>遇到有多個環境或是多個版本時，github flow 就無法支援了</li>
 </ul>
-
 <h2 id="gitlab-flow">Gitlab flow</h2>
-
-<p><img src="https://nyogjtrc.github.io/posts/2020/02/gitlab-flow.png" alt="" /></p>
-
+<p><img src="https://nyogjtrc.github.io/posts/2020/02/gitlab-flow.png" alt=""></p>
 <p>出處:</p>
-
 <ul>
 <li><a href="https://about.gitlab.com/blog/2014/09/29/gitlab-flow/">https://about.gitlab.com/blog/2014/09/29/gitlab-flow/</a></li>
 <li><a href="https://docs.gitlab.com/ee/topics/gitlab_flow.html">https://docs.gitlab.com/ee/topics/gitlab_flow.html</a></li>
 <li><a href="https://about.gitlab.com/blog/2016/07/27/the-11-rules-of-gitlab-flow/">https://about.gitlab.com/blog/2016/07/27/the-11-rules-of-gitlab-flow/</a></li>
 </ul>
-
 <p>分支策略:</p>
-
 <ul>
 <li>主要分支: master</li>
 <li>當有持續更新的系統時，運用分支來部署版本到對應的環境</li>
 <li>當有定期釋出版本的軟體時，運用分支來釋出對應的版本</li>
 </ul>
-
 <p>特色:</p>
-
 <ul>
 <li>github flow 進階版</li>
 <li>適合 CI/CD</li>
 <li>多種的部署策略
-
 <ul>
 <li>Environment branches, Release branches, tag</li>
-</ul></li>
+</ul>
+</li>
 <li>比 github flow 複雜，當你有多個部署環境時，會變的更加復雜</li>
 </ul>
-
 <h2 id="總結">總結</h2>
-
 <p>團隊選擇自己的 git workflow 時:</p>
-
 <ul>
 <li>盡可能的簡單</li>
 <li>能夠適應 CI/CD</li>
 <li>唯一主要分支 master</li>
 <li>配合部署策略</li>
 </ul>
-
 <p>以上結論，是近期覺得比較合適的重點</p>
-
-<hr />
-
+<hr>
 <h2 id="reference">Reference</h2>
-
 <ul>
 <li><a href="https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf">https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf</a></li>
 <li><a href="https://blog.wu-boy.com/2017/12/github-flow-vs-git-flow/comment-page-1/">https://blog.wu-boy.com/2017/12/github-flow-vs-git-flow/comment-page-1/</a></li>

@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/">
 <meta property="og:title" content="把 PATH 變數列成清單" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="把 PATH 變數列成清單">
 <meta itemprop="description" content="在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &quot;:&quot; &quot;\n&quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &quot;${PATH//:/$&#39;\n&#39;}&quot; echo -e &quot;${PATH//:/\n}&quot;">
-
-
 <meta itemprop="datePublished" content="2020-02-15T21:04:39&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-15T21:04:39&#43;08:00" />
 <meta itemprop="wordCount" content="107">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="bash,linux," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,14 +109,9 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 把 PATH 變數列成清單 </h1>
-    <div class="content"> 
-
-<p>在 Linux 的 Shell 環境中，要查看 <code>PATH</code> 變數時，通常都是 <code>echo $PATH</code></p>
-
+    <div class="content"> <p>在 Linux 的 Shell 環境中，要查看 <code>PATH</code> 變數時，通常都是 <code>echo $PATH</code></p>
 <p>當 <code>PATH</code> variable 中包含太多資料夾時，跟本看不懂</p>
-
 <p>改以清單的方式顯示 <code>PATH</code> 內容</p>
-
 <pre><code>$ echo $PATH | tr &quot;:&quot; &quot;\n&quot;
 /usr/local/sbin
 /usr/local/bin
@@ -127,22 +119,12 @@ if (!doNotTrack) {
 /usr/bin
 /sbin
 /bin
-</code></pre>
-
-<pre><code>echo &quot;${PATH//:/$'\n'}&quot;
-</code></pre>
-
-<pre><code>echo -e &quot;${PATH//:/\n}&quot;
-</code></pre>
-
-<p>直接用 echo 的方式好像會因 echo 的版本而有差異</p>
-
+</code></pre><pre><code>echo &quot;${PATH//:/$'\n'}&quot;
+</code></pre><pre><code>echo -e &quot;${PATH//:/\n}&quot;
+</code></pre><p>直接用 echo 的方式好像會因 echo 的版本而有差異</p>
 <p>列成清單之後發現一堆重複的路徑…</p>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://stackoverflow.com/questions/40599997/how-to-list-path">https://stackoverflow.com/questions/40599997/how-to-list-path</a></li>
 </ul>

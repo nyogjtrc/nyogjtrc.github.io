@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/">
 <meta property="og:title" content="Install Virtualbox 5.2 On Debian Testing" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="Install Virtualbox 5.2 On Debian Testing">
 <meta itemprop="description" content="增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發">
-
-
 <meta itemprop="datePublished" content="2018-12-30T15:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2018-12-30T15:01:29&#43;08:00" />
 <meta itemprop="wordCount" content="74">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="Virtualbox,Debian," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,31 +109,17 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> Install Virtualbox 5.2 On Debian Testing </h1>
-    <div class="content"> 
-
-<h2 id="增加-source-list">增加 source list</h2>
-
+    <div class="content"> <h2 id="增加-source-list">增加 source list</h2>
 <p>debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題</p>
-
 <pre><code>echo &quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list
-</code></pre>
-
-<h2 id="增加-apt-key">增加 apt key</h2>
-
+</code></pre><h2 id="增加-apt-key">增加 apt key</h2>
 <pre><code>wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-</code></pre>
-
-<h2 id="安裝-virtualbox">安裝 Virtualbox</h2>
-
+</code></pre><h2 id="安裝-virtualbox">安裝 Virtualbox</h2>
 <pre><code>sudo apt update
 sudo apt install virtualbox-5.2
-</code></pre>
-
-<p>ps. Virtualbox 6.0 在 2018/12/18 發佈了</p>
-
+</code></pre><p>ps. Virtualbox 6.0 在 2018/12/18 發佈了</p>
 <h3 id="reference">Reference</h3>
-
 <ul>
 <li><a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a></li>
 </ul>

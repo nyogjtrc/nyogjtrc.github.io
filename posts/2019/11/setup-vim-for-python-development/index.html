@@ -7,7 +7,7 @@
 <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
 <meta name="keywords" content="nyo, nyogjtrc, blog, study" />
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.59.1" />
+<meta name="generator" content="Hugo 0.65.3" />
 
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/">
 <meta property="og:title" content="配置開發 Python 的 vim 環境" />
@@ -24,8 +24,6 @@
 
 <meta itemprop="name" content="配置開發 Python 的 vim 環境">
 <meta itemprop="description" content="最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug">
-
-
 <meta itemprop="datePublished" content="2019-11-24T20:35:27&#43;08:00" />
 <meta itemprop="dateModified" content="2019-11-24T20:35:27&#43;08:00" />
 <meta itemprop="wordCount" content="223">
@@ -33,7 +31,6 @@
 
 
 <meta itemprop="keywords" content="vim,python," />
-
 
 <link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
 
@@ -112,69 +109,43 @@ if (!doNotTrack) {
 
 <article class="post">
     <h1 class="title"> 配置開發 Python 的 vim 環境 </h1>
-    <div class="content"> 
-
-<p>最近有機會寫一下 Python 就順便來改造一下 vim</p>
-
+    <div class="content"> <p>最近有機會寫一下 Python 就順便來改造一下 vim</p>
 <h2 id="autocompletion">Autocompletion</h2>
-
 <ul>
 <li><a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a></li>
 <li><a href="https://github.com/deoplete-plugins/deoplete-jedi">https://github.com/deoplete-plugins/deoplete-jedi</a></li>
 </ul>
-
 <p>jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能</p>
-
 <p>我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi</p>
-
 <h3 id="安裝">安裝</h3>
-
 <pre><code>$ pip install jedi
-</code></pre>
-
-<h3 id="vimrc">vimrc</h3>
-
+</code></pre><h3 id="vimrc">vimrc</h3>
 <p>使用 Plug 或其他 vim 套件管理安裝</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;deoplete-plugins/deoplete-jedi&#39;</span>, { <span style="color:#e6db74">&#39;for&#39;</span>: <span style="color:#e6db74">&#39;python&#39;</span> }</code></pre></div>
-<p>截圖:</p>
-
-<p><img src="https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24-21-20-37.png" alt="" /></p>
-
-<h2 id="formatter-linter">Formatter &amp; Linter</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;deoplete-plugins/deoplete-jedi&#39;</span>, { <span style="color:#e6db74">&#39;for&#39;</span>: <span style="color:#e6db74">&#39;python&#39;</span> }<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>截圖:</p>
+<p><img src="https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24-21-20-37.png" alt=""></p>
+<h2 id="formatter--linter">Formatter &amp; Linter</h2>
 <ul>
 <li><a href="https://github.com/google/yapf">https://github.com/google/yapf</a></li>
 <li><a href="https://github.com/timothycrosley/isort">https://github.com/timothycrosley/isort</a></li>
 <li><a href="http://flake8.pycqa.org/">http://flake8.pycqa.org/</a></li>
 </ul>
-
 <p>yapf google 提供的 python code formatter</p>
-
 <p>isort 則是會幫忙整理 import 的順序跟組合</p>
-
 <p>flake8 檢查 python 的 coding style 是否依照 pep8</p>
-
 <p>以上三個工具都可以跟 ale 整合，所以 vim 中只要對 ale 安裝跟設定就好</p>
-
 <h3 id="安裝-1">安裝</h3>
-
 <pre><code>$ pip install yapf isort flake8
-</code></pre>
-
-<h3 id="vimrc-1">vimrc</h3>
-
+</code></pre><h3 id="vimrc-1">vimrc</h3>
 <p>ale 的 python linter 預設有 flake8，所以這邊就不多做設定了</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;dense-analysis/ale&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ale_fixers</span> = {<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>\   <span style="color:#e6db74">&#39;python&#39;</span>: [<span style="color:#e6db74">&#39;yapf&#39;</span>, <span style="color:#e6db74">&#39;isort&#39;</span>],<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>\ }</code></pre></div>
-<p>截圖:</p>
-
-<p><img src="https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24_23-01-01.png" alt="" /></p>
-
+</span><span style="color:#960050;background-color:#1e0010"></span>\ }<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>截圖:</p>
+<p><img src="https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24_23-01-01.png" alt=""></p>
 <h2 id="總結">總結</h2>
-
 <p>ale 意外的強大，整合了多數的 Linter 跟 Fixer</p>
  </div>
     <footer class="post-footer">
