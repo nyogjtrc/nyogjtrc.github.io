@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swagger on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/swagger/</link>
+    <description>Recent content in swagger on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 23 Feb 2020 22:21:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Swagger 入門</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</link>
+      <pubDate>Sun, 23 Feb 2020 22:21:45 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</guid>
+      <description>Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger</description>
+    </item>
+    
+  </channel>
+</rss>

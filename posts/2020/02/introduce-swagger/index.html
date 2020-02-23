@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="nyo" />
+<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
+<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.59.1" />
+
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/">
+<meta property="og:title" content="Swagger 入門" />
+<meta property="og:description" content="Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/" />
+<meta property="article:published_time" content="2020-02-23T22:21:45+08:00" />
+<meta property="article:modified_time" content="2020-02-23T22:21:45+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Swagger 入門"/>
+<meta name="twitter:description" content="Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger"/>
+
+
+<meta itemprop="name" content="Swagger 入門">
+<meta itemprop="description" content="Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger">
+
+
+<meta itemprop="datePublished" content="2020-02-23T22:21:45&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-23T22:21:45&#43;08:00" />
+<meta itemprop="wordCount" content="223">
+
+
+
+<meta itemprop="keywords" content="swagger," />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+
+
+<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<title>
+
+
+     Swagger 入門 
+
+</title>
+
+</head>
+
+
+<body>
+<div class="main">
+<header>
+
+<div class="header-bar">
+
+  <nav>
+    <div class="siteTitle">
+      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+    </div> 
+
+    
+    
+    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
+    
+    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
+    
+
+  </nav>
+
+  
+<div class="social-links-header">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+<article class="post">
+    <h1 class="title"> Swagger 入門 </h1>
+    <div class="content"> 
+
+<p>Swagger 官網: <a href="https://swagger.io/">https://swagger.io/</a></p>
+
+<h2 id="什麼是-swagger">什麼是 Swagger</h2>
+
+<p>Swagger 提供了一個規格來描述 API 長什麼樣子。</p>
+
+<p>有了統一的規格，延伸出一系統的工具來輔助開發 API。</p>
+
+<p>目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: <a href="https://swagger.io/specification/">https://swagger.io/specification/</a></p>
+
+<h2 id="開源工具">開源工具</h2>
+
+<p>Swagger 團隊身有開源三種工具</p>
+
+<h3 id="swagger-codegen">Swagger Codegen</h3>
+
+<ul>
+<li>產生程式碼，生成假 server, client sdk</li>
+<li><a href="https://github.com/swagger-api/swagger-codegen">https://github.com/swagger-api/swagger-codegen</a></li>
+</ul>
+
+<h3 id="swagger-editor">Swagger Editor</h3>
+
+<ul>
+<li>編輯器，有語法檢查，同步產生文件頁面</li>
+<li><a href="https://github.com/swagger-api/swagger-editor">https://github.com/swagger-api/swagger-editor</a></li>
+<li>Live Demo: <a href="https://editor.swagger.io/">https://editor.swagger.io/</a></li>
+</ul>
+
+<p>用 Docker 執行</p>
+
+<pre><code>docker run -d -p 80:8080 swaggerapi/swagger-editor
+</code></pre>
+
+<h3 id="swagger-ui">Swagger UI</h3>
+
+<ul>
+<li>生成 API 文件頁面</li>
+<li><a href="https://github.com/swagger-api/swagger-ui">https://github.com/swagger-api/swagger-ui</a></li>
+<li>Live Demo: <a href="https://petstore.swagger.io/">https://petstore.swagger.io/</a></li>
+</ul>
+
+<p>用 Docker 執行</p>
+
+<pre><code>docker run --rm -p 8080:8080 -e SWAGGER_JSON=/docs/index.yml -v $(PWD)/docs:/docs swaggerapi/swagger-ui
+</code></pre>
+
+<h2 id="使用-swagger">使用 Swagger</h2>
+
+<p>目前我是直接在專案的 docker-compose.yml 中放入 swagger-ui，方便我直接查看文件</p>
+
+<p>而在正式環境中，還要考慮這份文件開放目標，要設定 Proxy 或是 CORS 等等</p>
+ </div>
+    <footer class="post-footer">
+
+  <div class="post-footer-data">
+    
+<div class="tags">
+    
+      <div class="tag">
+        <a href="https://nyogjtrc.github.io/tags/swagger">#swagger</a>
+      </div>
+    
+</div>
+
+    <div class="date"> 23 Feb 2020 </div>
+  </div>
+
+</footer>
+
+
+
+</article>
+
+  <footer>
+
+  <div class="social-links-footer">
+
+  
+
+  
+  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
+  
+
+  
+
+  
+
+  
+
+  <div class="social-link">
+  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
+  </div>
+
+</div>
+
+
+  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
+
+  <div class="poweredby">
+    Powered by <a href="https://gohugo.io/">Hugo</a>.
+  </div>
+
+  </footer>
+
+</div> 
+
+</body>
+</html>
+
