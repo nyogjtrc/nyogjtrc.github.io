@@ -2,26 +2,9 @@
 <html lang="zh-tw">
 
 <head>
-<meta charset="utf-8" />
-<meta name="author" content="nyo" />
-<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
-<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.65.3" />
-
-<link rel="canonical" href="https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/">
-<meta property="og:title" content="用 Vagrant 建立開發環境" />
-<meta property="og:description" content="身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/" />
-<meta property="article:published_time" content="2015-05-30T16:14:00+08:00" />
-<meta property="article:modified_time" content="2015-05-30T16:14:00+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="用 Vagrant 建立開發環境"/>
-<meta name="twitter:description" content="身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工"/>
-
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta itemprop="name" content="用 Vagrant 建立開發環境">
 <meta itemprop="description" content="身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工">
 <meta itemprop="datePublished" content="2015-05-30T16:14:00&#43;08:00" />
@@ -30,124 +13,104 @@
 
 
 
-<meta itemprop="keywords" content="virtualbox,vagrant,nginx,docker,ubuntu," />
+<meta itemprop="keywords" content="virtualbox,vagrant,nginx,docker,ubuntu," /><meta property="og:title" content="用 Vagrant 建立開發環境" />
+<meta property="og:description" content="身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/" />
+<meta property="article:published_time" content="2015-05-30T16:14:00+08:00" />
+<meta property="article:modified_time" content="2015-05-30T16:14:00+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用 Vagrant 建立開發環境"/>
+<meta name="twitter:description" content="身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工"/>
 
-<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+	<link rel="manifest" href="https://nyogjtrc.github.io/site.webmanifest">
+	<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="https://nyogjtrc.github.io/favicon.ico">
 
-
-<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-43264564-2', 'auto');
+	<title>用 Vagrant 建立開發環境</title>
+	<link rel="stylesheet" href="https://nyogjtrc.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
 	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<title>
-
-
-     用 Vagrant 建立開發環境 
-
-</title>
-
 </head>
 
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+				<a href="https://nyogjtrc.github.io/tags/">Tags</a>
+				<a href="https://nyogjtrc.github.io/about/">About</a>
 
-<body>
-<div class="main">
-<header>
-
-<div class="header-bar">
-
-  <nav>
-    <div class="siteTitle">
-      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
-    </div> 
-
-    
-    
-    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
-    
-    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
-    
-    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
-    
-
-  </nav>
-
-  
-<div class="social-links-header">
-
-  
-
-  
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
-  
-
-  
-
-  
-
-  
-
-</div>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/nyogjtrc" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://twitter.com/nyogjtrc" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://nyogjtrc.github.io/posts/">Posts</a></li>
+			<li><a href="https://nyogjtrc.github.io/tags/">Tags</a></li>
+			<li><a href="https://nyogjtrc.github.io/about/">About</a></li>
+		</ul>
+	</div>
 
 
-</div>
-
-
-</header>
-
-
-<article class="post">
-    <h1 class="title"> 用 Vagrant 建立開發環境 </h1>
-    <div class="content"> <p>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>May 30, 2015</span></div>
+				<h1>用 Vagrant 建立開發環境</h1>
+			</header>
+			<div class="content">
+				<p>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。
 之前為了解決這個問題，自己動手記錄了開發環境會使用的工具跟服務，寫了一個很簡單的 shell script。</p>
 <p>現在虛擬機當道~使用上有很多的方便，在看到 base on 虛擬機的工具出現，也是時候試一試了。</p>
-<h2 id="什麼是-vagrant">什麼是 Vagrant</h2>
+<h2 id="什麼是-vagrant">什麼是 Vagrant<a href="#什麼是-vagrant" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>Vagrant 是流浪漢…
 Vagrant 是一個工具，幫助你設定 虛擬機；剛開始是針對 Virtrual Box，現在就不只了。</p>
-<h2 id="安裝-vagrant">安裝 Vagrant</h2>
+<h2 id="安裝-vagrant">安裝 Vagrant<a href="#安裝-vagrant" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>在 ubuntu 上安裝的方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt-get install vagrant
-</code></pre></div><h2 id="用-vagrant-建立虛擬機">用 Vagrant 建立虛擬機</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt-get install vagrant
+</code></pre></div><h2 id="用-vagrant-建立虛擬機">用 Vagrant 建立虛擬機<a href="#用-vagrant-建立虛擬機" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>首先增加一個 ubuntu 14.04 LTS 的 Box (打包好的 guest os)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vagrant box add ubuntu/trusty64
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant box add ubuntu/trusty64
 </code></pre></div><p>box 會從 <a href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a> 抓下來，可以輸入以下指令查看你已經抓好的 boxes</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vagrant box list
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant box list
 </code></pre></div><p>使用 Vagrant 會建立一些設定檔，所以我們需要先建一個資料夾，讓設定檔放在裡面</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ mkdir vagrant_develop
-$ cd vagrant_develop/
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ mkdir vagrant_develop
+$ <span class="nb">cd</span> vagrant_develop/
 </code></pre></div><p>產生一台虛擬機</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vagrant init ubuntu/trusty64
-A <span style="color:#e6db74">`</span>Vagrantfile<span style="color:#e6db74">`</span> has been placed in this directory. You are now
-ready to <span style="color:#e6db74">`</span>vagrant up<span style="color:#e6db74">`</span> your first virtual environment! Please read
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant init ubuntu/trusty64
+A <span class="sb">`</span>Vagrantfile<span class="sb">`</span> has been placed in this directory. You are now
+ready to <span class="sb">`</span>vagrant up<span class="sb">`</span> your first virtual environment! Please <span class="nb">read</span>
 the comments in the Vagrantfile as well as documentation on
-<span style="color:#e6db74">`</span>vagrantup.com<span style="color:#e6db74">`</span> <span style="color:#66d9ef">for</span> more information on using Vagrant.
+<span class="sb">`</span>vagrantup.com<span class="sb">`</span> <span class="k">for</span> more information on using Vagrant.
 </code></pre></div><p>虛擬機產生之後，會出現一個 <code>Vagrantfile</code> 在資料夾內</p>
 <p>啟動她！</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vagrant up
-Bringing machine <span style="color:#e6db74">&#39;default&#39;</span> up with <span style="color:#e6db74">&#39;virtualbox&#39;</span> provider...
-<span style="color:#f92672">==</span>&gt; default: Importing base box <span style="color:#e6db74">&#39;ubuntu/trusty64&#39;</span>...
-<span style="color:#f92672">==</span>&gt; default: Matching MAC address <span style="color:#66d9ef">for</span> NAT networking...
-<span style="color:#f92672">==</span>&gt; default: Checking <span style="color:#66d9ef">if</span> box <span style="color:#e6db74">&#39;ubuntu/trusty64&#39;</span> is up to date...
-<span style="color:#f92672">==</span>&gt; default: Setting the name of the VM: vagrant_develop_default_1433005676358_75321
-<span style="color:#f92672">==</span>&gt; default: Clearing any previously set forwarded ports...
-<span style="color:#f92672">==</span>&gt; default: Clearing any previously set network interfaces...
-<span style="color:#f92672">==</span>&gt; default: Preparing network interfaces based on configuration...
-    default: Adapter 1: nat
-<span style="color:#f92672">==</span>&gt; default: Forwarding ports...
-    default: 22 <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">2222</span> <span style="color:#f92672">(</span>adapter 1<span style="color:#f92672">)</span>
-<span style="color:#f92672">==</span>&gt; default: Booting VM...
-<span style="color:#f92672">==</span>&gt; default: Waiting <span style="color:#66d9ef">for</span> machine to boot. This may take a few minutes...
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant up
+Bringing machine <span class="s1">&#39;default&#39;</span> up with <span class="s1">&#39;virtualbox&#39;</span> provider...
+<span class="o">==</span>&gt; default: Importing base box <span class="s1">&#39;ubuntu/trusty64&#39;</span>...
+<span class="o">==</span>&gt; default: Matching MAC address <span class="k">for</span> NAT networking...
+<span class="o">==</span>&gt; default: Checking <span class="k">if</span> box <span class="s1">&#39;ubuntu/trusty64&#39;</span> is up to date...
+<span class="o">==</span>&gt; default: Setting the name of the VM: <span class="nv">vagrant_develop_default_1433005676358_75321</span>
+<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> forwarded ports...
+<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> network interfaces...
+<span class="o">==</span>&gt; default: Preparing network interfaces based on configuration...
+    default: Adapter 1: <span class="nv">nat</span>
+<span class="o">==</span>&gt; default: Forwarding ports...
+    default: <span class="nv">22</span> <span class="o">=</span>&gt; <span class="m">2222</span> <span class="o">(</span>adapter 1<span class="o">)</span>
+<span class="o">==</span>&gt; default: Booting VM...
+<span class="o">==</span>&gt; default: Waiting <span class="k">for</span> machine to boot. This may take a few minutes...
     default: SSH address: 127.0.0.1:2222
     default: SSH username: vagrant
     default: SSH auth method: private key
@@ -155,15 +118,15 @@ Bringing machine <span style="color:#e6db74">&#39;default&#39;</span> up with <s
     default: Warning: Remote connection disconnect. Retrying...
     default:
     default: Vagrant insecure key detected. Vagrant will automatically replace
-    default: this with a newly generated keypair <span style="color:#66d9ef">for</span> better security.
+    default: this with a newly generated keypair <span class="k">for</span> better security.
     default:
     default: Inserting generated public key within guest...
-    default: Removing insecure key from the guest <span style="color:#66d9ef">if</span> its present...
+    default: Removing insecure key from the guest <span class="k">if</span> its present...
     default: Key inserted! Disconnecting and reconnecting using new SSH key...
-<span style="color:#f92672">==</span>&gt; default: Machine booted and ready!
-<span style="color:#f92672">==</span>&gt; default: Checking <span style="color:#66d9ef">for</span> guest additions in VM...
-<span style="color:#f92672">==</span>&gt; default: Mounting shared folders...
-    default: /vagrant <span style="color:#f92672">=</span>&gt; /home/nyo/vagrant_develop
+<span class="o">==</span>&gt; default: Machine booted and ready!
+<span class="o">==</span>&gt; default: Checking <span class="k">for</span> guest additions in VM...
+<span class="o">==</span>&gt; default: Mounting shared folders...
+    default: /vagrant <span class="o">=</span>&gt; /home/nyo/vagrant_develop
 </code></pre></div><p>啟動的過程中 Vagrant 做了不少事：</p>
 <ul>
 <li>port forwarding,</li>
@@ -177,102 +140,75 @@ Bringing machine <span style="color:#e6db74">&#39;default&#39;</span> up with <s
 </code></pre><p>又或是虛擬機用不到要刪掉了，你可以輸入：</p>
 <pre><code>$ vagrant destroy
 </code></pre><p>Vagrant 會幫你把虛擬機刪掉</p>
-<h2 id="用-vagrant-建立-nginx-環境">用 Vagrant 建立 nginx 環境</h2>
+<h2 id="用-vagrant-建立-nginx-環境">用 Vagrant 建立 nginx 環境<a href="#用-vagrant-建立-nginx-環境" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>建立一支 bootstrap.sh 的檔案，將安裝 nginx 的指令放入檔案中</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/usr/bin/env bash
-</span><span style="color:#75715e"></span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
 apt-get update
 apt-get -y install nginx
 </code></pre></div><p>在 Vagrantfile 增加設定，
 加入 bootstrap.sh 腳本跟一行 port forwarding 的設定，讓 host os 可以連到 guest os</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">Vagrant</span><span style="color:#f92672">.</span>configure(<span style="color:#e6db74">&#34;2&#34;</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>config<span style="color:#f92672">|</span>
-  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>provision <span style="color:#e6db74">:shell</span>, <span style="color:#e6db74">path</span>: <span style="color:#e6db74">&#34;bootstrap.sh&#34;</span>
-  config<span style="color:#f92672">.</span>vm<span style="color:#f92672">.</span>network <span style="color:#e6db74">&#34;forwarded_port&#34;</span>, <span style="color:#e6db74">guest</span>: <span style="color:#ae81ff">80</span>, <span style="color:#e6db74">host</span>: <span style="color:#ae81ff">8080</span>
-<span style="color:#66d9ef">end</span>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&#34;bootstrap.sh&#34;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s2">&#34;forwarded_port&#34;</span><span class="p">,</span> <span class="ss">guest</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="ss">host</span><span class="p">:</span> <span class="mi">8080</span>
+<span class="k">end</span>
 </code></pre></div><p>設定完成後，執行 <code>$ vagrant reload --provision</code> 或是 <code>$ vagrant provision</code>，重新配置虛擬機，載入新的 Vagrantfile</p>
 <p>現在你可以 curl 連到剛剛裝好的 nginx 服務了</p>
 <pre><code>$ curl localhost:8080
-</code></pre><h2 id="summary">Summary</h2>
+</code></pre><h2 id="summary">Summary<a href="#summary" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>明明我的開發環境需要的服務一堆，但以上範例只偷懶裝了 nginx&hellip;
 不過這還好，可以依此類推；之後有玩出不一樣的東西再寫一篇新的筆記了。</p>
 <p>有了 Vagrant 的第一個好處大概是我可以從「一直安裝環境」變成「一直 vagrant init」吧XD</p>
 <p>再另外附帶一提，之後打算加上 Docker 來試試。</p>
 <hr>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a href="#reference" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p><a href="https://docs.vagrantup.com/v2/">https://docs.vagrantup.com/v2/</a>
 <a href="http://gogojimmy.net/2013/05/26/vagrant-tutorial/">http://gogojimmy.net/2013/05/26/vagrant-tutorial/</a>
 <a href="http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/">http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/</a></p>
- </div>
-    <footer class="post-footer">
 
-  <div class="post-footer-data">
-    
-<div class="tags">
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/virtualbox">#virtualbox</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/vagrant">#vagrant</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/nginx">#nginx</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/docker">#docker</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/ubuntu">#ubuntu</a>
-      </div>
-    
+			</div>
+
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://nyogjtrc.github.io/tags/virtualbox">virtualbox</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/vagrant">vagrant</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/nginx">nginx</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/docker">docker</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/ubuntu">ubuntu</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>925 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2015-05-30 16:14 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Getting Things Done - GTD 介紹</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
 </div>
+	</main>
 
-    <div class="date"> 30 May 2015 </div>
-  </div>
-
-</footer>
-
-
-
-</article>
-
-  <footer>
-
-  <div class="social-links-footer">
-
-  
-
-  
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
-  
-
-  
-
-  
-
-  
-
-  <div class="social-link">
-  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
-  </div>
-
-</div>
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://nyogjtrc.github.io/">nyo</a> &#183; Copyright (c) 2015-2020</p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://nyogjtrc.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
 
-  <div class="poweredby">
-    Powered by <a href="https://gohugo.io/">Hugo</a>.
-  </div>
+	<script src="https://nyogjtrc.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  </footer>
-
-</div> 
 
 </body>
-</html>
 
+</html>

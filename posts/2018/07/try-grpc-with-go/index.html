@@ -2,26 +2,9 @@
 <html lang="zh-tw">
 
 <head>
-<meta charset="utf-8" />
-<meta name="author" content="nyo" />
-<meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格" />
-<meta name="keywords" content="nyo, nyogjtrc, blog, study" />
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<meta name="generator" content="Hugo 0.65.3" />
-
-<link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/">
-<meta property="og:title" content="Try gRPC, grpc-gateway With Go" />
-<meta property="og:description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/" />
-<meta property="article:published_time" content="2018-07-09T14:14:03+08:00" />
-<meta property="article:modified_time" content="2018-07-09T14:14:03+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Try gRPC, grpc-gateway With Go"/>
-<meta name="twitter:description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開"/>
-
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta itemprop="name" content="Try gRPC, grpc-gateway With Go">
 <meta itemprop="description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開">
 <meta itemprop="datePublished" content="2018-07-09T14:14:03&#43;08:00" />
@@ -30,86 +13,66 @@
 
 
 
-<meta itemprop="keywords" content="gRPC,golang,RESTful," />
+<meta itemprop="keywords" content="gRPC,golang,RESTful," /><meta property="og:title" content="Try gRPC, grpc-gateway With Go" />
+<meta property="og:description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/" />
+<meta property="article:published_time" content="2018-07-09T14:14:03+08:00" />
+<meta property="article:modified_time" content="2018-07-09T14:14:03+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Try gRPC, grpc-gateway With Go"/>
+<meta name="twitter:description" content="什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開"/>
 
-<link rel="stylesheet" href="https://nyogjtrc.github.io/css/layout.css" />
+	<link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+	<link rel="manifest" href="https://nyogjtrc.github.io/site.webmanifest">
+	<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="https://nyogjtrc.github.io/favicon.ico">
 
-
-<link rel="stylesheet" href="https://nyogjtrc.github.io/css/default-dark.css" />
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-43264564-2', 'auto');
+	<title>Try gRPC, grpc-gateway With Go</title>
+	<link rel="stylesheet" href="https://nyogjtrc.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
 	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-<title>
-
-
-     Try gRPC, grpc-gateway With Go 
-
-</title>
-
 </head>
 
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+				<a href="https://nyogjtrc.github.io/tags/">Tags</a>
+				<a href="https://nyogjtrc.github.io/about/">About</a>
 
-<body>
-<div class="main">
-<header>
-
-<div class="header-bar">
-
-  <nav>
-    <div class="siteTitle">
-      <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
-    </div> 
-
-    
-    
-    <a class="nav-item active" href="https://nyogjtrc.github.io/posts/"><div class="nav-item-title">Posts</div></a>
-    
-    <a class="nav-item" href="https://nyogjtrc.github.io/tags/"><div class="nav-item-title">Tags</div></a>
-    
-    <a class="nav-item" href="https://nyogjtrc.github.io/about/"><div class="nav-item-title">About</div></a>
-    
-
-  </nav>
-
-  
-<div class="social-links-header">
-
-  
-
-  
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">gh</div></a>
-  
-
-  
-
-  
-
-  
-
-</div>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/nyogjtrc" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://twitter.com/nyogjtrc" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://nyogjtrc.github.io/posts/">Posts</a></li>
+			<li><a href="https://nyogjtrc.github.io/tags/">Tags</a></li>
+			<li><a href="https://nyogjtrc.github.io/about/">About</a></li>
+		</ul>
+	</div>
 
 
-</div>
-
-
-</header>
-
-
-<article class="post">
-    <h1 class="title"> Try gRPC, grpc-gateway With Go </h1>
-    <div class="content"> <h2 id="什麼是-grpc">什麼是 gRPC</h2>
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jul 9, 2018</span></div>
+				<h1>Try gRPC, grpc-gateway With Go</h1>
+			</header>
+			<div class="content">
+				<h2 id="什麼是-grpc">什麼是 gRPC<a href="#什麼是-grpc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <ul>
 <li>Google 推出的 RPC framework</li>
 <li>採用 Google 制定的 protocol buffers 當作資料傳輸格式</li>
@@ -117,9 +80,9 @@ if (!doNotTrack) {
 <li>比 RESTful API 更快、更有效率</li>
 <li>更多請參考官網: <a href="https://grpc.io/">grpc / grpc.io</a></li>
 </ul>
-<h2 id="安裝">安裝</h2>
+<h2 id="安裝">安裝<a href="#安裝" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>開始寫 gRPC 服務之前，要先安裝一些 protocol buffer 的工具</p>
-<h3 id="protocol-buffer-compiler">protocol buffer compiler</h3>
+<h3 id="protocol-buffer-compiler">protocol buffer compiler<a href="#protocol-buffer-compiler" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>以下是快速安裝的腳本:</p>
 <pre><code>#!/bin/bash
 
@@ -133,18 +96,18 @@ sudo unzip -u $FILENAME -d /usr/local bin/protoc include/*
 rm $FILENAME
 </code></pre><p>也可以直接去官網下載: <a href="https://github.com/google/protobuf/releases">https://github.com/google/protobuf/releases</a></p>
 <p>測試一下沒有安裝成功</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ protoc --version
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ protoc --version
 libprotoc 3.6.0
-</code></pre></div><h3 id="plugin-for-genrate-go-code">plugin for genrate go code</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u github.com/golang/protobuf/protoc-gen-go
-</code></pre></div><h3 id="grpc-package-for-go">gRPC package for go</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go get -u google.golang.org/grpc
-</code></pre></div><h2 id="開始寫-grpc-服務">開始寫 gRPC 服務</h2>
+</code></pre></div><h3 id="plugin-for-genrate-go-code">plugin for genrate go code<a href="#plugin-for-genrate-go-code" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get -u github.com/golang/protobuf/protoc-gen-go
+</code></pre></div><h3 id="grpc-package-for-go">gRPC package for go<a href="#grpc-package-for-go" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get -u google.golang.org/grpc
+</code></pre></div><h2 id="開始寫-grpc-服務">開始寫 gRPC 服務<a href="#開始寫-grpc-服務" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>要有一個完整的 gRPC 服務，首先要寫 proto file 定義好服務提供的方法跟傳輸的資料格式</p>
 <p>再由工具產生 pb.go 程式碼，最後跟著 pb.go 實作 server 跟 client 程式了</p>
-<h3 id="1-建立-proto-文件">1. 建立 proto 文件</h3>
+<h3 id="1-建立-proto-文件">1. 建立 proto 文件<a href="#1-建立-proto-文件" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>這裡簡單寫一個 echo service</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir proto; vi proto/echo.proto
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir proto<span class="p">;</span> vi proto/echo.proto
 </code></pre></div><pre><code>syntax = &quot;proto3&quot;;
 
 package proto;
@@ -157,11 +120,11 @@ service EchoServer {
   rpc Echo (EchoMessage) returns (EchoMessage) {}
 }
 </code></pre><p>更多的語法請參考: <a href="https://developers.google.com/protocol-buffers/docs/proto3">Language Guide (proto3)</a></p>
-<h3 id="2-產生-go-程式碼">2. 產生 go 程式碼</h3>
+<h3 id="2-產生-go-程式碼">2. 產生 go 程式碼<a href="#2-產生-go-程式碼" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>借由 protoc 產生程式碼</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ protoc --go_out<span style="color:#f92672">=</span>plugins<span style="color:#f92672">=</span>grpc:. proto/*.proto
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ protoc --go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:. proto/*.proto
 </code></pre></div><p>會產生 <code>echo.pb.go</code> 裡面包括 server 端的 interface 跟 client 端的 程式</p>
-<h3 id="3-建立-server-程式">3. 建立 server 程式</h3>
+<h3 id="3-建立-server-程式">3. 建立 server 程式<a href="#3-建立-server-程式" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>開始實作 EchoServer</p>
 <p>import 剛剛產生的 echo.pb.go</p>
 <pre><code>import (
@@ -212,7 +175,7 @@ func main() {
 	pb.RegisterEchoServiceServer(s, &amp;echoServer{})
 	s.Serve(lis)
 }
-</code></pre><h3 id="4-建立-client-程式">4. 建立 client 程式</h3>
+</code></pre><h3 id="4-建立-client-程式">4. 建立 client 程式<a href="#4-建立-client-程式" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre><code>package main
 
 import (
@@ -249,7 +212,7 @@ func main() {
 		fmt.Println(r.Value)
 	}
 }
-</code></pre><h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client</h3>
+</code></pre><h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client<a href="#5-實測-grpc-server-client" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>執行 server</p>
 <pre><code>$ go run server/main.go
 grpc example echo server :8888
@@ -260,13 +223,13 @@ echo:123
 
 Enter text: hello
 echo:hello
-</code></pre><h2 id="增加-grpc-gateway">增加 gRPC gateway</h2>
+</code></pre><h2 id="增加-grpc-gateway">增加 gRPC gateway<a href="#增加-grpc-gateway" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p><a href="https://github.com/grpc-ecosystem/grpc-gateway">https://github.com/grpc-ecosystem/grpc-gateway</a></p>
 <p>grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API</p>
 <p>轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了</p>
-<h3 id="1-要安裝的-plugin">1. 要安裝的 plugin</h3>
+<h3 id="1-要安裝的-plugin">1. 要安裝的 plugin<a href="#1-要安裝的-plugin" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre><code>go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
-</code></pre><h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option</h3>
+</code></pre><h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option<a href="#2-proto-檔案增加-restful-option" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>就是把 RESTful 的 router 寫進來</p>
 <pre><code>syntax = &quot;proto3&quot;;
 
@@ -286,7 +249,7 @@ service EchoService {
     };
   }
 }
-</code></pre><h3 id="3-產生-pbgo-pbgwgo">3. 產生 pb.go, pb.gw.go</h3>
+</code></pre><h3 id="3-產生-pbgo-pbgwgo">3. 產生 pb.go, pb.gw.go<a href="#3-產生-pbgo-pbgwgo" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre><code>protoc -I/usr/local/include -I. \
     -I$(GOPATH)/src \
     -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
@@ -295,7 +258,7 @@ protoc -I/usr/local/include -I. \
     -I$(GOPATH)/src \
     -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
     --grpc-gateway_out=logtostderr=true:. proto/*.proto
-</code></pre><h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點</h3>
+</code></pre><h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點<a href="#4-寫-reverse-proxy-的進入點" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p>把 gRPC 服務加入 proxy 裡面</p>
 <pre><code>func gatewayServer() {
 	fmt.Println(&quot;RESTful echo server :9999&quot;)
@@ -313,10 +276,10 @@ protoc -I/usr/local/include -I. \
 
 	http.ListenAndServe(&quot;:9999&quot;, mux)
 }
-</code></pre><h3 id="5-實測">5. 實測</h3>
+</code></pre><h3 id="5-實測">5. 實測<a href="#5-實測" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre><code>$ curl -X POST http://localhost:9999/echo/echo -H 'Content-Type: application/json' -d '{ &quot;value&quot;: &quot;hi, how are you?&quot; }'
 {&quot;value&quot;:&quot;echo:hi, how are you?&quot;}
-</code></pre><h2 id="小結">小結</h2>
+</code></pre><h2 id="小結">小結<a href="#小結" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <ul>
 <li>這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟</li>
 <li>proto 檔案類似 router</li>
@@ -325,76 +288,71 @@ protoc -I/usr/local/include -I. \
 <li>一些 server 的設定還要花時間微調</li>
 </ul>
 <hr>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a href="#reference" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <ul>
 <li><a href="https://grpc.io/docs/tutorials/basic/go.html">grpc /</a></li>
 <li><a href="https://developers.google.com/protocol-buffers/">Protocol Buffers  |  Google Developers</a></li>
 <li><a href="https://yami.io/grpc/">API 文件就是你的伺服器，REST 的另一個選擇：gRPC</a></li>
 <li><a href="https://grpc-ecosystem.github.io/grpc-gateway/">grpc-gateway | gRPC to JSON proxy generator following the gRPC HTTP spec</a></li>
 </ul>
- </div>
-    <footer class="post-footer">
 
-  <div class="post-footer-data">
-    
-<div class="tags">
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/grpc">#gRPC</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/golang">#golang</a>
-      </div>
-    
-      <div class="tag">
-        <a href="https://nyogjtrc.github.io/tags/restful">#RESTful</a>
-      </div>
-    
+			</div>
+
+<div class="related-posts thin">
+	<h2>See Also</h2>
+	<ul>
+	
+	<li><a href="https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/">Golang Test All Testing in Project</a></li>
+	
+	<li><a href="https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/">用 Hugo 發佈部落格</a></li>
+	
+	</ul>
 </div>
 
-    <div class="date"> 9 Jul 2018 </div>
-  </div>
-
-</footer>
-
-
-
-</article>
-
-  <footer>
-
-  <div class="social-links-footer">
-
-  
-
-  
-  <a href="https://github.com/nyogjtrc" target="_blank"><div class="social-link">GitHub</div></a>
-  
-
-  
-
-  
-
-  
-
-  <div class="social-link">
-  <a href="https://nyogjtrc.github.io/index.xml" target="_blank">RSS</a>
-  </div>
-
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://nyogjtrc.github.io/tags/grpc">gRPC</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/golang">golang</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/restful">RESTful</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>914 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2018-07-09 14:14 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>在 Terminal 上的跳舞鸚鵡</span>
+			</a>
+			<a class="prev-post" href="https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Evernote Tools: NixNote2 &amp; Evernote Shortcuts</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
 </div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://nyogjtrc.github.io/">nyo</a> &#183; Copyright (c) 2015-2020</p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://nyogjtrc.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-  <div class="copyright"> Copyright (c) 2017-2018 nyogjtrc. </div>
 
-  <div class="poweredby">
-    Powered by <a href="https://gohugo.io/">Hugo</a>.
-  </div>
+	<script src="https://nyogjtrc.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  </footer>
-
-</div> 
 
 </body>
-</html>
 
+</html>
