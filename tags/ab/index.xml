@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ab on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/ab/</link>
+    <description>Recent content in ab on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sat, 29 Feb 2020 01:30:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/ab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用 ab (apache benchmark) 測試網站效能</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</link>
+      <pubDate>Sat, 29 Feb 2020 01:30:46 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</guid>
+      <description>指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &amp;lt;$Revision: 1826891 $&amp;gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:</description>
+    </item>
+    
+  </channel>
+</rss>

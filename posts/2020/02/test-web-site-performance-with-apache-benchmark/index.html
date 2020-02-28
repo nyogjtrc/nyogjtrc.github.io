@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="用 ab (apache benchmark) 測試網站效能">
+<meta itemprop="description" content="指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:">
+<meta itemprop="datePublished" content="2020-02-29T01:30:46&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-29T01:30:46&#43;08:00" />
+<meta itemprop="wordCount" content="493">
+
+
+
+<meta itemprop="keywords" content="ab," /><meta property="og:title" content="用 ab (apache benchmark) 測試網站效能" />
+<meta property="og:description" content="指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/" />
+<meta property="article:published_time" content="2020-02-29T01:30:46+08:00" />
+<meta property="article:modified_time" content="2020-02-29T01:30:46+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="用 ab (apache benchmark) 測試網站效能"/>
+<meta name="twitter:description" content="指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+	<link rel="manifest" href="https://nyogjtrc.github.io/site.webmanifest">
+	<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="https://nyogjtrc.github.io/favicon.ico">
+
+	<title>用 ab (apache benchmark) 測試網站效能</title>
+	<link rel="stylesheet" href="https://nyogjtrc.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+				<a href="https://nyogjtrc.github.io/tags/">Tags</a>
+				<a href="https://nyogjtrc.github.io/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/nyogjtrc" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://twitter.com/nyogjtrc" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://nyogjtrc.github.io/posts/">Posts</a></li>
+			<li><a href="https://nyogjtrc.github.io/tags/">Tags</a></li>
+			<li><a href="https://nyogjtrc.github.io/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Feb 29, 2020</span></div>
+				<h1>用 ab (apache benchmark) 測試網站效能</h1>
+			</header>
+			<div class="content">
+				<p>指令說明: <a href="http://httpd.apache.org/docs/current/programs/ab.html">http://httpd.apache.org/docs/current/programs/ab.html</a></p>
+<h2 id="安裝">安裝<a href="#安裝" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>debian</p>
+<pre><code>sudo apt-get install apache2-utils
+</code></pre><p>centos</p>
+<pre><code>yum install httpd-tools
+</code></pre><h2 id="執行結果">執行結果<a href="#執行結果" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<pre><code>$ ab -n 100 -c 10 https://google.com/
+This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking google.com (be patient).....done
+
+
+Server Software:        gws
+Server Hostname:        google.com
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256
+TLS Server Name:        google.com
+
+Document Path:          /
+Document Length:        220 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.981 seconds
+Complete requests:      100
+Failed requests:        0
+Non-2xx responses:      100
+Total transferred:      71000 bytes
+HTML transferred:       22000 bytes
+Requests per second:    101.95 [#/sec] (mean)
+Time per request:       98.091 [ms] (mean)
+Time per request:       9.809 [ms] (mean, across all concurrent requests)
+Transfer rate:          70.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       41   63  12.2     62     109
+Processing:    16   24   9.0     21      56
+Waiting:       15   24   8.7     21      56
+Total:         64   87  17.8     83     150
+
+Percentage of the requests served within a certain time (ms)
+  50%     83
+  66%     87
+  75%     91
+  80%     94
+  90%    107
+  95%    138
+  98%    150
+  99%    150
+ 100%    150 (longest request)
+</code></pre><h2 id="說明">說明<a href="#說明" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<pre><code>Concurrency Level       (併發數量)
+Time taken for tests    (本次壓力測試所花費的總秒數)
+Complete requests       (完成的請求數)
+Failed requests         (失敗的請求數)
+Total transferred       (本次測試的總傳輸量)
+HTML transferred        (本次測試的 HTML 傳輸量)
+Requests per second     (每秒回應多少請求) (平均值)
+Time per request        (每個請求所花費的時間) (ms) (平均值)
+Time per request        (每個請求所花費的時間，所有同時連線數的平均值) (ms) (平均值)
+Transfer rate           (傳輸速率)
+
+Connection Times
+
+min           最小值
+mean[+/-sd]   平均值[標準差]
+median        中位數
+max           最大值
+
+Connect       建立 TCP 連線的時間花費
+Processing    建立 TCP 連線後，Server 處理請求的時間花費
+Waiting       發出請求到接到第一個 Byte 的等待時間
+Total         總花費時間 (Connect + Processing)
+</code></pre><h2 id="常用組合">常用組合<a href="#常用組合" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>100 個請求量，10 個併發</p>
+<pre><code>ab -n 100 -c 10 https://google.com/
+</code></pre><p>10 個併發，執行 10 秒</p>
+<pre><code>ab -t 10 -c 10 https://google.com/
+</code></pre><p>post json，post 內容為 post.json</p>
+<pre><code>ab -n 100 -c 10 -p post.json -T application/json https://httpbin.org/post
+</code></pre><hr>
+<h3 id="reference">Reference<a href="#reference" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li><a href="https://blog.miniasp.com/post/2008/06/30/Using-ApacheBench-ab-to-to-Web-stress-test">https://blog.miniasp.com/post/2008/06/30/Using-ApacheBench-ab-to-to-Web-stress-test</a></li>
+<li><a href="https://gist.github.com/kelvinn/6a1c51b8976acf25bd78">https://gist.github.com/kelvinn/6a1c51b8976acf25bd78</a></li>
+</ul>
+
+			</div>
+
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://nyogjtrc.github.io/tags/ab">ab</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>493 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-02-29 01:30 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Swagger 入門</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://nyogjtrc.github.io/">nyo</a> &#183; Copyright (c) 2015-2020</p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://nyogjtrc.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://nyogjtrc.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>

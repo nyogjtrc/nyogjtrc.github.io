@@ -3,8 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/ab/</loc>
+    <lastmod>2020-02-29T01:30:46+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-02-23T22:21:45+08:00</lastmod>
+    <lastmod>2020-02-29T01:30:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-02-29T01:30:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</loc>
+    <lastmod>2020-02-29T01:30:46+08:00</lastmod>
   </url>
   
   <url>
@@ -14,11 +29,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</loc>
-    <lastmod>2020-02-23T22:21:45+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-02-23T22:21:45+08:00</lastmod>
   </url>
   
