@@ -6,8 +6,60 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>zh-tw</language>
 		<copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-		<lastBuildDate>Sat, 29 Feb 2020 01:30:46 +0800</lastBuildDate>
+		<lastBuildDate>Fri, 13 Mar 2020 21:29:26 +0800</lastBuildDate>
 		<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>最快速的 Terminal Emulator</title>
+			<link>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</link>
+			<pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
+			
+			<guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
+			<description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
+			<content type="html"><![CDATA[<p>發現了使用 GPU 的 terminal emulator</p>
+<ul>
+<li><a href="https://github.com/alacritty/alacritty">https://github.com/alacritty/alacritty</a></li>
+<li><a href="https://sw.kovidgoyal.net/kitty/">https://sw.kovidgoyal.net/kitty/</a></li>
+</ul>
+<p>我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式</p>
+<p>兩個都試用了一下，決定先以 alacritty 當主力試試</p>
+<p>特色:</p>
+<ul>
+<li>目前最快的 terminal emulator</li>
+<li>使用 GPU</li>
+<li>支援 Linux, BSD, macOS, Windows</li>
+<li>rust 開發</li>
+</ul>
+<h2 id="安裝">安裝</h2>
+<h3 id="debian--ubuntu">Debian / Ubuntu</h3>
+<pre><code>$ apt install alacritty
+</code></pre><h3 id="macos">macOS</h3>
+<pre><code>$ brew cask install alacritty
+</code></pre><h2 id="設定">設定</h2>
+<p>把 alacritty.yml 放到以下的其中的一個位置就可以生效</p>
+<ul>
+<li><code>$XDG_CONFIG_HOME/alacritty/alacritty.yml</code></li>
+<li><code>$XDG_CONFIG_HOME/alacritty.yml</code></li>
+<li><code>$HOME/.config/alacritty/alacritty.yml</code></li>
+<li><code>$HOME/.alacritty.yml</code></li>
+</ul>
+<h2 id="color-schemes">Color schemes</h2>
+<p>可以從以下兩個網址去找自己喜歡的顏色</p>
+<ul>
+<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes">https://github.com/alacritty/alacritty/wiki/Color-schemes</a></li>
+<li><a href="https://github.com/eendroroy/alacritty-theme">https://github.com/eendroroy/alacritty-theme</a></li>
+</ul>
+<h2 id="心得">心得</h2>
+<p>cat log 檔案的時候速度很快，看的感覺很爽快</p>
+<p>很可惜的，macOS + tmux + vim 這個組合還是會很慢</p>
+<p>有幾個 terminal emulator 設計的很華麗，也有跨多平台。
+可惜是用 Electron 開發的，感覺太過肥大，就暫時不考慮了</p>
+<h3 id="refence">Refence</h3>
+<ul>
+<li><a href="https://github.com/alacritty/alacritty">https://github.com/alacritty/alacritty</a></li>
+</ul>
+]]></content>
+		</item>
 		
 		<item>
 			<title>用 ab (apache benchmark) 測試網站效能</title>

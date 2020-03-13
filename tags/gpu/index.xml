@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gpu on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/gpu/</link>
+    <description>Recent content in gpu on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Fri, 13 Mar 2020 21:29:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>最快速的 Terminal Emulator</title>
+      <link>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</link>
+      <pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
+      <description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
+    </item>
+    
+  </channel>
+</rss>
