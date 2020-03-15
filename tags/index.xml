@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-    <lastBuildDate>Fri, 13 Mar 2020 21:29:26 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2020 22:53:09 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>jump</title>
+      <link>https://nyogjtrc.github.io/tags/jump/</link>
+      <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/jump/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://nyogjtrc.github.io/tags/ssh/</link>
+      <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gpu</title>
@@ -360,15 +378,6 @@
       <pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/exif/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ssh</title>
-      <link>https://nyogjtrc.github.io/tags/ssh/</link>
-      <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/ssh/</guid>
       <description></description>
     </item>
     

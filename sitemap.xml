@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/jump/</loc>
+    <lastmod>2020-03-15T22:53:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-03-15T22:53:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/ssh/</loc>
+    <lastmod>2020-03-15T22:53:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-03-15T22:53:09+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</loc>
+    <lastmod>2020-03-15T22:53:09+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/gpu/</loc>
     <lastmod>2020-03-13T21:29:26+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-03-13T21:29:26+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nyogjtrc.github.io/tags/rust/</loc>
-    <lastmod>2020-03-13T21:29:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-03-13T21:29:26+08:00</lastmod>
   </url>
   
@@ -365,11 +380,6 @@
   <url>
     <loc>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</loc>
     <lastmod>2018-01-14T01:25:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/ssh/</loc>
-    <lastmod>2017-11-09T13:24:42+08:00</lastmod>
   </url>
   
   <url>
