@@ -1,2376 +1,439 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Posts on Nyo&#39;s Study Book</title>
-		<link>https://nyogjtrc.github.io/posts/</link>
-		<description>Recent content in Posts on Nyo&#39;s Study Book</description>
-		<generator>Hugo -- gohugo.io</generator>
-		<language>zh-tw</language>
-		<copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
-		<lastBuildDate>Sun, 15 Mar 2020 22:53:09 +0800</lastBuildDate>
-		<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-		
-		<item>
-			<title>使用 ssh Proxyjump</title>
-			<link>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</link>
-			<pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
-			<description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host ssh -J</description>
-			<content type="html"><![CDATA[<p>server 需要經由跳板登入時有幾種做法</p>
-<ul>
-<li>ssh tunnel</li>
-<li>ProxyCommand</li>
-<li>ProxyJump</li>
-</ul>
-<p>這邊介紹 ProxyJump 的用法，算是目前最方便的方法</p>
-<p>支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (<a href="http://www.openssh.com/txt/release-7.3">http://www.openssh.com/txt/release-7.3</a>)</p>
-<h2 id="ssh-指令加上--j-參數">ssh 指令加上 -J 參數</h2>
-<p>經由 jump.host 登入 dist.host</p>
-<pre><code>ssh -J jump.host dist.host
-</code></pre><p>需要打上 username port 的話，一樣的用法</p>
-<pre><code>ssh -J username@jump.host:port username@dist.host:port
-</code></pre><p>scp 的話</p>
-<pre><code>scp -o 'ProxyJump jump.host' myfile.txt dist.host:/my/dir
-</code></pre><h2 id="設定-ssh-config">設定 ssh config</h2>
-<p>編輯 ~/.ssh/config</p>
-<pre><code>### First jumphost. Directly reachable
-Host jump
-  HostName jump.host
-
-### Host to jump to via jump.host
-Host dist
-  HostName dist.host
-  ProxyJump jump
-</code></pre><p>直接 ssh</p>
-<pre><code>ssh dist
-</code></pre><p>直接 scp</p>
-<pre><code>scp filename dist:~/
-</code></pre><hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://www.madboa.com/blog/2017/11/02/ssh-proxyjump/">https://www.madboa.com/blog/2017/11/02/ssh-proxyjump/</a></li>
-<li><a href="https://wiki.gentoo.org/wiki/SSH_jump_host">https://wiki.gentoo.org/wiki/SSH_jump_host</a></li>
-<li><a href="https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts">https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>最快速的 Terminal Emulator</title>
-			<link>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</link>
-			<pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
-			<description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
-			<content type="html"><![CDATA[<p>發現了使用 GPU 的 terminal emulator</p>
-<ul>
-<li><a href="https://github.com/alacritty/alacritty">https://github.com/alacritty/alacritty</a></li>
-<li><a href="https://sw.kovidgoyal.net/kitty/">https://sw.kovidgoyal.net/kitty/</a></li>
-</ul>
-<p>我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式</p>
-<p>兩個都試用了一下，決定先以 alacritty 當主力試試</p>
-<p>特色:</p>
-<ul>
-<li>目前最快的 terminal emulator</li>
-<li>使用 GPU</li>
-<li>支援 Linux, BSD, macOS, Windows</li>
-<li>rust 開發</li>
-</ul>
-<h2 id="安裝">安裝</h2>
-<h3 id="debian--ubuntu">Debian / Ubuntu</h3>
-<pre><code>$ apt install alacritty
-</code></pre><h3 id="macos">macOS</h3>
-<pre><code>$ brew cask install alacritty
-</code></pre><h2 id="設定">設定</h2>
-<p>把 alacritty.yml 放到以下的其中的一個位置就可以生效</p>
-<ul>
-<li><code>$XDG_CONFIG_HOME/alacritty/alacritty.yml</code></li>
-<li><code>$XDG_CONFIG_HOME/alacritty.yml</code></li>
-<li><code>$HOME/.config/alacritty/alacritty.yml</code></li>
-<li><code>$HOME/.alacritty.yml</code></li>
-</ul>
-<h2 id="color-schemes">Color schemes</h2>
-<p>可以從以下兩個網址去找自己喜歡的顏色</p>
-<ul>
-<li><a href="https://github.com/alacritty/alacritty/wiki/Color-schemes">https://github.com/alacritty/alacritty/wiki/Color-schemes</a></li>
-<li><a href="https://github.com/eendroroy/alacritty-theme">https://github.com/eendroroy/alacritty-theme</a></li>
-</ul>
-<h2 id="心得">心得</h2>
-<p>cat log 檔案的時候速度很快，看的感覺很爽快</p>
-<p>很可惜的，macOS + tmux + vim 這個組合還是會很慢</p>
-<p>有幾個 terminal emulator 設計的很華麗，也有跨多平台。
-可惜是用 Electron 開發的，感覺太過肥大，就暫時不考慮了</p>
-<h3 id="refence">Refence</h3>
-<ul>
-<li><a href="https://github.com/alacritty/alacritty">https://github.com/alacritty/alacritty</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>用 ab (apache benchmark) 測試網站效能</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</link>
-			<pubDate>Sat, 29 Feb 2020 01:30:46 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</guid>
-			<description>指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &amp;lt;$Revision: 1826891 $&amp;gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:</description>
-			<content type="html"><![CDATA[<p>指令說明: <a href="http://httpd.apache.org/docs/current/programs/ab.html">http://httpd.apache.org/docs/current/programs/ab.html</a></p>
-<h2 id="安裝">安裝</h2>
-<p>debian</p>
-<pre><code>sudo apt-get install apache2-utils
-</code></pre><p>centos</p>
-<pre><code>yum install httpd-tools
-</code></pre><h2 id="執行結果">執行結果</h2>
-<pre><code>$ ab -n 100 -c 10 https://google.com/
-This is ApacheBench, Version 2.3 &lt;$Revision: 1826891 $&gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking google.com (be patient).....done
-
-
-Server Software:        gws
-Server Hostname:        google.com
-Server Port:            443
-SSL/TLS Protocol:       TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256
-TLS Server Name:        google.com
-
-Document Path:          /
-Document Length:        220 bytes
-
-Concurrency Level:      10
-Time taken for tests:   0.981 seconds
-Complete requests:      100
-Failed requests:        0
-Non-2xx responses:      100
-Total transferred:      71000 bytes
-HTML transferred:       22000 bytes
-Requests per second:    101.95 [#/sec] (mean)
-Time per request:       98.091 [ms] (mean)
-Time per request:       9.809 [ms] (mean, across all concurrent requests)
-Transfer rate:          70.69 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:       41   63  12.2     62     109
-Processing:    16   24   9.0     21      56
-Waiting:       15   24   8.7     21      56
-Total:         64   87  17.8     83     150
-
-Percentage of the requests served within a certain time (ms)
-  50%     83
-  66%     87
-  75%     91
-  80%     94
-  90%    107
-  95%    138
-  98%    150
-  99%    150
- 100%    150 (longest request)
-</code></pre><h2 id="說明">說明</h2>
-<pre><code>Concurrency Level       (併發數量)
-Time taken for tests    (本次壓力測試所花費的總秒數)
-Complete requests       (完成的請求數)
-Failed requests         (失敗的請求數)
-Total transferred       (本次測試的總傳輸量)
-HTML transferred        (本次測試的 HTML 傳輸量)
-Requests per second     (每秒回應多少請求) (平均值)
-Time per request        (每個請求所花費的時間) (ms) (平均值)
-Time per request        (每個請求所花費的時間，所有同時連線數的平均值) (ms) (平均值)
-Transfer rate           (傳輸速率)
-
-Connection Times
-
-min           最小值
-mean[+/-sd]   平均值[標準差]
-median        中位數
-max           最大值
-
-Connect       建立 TCP 連線的時間花費
-Processing    建立 TCP 連線後，Server 處理請求的時間花費
-Waiting       發出請求到接到第一個 Byte 的等待時間
-Total         總花費時間 (Connect + Processing)
-</code></pre><h2 id="常用組合">常用組合</h2>
-<p>100 個請求量，10 個併發</p>
-<pre><code>ab -n 100 -c 10 https://google.com/
-</code></pre><p>10 個併發，執行 10 秒</p>
-<pre><code>ab -t 10 -c 10 https://google.com/
-</code></pre><p>post json，post 內容為 post.json</p>
-<pre><code>ab -n 100 -c 10 -p post.json -T application/json https://httpbin.org/post
-</code></pre><hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://blog.miniasp.com/post/2008/06/30/Using-ApacheBench-ab-to-to-Web-stress-test">https://blog.miniasp.com/post/2008/06/30/Using-ApacheBench-ab-to-to-Web-stress-test</a></li>
-<li><a href="https://gist.github.com/kelvinn/6a1c51b8976acf25bd78">https://gist.github.com/kelvinn/6a1c51b8976acf25bd78</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Swagger 入門</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</link>
-			<pubDate>Sun, 23 Feb 2020 22:21:45 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</guid>
-			<description>Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger</description>
-			<content type="html"><![CDATA[<p>Swagger 官網: <a href="https://swagger.io/">https://swagger.io/</a></p>
-<h2 id="什麼是-swagger">什麼是 Swagger</h2>
-<p>Swagger 提供了一個規格來描述 API 長什麼樣子。</p>
-<p>有了統一的規格，延伸出一系統的工具來輔助開發 API。</p>
-<p>目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: <a href="https://swagger.io/specification/">https://swagger.io/specification/</a></p>
-<h2 id="開源工具">開源工具</h2>
-<p>Swagger 團隊身有開源三種工具</p>
-<h3 id="swagger-codegen">Swagger Codegen</h3>
-<ul>
-<li>產生程式碼，生成假 server, client sdk</li>
-<li><a href="https://github.com/swagger-api/swagger-codegen">https://github.com/swagger-api/swagger-codegen</a></li>
-</ul>
-<h3 id="swagger-editor">Swagger Editor</h3>
-<ul>
-<li>編輯器，有語法檢查，同步產生文件頁面</li>
-<li><a href="https://github.com/swagger-api/swagger-editor">https://github.com/swagger-api/swagger-editor</a></li>
-<li>Live Demo: <a href="https://editor.swagger.io/">https://editor.swagger.io/</a></li>
-</ul>
-<p>用 Docker 執行</p>
-<pre><code>docker run -d -p 80:8080 swaggerapi/swagger-editor
-</code></pre><h3 id="swagger-ui">Swagger UI</h3>
-<ul>
-<li>生成 API 文件頁面</li>
-<li><a href="https://github.com/swagger-api/swagger-ui">https://github.com/swagger-api/swagger-ui</a></li>
-<li>Live Demo: <a href="https://petstore.swagger.io/">https://petstore.swagger.io/</a></li>
-</ul>
-<p>用 Docker 執行</p>
-<pre><code>docker run --rm -p 8080:8080 -e SWAGGER_JSON=/docs/index.yml -v $(PWD)/docs:/docs swaggerapi/swagger-ui
-</code></pre><h2 id="使用-swagger">使用 Swagger</h2>
-<p>目前我是直接在專案的 docker-compose.yml 中放入 swagger-ui，方便我直接查看文件</p>
-<p>而在正式環境中，還要考慮這份文件開放目標，要設定 Proxy 或是 CORS 等等</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>我的工作管理方法</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</link>
-			<pubDate>Wed, 19 Feb 2020 00:41:26 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</guid>
-			<description>在軟體資訊領域，要不停的更新資訊。日常生活中也有著不少的事情要處理。 寫筆記成為健忘的我不可少的重要工具。 不停的摸索，參考 GTD 等方法，拜讀電腦玩</description>
-			<content type="html"><![CDATA[<p>在軟體資訊領域，要不停的更新資訊。日常生活中也有著不少的事情要處理。</p>
-<p>寫筆記成為健忘的我不可少的重要工具。</p>
-<p>不停的摸索，參考 GTD 等方法，拜讀電腦玩物等部落格。</p>
-<p>自己也慢慢，有一套比較喜歡的做法。</p>
-<hr>
-<h2 id="gtd">GTD</h2>
-<p>GTD 原則</p>
-<ul>
-<li>你的大腦是用來思考，而不是用來記憶的。</li>
-<li>將所有事情放在手邊，而不是放在大腦裡。</li>
-</ul>
-<p>GTD 流程</p>
-<ul>
-<li>Capture -&gt; Clarify -&gt; Organize -&gt; Reflect -&gt; Engage</li>
-</ul>
-<h2 id="我的管理流程">我的管理流程</h2>
-<h3 id="在什麼情況下要寫筆記">在什麼情況下要寫筆記</h3>
-<ul>
-<li>臨時快速記錄</li>
-<li>發想記錄</li>
-<li>工作筆記 / 專案管理</li>
-<li>會議記錄</li>
-<li>回顧記錄 / 自省</li>
-<li>日記 / 回憶</li>
-<li>研究筆記 -&gt; 經驗/架構/pattern</li>
-<li>知識管理</li>
-<li>Backlog</li>
-</ul>
-<h3 id="運作流程">運作流程</h3>
-<ul>
-<li>收集 -&gt; 分類 -&gt; 整理 -&gt; 執行 -&gt; 回顧</li>
-</ul>
-<h3 id="工具">工具</h3>
-<p>主要的三種，太多會分散注意力</p>
-<ul>
-<li>行事曆 (Google Calendar</li>
-<li>待辦清單 (Google Task</li>
-<li>筆記本 (Evernote</li>
-</ul>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://www.playpcesor.com/">電腦玩物</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Getting_Things_Done">Getting Things Done - Wikipedia</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>把 PATH 變數列成清單</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</link>
-			<pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-			<description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;quot;:&amp;quot; &amp;quot;\n&amp;quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;quot;${PATH//:/$&#39;\n&#39;}&amp;quot; echo -e &amp;quot;${PATH//:/\n}&amp;quot;</description>
-			<content type="html"><![CDATA[<p>在 Linux 的 Shell 環境中，要查看 <code>PATH</code> 變數時，通常都是 <code>echo $PATH</code></p>
-<p>當 <code>PATH</code> variable 中包含太多資料夾時，跟本看不懂</p>
-<p>改以清單的方式顯示 <code>PATH</code> 內容</p>
-<pre><code>$ echo $PATH | tr &quot;:&quot; &quot;\n&quot;
-/usr/local/sbin
-/usr/local/bin
-/usr/sbin
-/usr/bin
-/sbin
-/bin
-</code></pre><pre><code>echo &quot;${PATH//:/$'\n'}&quot;
-</code></pre><pre><code>echo -e &quot;${PATH//:/\n}&quot;
-</code></pre><p>直接用 echo 的方式好像會因 echo 的版本而有差異</p>
-<p>列成清單之後發現一堆重複的路徑…</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://stackoverflow.com/questions/40599997/how-to-list-path">https://stackoverflow.com/questions/40599997/how-to-list-path</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Install Lastest Firefox on Debian</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</link>
-			<pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
-			<description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
-			<content type="html"><![CDATA[<p>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距</p>
-<p>想要使用最新的 Firefox  就是，直接從官網下載安裝！！！</p>
-<h2 id="下載">下載</h2>
-<pre><code>$ tar xvf firefox-72.0.2.tar.bz2
-$ sudo mv firefox /opt
-</code></pre><h2 id="建立-firefoxdesktop">建立 firefox.desktop</h2>
-<pre><code>$ sudo vi /usr/share/applications/firefox-stable.desktop
-</code></pre><pre><code>[Desktop Entry]
-Name=Firefox Stable
-Comment=Web Browser
-Exec=/opt/firefox/firefox %u
-Terminal=false
-Type=Application
-Icon=/opt/firefox/browser/chrome/icons/default/default128.png
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
-StartupNotify=true
-</code></pre><p>然後享用 Firefox</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://wiki.debian.org/Firefox">https://wiki.debian.org/Firefox</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>架設自己的 Gitlab-CI</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</link>
-			<pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</guid>
-			<description>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個</description>
-			<content type="html"><![CDATA[<p>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。</p>
-<p>一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時，
-突然覺得沒有 CI/CD 的 Gitlab 跟本是個廢物。</p>
-<p>所以我自己試著重新安裝了一台 Gitlab + Gitlab-CI。</p>
-<h2 id="用-apt-在-ubuntu-上安裝-gitlab">用 APT 在 Ubuntu 上安裝 gitlab</h2>
-<p>先安裝基本的套件</p>
-<pre><code>sudo apt-get update
-sudo apt-get install -y curl openssh-server ca-certificates
-</code></pre><p>加入 gitlab 套件庫</p>
-<pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-</code></pre><p>安裝 gitlab</p>
-<pre><code>sudo EXTERNAL_URL=&quot;https://gitlab.example.com&quot; apt-get install gitlab-ce
-
-</code></pre><p>安裝完畢之後，就可以開 Browser 登入 Gitlab 了，預設的帳號是 root</p>
-<p>我用 vm 試過之後，覺得用這方法當要更新時，可能會有點麻煩，所以就改試 Docker 的方法</p>
-<h2 id="用-docker-執行-gitlab">用 Docker 執行 gitlab</h2>
-<p>前置作業就是在 server 上安裝 docker</p>
-<p>接來執行以下 docker 指令，就有一個 gitlab 服務了</p>
-<pre><code>sudo docker run --detach \
-  --hostname gitlab.example.com \
-  --publish 443:443 --publish 80:80 --publish 22:22 \
-  --name gitlab \
-  --restart always \
-  --volume /srv/gitlab/config:/etc/gitlab \
-  --volume /srv/gitlab/logs:/var/log/gitlab \
-  --volume /srv/gitlab/data:/var/opt/gitlab \
-  gitlab/gitlab-ce:latest
-</code></pre><h2 id="用-docker-安裝-gitlab-runner">用 Docker 安裝 gitlab runner</h2>
-<p>執行以下 docker 指令</p>
-<pre><code>docker run -d --name gitlab-runner --restart always \
-  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  gitlab/gitlab-runner:latest
-</code></pre><h2 id="用-docker-compose-安裝-gitlabgitlab-ci">用 docker-compose 安裝 gitlab+gitlab-ci</h2>
-<p>直接使用 docker-compose 更直接快速的執行 gitlab 跟 runner 服務</p>
-<pre><code>version: &quot;3&quot;
-services:
-  web:
-    image: 'gitlab/gitlab-ce:latest'
-    restart: always
-    environment:
-      GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://gitlab.example.com'
-        gitlab_rails['gitlab_shell_ssh_port'] = 2224
-    ports:
-      - '80:80'
-      - '443:443'
-      - '2224:22'
-    volumes:
-      - '/srv/gitlab/config:/etc/gitlab'
-      - '/srv/gitlab/logs:/var/log/gitlab'
-      - '/srv/gitlab/data:/var/opt/gitlab'
-  runner:
-    image: 'gitlab/gitlab-runner:latest'
-    restart: always
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-      - '/srv/gitlab-runner/config:/etc/gitlab-runner'
-</code></pre><p>如果要更新，只要兩個指令</p>
-<pre><code>docker-compose pull
-docker-compose up -d
-</code></pre><h2 id="把-runner-註冊到-gitlab-裡">把 runner 註冊到 gitlab 裡</h2>
-<p>先到 Admin Area &gt; Overview &gt; Runners 頁面，找到 registration token</p>
-<p>執行 register 指令</p>
-<pre><code>docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
-</code></pre><p>選項請參考官網 <a href="https://docs.gitlab.com/runner/register/">https://docs.gitlab.com/runner/register/</a></p>
-<p>如果 Gitlab 有啟用 SSL，你可能需要帶上 crt file</p>
-<pre><code>docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
-  --tls-ca-file=/srv/gitlab/config/ssl/gitlab.example.com.crt
-</code></pre><p>回到 Admin Area &gt; Overview &gt; Runners 頁面，看到 runner 的資料出現了。</p>
-<p>之後就是試用 Gitlab-CI 的時間了！</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://about.gitlab.com/install/">https://about.gitlab.com/install/</a></li>
-<li><a href="https://docs.gitlab.com/omnibus/docker/">https://docs.gitlab.com/omnibus/docker/</a></li>
-<li><a href="https://docs.gitlab.com/runner/register/">https://docs.gitlab.com/runner/register/</a></li>
-<li><a href="https://medium.com/@rukeith/%E5%A6%82%E4%BD%95%E7%94%A8-docker-%E5%BB%BA%E5%88%B6-self-host-%E7%9A%84-gitlab-%E5%92%8C-gitlab-ci-5f70a74a26a5">如何用 Docker 建制 Self-Host 的 GitLab 和 GitLab CI - Rukeith - Medium</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>比較 Git Workflows</title>
-			<link>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</link>
-			<pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</guid>
-			<description>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。 這邊整理一下目前常見的幾種 git 分支管理策略。 Git flow 出處: https://nvie.com/posts/a-successful-git-branching-model/ 分支</description>
-			<content type="html"><![CDATA[<p>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。</p>
-<p>這邊整理一下目前常見的幾種 git 分支管理策略。</p>
-<h2 id="git-flow">Git flow</h2>
-<p><img src="/posts/2020/02/git-flow.png" alt=""></p>
-<p>出處: <a href="https://nvie.com/posts/a-successful-git-branching-model/">https://nvie.com/posts/a-successful-git-branching-model/</a></p>
-<p>分支策略:</p>
-<ul>
-<li>分成主要分支跟支援分支，依照你當下的情況來決定要使用哪種分支</li>
-<li>主要分支
-<ul>
-<li>master: 穩定的隨時可以釋出到正式環境的版本</li>
-<li>develop: 開發的基礎分支</li>
-</ul>
-</li>
-<li>支援分支
-<ul>
-<li>feature: 增加新的功能時使用的分支，從 develop 分支出來，合併到 develop 分支</li>
-<li>release: 當要對開發完成的功能做最終調整準備合併到 master 時使用的分支，從 develop 分支出來，合併到 develop 跟 master 分支</li>
-<li>hotfix: 當 master 有需要馬上排除的狀況時使用的分支，從 master 分支出來，合併到 master 跟 develop 分支</li>
-</ul>
-</li>
-</ul>
-<p>特色:</p>
-<ul>
-<li>分支的使用情境分類清楚</li>
-<li>相對複雜，沒那麼適合 CI/CD</li>
-<li>維護兩個主要分支的成本較高</li>
-<li>如果是小型簡單的專案，master 跟 develop 分支的差別就很小，不太需要維持兩個分支</li>
-</ul>
-<h2 id="github-flow">Github flow</h2>
-<p><img src="/posts/2020/02/github-flow.png" alt=""></p>
-<p>出處: <a href="https://guides.github.com/introduction/flow/">https://guides.github.com/introduction/flow/</a></p>
-<p>分支策略:</p>
-<ul>
-<li>主要分支只有 master</li>
-<li>流程
-<ul>
-<li>建立一個分支</li>
-<li>新增提交</li>
-<li>建立 pull request</li>
-<li>討論與檢視程式碼</li>
-<li>部署</li>
-<li>合併</li>
-</ul>
-</li>
-</ul>
-<p>特色:</p>
-<ul>
-<li>簡單</li>
-<li>適合 CI/CD</li>
-<li>master 保持在隨時可以部署的狀態</li>
-<li>遇到有多個環境或是多個版本時，github flow 就無法支援了</li>
-</ul>
-<h2 id="gitlab-flow">Gitlab flow</h2>
-<p><img src="/posts/2020/02/gitlab-flow.png" alt=""></p>
-<p>出處:</p>
-<ul>
-<li><a href="https://about.gitlab.com/blog/2014/09/29/gitlab-flow/">https://about.gitlab.com/blog/2014/09/29/gitlab-flow/</a></li>
-<li><a href="https://docs.gitlab.com/ee/topics/gitlab_flow.html">https://docs.gitlab.com/ee/topics/gitlab_flow.html</a></li>
-<li><a href="https://about.gitlab.com/blog/2016/07/27/the-11-rules-of-gitlab-flow/">https://about.gitlab.com/blog/2016/07/27/the-11-rules-of-gitlab-flow/</a></li>
-</ul>
-<p>分支策略:</p>
-<ul>
-<li>主要分支: master</li>
-<li>當有持續更新的系統時，運用分支來部署版本到對應的環境</li>
-<li>當有定期釋出版本的軟體時，運用分支來釋出對應的版本</li>
-</ul>
-<p>特色:</p>
-<ul>
-<li>github flow 進階版</li>
-<li>適合 CI/CD</li>
-<li>多種的部署策略
-<ul>
-<li>Environment branches, Release branches, tag</li>
-</ul>
-</li>
-<li>比 github flow 複雜，當你有多個部署環境時，會變的更加復雜</li>
-</ul>
-<h2 id="總結">總結</h2>
-<p>團隊選擇自己的 git workflow 時:</p>
-<ul>
-<li>盡可能的簡單</li>
-<li>能夠適應 CI/CD</li>
-<li>唯一主要分支 master</li>
-<li>配合部署策略</li>
-</ul>
-<p>以上結論，是近期覺得比較合適的重點</p>
-<hr>
-<h2 id="reference">Reference</h2>
-<ul>
-<li><a href="https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf">https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf</a></li>
-<li><a href="https://blog.wu-boy.com/2017/12/github-flow-vs-git-flow/comment-page-1/">https://blog.wu-boy.com/2017/12/github-flow-vs-git-flow/comment-page-1/</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>刪除 Redis 中符合 Pattern 的 Key</title>
-			<link>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</link>
-			<pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
-			<description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
-			<content type="html"><![CDATA[<p>用 redis-cli 組合一個清除的指令</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ redis-cli --scan --pattern users:* <span class="p">|</span> xargs redis-cli unlink
-</code></pre></div><ol>
-<li>用 scan 找出要刪的 key</li>
-<li>透過 xargs 傳給 unlink 刪掉 key</li>
-</ol>
-<h3 id="keys-vs-scan">KEYS vs SCAN</h3>
-<p>一樣都會掃過所有的 key，scan 不會阻塞整個 server，而是迭代的收集結果</p>
-<h3 id="del-vs-unlink">DEL vs UNLINK</h3>
-<p>一樣都是刪除 key ，差別在於 unlink 是非阻塞的刪除，會以非同步的方式回收記憶體</p>
-<h3 id="referece">Referece</h3>
-<ul>
-<li><a href="https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/">https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/</a></li>
-<li><a href="https://redis.io/commands/scan">https://redis.io/commands/scan</a></li>
-<li><a href="https://redis.io/commands/unlink">https://redis.io/commands/unlink</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>配置開發 Python 的 vim 環境</title>
-			<link>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</link>
-			<pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
-			<description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
-			<content type="html"><![CDATA[<p>最近有機會寫一下 Python 就順便來改造一下 vim</p>
-<h2 id="autocompletion">Autocompletion</h2>
-<ul>
-<li><a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a></li>
-<li><a href="https://github.com/deoplete-plugins/deoplete-jedi">https://github.com/deoplete-plugins/deoplete-jedi</a></li>
-</ul>
-<p>jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能</p>
-<p>我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi</p>
-<h3 id="安裝">安裝</h3>
-<pre><code>$ pip install jedi
-</code></pre><h3 id="vimrc">vimrc</h3>
-<p>使用 Plug 或其他 vim 套件管理安裝</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="nx">Plug</span> <span class="s1">&#39;deoplete-plugins/deoplete-jedi&#39;</span><span class="p">,</span> { <span class="s1">&#39;for&#39;</span>: <span class="s1">&#39;python&#39;</span> }<span class="err">
-</span></code></pre></div><p>截圖:</p>
-<p><img src="/posts/2019/11/Screenshot_from_2019-11-24-21-20-37.png" alt=""></p>
-<h2 id="formatter--linter">Formatter &amp; Linter</h2>
-<ul>
-<li><a href="https://github.com/google/yapf">https://github.com/google/yapf</a></li>
-<li><a href="https://github.com/timothycrosley/isort">https://github.com/timothycrosley/isort</a></li>
-<li><a href="http://flake8.pycqa.org/">http://flake8.pycqa.org/</a></li>
-</ul>
-<p>yapf google 提供的 python code formatter</p>
-<p>isort 則是會幫忙整理 import 的順序跟組合</p>
-<p>flake8 檢查 python 的 coding style 是否依照 pep8</p>
-<p>以上三個工具都可以跟 ale 整合，所以 vim 中只要對 ale 安裝跟設定就好</p>
-<h3 id="安裝-1">安裝</h3>
-<pre><code>$ pip install yapf isort flake8
-</code></pre><h3 id="vimrc-1">vimrc</h3>
-<p>ale 的 python linter 預設有 flake8，所以這邊就不多做設定了</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="nx">Plug</span> <span class="s1">&#39;dense-analysis/ale&#39;</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="k">let</span> <span class="nx">g</span>:<span class="nx">ale_fixers</span> <span class="p">=</span> {<span class="err">
-</span><span class="err"></span>\   <span class="s1">&#39;python&#39;</span>: [<span class="s1">&#39;yapf&#39;</span><span class="p">,</span> <span class="s1">&#39;isort&#39;</span>]<span class="p">,</span><span class="err">
-</span><span class="err"></span>\ }<span class="err">
-</span></code></pre></div><p>截圖:</p>
-<p><img src="/posts/2019/11/Screenshot_from_2019-11-24_23-01-01.png" alt=""></p>
-<h2 id="總結">總結</h2>
-<p>ale 意外的強大，整合了多數的 Linter 跟 Fixer</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>在 Amazon Linux 2 上安裝 Docker</title>
-			<link>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</link>
-			<pubDate>Wed, 20 Nov 2019 00:42:43 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</guid>
-			<description>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum</description>
-			<content type="html"><![CDATA[<p>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！</p>
-<p>原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS</p>
-<p>沒辦法直接使用一般的 yum 去安裝</p>
-<p>而是提供 <code>amazon-linux-extras</code> 這個工具讓你來使用</p>
-<h2 id="在-amazon-linux-2-安裝-docker">在 Amazon Linux 2 安裝 docker</h2>
-<ol start="0">
-<li>安裝 docker</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo yum update -y
-
-$ sudo amazon-linux-extras install docker
-</code></pre></div><ol start="0">
-<li>啟用 docker 服務</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo service docker start
-</code></pre></div><ol start="0">
-<li>將 ec2-user 加入 docker 群組</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo usermod -a -G docker ec2-user
-</code></pre></div><ol start="0">
-<li>
-<p>加入群組後要登出再登入才會生效</p>
-</li>
-<li>
-<p>最後做個簡單的測試</p>
-</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker info
-</code></pre></div><h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://docs.aws.amazon.com/zh_tw/AmazonECS/latest/developerguide/docker-basics.html">Amazon ECS 的 Docker 基本概念</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>在 Mac 上使用 GNU Commands</title>
-			<link>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</link>
-			<pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</guid>
-			<description>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。 macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大 這讓習慣以 Linux 開發程式的</description>
-			<content type="html"><![CDATA[<p>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。</p>
-<p>macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大</p>
-<p>這讓習慣以 Linux 開發程式的人很不適應。</p>
-<p>好在 Linux 裡常用的 command 都是 gnu 的自由軟體，我們可以直接使用 <code>brew</code> 安裝到 macOS 中</p>
-<h2 id="install-gnu-tools">Install GNU Tools</h2>
-<p>直接使用以下指令把一些常用的工具裝好</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ brew install coreutils findutils gnu-tar gnu-sed gnu-which gawk gnutls grep gzip wget
-</code></pre></div><p>剛安裝好的 commands 會已掛上前綴 g 的型式設定在 terminal 環境中，如果想要直接使用則需要把 gnubin 資料夾加入 PATH 中</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/opt/coreutils/libexec/gnubin:</span><span class="nv">$PATH</span><span class="s2">&#34;</span>
-</code></pre></div><h3 id="colorize-ls">Colorize ls</h3>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">alias</span> <span class="nv">ls</span><span class="o">=</span><span class="s1">&#39;ls --color=tty&#39;</span>
-</code></pre></div><h2 id="update-gnu-tools">Update GNU Tools</h2>
-<p>有一些 macOS 本身就有安裝的工具也順手更新一下</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ brew install bash less make
-</code></pre></div><h2 id="update-non-gnu-tools">Update Non GNU Tools</h2>
-<p>另外再裝幾個好用的開源工具</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ brew install git python rsync zsh
-</code></pre></div><hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands">List of GNU Core Utilities commands - Wikipedia</a></li>
-<li><a href="https://apple.stackexchange.com/questions/69223/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities">terminal - How to replace Mac OS X utilities with GNU core utilities? - Ask Different</a></li>
-<li><a href="https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/">Install and Use GNU Command Line Tools on macOS/OS X - Top Bug Net</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Log Rotate With Zap Logger</title>
-			<link>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</link>
-			<pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</guid>
-			<description>github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap</description>
-			<content type="html"><![CDATA[<p>github.com/uber-go/zap, zap 是目前我比較常用的 logger package</p>
-<p>在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理</p>
-<p>zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package</p>
-<p>zap 官方的 FAQ 中 <a href="https://github.com/uber-go/zap/blob/master/FAQ.md#does-zap-support-log-rotation">zap/FAQ.md</a></p>
-<p>就有一個基本的 example</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">w</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">AddSync</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lumberjack</span><span class="p">.</span><span class="nx">Logger</span><span class="p">{</span>
-    <span class="nx">Filename</span><span class="p">:</span>   <span class="s">&#34;/var/log/myapp/foo.log&#34;</span><span class="p">,</span>
-    <span class="nx">MaxSize</span><span class="p">:</span>    <span class="mi">500</span><span class="p">,</span> <span class="c1">// megabytes
-</span><span class="c1"></span>    <span class="nx">MaxBackups</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nx">MaxAge</span><span class="p">:</span>     <span class="mi">28</span><span class="p">,</span> <span class="c1">// days
-</span><span class="c1"></span><span class="p">})</span>
-<span class="nx">core</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewCore</span><span class="p">(</span>
-    <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewJSONEncoder</span><span class="p">(</span><span class="nx">zap</span><span class="p">.</span><span class="nf">NewProductionEncoderConfig</span><span class="p">()),</span>
-    <span class="nx">w</span><span class="p">,</span>
-    <span class="nx">zap</span><span class="p">.</span><span class="nx">InfoLevel</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="nx">logger</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">core</span><span class="p">)</span>
-</code></pre></div><p>如果要設定成把 log message 同時寫到檔案跟畫面的話，則要使用使用 zapcore.NewMultiWriteSyncer(&hellip;)</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">writeFile</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">AddSync</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lumberjack</span><span class="p">.</span><span class="nx">Logger</span><span class="p">{</span>
-    <span class="nx">Filename</span><span class="p">:</span> <span class="s">&#34;service.log&#34;</span><span class="p">,</span>
-    <span class="nx">MaxSize</span><span class="p">:</span>  <span class="mi">10</span><span class="p">,</span> <span class="c1">// megabytes
-</span><span class="c1"></span>    <span class="nx">MaxAge</span><span class="p">:</span>   <span class="mi">28</span><span class="p">,</span> <span class="c1">// days
-</span><span class="c1"></span><span class="p">})</span>
-<span class="nx">writeStdout</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">AddSync</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">)</span>
-
-<span class="nx">core</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewCore</span><span class="p">(</span>
-  <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewJSONEncoder</span><span class="p">(</span><span class="nx">zap</span><span class="p">.</span><span class="nf">NewProductionEncoderConfig</span><span class="p">()),</span>
-  <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewMultiWriteSyncer</span><span class="p">(</span><span class="nx">writeFile</span><span class="p">,</span> <span class="nx">writeStdout</span><span class="p">),</span>
-  <span class="nx">zap</span><span class="p">.</span><span class="nx">InfoLevel</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="nx">logger</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">core</span><span class="p">)</span>
-</code></pre></div><p>上面設定的 logger 會缺少 caller 跟 stack trace 的資訊，需要再加入 options</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">logger</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span>
-    <span class="nx">core</span><span class="p">,</span>
-    <span class="nx">zap</span><span class="p">.</span><span class="nf">AddCaller</span><span class="p">(),</span>
-    <span class="nx">zap</span><span class="p">.</span><span class="nf">AddStacktrace</span><span class="p">(</span><span class="nx">zap</span><span class="p">.</span><span class="nx">ErrorLevel</span><span class="p">),</span>
-<span class="p">)</span>
-</code></pre></div>]]></content>
-		</item>
-		
-		<item>
-			<title>Bash 常用快捷鍵</title>
-			<link>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</link>
-			<pubDate>Sun, 15 Sep 2019 13:15:40 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</guid>
-			<description>記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯</description>
-			<content type="html"><![CDATA[<p>記錄一些比較常用/實用(可能)的快捷鍵</p>
-<h2 id="控制">控制</h2>
-<ul>
-<li><strong>Ctrl+C</strong>: 中斷正在執行的程式</li>
-<li><strong>Ctrl+D</strong>: 結束 shell (同 exit)</li>
-<li><strong>Ctrl+Z</strong>: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來)</li>
-<li><strong>Ctrl+X Ctrl+E</strong>: 使用 vim 編輯 script 並一次執行</li>
-</ul>
-<h2 id="移動">移動</h2>
-<ul>
-<li><strong>Ctrl+A</strong>: 到此行最前面 (同 Home 鍵)</li>
-<li><strong>Ctrl+E</strong>: 到此行最後面 (同 End 鍵)</li>
-<li><strong>Alt+B</strong>: 前進一個字元</li>
-<li><strong>Alt+F</strong>: 後退一個字元</li>
-<li><strong>Ctrl+B</strong>: 前進一格</li>
-<li><strong>Ctrl+F</strong>: 後退一格</li>
-</ul>
-<h2 id="刪除">刪除</h2>
-<ul>
-<li><strong>Ctrl+H</strong>: 移除前一個字元 (同 Backspace 鍵)</li>
-<li><strong>Ctrl+D</strong>: 移除後一個字元 (同 Delete 鍵)</li>
-<li><strong>Ctrl+U</strong>: 移除游標之前的所有文字</li>
-<li><strong>Ctrl+K</strong>: 移除游標之後的所有文字</li>
-</ul>
-<h2 id="歷史指令">歷史指令</h2>
-<ul>
-<li><strong>Ctrl+P</strong>: 上一個指令</li>
-<li><strong>Ctrl+N</strong>: 下一個指令</li>
-<li><strong>Ctrl+R</strong>: 搜尋指令</li>
-<li><strong>Ctrl+R</strong>: 上一個</li>
-<li><strong>Ctrl+Shift+R</strong>: 下一個</li>
-<li><strong>Ctrl+G</strong>: 取消搜尋</li>
-</ul>
-<h2 id="畫面">畫面</h2>
-<ul>
-<li><strong>Ctrl+L</strong>: 清空畫面 (同 clear)</li>
-<li><strong>Ctrl+S</strong>: 凍結畫面輸出</li>
-<li><strong>Ctrl+Q</strong>: 回復畫面輸出</li>
-</ul>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://blog.longwin.com.tw/2006/09/bash_hot_key_2006/">Bash Shell 快速鍵 | Tsung&rsquo;s Blog</a></li>
-<li><a href="http://teohm.github.io/blog/2012/01/04/shortcuts-to-move-faster-in-bash-command-line/">Shortcuts to move faster in Bash command line - teohm.dev</a></li>
-<li><a href="https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/">The Best Keyboard Shortcuts for Bash</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>記錄目前正在使用的字型</title>
-			<link>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</link>
-			<pubDate>Tue, 23 Jul 2019 00:23:44 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</guid>
-			<description>每天都要看螢幕超過八小時的情況下，漸漸的想對自己的好一點，找一些讓自己眼睛比較舒服的字型。 一個每天都要盯著 terminal 的工程師，更是要選個看得清楚又容</description>
-			<content type="html"><![CDATA[<p>每天都要看螢幕超過八小時的情況下，漸漸的想對自己的好一點，找一些讓自己眼睛比較舒服的字型。</p>
-<p>一個每天都要盯著 terminal 的工程師，更是要選個看得清楚又容易辨視的字型來寫 code</p>
-<h2 id="目前使用的字型">目前使用的字型</h2>
-<h3 id="等寬">等寬</h3>
-<ul>
-<li>Ubuntu Mono Regular</li>
-</ul>
-<h3 id="中文">中文</h3>
-<ul>
-<li>思源黑體 / Noto Sans CJK TC</li>
-<li>台北黑體 / Taipei Sans TC Regular</li>
-</ul>
-<h3 id="考慮使用的字型">考慮使用的字型</h3>
-<ul>
-<li>Source Code Pro</li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>php 的邏輯運算子  and vs &amp;&amp;</title>
-			<link>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</link>
-			<pubDate>Fri, 19 Jul 2019 01:01:55 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</guid>
-			<description>邏輯運算子 php 的邏輯運算子除了 &amp;amp;&amp;amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想</description>
-			<content type="html"><![CDATA[<h2 id="邏輯運算子">邏輯運算子</h2>
-<p>php 的邏輯運算子除了 &amp;&amp; 跟 || 之外，還有 and 跟 or</p>
-<p>他們之間的差異在有不同的優先順序 <a href="https://www.php.net/manual/en/language.operators.precedence.php">Precedence</a></p>
-<p>而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想像的不一樣的成果</p>
-<h3 id="使用-">使用 &amp;&amp;</h3>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nv">$a</span> <span class="o">=</span> <span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="c1">// equal
-</span><span class="c1"></span><span class="nv">$a</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">);</span>
-
-<span class="c1">// $a: false
-</span></code></pre></div><h3 id="使用-and">使用 and</h3>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nv">$a</span> <span class="o">=</span> <span class="k">true</span> <span class="k">and</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="c1">// equal
-</span><span class="c1"></span><span class="p">(</span><span class="nv">$a</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span> <span class="k">and</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="c1">// $a: true
-</span></code></pre></div><p>&ldquo;=&rdquo; 優先順序高於 &ldquo;and&rdquo; &ldquo;or&rdquo;</p>
-<h2 id="and-跟-or-的其他用途">and 跟 or 的其他用途</h2>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nx">do_something</span><span class="p">()</span> <span class="k">and</span> <span class="nx">success</span><span class="p">()</span> <span class="k">or</span> <span class="nx">failure</span><span class="p">();</span>
-</code></pre></div><p>do_something() 成功的話會執行 success()，失敗的話會執行 failure()</p>
-<p>類似 bash 中常見的用法</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ cmd1 <span class="o">&amp;&amp;</span> cmd2 <span class="o">||</span> cmd3
-
-$ <span class="nb">test</span> -d ./project <span class="o">||</span> mkdir ./project
-</code></pre></div><h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://stackoverflow.com/questions/5998309/logical-operators-or-or">https://stackoverflow.com/questions/5998309/logical-operators-or-or</a></li>
-<li><a href="https://www.php.net/manual/en/language.operators.precedence.php">https://www.php.net/manual/en/language.operators.precedence.php</a></li>
-<li><a href="https://stackoverflow.com/questions/2803321/and-vs-as-operator">https://stackoverflow.com/questions/2803321/and-vs-as-operator</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>離開 spf13-vim 的日子</title>
-			<link>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</link>
-			<pubDate>Wed, 10 Apr 2019 16:22:20 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</guid>
-			<description>前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim</description>
-			<content type="html"><![CDATA[<h2 id="前言">前言</h2>
-<p>回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 <a href="https://github.com/spf13/spf13-vim">spf13-vim</a>，便開始的了快樂的 vim 生活。</p>
-<p>spf13-vim 用了數個月之後，熟悉了不少的設定方式，也調整不少符合自己習慣的設定。</p>
-<p>移掉一些老舊的套件，掛上一些新套件。</p>
-<p>但是 spf-13 原作終究是停止維護的，要一直從 spf13 擴充做調整會被受限。</p>
-<p>所以，決定是時候自己重新組織適合自己的工作環境。也記錄一下這次我是怎麼調效我的 vimrc 的。</p>
-<h2 id="vim-基本設定">vim 基本設定</h2>
-<p>主要是參考 spf13-vim 的，畢竟多數的習慣是雷同的</p>
-<h2 id="vim-套件">vim 套件</h2>
-<p>要尋找套件可以到 <a href="https://vimawesome.com/">https://vimawesome.com/</a> 上面尋找。</p>
-<p>首先是套件管理，從幾個之名的工具中，選一下自己滿意的。</p>
-<p>這次選擇使用 <code>junegunn/vim-plug</code></p>
-<p>再來是 UI 改善：</p>
-<ul>
-<li>scrooloose/nerdtree</li>
-<li>majutsushi/tagbar</li>
-<li>vim-airline/vim-airline</li>
-<li>luochen1990/rainbow</li>
-<li>shougo/denite.nvim</li>
-</ul>
-<p>colorscheme 的話，個人喜歡 <code>morhetz/gruvbox</code></p>
-<p>整合工具，整合 git, lint, tmux 等等的工具：</p>
-<ul>
-<li>airblade/vim-gitgutter</li>
-<li>w0rp/ale</li>
-<li>christoomey/vim-tmux-navigator</li>
-<li>benmills/vimux</li>
-</ul>
-<p>自動完成，選擇沒那麼肥大的 deoplete：</p>
-<ul>
-<li>Shougo/deoplete.nvim</li>
-<li>Shougo/neosnippet.vim</li>
-</ul>
-<p>程式語言，幾乎每個程式語言都會有自己的開發輔助工具，而 vim 套件就是負責整合：</p>
-<ul>
-<li>fatih/vim-go</li>
-<li>StanAngeloff/php.vim</li>
-<li>phpactor/phpactor</li>
-<li>2072/php-indenting-for-vim</li>
-</ul>
-<h2 id="key-map">key map</h2>
-<p>先把 leader key 換成自己習慣的：</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="k">let</span> <span class="nx">mapleader</span> <span class="p">=</span> <span class="s1">&#39;,&#39;</span> <span class="c">&#34; Replace leader to &#39;,&#39;, default leader is &#39;\&#39;</span><span class="err">
-</span></code></pre></div><p>再來就是有海量的快捷鍵要設定跟記憶，</p>
-<p>好在大部份作者會給一些範本，也可以在網上路參加別人的設定。</p>
-<h2 id="後續">後續</h2>
-<p>最後就是一寫程式一邊視自己的習慣調整設定</p>
-<h2 id="結語">結語</h2>
-<p>我的 vimrc 在我的 dotfiles 裡面 <a href="https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc">https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc</a></p>
-<p>回顧一下四年前自己整理曾經整理過的 vimrc ，當時才只有 87 行。</p>
-<p>目前整理的有 436 行，資訊量成長 5 倍！！！</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Github Security Alert</title>
-			<link>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</link>
-			<pubDate>Tue, 05 Feb 2019 14:31:33 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</guid>
-			<description>最近信箱會出現來自 Github 的信件 Github 現在會檢查你的專案中是否有用到有漏洞的套件版本，如果都沒有處理的話，還會一天來一封… 這只是個測試用專案，好像應該</description>
-			<content type="html"><![CDATA[<p>最近信箱會出現來自 Github 的信件</p>
-<p><img src="posts/2019/02/Screenshot_from_2019-02-05_14-29-58.png" alt=""></p>
-<p>Github 現在會檢查你的專案中是否有用到有漏洞的套件版本，如果都沒有處理的話，還會一天來一封…</p>
-<p>這只是個測試用專案，好像應該來處理一下，不然那信件有點煩人。</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Install Virtualbox 5.2 On Debian Testing</title>
-			<link>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</link>
-			<pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
-			<description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
-			<content type="html"><![CDATA[<h2 id="增加-source-list">增加 source list</h2>
-<p>debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題</p>
-<pre><code>echo &quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list
-</code></pre><h2 id="增加-apt-key">增加 apt key</h2>
-<pre><code>wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-</code></pre><h2 id="安裝-virtualbox">安裝 Virtualbox</h2>
-<pre><code>sudo apt update
-sudo apt install virtualbox-5.2
-</code></pre><p>ps. Virtualbox 6.0 在 2018/12/18 發佈了</p>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>X1c 6th 在 Debian 裡優化 SSD</title>
-			<link>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</link>
-			<pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
-			<description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
-			<content type="html"><![CDATA[<h2 id="ssd-優化的幾個要點">SSD 優化的幾個要點</h2>
-<ul>
-<li>啟用 SSD 的 Trim 功能</li>
-<li>減少非必要的寫入動作</li>
-<li>掛載暫存資料夾到 Ram 上</li>
-</ul>
-<h2 id="啟用排程-trim">啟用排程 Trim</h2>
-<pre><code>$ sudo systemctl enable fstrim.timer
-Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer.
-</code></pre><p>ps. 不建議使用 /etc/fstab 的 discard 選項</p>
-<h2 id="增加-mount-options">增加 Mount Options</h2>
-<p>修改前備份 fstab</p>
-<pre><code>sudo cp /etc/fstab /etc/fstab.bak
-</code></pre><p>修改 <code>/etc/fstab</code>，mount options 增加 <code>noatime</code></p>
-<p>mount options 的說明可以在 <code>man mount</code> 查到</p>
-<h2 id="啟用-lvm-trim">啟用 LVM Trim</h2>
-<p>修改 <code>/etc/lvm/lvm.conf</code>， <code>issue_discards = 0</code> 為 <code>issue_discards = 1</code></p>
-<h2 id="掛載-tmpfs">掛載 tmpfs</h2>
-<p>將 /tmp 掛載到 tmpfs 上</p>
-<p>sudo vi /etc/fstab 加上以下設定</p>
-<pre><code>tmpfs   /tmp    tmpfs   defaults,noatime,nodev,nosuid,mode=1777,size=2G 0       0
-</code></pre><h2 id="測試-ssd-速度">測試 ssd 速度</h2>
-<pre><code>sudo hdparm -Tt --direct /dev/nvme0n1
-</code></pre><h2 id="nvme">NVMe</h2>
-<p>要查看 NVMe SSD 的資訊無法使用 hdparm 查詢，要安裝 nvme-cli</p>
-<hr>
-<h3 id="referece">Referece</h3>
-<ul>
-<li><a href="https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/">https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/</a></li>
-<li><a href="http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto">http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto</a></li>
-<li><a href="https://wiki.debian.org/SSDOptimization">https://wiki.debian.org/SSDOptimization</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe">https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Solid_state_drive">https://wiki.archlinux.org/index.php/Solid_state_drive</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>查詢 Linux 上的一些 Unique ID</title>
-			<link>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</link>
-			<pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
-			<description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
-			<content type="html"><![CDATA[<p>每台機器都會有一些自己唯一的 id</p>
-<p>在開發程式中，可能會有需要用來分辨機器</p>
-<h2 id="machine-id">machine-id</h2>
-<pre><code>$ cat /etc/machine-id
-
-$ cat /var/lib/dbus/machine-id
-</code></pre><h2 id="product_uuid">product_uuid</h2>
-<pre><code>$ sudo cat /sys/class/dmi/id/product_uuid
-</code></pre><h2 id="mac-address">MAC address</h2>
-<pre><code>$ ip link
-</code></pre><h2 id="hard-disk-uuid">Hard Disk UUID</h2>
-<pre><code>$ blkid
-
-$ ls -l /dev/disk/by-uuid
-</code></pre><h2 id="random-uuid">random UUID</h2>
-<pre><code>$ cat /proc/sys/kernel/random/uuid
-
-$ uuidgen
-</code></pre><h3 id="reference">Reference</h3>
-<p><a href="https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/">https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/</a>
-<a href="http://0pointer.de/blog/projects/ids.html">http://0pointer.de/blog/projects/ids.html</a>
-<a href="https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/">https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>ThinkPad X1 Carbon 6th 的 Debian 安裝記錄</title>
-			<link>https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/</link>
-			<pubDate>Mon, 03 Dec 2018 14:53:59 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/</guid>
-			<description>入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&amp;gt; Secure Boot</description>
-			<content type="html"><![CDATA[<p>入手 ThinkPad X1c 來當工作機</p>
-<p>在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後，
-就把 OS 換成 Debian 了</p>
-<h2 id="安裝-debian-之前">安裝 Debian 之前</h2>
-<p>更新 BIOS 到目前最新的版本 1.34</p>
-<p>調整以下的設定:</p>
-<ul>
-<li>Security -&gt; Secure Boot - Set to &ldquo;Disabled&rdquo;</li>
-<li>Config -&gt; Power -&gt; Sleep State - Set to &ldquo;Linux&rdquo;</li>
-<li>Config -&gt; Thunderbolt BIOS Assist Mode - Set to &ldquo;Enabled&rdquo;</li>
-</ul>
-<h2 id="安裝-debian">安裝 Debian</h2>
-<p>Linux Distribute: Debian testing</p>
-<p>Partition: whole disk with LVM</p>
-<p>Desktop: gnome</p>
-<h2 id="安裝-debian-之後">安裝 Debian 之後</h2>
-<h2 id="設定-sudo">設定 sudo</h2>
-<pre><code># adduser nyo sudo
-# reboot
-</code></pre><h2 id="修改-apt-source-list">修改 apt source list</h2>
-<p>source list 加入 contrib non-free</p>
-<pre><code>deb http://deb.debian.org/debian/ buster main contrib non-free
-deb-src http://deb.debian.org/debian/ buster main contrib non-free
-
-deb http://security.debian.org/debian-security buster/updates main contrib non-free
-deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
-</code></pre><p><code>$ sudo apt install aptitude</code></p>
-<h2 id="安裝-firmware-microcode-fwupd">安裝 firmware, microcode, fwupd</h2>
-<p>wifi, bluetooth 等裝置需要的 firmware</p>
-<p><code>$ sudo apt install firmware-iwlwifi firmware-misc-nonfree</code></p>
-<p>Intel microcode</p>
-<p><code>$ sudo apt install intel-microcode</code></p>
-<p>fwup BIOS 更新軟體</p>
-<p><code>$ sudo apt install fwupd</code></p>
-<h2 id="下載自己的-dotfiles">下載自己的 dotfiles</h2>
-<p>建立 ssh key: <code>$ ssh-keygen -t rsa -b 4096</code></p>
-<pre><code>$ sudo apt install -y git
-$ git clone git@github.com:nyogjtrc/dotfiles.git .dotfiles
-</code></pre><h2 id="安裝常用的-cli-程式">安裝常用的 cli 程式</h2>
-<p><code>$ ~/.dotfiles/installation/basic.sh</code></p>
-<p><a href="https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh">https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh</a></p>
-<h2 id="安裝-gcin-輸入法">安裝 gcin 輸入法</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt install gcin
-$ sudo im-config
-</code></pre></div><p>放置嘸蝦米 gtab 到 <code>~/.gcin/</code></p>
-<h2 id="gdm3-停用-wayland">gdm3 停用 Wayland</h2>
-<p>過程遇到一些問題，像是登入畫面無法正常顯示，輸入法未啟動等等</p>
-<p>最後是停用 Wayland 就正常</p>
-<p>修改 <code>/etc/gdm3/daemon.conf</code></p>
-<pre><code>[daemon]
-# Uncomment the line below to force the login screen to use Xorg
-WaylandEnable=false
-</code></pre><h2 id="安裝-gnome-sell-extension">安裝 gnome sell extension</h2>
-<p><a href="posts/2018/12/gnome-shell-extensions-currently-using">目前使用中的 GNOME Shell Extensions</a></p>
-<h2 id="設定-gnome-桌面主題">設定 gnome 桌面主題</h2>
-<p>NumixPack: <a href="https://www.opendesktop.org/p/1137261/">https://www.opendesktop.org/p/1137261/</a></p>
-<p>截圖
-<img src="posts/2018/12/Screenshot_from_2018-12-02_20-46-54.png" alt=""></p>
-<h2 id="安裝防火牆">安裝防火牆</h2>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt install ufw
-$ sudo ufw <span class="nb">enable</span>
-</code></pre></div><h2 id="grub-開機時間">grub 開機時間</h2>
-<p><code>sudo vi /etc/default/grub</code></p>
-<p>預設為 5 秒 <code>GRUB_TIMEOUT=5</code> 改成 1 秒 <code>GRUB_TIMEOUT=1</code></p>
-<p>存檔後更新 grub: <code>sudo update-grub</code></p>
-<h2 id="待處理">待處理</h2>
-<ul>
-<li>電源管理</li>
-<li>SSD 優化</li>
-</ul>
-<h2 id="目前不支援的装置">目前不支援的装置</h2>
-<ul>
-<li>4G Fibocom L850-GL</li>
-<li>Fingerprint Reader</li>
-</ul>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)">https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)</a></li>
-<li><a href="https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5">https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>目前使用中的 GNOME Shell Extensions</title>
-			<link>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</link>
-			<pubDate>Sat, 01 Dec 2018 21:03:36 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</guid>
-			<description>記錄一下目前會用的 Extensions Gnome Shell Extensions 網址: https://extensions.gnome.org/ 增加操作性 Top Panel Workspace Scroll https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/ 外觀調整 User Themes https://extensions.gnome.org/extension/19/user-themes/ Hide Activities Button https://extensions.gnome.org/extension/744/hide-activities-button/ Panel OSD https://extensions.gnome.org/extension/708/panel-osd/ Remove Dropdown Arrows https://extensions.gnome.org/extension/800/remove-dropdown-arrows/ 實用功能 Caffeine https://extensions.gnome.org/extension/517/caffeine/ Lock Keys https://extensions.gnome.org/extension/36/lock-keys/ Extensions https://extensions.gnome.org/extension/1036/extensions/ Suspend Button https://extensions.gnome.org/extension/826/suspend-button/ Night Light Slider https://extensions.gnome.org/extension/1276/night-light-slider/ Clipboard Indicator https://extensions.gnome.org/extension/779/clipboard-indicator/ OpenWeather https://extensions.gnome.org/extension/750/openweather/</description>
-			<content type="html"><![CDATA[<p>記錄一下目前會用的 Extensions</p>
-<p>Gnome Shell Extensions 網址: <a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a></p>
-<h2 id="增加操作性">增加操作性</h2>
-<h3 id="top-panel-workspace-scroll">Top Panel Workspace Scroll</h3>
-<p><a href="https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/">https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/</a></p>
-<h2 id="外觀調整">外觀調整</h2>
-<h3 id="user-themes">User Themes</h3>
-<p><a href="https://extensions.gnome.org/extension/19/user-themes/">https://extensions.gnome.org/extension/19/user-themes/</a></p>
-<h3 id="hide-activities-button">Hide Activities Button</h3>
-<p><a href="https://extensions.gnome.org/extension/744/hide-activities-button/">https://extensions.gnome.org/extension/744/hide-activities-button/</a></p>
-<h3 id="panel-osd">Panel OSD</h3>
-<p><a href="https://extensions.gnome.org/extension/708/panel-osd/">https://extensions.gnome.org/extension/708/panel-osd/</a></p>
-<h3 id="remove-dropdown-arrows">Remove Dropdown Arrows</h3>
-<p><a href="https://extensions.gnome.org/extension/800/remove-dropdown-arrows/">https://extensions.gnome.org/extension/800/remove-dropdown-arrows/</a></p>
-<h2 id="實用功能">實用功能</h2>
-<h3 id="caffeine">Caffeine</h3>
-<p><a href="https://extensions.gnome.org/extension/517/caffeine/">https://extensions.gnome.org/extension/517/caffeine/</a></p>
-<h3 id="lock-keys">Lock Keys</h3>
-<p><a href="https://extensions.gnome.org/extension/36/lock-keys/">https://extensions.gnome.org/extension/36/lock-keys/</a></p>
-<h3 id="extensions">Extensions</h3>
-<p><a href="https://extensions.gnome.org/extension/1036/extensions/">https://extensions.gnome.org/extension/1036/extensions/</a></p>
-<h3 id="suspend-button">Suspend Button</h3>
-<p><a href="https://extensions.gnome.org/extension/826/suspend-button/">https://extensions.gnome.org/extension/826/suspend-button/</a></p>
-<h3 id="night-light-slider">Night Light Slider</h3>
-<p><a href="https://extensions.gnome.org/extension/1276/night-light-slider/">https://extensions.gnome.org/extension/1276/night-light-slider/</a></p>
-<h3 id="clipboard-indicator">Clipboard Indicator</h3>
-<p><a href="https://extensions.gnome.org/extension/779/clipboard-indicator/">https://extensions.gnome.org/extension/779/clipboard-indicator/</a></p>
-<h3 id="openweather">OpenWeather</h3>
-<p><a href="https://extensions.gnome.org/extension/750/openweather/">https://extensions.gnome.org/extension/750/openweather/</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Error Handling in Golang</title>
-			<link>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</link>
-			<pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
-			<description>Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
-			<content type="html"><![CDATA[<h2 id="golang-原生的-error-type">Golang 原生的 Error Type</h2>
-<p>先認識 golang 的 error interface</p>
-<pre><code>type error interface {
-    Error() string
-}
-</code></pre><p>只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError</p>
-<p><a href="https://golang.org/pkg/os/#PathError">https://golang.org/pkg/os/#PathError</a></p>
-<pre><code>// PathError records an error and the operation and file path that caused it.
-type PathError struct {
-	Op   string
-	Path string
-	Err  error
-}
-
-func (e *PathError) Error() string { return e.Op + &quot; &quot; + e.Path + &quot;: &quot; + e.Err.Error() }
-</code></pre><h2 id="建立自己程式裡的-error-struct">建立自己程式裡的 Error struct</h2>
-<p>依照使用情境 error strcut</p>
-<h3 id="restful-api-error">RESTful API Error</h3>
-<p>RESTful API 除了訊息之後，要幫各種情況的錯誤加上編號，方便程式做後續的應對</p>
-<p>並可以把其他來源的錯誤一並放入，方便追蹤錯誤</p>
-<p>strcut fields: code, message, error</p>
-<p>example:</p>
-<pre><code>// AppError struct with code and message
-type AppError struct {
-	code    int
-	message string
-	err     error
-}
-
-// New create Error instance
-func New(code int, message string, err error) *AppError {
-	return &amp;AppError{code, message, err}
-}
-
-// Error getter
-func (e *AppError) Error() string {
-	return fmt.Sprintf(&quot;%d: %s&quot;, e.code, e.message)
-}
-
-// Code getter
-func (e *AppError) Code() int {
-	return e.code
-}
-
-// Message getter
-func (e *AppError) Message() string {
-	return e.message
-}
-
-// ErrorSummry getter
-func (e *AppError) ErrorSummry() string {
-	return fmt.Sprintf(&quot;%d: %s, [%s]&quot;, e.code, e.message, e.err.Error())
-}
-</code></pre><h3 id="api-gateway-error">API Gateway Error</h3>
-<p>Gateway 公開提供服務在網路上，有時候會有安全性的需要，要隱藏一些內部錯誤訊息</p>
-<p>但是維運上還是會需要有足夠的資訊來了解服務當下的狀況，可以放一個內部的代碼，多一點線索</p>
-<p>strcut fields: code, message, internal code</p>
-<p>example:</p>
-<pre><code>// Error for gateway
-type Error struct {
-	code      int
-	message   string
-	interCode int
-}
-
-// New Error instance
-func New(code int, message string, interCode int) *Error {
-	return &amp;Error{code, message, interCode}
-}
-
-// Error getter
-func (e *Error) Error() string {
-	return fmt.Sprintf(&quot;%d: %s (%d)&quot;, e.code, e.message, e.interCode)
-}
-</code></pre><h3 id="full-example">Full Example</h3>
-<p><a href="https://github.com/nyogjtrc/practice-go/tree/master/error-code">https://github.com/nyogjtrc/practice-go/tree/master/error-code</a></p>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://blog.golang.org/error-handling-and-go">https://blog.golang.org/error-handling-and-go</a></li>
-<li><a href="https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee">https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>記錄目前慣用的服務跟工具</title>
-			<link>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</link>
-			<pubDate>Mon, 23 Jul 2018 14:33:06 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</guid>
-			<description>語言/框架: 前端: react/redux/Semantic UI React 設計元件，不再是過去設計模版的方式 後端: php/lumen, golang/echo php 快速開發 go 效能優秀，善於處理並發工作 編輯器 vim: 工程師最好的伙伴 vscode: 第三方套</description>
-			<content type="html"><![CDATA[<h2 id="語言框架">語言/框架:</h2>
-<ul>
-<li>前端: react/redux/Semantic UI React
-<ul>
-<li>設計元件，不再是過去設計模版的方式</li>
-</ul>
-</li>
-<li>後端: php/lumen, golang/echo
-<ul>
-<li>php 快速開發</li>
-<li>go 效能優秀，善於處理並發工作</li>
-</ul>
-</li>
-</ul>
-<h2 id="編輯器">編輯器</h2>
-<ul>
-<li>vim: 工程師最好的伙伴</li>
-<li>vscode: 第三方套件對 javascript 有很完整的支援</li>
-</ul>
-<h2 id="開發環境">開發環境</h2>
-<ul>
-<li>vagrant: 用配置檔來管理虛擬機器</li>
-<li>docker: 輕量化，快速啟動服務</li>
-</ul>
-<h2 id="測試工具">測試工具</h2>
-<ul>
-<li>postman: 方便測試 RESTful API</li>
-</ul>
-<h2 id="工作管理">工作管理</h2>
-<ul>
-<li>gitlab: 有 private repo，可以考慮自行架設的 git service</li>
-<li>trello: 把工作項目放到看板上，更容易看清工作的全樣</li>
-</ul>
-<h2 id="文件">文件</h2>
-<ul>
-<li>hackmd: 共筆用</li>
-<li>draw.io: 畫流程圖很好用</li>
-<li>evernote: 個人筆記，有跨平台，可以在手機上做筆記</li>
-<li>imgur: 上傳圖檔用</li>
-</ul>
-<hr>
-<h2 id="summary">Summary</h2>
-<p>整理完有一種在寫履歷的感覺，還有一些在尋找跟試用的工具就沒列上來了</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>在 Terminal 上的跳舞鸚鵡</title>
-			<link>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</link>
-			<pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
-			<description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
-			<content type="html"><![CDATA[<p>用 curl 找一隻鸚鵡來跳舞</p>
-<pre><code>$ curl parrot.live
-</code></pre><p><img src="https://camo.githubusercontent.com/24d967caaac2155e129fded2bb481b0b2fd94049/68747470733a2f2f642e70722f692f6a4b6c7563302e676966" alt=""></p>
-<h3 id="來源">來源</h3>
-<ul>
-<li>curl 版:  <a href="https://github.com/hugomd/parrot.live">https://github.com/hugomd/parrot.live</a></li>
-<li>terminal 版: <a href="https://github.com/jmhobbs/terminal-parrot">https://github.com/jmhobbs/terminal-parrot</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Try gRPC, grpc-gateway With Go</title>
-			<link>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</link>
-			<pubDate>Mon, 09 Jul 2018 14:14:03 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</guid>
-			<description>什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開</description>
-			<content type="html"><![CDATA[<h2 id="什麼是-grpc">什麼是 gRPC</h2>
-<ul>
-<li>Google 推出的 RPC framework</li>
-<li>採用 Google 制定的 protocol buffers 當作資料傳輸格式</li>
-<li>有 <code>proto</code> 工具可以把你寫好的 proto file 直接生成程式碼</li>
-<li>比 RESTful API 更快、更有效率</li>
-<li>更多請參考官網: <a href="https://grpc.io/">grpc / grpc.io</a></li>
-</ul>
-<h2 id="安裝">安裝</h2>
-<p>開始寫 gRPC 服務之前，要先安裝一些 protocol buffer 的工具</p>
-<h3 id="protocol-buffer-compiler">protocol buffer compiler</h3>
-<p>以下是快速安裝的腳本:</p>
-<pre><code>#!/bin/bash
-
-VERSION=&quot;3.6.0&quot;
-PLATFORM=&quot;linux-x86_64&quot;
-FILENAME=&quot;protoc-$VERSION-$PLATFORM.zip&quot;
-
-curl -LO &quot;https://github.com/google/protobuf/releases/download/v$VERSION/$FILENAME&quot;
-sudo unzip -u $FILENAME -d /usr/local bin/protoc include/*
-
-rm $FILENAME
-</code></pre><p>也可以直接去官網下載: <a href="https://github.com/google/protobuf/releases">https://github.com/google/protobuf/releases</a></p>
-<p>測試一下沒有安裝成功</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ protoc --version
-libprotoc 3.6.0
-</code></pre></div><h3 id="plugin-for-genrate-go-code">plugin for genrate go code</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get -u github.com/golang/protobuf/protoc-gen-go
-</code></pre></div><h3 id="grpc-package-for-go">gRPC package for go</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ go get -u google.golang.org/grpc
-</code></pre></div><h2 id="開始寫-grpc-服務">開始寫 gRPC 服務</h2>
-<p>要有一個完整的 gRPC 服務，首先要寫 proto file 定義好服務提供的方法跟傳輸的資料格式</p>
-<p>再由工具產生 pb.go 程式碼，最後跟著 pb.go 實作 server 跟 client 程式了</p>
-<h3 id="1-建立-proto-文件">1. 建立 proto 文件</h3>
-<p>這裡簡單寫一個 echo service</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir proto<span class="p">;</span> vi proto/echo.proto
-</code></pre></div><pre><code>syntax = &quot;proto3&quot;;
-
-package proto;
-
-message EchoMessage {
-  string value = 1;
-}
-
-service EchoServer {
-  rpc Echo (EchoMessage) returns (EchoMessage) {}
-}
-</code></pre><p>更多的語法請參考: <a href="https://developers.google.com/protocol-buffers/docs/proto3">Language Guide (proto3)</a></p>
-<h3 id="2-產生-go-程式碼">2. 產生 go 程式碼</h3>
-<p>借由 protoc 產生程式碼</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ protoc --go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:. proto/*.proto
-</code></pre></div><p>會產生 <code>echo.pb.go</code> 裡面包括 server 端的 interface 跟 client 端的 程式</p>
-<h3 id="3-建立-server-程式">3. 建立 server 程式</h3>
-<p>開始實作 EchoServer</p>
-<p>import 剛剛產生的 echo.pb.go</p>
-<pre><code>import (
-	pb &quot;github.com/nyogjtrc/grpc-example/proto&quot;
-)
-</code></pre><p>實作 Server 跟 方法:</p>
-<pre><code>type echoServer struct{}
-
-// Echo
-func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMessage, error) {
-	reply := new(pb.EchoMessage)
-	reply.Value = &quot;echo:&quot; + in.Value
-	return reply, nil
-}
-</code></pre><p>完整程式碼:</p>
-<pre><code>package main
-
-import (
-	&quot;context&quot;
-	&quot;fmt&quot;
-	&quot;log&quot;
-	&quot;net&quot;
-
-	pb &quot;github.com/nyogjtrc/grpc-example/proto&quot;
-
-	&quot;google.golang.org/grpc&quot;
-)
-
-type echoServer struct{}
-
-// Echo
-func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMessage, error) {
-	reply := new(pb.EchoMessage)
-	reply.Value = &quot;echo:&quot; + in.Value
-	return reply, nil
-}
-
-func main() {
-	fmt.Println(&quot;grpc example echo server :8888&quot;)
-
-	lis, err := net.Listen(&quot;tcp&quot;, &quot;:8888&quot;)
-	if err != nil {
-		log.Fatalf(&quot;can not listen %v&quot;, err)
-	}
-
-	var opts []grpc.ServerOption
-	s := grpc.NewServer(opts...)
-	pb.RegisterEchoServiceServer(s, &amp;echoServer{})
-	s.Serve(lis)
-}
-</code></pre><h3 id="4-建立-client-程式">4. 建立 client 程式</h3>
-<pre><code>package main
-
-import (
-	&quot;bufio&quot;
-	&quot;context&quot;
-	&quot;fmt&quot;
-	&quot;log&quot;
-	&quot;os&quot;
-
-	pb &quot;github.com/nyogjtrc/grpc-example/proto&quot;
-	&quot;google.golang.org/grpc&quot;
-)
-
-func main() {
-	var opts []grpc.DialOption
-	opts = append(opts, grpc.WithInsecure())
-	conn, err := grpc.Dial(&quot;:8888&quot;, opts...)
-	if err != nil {
-		log.Fatalf(&quot;fail to dial: %v&quot;, err)
-	}
-	defer conn.Close()
-
-	client := pb.NewEchoServiceClient(conn)
-
-	for {
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Print(&quot;Enter text: &quot;)
-		text, _ := reader.ReadString('\n')
-
-		r, err := client.Echo(context.Background(), &amp;pb.EchoMessage{Value: text})
-		if err != nil {
-			log.Fatalf(&quot;%v.Echo error: %v&quot;, client, err)
-		}
-		fmt.Println(r.Value)
-	}
-}
-</code></pre><h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client</h3>
-<p>執行 server</p>
-<pre><code>$ go run server/main.go
-grpc example echo server :8888
-</code></pre><p>執行 client</p>
-<pre><code>$ go run client/main.go
-Enter text: 123
-echo:123
-
-Enter text: hello
-echo:hello
-</code></pre><h2 id="增加-grpc-gateway">增加 gRPC gateway</h2>
-<p><a href="https://github.com/grpc-ecosystem/grpc-gateway">https://github.com/grpc-ecosystem/grpc-gateway</a></p>
-<p>grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API</p>
-<p>轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了</p>
-<h3 id="1-要安裝的-plugin">1. 要安裝的 plugin</h3>
-<pre><code>go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
-</code></pre><h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option</h3>
-<p>就是把 RESTful 的 router 寫進來</p>
-<pre><code>syntax = &quot;proto3&quot;;
-
-package proto;
-
-import &quot;google/api/annotations.proto&quot;;
-
-message EchoMessage {
-  string value = 1;
-}
-
-service EchoService {
-  rpc Echo (EchoMessage) returns (EchoMessage) {
-    option (google.api.http) = {
-        post: &quot;/echo/echo&quot;
-        body: &quot;*&quot;
-    };
-  }
-}
-</code></pre><h3 id="3-產生-pbgo-pbgwgo">3. 產生 pb.go, pb.gw.go</h3>
-<pre><code>protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --go_out=plugins=grpc:. proto/*.proto
-protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --grpc-gateway_out=logtostderr=true:. proto/*.proto
-</code></pre><h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點</h3>
-<p>把 gRPC 服務加入 proxy 裡面</p>
-<pre><code>func gatewayServer() {
-	fmt.Println(&quot;RESTful echo server :9999&quot;)
-	grpcAddr := &quot;localhost:8888&quot;
-	ctx := context.Background()
-	ctx, cancel := context.WithCancel(ctx)
-	defer cancel()
-
-	mux := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := pb.RegisterEchoServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
-	if err != nil {
-		log.Fatalf(&quot;can not register endpoint %v&quot;, err)
-	}
-
-	http.ListenAndServe(&quot;:9999&quot;, mux)
-}
-</code></pre><h3 id="5-實測">5. 實測</h3>
-<pre><code>$ curl -X POST http://localhost:9999/echo/echo -H 'Content-Type: application/json' -d '{ &quot;value&quot;: &quot;hi, how are you?&quot; }'
-{&quot;value&quot;:&quot;echo:hi, how are you?&quot;}
-</code></pre><h2 id="小結">小結</h2>
-<ul>
-<li>這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟</li>
-<li>proto 檔案類似 router</li>
-<li>要實作的 server interface 類似 controller</li>
-<li>有 gateway 可以轉成 RESTful API 讓測試更方便了</li>
-<li>一些 server 的設定還要花時間微調</li>
-</ul>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://grpc.io/docs/tutorials/basic/go.html">grpc /</a></li>
-<li><a href="https://developers.google.com/protocol-buffers/">Protocol Buffers  |  Google Developers</a></li>
-<li><a href="https://yami.io/grpc/">API 文件就是你的伺服器，REST 的另一個選擇：gRPC</a></li>
-<li><a href="https://grpc-ecosystem.github.io/grpc-gateway/">grpc-gateway | gRPC to JSON proxy generator following the gRPC HTTP spec</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Evernote Tools: NixNote2 &amp; Evernote Shortcuts</title>
-			<link>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</link>
-			<pubDate>Sun, 06 May 2018 18:32:55 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</guid>
-			<description>Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。 web client 的基本功能已經很好用了，只是想</description>
-			<content type="html"><![CDATA[<p>Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。</p>
-<p>web client 的基本功能已經很好用了，只是想要整理筆記的時候覺得有點不夠力</p>
-<p>所以再來找找有什麼好工具可以用</p>
-<h2 id="nixnote">NixNote</h2>
-<p>前幾年試過 NixNote 但是中文輸入會變亂碼(也許是我沒設定好編碼，不過不重要了)
-2017 年 2 月時，NixNote2 釋出 Stable 版本</p>
-<h3 id="安裝-debian">安裝 (Debian)</h3>
-<pre><code>$ sudo apt install nixnote2
-</code></pre><p>開始之後，登入 Evernote 帳號，給他一些時間同步筆記</p>
-<p>這次測試在 NixNote2 輸入中文，在手機跟 Web 上面看都不會亂碼了</p>
-<p>設定裡面有 UTF-8 的選項，看來可以正常的支援中文了</p>
-<p><img src="posts/2018/05/Screenshot-Nixnote-setting.png" alt=""></p>
-<p>ps. 本文是先用 NixNote2 整理的</p>
-<h2 id="evernote-shortcuts">Evernote Shortcuts</h2>
-<p>幫 web client 加上快捷鍵，雙手不用在滑鼠跟鍵盤之間移來移去，一個簡單又實用的小插件</p>
-<h3 id="安裝">安裝</h3>
-<p>從 Chrome Web Store 直接安裝</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="http://www.nixnote.org/">http://www.nixnote.org/</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/evernote-shortcuts/clhjalfedcigiomjfmmjhgadnlmegobb">Evernote Shortcuts - Chrome Web Store</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Set Sudo on Debian</title>
-			<link>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</link>
-			<pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
-			<description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
-			<content type="html"><![CDATA[<p>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定</p>
-<h2 id="安裝-sudo">安裝 sudo</h2>
-<p>切換到 root 安裝</p>
-<pre><code class="language-cli" data-lang="cli"># su -
-# apt install sudo
-</code></pre><h2 id="設定-sudoer">設定 sudoer</h2>
-<pre><code class="language-cli" data-lang="cli"># usermod -aG sudo nyo
-</code></pre><p>設定好之後，登入並用 <code>sudo</code> 隨意打個指令試試</p>
-<pre><code class="language-cli" data-lang="cli">$ sudo ls -l /root
-</code></pre><p>成功！</p>
-<h3 id="reference">Reference</h3>
-<p><a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart">https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart</a>
-<a href="https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian">https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Try Tmux</title>
-			<link>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</link>
-			<pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</guid>
-			<description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6</description>
-			<content type="html"><![CDATA[<p>被稱作 Linux 神器的工具</p>
-<p>入門之後我也愛上它了，讓 terminal 變得非常的靈活</p>
-<h2 id="安裝">安裝</h2>
-<h3 id="mac">mac</h3>
-<pre><code>$ brew install tmux
-</code></pre><h3 id="ubuntu--debian">ubuntu / debian</h3>
-<p>apt 上裝的可能會太舊，直接裝 github 上最新 release 的</p>
-<p>參考別人寫好的腳本: <a href="https://gist.github.com/P7h/91e14096374075f5316e">https://gist.github.com/P7h/91e14096374075f5316e</a></p>
-<pre><code>VERSION=2.6
-sudo apt -y remove tmux
-sudo apt -y install wget tar libevent-dev libncurses-dev
-wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
-tar xf tmux-${VERSION}.tar.gz
-rm -f tmux-${VERSION}.tar.gz
-cd tmux-${VERSION}
-./configure
-make
-sudo make install
-cd -
-sudo rm -rf /usr/local/src/tmux-*
-sudo mv tmux-${VERSION} /usr/local/src
-</code></pre><h2 id="tmuxconf">tmux.conf</h2>
-<p>放上幾個我覺得實用的設定</p>
-<pre><code class="language-tmux" data-lang="tmux">set -g default-terminal &quot;screen-256color&quot;
-
-# enable mouse
-set -g mouse on
-
-
-# new prefix
-unbind-key C-b
-set -g prefix C-a
-bind-key C-a send-prefix
-
-# &lt;prefix&gt; + r | reloading config
-bind-key r source-file ~/.tmux.conf \; display-message &quot;Yo~! .tmux.conf reloaded!&quot;
-
-bind-key \ split-window -h -c '#{pane_current_path}'
-bind-key - split-window -v -c '#{pane_current_path}'
-</code></pre><h3 id="prefix">prefix</h3>
-<p>預設是 ctrl + b，不過上面的設定我改成 ctrl + a，目前使用是算順手<br>
-也有人設定成 ctrl + q 之類的</p>
-<h2 id="usage">Usage</h2>
-<p>建立一個新的 session</p>
-<pre><code>$ tmux
-</code></pre><p>建立一個新的 session 並且設定名稱</p>
-<pre><code>$ tmux new -s name
-</code></pre><p>列出目前有的 session</p>
-<pre><code>$ tmux ls
-</code></pre><p>連回 session</p>
-<pre><code>$ tmux a
-</code></pre><h2 id="tmux-使用概念">Tmux 使用概念</h2>
-<p>畫面單位由大到小會是 session &gt; window &gt; pane</p>
-<p>session: 一個整個 tmux 的畫面
-window: 分頁
-pane: 切割畫面</p>
-<h2 id="shortcut">shortcut</h2>
-<p>部分的 shortcut 筆記，之後再整理完整一點的</p>
-<pre><code>c create new window
-n switch to next window
-p switch to previous window
-
-\ split h
-- split v
-
-z zoom in/out current pane
-
-w list winodws
-s list sessions
-
-d dettach
-</code></pre><hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://github.com/tmux/tmux/wiki">https://github.com/tmux/tmux/wiki</a></li>
-<li><a href="http://fideloper.com/mac-vim-tmux">http://fideloper.com/mac-vim-tmux</a></li>
-<li><a href="https://danielmiessler.com/study/tmux/">https://danielmiessler.com/study/tmux/</a></li>
-<li><a href="https://gist.github.com/MohamedAlaa/2961058">https://gist.github.com/MohamedAlaa/2961058</a></li>
-<li><a href="https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html">https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Try Spf13 Vim</title>
-			<link>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</link>
-			<pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
-			<description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
-			<content type="html"><![CDATA[<p>使用目前最強大的 vim 套件包 <strong>spf13-vim</strong></p>
-<h2 id="安裝-vim">安裝 vim</h2>
-<p>需要支援 lua 版本的 vim</p>
-<h3 id="mac">mac</h3>
-<pre><code>$ brew install macvim --with-cscope --with-lua --override-system-vim
-$ brew install ctags
-</code></pre><h3 id="debian">debian</h3>
-<pre><code>$ sudo apt install vim vim-gnome vim-doc ctags
-</code></pre><h3 id="windows">windows</h3>
-<p>我不知道</p>
-<h2 id="安裝-spf13-vim">安裝 spf13-vim</h2>
-<p>有一鍵無腦安裝的指令</p>
-<pre><code>$ curl http://j.mp/spf13-vim3 -L -o - | sh
-</code></pre><h2 id="自定義設定檔">自定義設定檔</h2>
-<p>有三隻檔案可以自行調整 vimrc</p>
-<ul>
-<li><code>.vimrc.before.local</code>: 載入 spf13-vim 之前會載入這支檔案</li>
-<li><code>.vimrc.bundles.local</code>: 要增減套件</li>
-<li><code>.vimrc.local</code>: 載入 spf13-vim 之後會載入這支檔案</li>
-</ul>
-<h3 id="vimrcbundleslocal">.vimrc.bundles.local</h3>
-<p>關掉有問題的套件</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="c">&#34; remove problem bundle</span><span class="err">
-</span><span class="err"></span><span class="nx">UnBundle</span> <span class="s1">&#39;amirh/HTML-AutoCloseTag&#39;</span><span class="err">
-</span></code></pre></div><h2 id="update-bundles">update bundles</h2>
-<pre><code>$ vim +BundleInstall! +BundleClean +q
-</code></pre><h2 id="vim-go">vim-go</h2>
-<p>在 vim 裡面執行指令 <code>:GoInstallBinaries</code> 以安裝必要的套件</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://github.com/spf13/spf13-vim">https://github.com/spf13/spf13-vim</a></li>
-<li><a href="http://spf13.com/post/ultimate-vim-config/">http://spf13.com/post/ultimate-vim-config/</a></li>
-<li><a href="https://farazdagi.com/2015/vim-as-go-language-ide/">https://farazdagi.com/2015/vim-as-go-language-ide/</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Fix Date Time of Photo Exif Meta Data</title>
-			<link>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</link>
-			<pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</guid>
-			<description>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有</description>
-			<content type="html"><![CDATA[<p>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒</p>
-<p>只能回家想辦法再修正時間，畢竟照片不能重拍啊</p>
-<p>要在 Linux 上處理 EXIF 的話，有個工具叫 <code>exiftool</code> 可以用</p>
-<h2 id="安裝">安裝</h2>
-<pre><code>$ sudo apt install libimage-exiftool-perl
-</code></pre><h2 id="要看-exif">要看 EXIF</h2>
-<p>看所有的 EXIF 資料</p>
-<pre><code>$ exiftool -a -u -g1 IMG_001.jpg
-</code></pre><p>看 EXIF 日期資料</p>
-<pre><code>$ exiftool -AllDate IMG_001.jpg
-</code></pre><h2 id="要改-exif">要改 EXIF</h2>
-<p>要改時間可以直接指定日期</p>
-<pre><code>$ exiftool DateTimeOriginal='2018:01:01 12:11:10' IMG_001.jpg
-</code></pre><p>或是加減時間</p>
-<pre><code>$ exiftool DateTimeOriginal-=2:0:0 -TimeZone=+08:00 IMG_001.jpg
-</code></pre><p>有修改 EXIF 時， exiftool 會幫你複製一份原始檔案，並在檔案加上 <code>_original</code></p>
-<p>如果不想要備份的話，指令上多加個 <code>-overwrite_original</code> 就可以了</p>
-<h2 id="清-exif">清 EXIF</h2>
-<pre><code>$ exiftool -all= image.jpg
-</code></pre><hr>
-<h3 id="reference">Reference</h3>
-<p><a href="http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/">http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/</a>
-<a href="http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html">http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>複製 ssh key 到遠端機器</title>
-			<link>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</link>
-			<pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</guid>
-			<description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指</description>
-			<content type="html"><![CDATA[<p>發現了可以快速複製 key 到別台機器的好工具
-可以不用再傻傻的 copy paste 了</p>
-<h2 id="產生-key">產生 key</h2>
-<p>首先自己要有 ssh key</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ssh-keygen
-</code></pre></div><h2 id="複製-key-到另一台遠端機器">複製 key 到另一台遠端機器</h2>
-<p>快速複製的好工具是 <code>ssh-copy-id</code>
-指令加上 <code>-i</code> 指令要複製的 key</p>
-<p>執行後你可能要打密碼，因為那台遠端機器上還沒有 key 可以驗證你是誰</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ssh-copy-id -i ~/.ssh/mykey user@another-host
-user@another-host<span class="err">&#39;</span>s password:
-</code></pre></div><p>成功執行後，public key 就會被放進遠端機器的 <code>authorized_keys</code> 裡</p>
-<h2 id="測試">測試</h2>
-<p>最後實測一下，能不能順利登入</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ ssh -i ~/.ssh/mykey user@another-host
-</code></pre></div><hr>
-<h2 id="reference">Reference</h2>
-<p><a href="https://www.ssh.com/ssh/copy-id">https://www.ssh.com/ssh/copy-id</a>
-<a href="https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine">https://askubuntu.com/questions/4830/easiest-way-to-copy-ssh-keys-to-another-machine</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Golang Test All Testing in Project</title>
-			<link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
-			<pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
-			<description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
-			<content type="html"><![CDATA[<p>想要跑當前專案下的所有 test</p>
-<pre><code>$ go test ./...
-</code></pre><h2 id="reference">Reference</h2>
-<p><a href="https://stackoverflow.com/questions/16353016/how-to-go-test-all-testings-in-my-project">How to <code>go test</code> all testings in my project? - Stack Overflow</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>交換 Left Ctrl 跟 CapsLock 的位置，救救你的左手小指</title>
-			<link>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</link>
-			<pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</guid>
-			<description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool $ sudo apt install gnome-tweak-tool 開啟 gnome-tweak-tool</description>
-			<content type="html"><![CDATA[<p>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴
-要提高 Ctrl 的地位，減輕左手小指的負擔</p>
-<p>ps. 以前的鍵盤配置，Ctrl 在 a 的左邊</p>
-<h1 id="ubuntu-1604">Ubuntu 16.04</h1>
-<p>安裝 gnome-tweak-tool</p>
-<pre><code>$ sudo apt install gnome-tweak-tool
-</code></pre><ul>
-<li>開啟 gnome-tweak-tool</li>
-<li>選單 Typing -&gt; Ctrl key position</li>
-<li>選擇 Swap Ctrl and Caps Lock</li>
-</ul>
-<h1 id="mac">Mac</h1>
-<ul>
-<li>開啟 System Preferences</li>
-<li>選 Keyboard -&gt; Modifier Keys</li>
-<li>Ctrl 換 CapsLock, CapsLock 換 Ctrl</li>
-</ul>
-<h1 id="windows-7">Windows 7</h1>
-<p>下載 SharpKeys</p>
-<ul>
-<li>開啟 SharpKeys</li>
-<li>按 &ldquo;Add&rdquo;</li>
-<li>點 &ldquo;Form key&rdquo; 的 &ldquo;Type Key&rdquo;，再按下 CapsLock</li>
-<li>點 &ldquo;To key&rdquo; 的 &ldquo;Type Key&rdquo;，再按下 Left Ctrl</li>
-<li>按 &ldquo;Add&rdquo;</li>
-<li>點 &ldquo;Form key&rdquo; 的 &ldquo;Type Key&rdquo;，再按下 Left Ctrl</li>
-<li>點 &ldquo;To key&rdquo; 的 &ldquo;Type Key&rdquo;，再按下 CapsLock</li>
-<li>點 &ldquo;Write to Registry&rdquo;</li>
-<li>重開機…</li>
-</ul>
-<h1 id="初期使用心得">初期使用心得</h1>
-<p>一開始會不習慣，覺得有一些組合鍵不好按，或是一直按錯
-會覺得小指無力一直按，原本的位置還有大拇指可以幫一下忙</p>
-<h1 id="另一個鍵盤設定想法">另一個鍵盤設定想法</h1>
-<p>對習慣使用 Shift 的人，沒有 CapsLock 好像沒差
-讓鍵盤上有三個 Ctrl 也是一個不錯的選擇</p>
-<h2 id="reference">Reference</h2>
-<ul>
-<li><a href="https://superuser.com/questions/292724/swap-control-and-caps-lock-on-windows-7">keymap - Swap Control and Caps Lock on Windows 7 - Super User</a></li>
-<li><a href="https://github.com/randyrants/sharpkeys">https://github.com/randyrants/sharpkeys</a></li>
-<li><a href="https://askubuntu.com/questions/33774/how-do-i-remap-the-caps-lock-and-ctrl-keys">keyboard - How do I remap the Caps Lock and Ctrl keys? - Ask Ubuntu</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>用 Hugo 發佈部落格</title>
-			<link>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</link>
-			<pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</guid>
-			<description>Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現</description>
-			<content type="html"><![CDATA[<p>Hugo 是用 Go 開發的靜態網站產生器</p>
-<p>我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具</p>
-<p>稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用</p>
-<p>最後是發現了 Hugo，評估過上手難易度後，決定就用他來試試了</p>
-<h1 id="安裝">安裝</h1>
-<p>go get 安裝法</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">go get -v github.com/gohugoio/hugo
-</code></pre></div><h1 id="建立網站">建立網站</h1>
-<p>建立一個名為 blog 的網站</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo new site blog
-</code></pre></div><h1 id="config-檔">config 檔</h1>
-<p>預設是產生 <code>config.toml</code>，還支援 yaml, json 格式</p>
-<p>我決定要使用 yaml 格式，所以要自己修改一下</p>
-<h1 id="選網站主題">選網站主題</h1>
-<p>在 <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> 上有超過百個主題可以選擇</p>
-<p>把 theme 加入 config 檔，再加上 theme 所需要的設定</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">theme</span><span class="p">:</span><span class="w"> </span>hugo-dusk<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">menu</span><span class="p">:</span><span class="w">
-</span><span class="w">     </span><span class="k">main</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>...<span class="w">
-</span></code></pre></div><h1 id="建立新文章">建立新文章</h1>
-<p>建立新的文章前要先來安排一下檔案存放的結構，我想要依照年份跟月份來分資料夾放</p>
-<p>產生新文章的 command 就會如下</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo new posts/2017/09/the-first-hugo-post.md
-</code></pre></div><p>接下來就是開啟妳的編輯器來寫文章</p>
-<h1 id="用內建的-web-server-檢查成品">用內建的 Web Server 檢查成品</h1>
-<p>多加個 -D 的參數 render 草稿:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo server -D
-</code></pre></div><h1 id="產出靜態檔案">產出靜態檔案</h1>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">hugo
-</code></pre></div><p>指令就只有上面這樣的簡單，產出的靜態檔案預設會在 public 資料夾下</p>
-<p>想要改位置就是設是 config</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">publishDir</span><span class="p">:</span><span class="w"> </span>my-public-project<span class="w">
-</span></code></pre></div><h1 id="發佈">發佈</h1>
-<p>要使用 github page 的方法很多，我看了不少人都是將 public 資料夾切 subtree，或是用 submodule，但是我覺得都太麻煩了</p>
-<p>把 <code>publishDir</code> 指到其他的 git repository</p>
-<p>github page 設定使用 master branch</p>
-<p>操作只要 git commit, git push 這些基本的指令就可以了</p>
-<h2 id="reference">Reference</h2>
-<ul>
-<li><a href="https://gohugo.io/">Hugo</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>The First Hugo Post</title>
-			<link>https://nyogjtrc.github.io/posts/2017/09/the-first-hugo-post/</link>
-			<pubDate>Sat, 23 Sep 2017 17:09:19 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/09/the-first-hugo-post/</guid>
-			<description>Hello Hugo This is my first post using hugo.</description>
-			<content type="html"><![CDATA[<h1 id="hello-hugo">Hello Hugo</h1>
-<p>This is my first post using hugo.</p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>在 Linux 上處理圖檔</title>
-			<link>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</link>
-			<pubDate>Sat, 15 Apr 2017 01:09:42 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</guid>
-			<description>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工</description>
-			<content type="html"><![CDATA[<p>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具</p>
-<p>可以直接在 command line 上處理圖檔的工具:
-<strong>convert</strong></p>
-<p>convert 功能之多，我剛看到時也嚇了一下，可以轉換檔案格式，可以縮放圖片，可以使用濾鏡，可以旋轉圖片等等。不過有沒有比較輕量我也不太清楚，至少我可以快速的得到我要的結果。</p>
-<h2 id="使用範例">使用範例</h2>
-<p>把 png 檔轉成 jpg 檔</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ convert image.png image.jpg
-</code></pre></div><p>轉 90 度</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ convert image.jpg -rotate <span class="m">90</span> modified-image.jpg
-</code></pre></div><p>調整圖片壓縮品質</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ convert image.jpg -quality <span class="m">50</span> modified-image.jpg
-</code></pre></div><p>把所有圖片調整成高度 200</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="k">for</span> file in *.jpg<span class="p">;</span> <span class="k">do</span> convert <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> -resize x200 <span class="s2">&#34;s-</span><span class="nv">$file</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span>
-</code></pre></div><p>在圖片上寫字</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ convert image.jpg -font courier -fill white -pointsize <span class="m">20</span> -annotate +50+50 <span class="s1">&#39;Writing&#39;</span> write-image.jpg
-</code></pre></div><h3 id="reference">Reference</h3>
-<ul>
-<li><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick command line examples – part 1</a></li>
-<li><a href="https://www.imagemagick.org/script/convert.php">Command-line Tools: Convert @ ImageMagick</a></li>
-<li><a href="https://www.howtogeek.com/109369/how-to-quickly-resize-convert-modify-images-from-the-linux-terminal/">How to Quickly Resize, Convert &amp; Modify Images from the Linux Terminal</a></li>
-</ul>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Webpack 2.2 Sample - f2e-jacket</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</link>
-			<pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
-			<description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
-			<content type="html"><![CDATA[<p>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具</p>
-<p>專案在此: f2e-jacket <a href="https://github.com/nyogjtrc/f2e-jacket">https://github.com/nyogjtrc/f2e-jacket</a></p>
-<p>使用方法:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone git@github.com:nyogjtrc/f2e-jacket.git
-$ <span class="nb">cd</span> f2e-jacket/
-$ yarn
-$ yarn start
-</code></pre></div><p>在製作的一開始，我以為我只要認識一下 webpack 的新版用法就好。沒想到當我要把 react 加進去的時候，事情就變的有點精彩了。</p>
-<p>離我上次建置環境的時候，react 的大版本號一樣是 15。嗯，這個還好。react-router 在上次我看的時候是 2.x.x，而現在是 4.0.0，跳了兩個版本，寫法變的完全不一樣，全部重新認識。好在最後放 semantic-ui 的時候沒有遇到什麼奇怪的問題。</p>
-<h2 id="whats-inside">What&rsquo;s inside</h2>
-<p>目前在 v0.1.1 裡面包括 react, react-router, semantic-ui 這幾個 library</p>
-<p>在建立這個工具的途中，發現 facebook 有製作一個 react 專用的工具 <a href="https://github.com/facebookincubator/create-react-app">https://github.com/facebookincubator/create-react-app</a>
-也是可以直接拿來用的…</p>
-<h3 id="reference">Reference</h3>
-<p><a href="https://github.com/nyogjtrc/f2e-jacket">https://github.com/nyogjtrc/f2e-jacket</a>
-<a href="https://webpack.js.org/">https://webpack.js.org/</a>
-<a href="https://github.com/facebookincubator/create-react-app">https://github.com/facebookincubator/create-react-app</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Ubuntu Change Timezone</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</link>
-			<pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
-			<description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
-			<content type="html"><![CDATA[<p>改變 Ubuntu 的時區，請使用以下指令</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo dpkg-reconfigure tzdata
-</code></pre></div><p>接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo dpkg-reconfigure tzdata
-
-Current default <span class="nb">time</span> zone: <span class="s1">&#39;Asia/Taipei&#39;</span>
-Local <span class="nb">time</span> is now:      Mon <span class="m">20</span> Mar 22:32:45 CST 2017.
-Universal Time is now:  Mon Mar <span class="m">20</span> 14:32:45 UTC 2017.
-</code></pre></div><p>再 date 看一下時間是否正確</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ date
-Mon <span class="m">20</span> Mar 22:32:48 CST <span class="m">2017</span>
-</code></pre></div><h3 id="reference">Reference</h3>
-<p><a href="http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux">http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Ubuntu - Setting Locale Failed</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</link>
-			<pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
-			<description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MONETARY = &amp;quot;en_GB.UTF-8&amp;quot;, LC_ADDRESS = &amp;quot;en_GB.UTF-8&amp;quot;, LC_TELEPHONE = &amp;quot;en_GB.UTF-8&amp;quot;, LC_NAME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MEASUREMENT = &amp;quot;en_GB.UTF-8&amp;quot;,</description>
-			<content type="html"><![CDATA[<p>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息</p>
-<pre><code>perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-LANGUAGE = (unset),
-LC_ALL = (unset),
-LC_TIME = &quot;en_GB.UTF-8&quot;,
-LC_MONETARY = &quot;en_GB.UTF-8&quot;,
-LC_ADDRESS = &quot;en_GB.UTF-8&quot;,
-LC_TELEPHONE = &quot;en_GB.UTF-8&quot;,
-LC_NAME = &quot;en_GB.UTF-8&quot;,
-LC_MEASUREMENT = &quot;en_GB.UTF-8&quot;,
-LC_IDENTIFICATION = &quot;en_GB.UTF-8&quot;,
-LC_NUMERIC = &quot;en_GB.UTF-8&quot;,
-LC_PAPER = &quot;en_GB.UTF-8&quot;,
-LANG = &quot;en_US.UTF-8&quot;
-  are supported and installed on your system.
-perl: warning: Falling back to a fallback locale (&quot;en_US.UTF-8&quot;).
-locale: Cannot set LC_ALL to default locale: No such file or directory
-</code></pre><p>原因是在 ssh login 時，傳送過去的編碼資料不存在於遠端主機所導致</p>
-<p>解決方法很簡單，把編碼的資料建立起來就可以了</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo locale-gen en_GB.UTF-8
-Generating locales <span class="o">(</span>this might take a <span class="k">while</span><span class="o">)</span>...
-  en_GB.UTF-8... <span class="k">done</span>
-Generation complete.
-</code></pre></div><h3 id="reference">Reference</h3>
-<p><a href="https://ubuntuforums.org/showthread.php?t=1346581">https://ubuntuforums.org/showthread.php?t=1346581</a>
-<a href="http://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue">http://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>AWS - 無法登入 EC2 Instance 的解決方案</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</link>
-			<pubDate>Fri, 17 Mar 2017 11:10:00 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</guid>
-			<description>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以</description>
-			<content type="html"><![CDATA[<p>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過</p>
-<p>還好意外翻到官方文件上有一篇可以解決方案可以試試。最後成功了，救回不少時間</p>
-<p>這個做法的感覺就像是把電腦的硬碟拔下來裝到別台去讀取資料，詳細流程如以下記錄：</p>
-<h3 id="記錄">記錄</h3>
-<ol>
-<li>查看 Instance 的資訊，把 instance ID, AMI ID, Availability Zone, Root device 記錄下來</li>
-<li>點擊 Root device，把 <strong>EBS ID</strong> 記錄下來</li>
-<li>把 Instance 關機，選 Actions -&gt; Instance State -&gt; <strong>Stop</strong></li>
-</ol>
-<h3 id="建立新的-instance">建立新的 Instance</h3>
-<ol>
-<li>點擊 <strong>Launch Instance</strong></li>
-<li>選擇跟剛剛記錄下來一樣的 AMI</li>
-<li>在 Configure Instance Details 要選一樣的 Availability Zone</li>
-<li>在 Add Tags 加上 Name=Temp</li>
-<li>到 Review 頁面點擊 <strong>Launch Instances</strong></li>
-</ol>
-<h3 id="將虛擬硬碟裝到新的-instance-上">將虛擬硬碟裝到新的 Instance 上</h3>
-<ol start="5">
-<li>到 console 左側的功能列表選 Volumes</li>
-<li>找到原 instance 的 volume 卸載，選 Actions -&gt; <strong>Detach Volume</strong>，然後等它處理完畢</li>
-<li>把同個 volume 掛載到 temp instance 上，選 Actions -&gt; <strong>Attach Volume</strong> -&gt; 選 temp instance -&gt; 記錄 Device name (ex. /dev/sdf) -&gt; 點 <strong>Yes, Attach</strong></li>
-</ol>
-<h3 id="登入-instance-掛載硬碟">登入 Instance 掛載硬碟</h3>
-<ol start="8">
-<li>登入 temp instance</li>
-<li>接下來要 mount volume</li>
-<li>使用 <code>lsblk</code> 指令，看到 /dev/sdf 的 device name 以 <code>xvdf</code> 顯示，然後磁區名稱會是 xvdf1 (/dev/xvdf1)</li>
-<li>下 mount 指令</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo mkdir /mnt/tempvol
-$ sudo mount /dev/xvdf1 /mnt/tempvol
-</code></pre></div><ol start="12">
-<li>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</li>
-</ol>
-<h3 id="硬碟裝回原-instance">硬碟裝回原 Instance</h3>
-<ol start="13">
-<li>資料解救完畢後 umount</li>
-</ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol
-</code></pre></div><ol start="14">
-<li><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></li>
-<li>重新 <strong>Start instance</strong></li>
-</ol>
-<h3 id="reference">Reference</h3>
-<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Vim - Global Command g</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</link>
-			<pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
-			<description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd針對特</description>
-			<content type="html"><![CDATA[<p>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令</p>
-<p>global command :g</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span>[<span class="nx">range</span>]<span class="nx">g</span><span class="sr">/pattern/</span><span class="nx">cmd</span><span class="err">
-</span></code></pre></div><p>針對特別的 <em>range</em> (預設是整個檔案)，找出符合 <em>pattern</em> 的每一行，執行 <em>cmd</em> 的處理</p>
-<h2 id="example">Example</h2>
-<p>刪掉符合的每一行</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="sr">/pattern/</span><span class="nx">d</span><span class="err">
-</span></code></pre></div><p>刪掉「不」符合的每一行</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="p">!</span><span class="sr">/pattern/</span><span class="nx">d</span><span class="err">
-</span><span class="err"></span><span class="p">:</span><span class="nx">v</span><span class="sr">/pattern/</span><span class="nx">d</span><span class="err">
-</span></code></pre></div><p>刪掉所有的空白行</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="sr">/^\s*$/</span><span class="nx">d</span><span class="err">
-</span></code></pre></div><p>符合的每一行移到檔案結尾</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="sr">/pattern/</span><span class="nx">m</span>$<span class="err">
-</span></code></pre></div><p>反轉整份文件</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="sr">/^/</span><span class="nx">m0</span><span class="err">
-</span></code></pre></div><p>在符合 pattern 的每一行行尾加上「mytext」</p>
-<div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="p">:</span><span class="nx">g</span><span class="sr">/pattern/</span><span class="nx">s</span><span class="sr">/$/</span><span class="nx">mytext</span><span class="err">
-</span></code></pre></div><h3 id="reference">Reference</h3>
-<p><a href="http://vim.wikia.com/wiki/Power_of_g">http://vim.wikia.com/wiki/Power_of_g</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Linux 指令 date</title>
-			<link>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</link>
-			<pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-			<description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
-			<content type="html"><![CDATA[<p>今天要來和 linux 約會(誤</p>
-<hr>
-<p>date 是用來看時間或是設定時間用的指令</p>
-<p>不加任何的參數可以直接看目前的時間</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ date
-Sat  <span class="m">4</span> Mar 23:52:51 CST <span class="m">2017</span>
-</code></pre></div><h2 id="參數">參數</h2>
-<p><code>-d STRING</code> 輸出字串所描述的日期</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ date -d <span class="s1">&#39;yesterday&#39;</span>
-Sat  <span class="m">4</span> Mar 00:29:53 CST <span class="m">2017</span>
-</code></pre></div><p><code>-I[FMT]</code> 用 ISO 8601 的格式輸出
-FMT 預設為 date 輸出日期而已，FMT 為 s 時會輸出到秒</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ date -Is
-2017-03-05T01:08:35+08:00
-</code></pre></div><p><code>+FORMAT</code> 輸出指定格式</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ date +<span class="s1">&#39;%F %a&#39;</span>
-2017-03-05 Sun
-</code></pre></div><p>然後就可以用來製造你想要的日期列表了</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">MYLIST</span><span class="o">=(</span><span class="s2">&#34;next sun&#34;</span> <span class="s2">&#34;next sat&#34;</span> <span class="s2">&#34; next fri&#34;</span> <span class="s2">&#34;next thu&#34;</span> <span class="s2">&#34;next wed&#34;</span> <span class="s2">&#34;next tue&#34;</span> <span class="s2">&#34;next mon&#34;</span><span class="o">)</span><span class="p">;</span>
-<span class="k">for</span> i in <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> 6<span class="p">;</span> <span class="k">do</span> date -d <span class="s2">&#34;</span><span class="si">${</span><span class="nv">MYLIST</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span> +<span class="s2">&#34;%F %a&#34;</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span>
-2017-03-12 Sun
-2017-03-11 Sat
-2017-03-10 Fri
-2017-03-09 Thu
-2017-03-08 Wed
-2017-03-07 Tue
-2017-03-06 Mon
-</code></pre></div><h3 id="reference">Reference</h3>
-<p><code>man date</code></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>Getting Things Done - GTD 介紹</title>
-			<link>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</link>
-			<pubDate>Sun, 22 Jan 2017 15:29:00 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</guid>
-			<description>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。</description>
-			<content type="html"><![CDATA[<p>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。如果這個情況嚴重的話，會讓你感到焦慮，無法好好思考。</p>
-<p>我最一開始的解決方法是把這些中斷我工作的事情都寫下來，不過單只有寫下來沒什麼太大的做用
-寫久變成一堆凌亂的筆記，被我丟在一旁遺忘掉。</p>
-<p>直到我看到 GTD。
-這個方法的第一步，跟我原本做的事情是一樣的：把所有事情寫下來。這讓我好奇的往下研究他後續是怎麼做的。</p>
-<p>Getting Things Done，縮寫成 GTD，是由 David Allen 提出的一套個人的時間管理方法。用來管理你的生活中跟工作上的大小事，讓你可以排除干擾進而專心做事。</p>
-<h1 id="gtd-原則">GTD 原則</h1>
-<blockquote>
-<p>Your mind is for having ideas, not holding them.</p>
-</blockquote>
-<blockquote>
-<p>你的大腦是用來思考，而不是用來記憶的。<br>
-將所有事情放在手邊，而不是放在大腦裡。</p>
-</blockquote>
-<h1 id="五個步驟">五個步驟</h1>
-<h2 id="1-capture---捕捉">1. Capture - 捕捉</h2>
-<ul>
-<li>選擇一個適合自己的地方當收件匣，把所有會搶走你注意力的事情都收集記錄進收件匣裡，清空大腦</li>
-</ul>
-<h2 id="2-clarify---理清">2. Clarify - 理清</h2>
-<ul>
-<li>清理收件匣裡的每一件事情，是否為可以執行的任務</li>
-<li>不可執行的事情如果是參考資料就存檔，如果沒用處就丟垃圾桶</li>
-<li>可以執行的任務要去思考它的下一步行動是什麼</li>
-<li>如果可以在兩分鐘內解決的話，就馬上去完成它，如果不行則放到一個清單等待執行</li>
-</ul>
-<h2 id="3-organize---整理">3. Organize - 整理</h2>
-<ul>
-<li>整理每一件任務，進行分類移到適合的清單中</li>
-</ul>
-<h2 id="4-reflect---檢視">4. Reflect - 檢視</h2>
-<ul>
-<li>經常查看你整理的清單，確認你安排的下一個任務，並且更新、清理它</li>
-<li>至少每週進行回顧</li>
-</ul>
-<h2 id="5-engage---執行">5. Engage - 執行</h2>
-<ul>
-<li>依照你建立好的系統，挑出上面的每項任務放心執行</li>
-</ul>
-<h1 id="應用">應用</h1>
-<p>網路上有很多 GTD 跟各種工具的組合運作，目前我是使用 Evernote 來安排我的 GTD 方法，之前則試用過 Trello、Zim、Google Keep 等工具</p>
-<p>目前選 Evernote 是因為 Evernote 有 Web 版跟 Android 版，這樣很方便隨時的記錄事情跟查看下一步任務清單。</p>
-<h1 id="後記">後記</h1>
-<p>最近我重新回顧一次 GTD 的原則，跟我的使用方法。發現到我原本的方法很少回顧任務清單，整理的分類也有點復雜，使用起來很沒有效率。這一次的回顧對原來的方法進行了一些調整，目標是讓執行方法更簡單，並且更集中注意力。有沒有效就要運作一段時間才知道了。</p>
-<h2 id="reference">Reference</h2>
-<p><a href="http://gettingthingsdone.com/">David Allen&rsquo;s Getting Things Done® Methodology</a>
-<a href="https://ihower.tw/blog/archives/1483">搞定! GTD | ihower { blogging }</a>
-<a href="https://zh.wikipedia.org/wiki/%E5%B0%BD%E7%AE%A1%E5%8E%BB%E5%81%9A">儘管去做 - 維基百科，自由的百科全書</a>
-<a href="http://www.playpcesor.com/2016/08/evernote-gtd-2016.html">Evernote GTD 方法教學：我的「搞定」時間管理實踐 2016 版 - 電腦玩物</a></p>
-]]></content>
-		</item>
-		
-		<item>
-			<title>用 Vagrant 建立開發環境</title>
-			<link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
-			<pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
-			
-			<guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
-			<description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
-			<content type="html"><![CDATA[<p>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。
-之前為了解決這個問題，自己動手記錄了開發環境會使用的工具跟服務，寫了一個很簡單的 shell script。</p>
-<p>現在虛擬機當道~使用上有很多的方便，在看到 base on 虛擬機的工具出現，也是時候試一試了。</p>
-<h2 id="什麼是-vagrant">什麼是 Vagrant</h2>
-<p>Vagrant 是流浪漢…
-Vagrant 是一個工具，幫助你設定 虛擬機；剛開始是針對 Virtrual Box，現在就不只了。</p>
-<h2 id="安裝-vagrant">安裝 Vagrant</h2>
-<p>在 ubuntu 上安裝的方法：</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ sudo apt-get install vagrant
-</code></pre></div><h2 id="用-vagrant-建立虛擬機">用 Vagrant 建立虛擬機</h2>
-<p>首先增加一個 ubuntu 14.04 LTS 的 Box (打包好的 guest os)</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant box add ubuntu/trusty64
-</code></pre></div><p>box 會從 <a href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a> 抓下來，可以輸入以下指令查看你已經抓好的 boxes</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant box list
-</code></pre></div><p>使用 Vagrant 會建立一些設定檔，所以我們需要先建一個資料夾，讓設定檔放在裡面</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ mkdir vagrant_develop
-$ <span class="nb">cd</span> vagrant_develop/
-</code></pre></div><p>產生一台虛擬機</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant init ubuntu/trusty64
-A <span class="sb">`</span>Vagrantfile<span class="sb">`</span> has been placed in this directory. You are now
-ready to <span class="sb">`</span>vagrant up<span class="sb">`</span> your first virtual environment! Please <span class="nb">read</span>
-the comments in the Vagrantfile as well as documentation on
-<span class="sb">`</span>vagrantup.com<span class="sb">`</span> <span class="k">for</span> more information on using Vagrant.
-</code></pre></div><p>虛擬機產生之後，會出現一個 <code>Vagrantfile</code> 在資料夾內</p>
-<p>啟動她！</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ vagrant up
-Bringing machine <span class="s1">&#39;default&#39;</span> up with <span class="s1">&#39;virtualbox&#39;</span> provider...
-<span class="o">==</span>&gt; default: Importing base box <span class="s1">&#39;ubuntu/trusty64&#39;</span>...
-<span class="o">==</span>&gt; default: Matching MAC address <span class="k">for</span> NAT networking...
-<span class="o">==</span>&gt; default: Checking <span class="k">if</span> box <span class="s1">&#39;ubuntu/trusty64&#39;</span> is up to date...
-<span class="o">==</span>&gt; default: Setting the name of the VM: <span class="nv">vagrant_develop_default_1433005676358_75321</span>
-<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> forwarded ports...
-<span class="o">==</span>&gt; default: Clearing any previously <span class="nb">set</span> network interfaces...
-<span class="o">==</span>&gt; default: Preparing network interfaces based on configuration...
-    default: Adapter 1: <span class="nv">nat</span>
-<span class="o">==</span>&gt; default: Forwarding ports...
-    default: <span class="nv">22</span> <span class="o">=</span>&gt; <span class="m">2222</span> <span class="o">(</span>adapter 1<span class="o">)</span>
-<span class="o">==</span>&gt; default: Booting VM...
-<span class="o">==</span>&gt; default: Waiting <span class="k">for</span> machine to boot. This may take a few minutes...
-    default: SSH address: 127.0.0.1:2222
-    default: SSH username: vagrant
-    default: SSH auth method: private key
-    default: Warning: Connection timeout. Retrying...
-    default: Warning: Remote connection disconnect. Retrying...
-    default:
-    default: Vagrant insecure key detected. Vagrant will automatically replace
-    default: this with a newly generated keypair <span class="k">for</span> better security.
-    default:
-    default: Inserting generated public key within guest...
-    default: Removing insecure key from the guest <span class="k">if</span> its present...
-    default: Key inserted! Disconnecting and reconnecting using new SSH key...
-<span class="o">==</span>&gt; default: Machine booted and ready!
-<span class="o">==</span>&gt; default: Checking <span class="k">for</span> guest additions in VM...
-<span class="o">==</span>&gt; default: Mounting shared folders...
-    default: /vagrant <span class="o">=</span>&gt; /home/nyo/vagrant_develop
-</code></pre></div><p>啟動的過程中 Vagrant 做了不少事：</p>
-<ul>
-<li>port forwarding,</li>
-<li>deploy ssh public key,</li>
-<li>mount shared folders&hellip;</li>
-</ul>
-<p>虛擬機啟動之後，怎麼使用呢? ssh 連進去就可以開始用了</p>
-<pre><code>$ vagrant ssh
-</code></pre><p>測試結束，想要關掉虛擬機的話，請輸入：</p>
-<pre><code>$ vagrant halt
-</code></pre><p>又或是虛擬機用不到要刪掉了，你可以輸入：</p>
-<pre><code>$ vagrant destroy
-</code></pre><p>Vagrant 會幫你把虛擬機刪掉</p>
-<h2 id="用-vagrant-建立-nginx-環境">用 Vagrant 建立 nginx 環境</h2>
-<p>建立一支 bootstrap.sh 的檔案，將安裝 nginx 的指令放入檔案中</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
-</span><span class="cp"></span>
-apt-get update
-apt-get -y install nginx
-</code></pre></div><p>在 Vagrantfile 增加設定，
-加入 bootstrap.sh 腳本跟一行 port forwarding 的設定，讓 host os 可以連到 guest os</p>
-<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path</span><span class="p">:</span> <span class="s2">&#34;bootstrap.sh&#34;</span>
-  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s2">&#34;forwarded_port&#34;</span><span class="p">,</span> <span class="ss">guest</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="ss">host</span><span class="p">:</span> <span class="mi">8080</span>
-<span class="k">end</span>
-</code></pre></div><p>設定完成後，執行 <code>$ vagrant reload --provision</code> 或是 <code>$ vagrant provision</code>，重新配置虛擬機，載入新的 Vagrantfile</p>
-<p>現在你可以 curl 連到剛剛裝好的 nginx 服務了</p>
-<pre><code>$ curl localhost:8080
-</code></pre><h2 id="summary">Summary</h2>
-<p>明明我的開發環境需要的服務一堆，但以上範例只偷懶裝了 nginx&hellip;
-不過這還好，可以依此類推；之後有玩出不一樣的東西再寫一篇新的筆記了。</p>
-<p>有了 Vagrant 的第一個好處大概是我可以從「一直安裝環境」變成「一直 vagrant init」吧XD</p>
-<p>再另外附帶一提，之後打算加上 Docker 來試試。</p>
-<hr>
-<h3 id="reference">Reference</h3>
-<p><a href="https://docs.vagrantup.com/v2/">https://docs.vagrantup.com/v2/</a>
-<a href="http://gogojimmy.net/2013/05/26/vagrant-tutorial/">http://gogojimmy.net/2013/05/26/vagrant-tutorial/</a>
-<a href="http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/">http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/</a></p>
-]]></content>
-		</item>
-		
-	</channel>
+  <channel>
+    <title>Posts on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/posts/</link>
+    <description>Recent content in Posts on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <copyright>Copyright (c) 2017-2018 nyogjtrc.</copyright>
+    <lastBuildDate>Sun, 15 Mar 2020 22:53:09 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 ssh Proxyjump</title>
+      <link>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</link>
+      <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
+      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host $ ssh</description>
+    </item>
+    
+    <item>
+      <title>最快速的 Terminal Emulator</title>
+      <link>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</link>
+      <pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
+      <description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
+    </item>
+    
+    <item>
+      <title>用 ab (apache benchmark) 測試網站效能</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</link>
+      <pubDate>Sat, 29 Feb 2020 01:30:46 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</guid>
+      <description>指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &amp;lt;$Revision: 1826891 $&amp;gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:</description>
+    </item>
+    
+    <item>
+      <title>Swagger 入門</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</link>
+      <pubDate>Sun, 23 Feb 2020 22:21:45 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</guid>
+      <description>Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger</description>
+    </item>
+    
+    <item>
+      <title>我的工作管理方法</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</link>
+      <pubDate>Wed, 19 Feb 2020 00:41:26 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</guid>
+      <description>在軟體資訊領域，要不停的更新資訊。日常生活中也有著不少的事情要處理。 寫筆記成為健忘的我不可少的重要工具。 不停的摸索，參考 GTD 等方法，拜讀電腦玩</description>
+    </item>
+    
+    <item>
+      <title>把 PATH 變數列成清單</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</link>
+      <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
+    </item>
+    
+    <item>
+      <title>Install Lastest Firefox on Debian</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</link>
+      <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
+      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
+    </item>
+    
+    <item>
+      <title>架設自己的 Gitlab-CI</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</link>
+      <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</guid>
+      <description>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個</description>
+    </item>
+    
+    <item>
+      <title>比較 Git Workflows</title>
+      <link>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</link>
+      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/02/compare-git-workflows/</guid>
+      <description>團隊在合作開發程式時，一定少不了 git 這個重要的工具，怎麼有效的使用 git 常常是一大課題。 這邊整理一下目前常見的幾種 git 分支管理策略。 Git flow 出處: https://nvie.com/posts/a-successful-git-branching-model/ 分支</description>
+    </item>
+    
+    <item>
+      <title>刪除 Redis 中符合 Pattern 的 Key</title>
+      <link>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</link>
+      <pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
+      <description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
+    </item>
+    
+    <item>
+      <title>配置開發 Python 的 vim 環境</title>
+      <link>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</link>
+      <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
+      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
+    </item>
+    
+    <item>
+      <title>在 Amazon Linux 2 上安裝 Docker</title>
+      <link>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</link>
+      <pubDate>Wed, 20 Nov 2019 00:42:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/11/install-docker-on-amazon-linux-2/</guid>
+      <description>最近要在偶然拿到手的 EC2 instance 上安裝 docker，卻意外的無法照著官網的說明安裝！ 原來是我拿到的 instance 是裝 Amazon Linux 2 這個 AWS 的特別版 OS 沒辦法直接使用一般的 yum</description>
+    </item>
+    
+    <item>
+      <title>在 Mac 上使用 GNU Commands</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</link>
+      <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</guid>
+      <description>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。 macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大 這讓習慣以 Linux 開發程式的</description>
+    </item>
+    
+    <item>
+      <title>Log Rotate With Zap Logger</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</link>
+      <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/log-rotate-with-zap-logger/</guid>
+      <description>github.com/uber-go/zap, zap 是目前我比較常用的 logger package 在寫 log file 時，通常需要定期的封存檔案，避免單一檔案過大而導致之後難以整理 zap 本身沒有 rotation 功能，要自己寫，或是用 lumberjack 這個 package zap</description>
+    </item>
+    
+    <item>
+      <title>Bash 常用快捷鍵</title>
+      <link>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</link>
+      <pubDate>Sun, 15 Sep 2019 13:15:40 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</guid>
+      <description>記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯</description>
+    </item>
+    
+    <item>
+      <title>記錄目前正在使用的字型</title>
+      <link>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</link>
+      <pubDate>Tue, 23 Jul 2019 00:23:44 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/07/record-the-font-i-using-currently/</guid>
+      <description>每天都要看螢幕超過八小時的情況下，漸漸的想對自己的好一點，找一些讓自己眼睛比較舒服的字型。 一個每天都要盯著 terminal 的工程師，更是要選個看得清楚又容</description>
+    </item>
+    
+    <item>
+      <title>php 的邏輯運算子  and vs &amp;&amp;</title>
+      <link>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</link>
+      <pubDate>Fri, 19 Jul 2019 01:01:55 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</guid>
+      <description>邏輯運算子 php 的邏輯運算子除了 &amp;amp;&amp;amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想</description>
+    </item>
+    
+    <item>
+      <title>離開 spf13-vim 的日子</title>
+      <link>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</link>
+      <pubDate>Wed, 10 Apr 2019 16:22:20 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</guid>
+      <description>前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim</description>
+    </item>
+    
+    <item>
+      <title>Github Security Alert</title>
+      <link>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</link>
+      <pubDate>Tue, 05 Feb 2019 14:31:33 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2019/02/github-security-alert/</guid>
+      <description>最近信箱會出現來自 Github 的信件 Github 現在會檢查你的專案中是否有用到有漏洞的套件版本，如果都沒有處理的話，還會一天來一封… 這只是個測試用專案，好像應該</description>
+    </item>
+    
+    <item>
+      <title>Install Virtualbox 5.2 On Debian Testing</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</link>
+      <pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
+      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
+    </item>
+    
+    <item>
+      <title>X1c 6th 在 Debian 裡優化 SSD</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</link>
+      <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
+      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
+    </item>
+    
+    <item>
+      <title>查詢 Linux 上的一些 Unique ID</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</link>
+      <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
+      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
+    </item>
+    
+    <item>
+      <title>ThinkPad X1 Carbon 6th 的 Debian 安裝記錄</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/</link>
+      <pubDate>Mon, 03 Dec 2018 14:53:59 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/</guid>
+      <description>入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&amp;gt; Secure Boot</description>
+    </item>
+    
+    <item>
+      <title>目前使用中的 GNOME Shell Extensions</title>
+      <link>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</link>
+      <pubDate>Sat, 01 Dec 2018 21:03:36 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</guid>
+      <description>記錄一下目前會用的 Extensions Gnome Shell Extensions 網址: https://extensions.gnome.org/ 增加操作性 Top Panel Workspace Scroll https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/ 外觀調整 User Themes https://extensions.gnome.org/extension/19/user-themes/ Hide Activities Button https://extensions.gnome.org/extension/744/hide-activities-button/ Panel OSD https://extensions.gnome.org/extension/708/panel-osd/ Remove Dropdown Arrows https://extensions.gnome.org/extension/800/remove-dropdown-arrows/ 實用功能 Caffeine https://extensions.gnome.org/extension/517/caffeine/ Lock Keys https://extensions.gnome.org/extension/36/lock-keys/ Extensions https://extensions.gnome.org/extension/1036/extensions/ Suspend Button https://extensions.gnome.org/extension/826/suspend-button/ Night Light Slider https://extensions.gnome.org/extension/1276/night-light-slider/ Clipboard Indicator https://extensions.gnome.org/extension/779/clipboard-indicator/ OpenWeather https://extensions.gnome.org/extension/750/openweather/</description>
+    </item>
+    
+    <item>
+      <title>Error Handling in Golang</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</link>
+      <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
+      <description>Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
+    </item>
+    
+    <item>
+      <title>記錄目前慣用的服務跟工具</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</link>
+      <pubDate>Mon, 23 Jul 2018 14:33:06 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/note-what-tools-i-prefer-recently/</guid>
+      <description>語言/框架: 前端: react/redux/Semantic UI React 設計元件，不再是過去設計模版的方式 後端: php/lumen, golang/echo php 快速開發 go 效能優秀，善於處理並發工作 編輯器 vim: 工程師最好的伙伴 vscode: 第三方套</description>
+    </item>
+    
+    <item>
+      <title>在 Terminal 上的跳舞鸚鵡</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</link>
+      <pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
+      <description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
+    </item>
+    
+    <item>
+      <title>Try gRPC, grpc-gateway With Go</title>
+      <link>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</link>
+      <pubDate>Mon, 09 Jul 2018 14:14:03 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</guid>
+      <description>什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開</description>
+    </item>
+    
+    <item>
+      <title>Evernote Tools: NixNote2 &amp; Evernote Shortcuts</title>
+      <link>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</link>
+      <pubDate>Sun, 06 May 2018 18:32:55 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</guid>
+      <description>Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。 web client 的基本功能已經很好用了，只是想</description>
+    </item>
+    
+    <item>
+      <title>Set Sudo on Debian</title>
+      <link>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</link>
+      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
+    </item>
+    
+    <item>
+      <title>Try Tmux</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</link>
+      <pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</guid>
+      <description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6</description>
+    </item>
+    
+    <item>
+      <title>Try Spf13 Vim</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</link>
+      <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
+      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
+    </item>
+    
+    <item>
+      <title>Fix Date Time of Photo Exif Meta Data</title>
+      <link>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</link>
+      <pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</guid>
+      <description>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有</description>
+    </item>
+    
+    <item>
+      <title>複製 ssh key 到遠端機器</title>
+      <link>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</link>
+      <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</guid>
+      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指</description>
+    </item>
+    
+    <item>
+      <title>Golang Test All Testing in Project</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
+      <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
+      <description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
+    </item>
+    
+    <item>
+      <title>交換 Left Ctrl 跟 CapsLock 的位置，救救你的左手小指</title>
+      <link>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</link>
+      <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</guid>
+      <description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool $ sudo apt install gnome-tweak-tool 開啟 gnome-tweak-tool</description>
+    </item>
+    
+    <item>
+      <title>用 Hugo 發佈部落格</title>
+      <link>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</link>
+      <pubDate>Sun, 24 Sep 2017 13:36:35 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/09/publish-blog-with-hugo-generator/</guid>
+      <description>Hugo 是用 Go 開發的靜態網站產生器 我為了把 blog 文章改放到 Github Page 上，一開始是想到 Jekyll 這個超熱門的工具 稍微研究一下後，發現是用 Ruby 寫的，讓我不太想用 最後是發現</description>
+    </item>
+    
+    <item>
+      <title>The First Hugo Post</title>
+      <link>https://nyogjtrc.github.io/posts/2017/09/the-first-hugo-post/</link>
+      <pubDate>Sat, 23 Sep 2017 17:09:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/09/the-first-hugo-post/</guid>
+      <description>Hello Hugo This is my first post using hugo.</description>
+    </item>
+    
+    <item>
+      <title>在 Linux 上處理圖檔</title>
+      <link>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</link>
+      <pubDate>Sat, 15 Apr 2017 01:09:42 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</guid>
+      <description>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工</description>
+    </item>
+    
+    <item>
+      <title>Webpack 2.2 Sample - f2e-jacket</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</link>
+      <pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
+      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu Change Timezone</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</link>
+      <pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
+      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu - Setting Locale Failed</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</link>
+      <pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
+      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MONETARY = &amp;#34;en_GB.UTF-8&amp;#34;, LC_ADDRESS = &amp;#34;en_GB.UTF-8&amp;#34;, LC_TELEPHONE = &amp;#34;en_GB.UTF-8&amp;#34;, LC_NAME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MEASUREMENT = &amp;#34;en_GB.UTF-8&amp;#34;,</description>
+    </item>
+    
+    <item>
+      <title>AWS - 無法登入 EC2 Instance 的解決方案</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</link>
+      <pubDate>Fri, 17 Mar 2017 11:10:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</guid>
+      <description>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以</description>
+    </item>
+    
+    <item>
+      <title>Vim - Global Command g</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</link>
+      <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+    </item>
+    
+    <item>
+      <title>Linux 指令 date</title>
+      <link>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</link>
+      <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
+      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
+    </item>
+    
+    <item>
+      <title>Getting Things Done - GTD 介紹</title>
+      <link>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</link>
+      <pubDate>Sun, 22 Jan 2017 15:29:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2017/01/getting-things-done-gtd/</guid>
+      <description>面對生活跟工作上的大小事，常常會遇到一個情況：你當下正在處理某一項工作，突然想到一個點子，或是有其他事情來打斷，讓你分心而沒辦法好好的工作。</description>
+    </item>
+    
+    <item>
+      <title>用 Vagrant 建立開發環境</title>
+      <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>
+      <pubDate>Sat, 30 May 2015 16:14:00 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</guid>
+      <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
+    </item>
+    
+  </channel>
 </rss>

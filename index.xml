@@ -18,7 +18,7 @@
       <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
-      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host ssh -J</description>
+      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host $ ssh</description>
     </item>
     
     <item>
@@ -63,7 +63,7 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;quot;:&amp;quot; &amp;quot;\n&amp;quot; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;quot;${PATH//:/$&#39;\n&#39;}&amp;quot; echo -e &amp;quot;${PATH//:/\n}&amp;quot;</description>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
     </item>
     
     <item>
@@ -189,7 +189,7 @@
       <pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
-      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;quot;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;quot; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
+      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
     </item>
     
     <item>
@@ -396,7 +396,7 @@
       <pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
-      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MONETARY = &amp;quot;en_GB.UTF-8&amp;quot;, LC_ADDRESS = &amp;quot;en_GB.UTF-8&amp;quot;, LC_TELEPHONE = &amp;quot;en_GB.UTF-8&amp;quot;, LC_NAME = &amp;quot;en_GB.UTF-8&amp;quot;, LC_MEASUREMENT = &amp;quot;en_GB.UTF-8&amp;quot;,</description>
+      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MONETARY = &amp;#34;en_GB.UTF-8&amp;#34;, LC_ADDRESS = &amp;#34;en_GB.UTF-8&amp;#34;, LC_TELEPHONE = &amp;#34;en_GB.UTF-8&amp;#34;, LC_NAME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MEASUREMENT = &amp;#34;en_GB.UTF-8&amp;#34;,</description>
     </item>
     
     <item>
@@ -414,7 +414,7 @@
       <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
-      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd針對特</description>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
     </item>
     
     <item>

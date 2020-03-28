@@ -1,87 +1,151 @@
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta itemprop="name" content="AWS - 無法登入 EC2 Instance 的解決方案">
-<meta itemprop="description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以">
-<meta itemprop="datePublished" content="2017-03-17T11:10:00&#43;08:00" />
-<meta itemprop="dateModified" content="2017-03-17T11:10:00&#43;08:00" />
-<meta itemprop="wordCount" content="430">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="author" content="nyo">
+    <meta name="description" content="我是 nyo，這是我的軟體開發筆記部落格">
+    
 
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AWS - 無法登入 EC2 Instance 的解決方案"/>
+<meta name="twitter:description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以"/>
 
-<meta itemprop="keywords" content="AWS,EC2," /><meta property="og:title" content="AWS - 無法登入 EC2 Instance 的解決方案" />
+    <meta property="og:title" content="AWS - 無法登入 EC2 Instance 的解決方案" />
 <meta property="og:description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/" />
 <meta property="article:published_time" content="2017-03-17T11:10:00+08:00" />
 <meta property="article:modified_time" content="2017-03-17T11:10:00+08:00" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="AWS - 無法登入 EC2 Instance 的解決方案"/>
-<meta name="twitter:description" content="在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以"/>
-
-	<link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
-	<link rel="manifest" href="https://nyogjtrc.github.io/site.webmanifest">
-	<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg" color="">
-	<link rel="shortcut icon" href="https://nyogjtrc.github.io/favicon.ico">
-
-	<title>AWS - 無法登入 EC2 Instance 的解決方案</title>
-	<link rel="stylesheet" href="https://nyogjtrc.github.io/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
-	
-</head>
-
-<body id="page">
-	
-	<header id="site-header" class="animated slideInUp faster">
-		<div class="hdr-wrapper section-inner">
-			<div class="hdr-left">
-				<div class="site-branding">
-					<a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a>
-				</div>
-				<nav class="site-nav hide-in-mobile">
-					
-				<a href="https://nyogjtrc.github.io/posts/">Posts</a>
-				<a href="https://nyogjtrc.github.io/tags/">Tags</a>
-				<a href="https://nyogjtrc.github.io/about/">About</a>
-
-				</nav>
-			</div>
-			<div class="hdr-right hdr-icons">
-				<span class="hdr-social hide-in-mobile"><a href="https://github.com/nyogjtrc" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://twitter.com/nyogjtrc" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-			</div>
-		</div>
-	</header>
-	<div id="mobile-menu" class="animated fast">
-		<ul>
-			<li><a href="https://nyogjtrc.github.io/posts/">Posts</a></li>
-			<li><a href="https://nyogjtrc.github.io/tags/">Tags</a></li>
-			<li><a href="https://nyogjtrc.github.io/about/">About</a></li>
-		</ul>
-	</div>
 
 
-	<main class="site-main section-inner animated fadeIn faster">
-		<article class="thin">
-			<header class="post-header">
-				<div class="post-meta"><span>Mar 17, 2017</span></div>
-				<h1>AWS - 無法登入 EC2 Instance 的解決方案</h1>
-			</header>
-			<div class="content">
-				<p>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過</p>
+    
+      <base href="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/">
+    
+    <title>
+  AWS - 無法登入 EC2 Instance 的解決方案 · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.65.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">AWS - 無法登入 EC2 Instance 的解決方案</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2017-03-17T11:10:00&#43;08:00'>
+                March 17, 2017
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              1-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/aws/">AWS</a>
+      <span class="separator">•</span>
+    <a href="https://nyogjtrc.github.io/tags/ec2/">EC2</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過</p>
 <p>還好意外翻到官方文件上有一篇可以解決方案可以試試。最後成功了，救回不少時間</p>
 <p>這個做法的感覺就像是把電腦的硬碟拔下來裝到別台去讀取資料，詳細流程如以下記錄：</p>
-<h3 id="記錄">記錄<a href="#記錄" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="記錄">記錄</h3>
 <ol>
 <li>查看 Instance 的資訊，把 instance ID, AMI ID, Availability Zone, Root device 記錄下來</li>
 <li>點擊 Root device，把 <strong>EBS ID</strong> 記錄下來</li>
 <li>把 Instance 關機，選 Actions -&gt; Instance State -&gt; <strong>Stop</strong></li>
 </ol>
-<h3 id="建立新的-instance">建立新的 Instance<a href="#建立新的-instance" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="建立新的-instance">建立新的 Instance</h3>
 <ol>
 <li>點擊 <strong>Launch Instance</strong></li>
 <li>選擇跟剛剛記錄下來一樣的 AMI</li>
@@ -89,82 +153,90 @@
 <li>在 Add Tags 加上 Name=Temp</li>
 <li>到 Review 頁面點擊 <strong>Launch Instances</strong></li>
 </ol>
-<h3 id="將虛擬硬碟裝到新的-instance-上">將虛擬硬碟裝到新的 Instance 上<a href="#將虛擬硬碟裝到新的-instance-上" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="將虛擬硬碟裝到新的-instance-上">將虛擬硬碟裝到新的 Instance 上</h3>
 <ol start="5">
 <li>到 console 左側的功能列表選 Volumes</li>
 <li>找到原 instance 的 volume 卸載，選 Actions -&gt; <strong>Detach Volume</strong>，然後等它處理完畢</li>
 <li>把同個 volume 掛載到 temp instance 上，選 Actions -&gt; <strong>Attach Volume</strong> -&gt; 選 temp instance -&gt; 記錄 Device name (ex. /dev/sdf) -&gt; 點 <strong>Yes, Attach</strong></li>
 </ol>
-<h3 id="登入-instance-掛載硬碟">登入 Instance 掛載硬碟<a href="#登入-instance-掛載硬碟" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="登入-instance-掛載硬碟">登入 Instance 掛載硬碟</h3>
 <ol start="8">
 <li>登入 temp instance</li>
 <li>接下來要 mount volume</li>
 <li>使用 <code>lsblk</code> 指令，看到 /dev/sdf 的 device name 以 <code>xvdf</code> 顯示，然後磁區名稱會是 xvdf1 (/dev/xvdf1)</li>
 <li>下 mount 指令</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo mkdir /mnt/tempvol
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo mkdir /mnt/tempvol
 $ sudo mount /dev/xvdf1 /mnt/tempvol
 </code></pre></div><ol start="12">
 <li>接下來就可以進 <code>/mnt/tempvol</code> ，解救資料，備份資料，修正設定，都可！</li>
 </ol>
-<h3 id="硬碟裝回原-instance">硬碟裝回原 Instance<a href="#硬碟裝回原-instance" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="硬碟裝回原-instance">硬碟裝回原 Instance</h3>
 <ol start="13">
 <li>資料解救完畢後 umount</li>
 </ol>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo umount /mnt/tempvol
 </code></pre></div><ol start="14">
 <li><strong>Detach Volume</strong> 再重新 <strong>Attach Volume</strong> 掛回原 instance 的 <code>/dev/sda1</code></li>
 <li>重新 <strong>Start instance</strong></li>
 </ol>
-<h3 id="reference">Reference<a href="#reference" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<h3 id="reference">Reference</h3>
 <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair</a></p>
 
-			</div>
-
-			<hr class="post-end">
-			<footer class="post-info">
-				<p>
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://nyogjtrc.github.io/tags/aws">AWS</a></span><span class="tag"><a href="https://nyogjtrc.github.io/tags/ec2">EC2</a></span>
-				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>430 Words</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2017-03-17 11:10 &#43;0800</p>
-			</footer>
-		</article>
-		<div class="post-nav thin">
-			<a class="next-post" href="https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/">
-				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Ubuntu - Setting Locale Failed</span>
-			</a>
-			<a class="prev-post" href="https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/">
-				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Vim - Global Command g</span>
-			</a>
-		</div>
-		<div id="comments" class="thin">
-</div>
-	</main>
-
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<p>&copy; 2020 <a href="https://nyogjtrc.github.io/">nyo</a> &#183; Copyright (c) 2015-2020</p>
-		<p>
-			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://nyogjtrc.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
-		</p>
-	</footer>
+      </div>
 
 
+      <footer>
+        
 
-	<script src="https://nyogjtrc.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
-	
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+    
+      
+        © 2020
+      
+       nyo 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-43264564-2', 'auto');
 	
 	ga('send', 'pageview');
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-</body>
+    
+
+  </body>
 
 </html>
