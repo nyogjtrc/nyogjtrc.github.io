@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="nyo&#39;s development note">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible 新手上路"/>
+<meta name="twitter:description" content="介紹 命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,"/>
+
+    <meta property="og:title" content="Ansible 新手上路" />
+<meta property="og:description" content="介紹 命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/" />
+<meta property="article:published_time" content="2020-03-29T17:58:46+08:00" />
+<meta property="article:modified_time" content="2020-03-29T17:58:46+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/">
+    
+    <title>
+  Ansible 新手上路 · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.83a2010dac9f59f943b3004cd6c4f230507ad036da635d3621401d42ec4e2835.css" integrity="sha256-g6IBDayfWflDswBM1sTyMFB60DbaY102IUAdQuxOKDU=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.65.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Ansible 新手上路</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-03-29T17:58:46&#43;08:00'>
+                March 29, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/ansible/">ansible</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="介紹">介紹</h2>
+<ul>
+<li>命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲)</li>
+<li>官網上的 slogan <code>Automation for everyone</code></li>
+<li>一個自動化工具，幫你完成組態管理、程式部署等工作</li>
+<li>實現 Infrastructure as code (IaC)</li>
+<li>其他類似的工具: Puppet, SaltStack, Chef, Terraform</li>
+</ul>
+<p>優點:</p>
+<ul>
+<li>只要有 ssh 跟 python 就可以運作</li>
+<li>以 Yaml 格式編寫</li>
+<li>被管理的 server 不需要另外安裝 agent</li>
+</ul>
+<h2 id="系統需求">系統需求</h2>
+<p><strong>控制端</strong></p>
+<ul>
+<li>Python 2 (version 2.7) or Python 3 (versions 3.5 and higher)</li>
+</ul>
+<p><strong>被管理端</strong></p>
+<ul>
+<li>SSH</li>
+<li>Python 2 (version 2.6 or later) or Python 3 (version 3.5 or later)</li>
+</ul>
+<h2 id="安裝">安裝</h2>
+<p>先安裝 python 的套件管理工具 pip 或 pip3，再用 pip 安裝 ansible</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ pip3 install ansible
+</code></pre></div><h2 id="設定">設定</h2>
+<p>建立一個資料夾來放 ansible 需要的檔案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ mkdir hello-ansible; <span style="color:#8be9fd;font-style:italic">cd</span> hello-ansible;
+</code></pre></div><p>用 vagrant 開一個測試機</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ vagrant init ubuntu/trusty64
+$ vagrant up
+</code></pre></div><p>設定組態檔 <code>ansible.cfg</code>，直接指定資料夾中的 hosts 為主要的主機清單</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#ff79c6">[defaults]</span>
+<span style="color:#50fa7b">inventory</span> <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">hosts</span>
+</code></pre></div><p>設定 inventory 主機清單 <code>hosts</code>，variables 配合 vagrant 的預設值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#ff79c6">all</span>:
+  <span style="color:#ff79c6">hosts</span>:
+    <span style="color:#ff79c6">server-01</span>:
+      <span style="color:#ff79c6">ansible_ssh_host</span>: <span style="color:#bd93f9">127.0.0.1</span>
+  <span style="color:#ff79c6">vars</span>:
+    <span style="color:#ff79c6">ansible_user</span>: vagrant
+    <span style="color:#ff79c6">ansible_ssh_port</span>: <span style="color:#bd93f9">2222</span>
+    <span style="color:#ff79c6">ansible_ssh_private_key_file</span>: .vagrant/machines/default/virtualbox/private_key
+    <span style="color:#ff79c6">ansible_ssh_extra_args</span>: <span style="color:#f1fa8c">&#34;-o StrictHostKeyChecking=no&#34;</span>
+</code></pre></div><h2 id="測試">測試</h2>
+<p>ping 主機</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ansible all -m ping
+server-01 | <span style="color:#8be9fd;font-style:italic">SUCCESS</span> <span style="color:#ff79c6">=</span>&gt; <span style="color:#ff79c6">{</span>
+    <span style="color:#f1fa8c">&#34;ansible_facts&#34;</span>: <span style="color:#ff79c6">{</span>
+        <span style="color:#f1fa8c">&#34;discovered_interpreter_python&#34;</span>: <span style="color:#f1fa8c">&#34;/usr/bin/python&#34;</span>
+    <span style="color:#ff79c6">}</span>,
+    <span style="color:#f1fa8c">&#34;changed&#34;</span>: false,
+    <span style="color:#f1fa8c">&#34;ping&#34;</span>: <span style="color:#f1fa8c">&#34;pong&#34;</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></div><p>對所有的主機下指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ansible all -m <span style="color:#8be9fd;font-style:italic">command</span> -a <span style="color:#f1fa8c">&#39;echo Hello World.&#39;</span>
+server-01 | CHANGED | <span style="color:#8be9fd;font-style:italic">rc</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span> &gt;&gt;
+Hello World.
+</code></pre></div><h2 id="playbook">Playbook</h2>
+<p>Playbook 的翻譯是「劇本」，就如同字面上的意思，把你想要命令主機做的事情一件一件到 Playbook 中，讓 ansible 幫你一一的完成這些工作。</p>
+<p>建立 <code>ping.yml</code> 鍵入你要處理的工作</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+- <span style="color:#ff79c6">hosts</span>: <span style="color:#f1fa8c">&#34;{{ variable_host | default(&#39;all&#39;) }}&#34;</span>
+  <span style="color:#ff79c6">tasks</span>:
+    - <span style="color:#ff79c6">name</span>: Ping server
+      <span style="color:#ff79c6">ping</span>:
+      <span style="color:#ff79c6">register</span>: result
+    - <span style="color:#ff79c6">name</span>: Print result
+      <span style="color:#ff79c6">debug</span>:
+        <span style="color:#ff79c6">msg</span>: <span style="color:#f1fa8c">&#34;{{ result }}&#34;</span>
+    - <span style="color:#ff79c6">name</span>: Show uptime
+      <span style="color:#ff79c6">command</span>: uptime
+      <span style="color:#ff79c6">register</span>: uptime
+    - <span style="color:#ff79c6">name</span>: Print uptime
+      <span style="color:#ff79c6">debug</span>:
+        <span style="color:#ff79c6">msg</span>: <span style="color:#f1fa8c">&#34;{{ uptime.stdout }}&#34;</span>
+
+<span style="color:#6272a4"># vim: set filetype=yaml.ansible:</span>
+</code></pre></div><p>下指令 <code>ansible-playbook ping.yml</code> 就能看到執行結果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ansible-playbook ping.yml
+
+PLAY <span style="color:#ff79c6">[</span>all<span style="color:#ff79c6">]</span> *********************************************************************
+
+TASK <span style="color:#ff79c6">[</span>Ping server<span style="color:#ff79c6">]</span> *************************************************************
+ok: <span style="color:#ff79c6">[</span>server-01<span style="color:#ff79c6">]</span>
+
+TASK <span style="color:#ff79c6">[</span>Print result<span style="color:#ff79c6">]</span> ************************************************************
+ok: <span style="color:#ff79c6">[</span>server-01<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span>&gt; <span style="color:#ff79c6">{</span>
+    <span style="color:#f1fa8c">&#34;msg&#34;</span>: <span style="color:#ff79c6">{</span>
+        <span style="color:#f1fa8c">&#34;changed&#34;</span>: false,
+        <span style="color:#f1fa8c">&#34;failed&#34;</span>: false,
+        <span style="color:#f1fa8c">&#34;ping&#34;</span>: <span style="color:#f1fa8c">&#34;pong&#34;</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+
+TASK <span style="color:#ff79c6">[</span>Show uptime<span style="color:#ff79c6">]</span> *************************************************************
+changed: <span style="color:#ff79c6">[</span>server-01<span style="color:#ff79c6">]</span>
+
+TASK <span style="color:#ff79c6">[</span>Print uptime<span style="color:#ff79c6">]</span> ************************************************************
+ok: <span style="color:#ff79c6">[</span>server-01<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span>&gt; <span style="color:#ff79c6">{</span>
+    <span style="color:#f1fa8c">&#34;msg&#34;</span>: <span style="color:#f1fa8c">&#34; 14:59:19 up  1:53,  1 user,  load average: 0.00, 0.01, 0.05&#34;</span>
+<span style="color:#ff79c6">}</span>
+
+PLAY RECAP *********************************************************************
+server-01                  : <span style="color:#8be9fd;font-style:italic">ok</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">4</span>    <span style="color:#8be9fd;font-style:italic">changed</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">1</span>    <span style="color:#8be9fd;font-style:italic">unreachable</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>    <span style="color:#8be9fd;font-style:italic">failed</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>    <span style="color:#8be9fd;font-style:italic">skipped</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>    <span style="color:#8be9fd;font-style:italic">rescued</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>    <span style="color:#8be9fd;font-style:italic">ignored</span><span style="color:#ff79c6">=</span><span style="color:#bd93f9">0</span>
+</code></pre></div><h2 id="小結">小結</h2>
+<p>一些寫 shell script 時要自己處理的事情，Ansible 或是一些 Module 都有了，不再需要重複造輪子</p>
+<p>拿 playbook 跟 shell script 比較，一切都變得更加有結構性</p>
+<p>剛開始使用時，其實也還不確定對工作效率的改善有多大的差距，就是一步一步的試下去</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/index.html">https://docs.ansible.com/ansible/latest/index.html</a></li>
+<li><a href="https://blog.samchu.dev/2019/07/05/Ansible-install-and-introduction/">https://blog.samchu.dev/2019/07/05/Ansible-install-and-introduction/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    
+      <p>Developer</p>
+    
+    
+      
+        © 2015 - 2020
+      
+       nyo 
+    
+    
+       · 
+      Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

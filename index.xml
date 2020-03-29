@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Ansible 新手上路</title>
+      <link>https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/</link>
+      <pubDate>Sun, 29 Mar 2020 17:58:46 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/</guid>
+      <description>介紹 命名由來：小說 Ender&amp;rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,</description>
+    </item>
+    
+    <item>
       <title>About Me</title>
       <link>https://nyogjtrc.github.io/about/</link>
       <pubDate>Tue, 24 Mar 2020 01:30:38 +0800</pubDate>

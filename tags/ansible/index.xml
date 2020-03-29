@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/ansible/</link>
+    <description>Recent content in ansible on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 29 Mar 2020 17:58:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ansible 新手上路</title>
+      <link>https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/</link>
+      <pubDate>Sun, 29 Mar 2020 17:58:46 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/</guid>
+      <description>介紹 命名由來：小說 Ender&amp;rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,</description>
+    </item>
+    
+  </channel>
+</rss>
