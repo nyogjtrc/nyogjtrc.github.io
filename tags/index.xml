@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 29 Mar 2020 17:58:46 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2020 23:14:28 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>ansible</title>
       <link>https://nyogjtrc.github.io/tags/ansible/</link>
-      <pubDate>Sun, 29 Mar 2020 17:58:46 +0800</pubDate>
+      <pubDate>Sat, 18 Apr 2020 23:14:28 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sudo</title>
+      <link>https://nyogjtrc.github.io/tags/sudo/</link>
+      <pubDate>Sat, 18 Apr 2020 23:14:28 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/sudo/</guid>
       <description></description>
     </item>
     
@@ -359,15 +368,6 @@
       <pubDate>Sun, 06 May 2018 18:32:55 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/nixnote/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sudo</title>
-      <link>https://nyogjtrc.github.io/tags/sudo/</link>
-      <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/sudo/</guid>
       <description></description>
     </item>
     

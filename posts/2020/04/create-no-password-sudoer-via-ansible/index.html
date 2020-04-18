@@ -10,26 +10,26 @@
     <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="在 Linux 上處理圖檔"/>
-<meta name="twitter:description" content="想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工"/>
+<meta name="twitter:title" content="用 Ansible 建立一個不需要密碼的 sudoer"/>
+<meta name="twitter:description" content="把 user 設定成 sudoer 的方式 直接修改 /etc/sudoers 最暴力的作法，不小心打錯字就 game over 透過 visudo 指令去修改 visudo 會幫忙檢查有沒有打錯字 增加檔案到 /etc/sudoers.d/ 裡面 不會改動 /etc/sudoers 使用 ansible 的選擇 使"/>
 
-    <meta property="og:title" content="在 Linux 上處理圖檔" />
-<meta property="og:description" content="想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工" />
+    <meta property="og:title" content="用 Ansible 建立一個不需要密碼的 sudoer" />
+<meta property="og:description" content="把 user 設定成 sudoer 的方式 直接修改 /etc/sudoers 最暴力的作法，不小心打錯字就 game over 透過 visudo 指令去修改 visudo 會幫忙檢查有沒有打錯字 增加檔案到 /etc/sudoers.d/ 裡面 不會改動 /etc/sudoers 使用 ansible 的選擇 使" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/" />
-<meta property="article:published_time" content="2017-04-15T01:09:42+08:00" />
-<meta property="article:modified_time" content="2017-04-15T01:09:42+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/" />
+<meta property="article:published_time" content="2020-04-18T23:14:28+08:00" />
+<meta property="article:modified_time" content="2020-04-18T23:14:28+08:00" />
 
 
     
-      <base href="https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/">
+      <base href="https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/">
     
     <title>
-  在 Linux 上處理圖檔 · Nyo&#39;s Study Book
+  用 Ansible 建立一個不需要密碼的 sudoer · Nyo&#39;s Study Book
 </title>
 
     
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/">
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/">
     
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -109,14 +109,14 @@
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">在 Linux 上處理圖檔</h1>
+          <h1 class="title">用 Ansible 建立一個不需要密碼的 sudoer</h1>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
               <i class="fas fa-calendar"></i>
-              <time datetime='2017-04-15T01:09:42&#43;08:00'>
-                April 15, 2017
+              <time datetime='2020-04-18T23:14:28&#43;08:00'>
+                April 18, 2020
               </time>
             </span>
             <span class="reading-time">
@@ -127,35 +127,51 @@
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://nyogjtrc.github.io/tags/linux/">Linux</a></div>
+    <a href="https://nyogjtrc.github.io/tags/ansible/">ansible</a>
+      <span class="separator">•</span>
+    <a href="https://nyogjtrc.github.io/tags/sudo/">sudo</a></div>
 
         </div>
       </header>
 
       <div>
         
-        <p>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具</p>
-<p>可以直接在 command line 上處理圖檔的工具:
-<strong>convert</strong></p>
-<p>convert 功能之多，我剛看到時也嚇了一下，可以轉換檔案格式，可以縮放圖片，可以使用濾鏡，可以旋轉圖片等等。不過有沒有比較輕量我也不太清楚，至少我可以快速的得到我要的結果。</p>
-<h2 id="使用範例">使用範例</h2>
-<p>把 png 檔轉成 jpg 檔</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.png image.jpg
-</code></pre></div><p>轉 90 度</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -rotate <span style="color:#bd93f9">90</span> modified-image.jpg
-</code></pre></div><p>調整圖片壓縮品質</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -quality <span style="color:#bd93f9">50</span> modified-image.jpg
-</code></pre></div><p>把所有圖片調整成高度 200</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#ff79c6">for</span> file in *.jpg; <span style="color:#ff79c6">do</span> convert <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$file</span><span style="color:#f1fa8c">&#34;</span> -resize x200 <span style="color:#f1fa8c">&#34;s-</span><span style="color:#8be9fd;font-style:italic">$file</span><span style="color:#f1fa8c">&#34;</span>; <span style="color:#ff79c6">done</span>
-</code></pre></div><p>在圖片上寫字</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ convert image.jpg -font courier -fill white -pointsize <span style="color:#bd93f9">20</span> -annotate +50+50 <span style="color:#f1fa8c">&#39;Writing&#39;</span> write-image.jpg
-</code></pre></div><h3 id="reference">Reference</h3>
-<ul>
-<li><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick command line examples – part 1</a></li>
-<li><a href="https://www.imagemagick.org/script/convert.php">Command-line Tools: Convert @ ImageMagick</a></li>
-<li><a href="https://www.howtogeek.com/109369/how-to-quickly-resize-convert-modify-images-from-the-linux-terminal/">How to Quickly Resize, Convert &amp; Modify Images from the Linux Terminal</a></li>
-</ul>
-
+        <h2 id="把-user-設定成-sudoer-的方式">把 user 設定成 sudoer 的方式</h2>
+<h4 id="直接修改-etcsudoers">直接修改 /etc/sudoers</h4>
+<p>最暴力的作法，不小心打錯字就 game over</p>
+<h4 id="透過-visudo-指令去修改">透過 visudo 指令去修改</h4>
+<p>visudo 會幫忙檢查有沒有打錯字</p>
+<h4 id="增加檔案到-etcsudoersd-裡面">增加檔案到 /etc/sudoers.d/ 裡面</h4>
+<p>不會改動 <code>/etc/sudoers</code></p>
+<h2 id="使用-ansible-的選擇">使用 ansible 的選擇</h2>
+<p>使用 ansible 來增加 sudo 權限時，我們只要在 <code>/etc/sudoers.d/</code> 裡面增加有設定 sudoer 的檔案就好</p>
+<p>不會動到預設的檔案，單一檔案也比較容易管控</p>
+<h4 id="playbook-rookieyml">playbook rookie.yml</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+- <span style="color:#ff79c6">name</span>: Create new user with sudo privilege
+  <span style="color:#ff79c6">hosts</span>: all
+  <span style="color:#ff79c6">become</span>: yes
+  <span style="color:#ff79c6">tasks</span>:
+    - <span style="color:#ff79c6">name</span>: Create new user
+      <span style="color:#ff79c6">user</span>:
+        <span style="color:#ff79c6">name</span>: rookie
+        <span style="color:#ff79c6">shell</span>: /bin/bash
+    - <span style="color:#ff79c6">name</span>: Set authorized key taken from file
+      <span style="color:#ff79c6">authorized_key</span>:
+        <span style="color:#ff79c6">user</span>: rookie
+        <span style="color:#ff79c6">state</span>: present
+        <span style="color:#ff79c6">key</span>: <span style="color:#f1fa8c">&#34;{{ lookup(&#39;file&#39;, &#39;~/.ssh/id_rsa.pub&#39;) }}&#34;</span>
+    - <span style="color:#ff79c6">name</span>: Add user rookie to sudo
+      <span style="color:#ff79c6">lineinfile</span>:
+        <span style="color:#ff79c6">path</span>: /etc/sudoers.d/rookie
+        <span style="color:#ff79c6">line: &#39;rookie ALL=(ALL) NOPASSWD</span>: ALL<span style="color:#f1fa8c">&#39;
+</span><span style="color:#f1fa8c">        state: present
+</span><span style="color:#f1fa8c">        mode: 0440
+</span><span style="color:#f1fa8c">        create: yes
+</span><span style="color:#f1fa8c">        validate: &#39;</span>visudo -cf %s&#39;
+</code></pre></div><p>執行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ansible-playbook -i host rookie.yml
+</code></pre></div>
       </div>
 
 

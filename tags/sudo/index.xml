@@ -6,10 +6,19 @@
     <description>Recent content in sudo on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 10 Feb 2018 22:24:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2020 23:14:28 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/sudo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用 Ansible 建立一個不需要密碼的 sudoer</title>
+      <link>https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/</link>
+      <pubDate>Sat, 18 Apr 2020 23:14:28 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/</guid>
+      <description>把 user 設定成 sudoer 的方式 直接修改 /etc/sudoers 最暴力的作法，不小心打錯字就 game over 透過 visudo 指令去修改 visudo 會幫忙檢查有沒有打錯字 增加檔案到 /etc/sudoers.d/ 裡面 不會改動 /etc/sudoers 使用 ansible 的選擇 使</description>
+    </item>
     
     <item>
       <title>Set Sudo on Debian</title>

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>用 Ansible 建立一個不需要密碼的 sudoer</title>
+      <link>https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/</link>
+      <pubDate>Sat, 18 Apr 2020 23:14:28 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/04/create-no-password-sudoer-via-ansible/</guid>
+      <description>把 user 設定成 sudoer 的方式 直接修改 /etc/sudoers 最暴力的作法，不小心打錯字就 game over 透過 visudo 指令去修改 visudo 會幫忙檢查有沒有打錯字 增加檔案到 /etc/sudoers.d/ 裡面 不會改動 /etc/sudoers 使用 ansible 的選擇 使</description>
+    </item>
+    
+    <item>
       <title>Ansible 新手上路</title>
       <link>https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/</link>
       <pubDate>Sun, 29 Mar 2020 17:58:46 +0800</pubDate>
