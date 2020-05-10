@@ -17,7 +17,85 @@
       <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</guid>
-      <description>公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。 一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時， 突然覺得沒有 CI/CD 的 Gitlab 跟本是個</description>
+      <description>&lt;p&gt;公司裡有一台 gitlab server，但是沒有人在更新，也沒有安裝 CI。&lt;/p&gt;
+&lt;p&gt;一開始使用覺得沒什麼差，經過沒幾天當我想要試試 CI/CD 時，
+突然覺得沒有 CI/CD 的 Gitlab 跟本是個廢物。&lt;/p&gt;
+&lt;p&gt;所以我自己試著重新安裝了一台 Gitlab + Gitlab-CI。&lt;/p&gt;
+&lt;h2 id=&#34;用-apt-在-ubuntu-上安裝-gitlab&#34;&gt;用 APT 在 Ubuntu 上安裝 gitlab&lt;/h2&gt;
+&lt;p&gt;先安裝基本的套件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo apt-get update
+sudo apt-get install -y curl openssh-server ca-certificates
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;加入 gitlab 套件庫&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安裝 gitlab&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;EXTERNAL_URL&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://gitlab.example.com&amp;#34;&lt;/span&gt; apt-get install gitlab-ce
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;安裝完畢之後，就可以開 Browser 登入 Gitlab 了，預設的帳號是 root&lt;/p&gt;
+&lt;p&gt;我用 vm 試過之後，覺得用這方法當要更新時，可能會有點麻煩，所以就改試 Docker 的方法&lt;/p&gt;
+&lt;h2 id=&#34;用-docker-執行-gitlab&#34;&gt;用 Docker 執行 gitlab&lt;/h2&gt;
+&lt;p&gt;前置作業就是在 server 上安裝 docker&lt;/p&gt;
+&lt;p&gt;接來執行以下 docker 指令，就有一個 gitlab 服務了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo docker run --detach &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --hostname gitlab.example.com &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --publish 443:443 --publish 80:80 --publish 22:22 &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --name gitlab &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --restart always &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --volume /srv/gitlab/config:/etc/gitlab &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --volume /srv/gitlab/logs:/var/log/gitlab &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --volume /srv/gitlab/data:/var/opt/gitlab &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  gitlab/gitlab-ce:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;用-docker-安裝-gitlab-runner&#34;&gt;用 Docker 安裝 gitlab runner&lt;/h2&gt;
+&lt;p&gt;執行以下 docker 指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run -d --name gitlab-runner --restart always &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  -v /srv/gitlab-runner/config:/etc/gitlab-runner &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  -v /var/run/docker.sock:/var/run/docker.sock &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  gitlab/gitlab-runner:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;用-docker-compose-安裝-gitlabgitlab-ci&#34;&gt;用 docker-compose 安裝 gitlab+gitlab-ci&lt;/h2&gt;
+&lt;p&gt;直接使用 docker-compose 更直接快速的執行 gitlab 跟 runner 服務&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;version&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#ff79c6&#34;&gt;services&lt;/span&gt;:
+  &lt;span style=&#34;color:#ff79c6&#34;&gt;web&lt;/span&gt;:
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;gitlab/gitlab-ce:latest&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;restart&lt;/span&gt;: always
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;environment&lt;/span&gt;:
+      &lt;span style=&#34;color:#ff79c6&#34;&gt;GITLAB_OMNIBUS_CONFIG&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;|
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;        external_url &amp;#39;https://gitlab.example.com&amp;#39;&lt;/span&gt;
+        gitlab_rails[&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;gitlab_shell_ssh_port&amp;#39;&lt;/span&gt;] = &lt;span style=&#34;color:#bd93f9&#34;&gt;2224&lt;/span&gt;
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;ports&lt;/span&gt;:
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;80:80&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;443:443&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;2224:22&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;volumes&lt;/span&gt;:
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/srv/gitlab/config:/etc/gitlab&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/srv/gitlab/logs:/var/log/gitlab&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/srv/gitlab/data:/var/opt/gitlab&amp;#39;&lt;/span&gt;
+  &lt;span style=&#34;color:#ff79c6&#34;&gt;runner&lt;/span&gt;:
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;gitlab/gitlab-runner:latest&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;restart&lt;/span&gt;: always
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;volumes&lt;/span&gt;:
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/var/run/docker.sock:/var/run/docker.sock&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;/srv/gitlab-runner/config:/etc/gitlab-runner&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果要更新，只要兩個指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker-compose pull
+docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;把-runner-註冊到-gitlab-裡&#34;&gt;把 runner 註冊到 gitlab 裡&lt;/h2&gt;
+&lt;p&gt;先到 Admin Area &amp;gt; Overview &amp;gt; Runners 頁面，找到 registration token&lt;/p&gt;
+&lt;p&gt;執行 register 指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;選項請參考官網 &lt;a href=&#34;https://docs.gitlab.com/runner/register/&#34;&gt;https://docs.gitlab.com/runner/register/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果 Gitlab 有啟用 SSL，你可能需要帶上 crt file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run --rm -t -i -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;  --tls-ca-file&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;/srv/gitlab/config/ssl/gitlab.example.com.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;回到 Admin Area &amp;gt; Overview &amp;gt; Runners 頁面，看到 runner 的資料出現了。&lt;/p&gt;
+&lt;p&gt;之後就是試用 Gitlab-CI 的時間了！&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://about.gitlab.com/install/&#34;&gt;https://about.gitlab.com/install/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.gitlab.com/omnibus/docker/&#34;&gt;https://docs.gitlab.com/omnibus/docker/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.gitlab.com/runner/register/&#34;&gt;https://docs.gitlab.com/runner/register/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@rukeith/%E5%A6%82%E4%BD%95%E7%94%A8-docker-%E5%BB%BA%E5%88%B6-self-host-%E7%9A%84-gitlab-%E5%92%8C-gitlab-ci-5f70a74a26a5&#34;&gt;如何用 Docker 建制 Self-Host 的 GitLab 和 GitLab CI - Rukeith - Medium&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

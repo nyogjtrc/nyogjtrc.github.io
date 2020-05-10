@@ -17,7 +17,30 @@
       <pubDate>Sun, 14 Jan 2018 01:25:15 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/fix-date-time-of-photo-exif-meta-data/</guid>
-      <description>某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒 只能回家想辦法再修正時間，畢竟照片不能重拍啊 要在 Linux 上處理 EXIF 的話，有</description>
+      <description>&lt;p&gt;某次旅遊到了不同的時區，但是相機沒有調時間，拍到後來才發現，自己差點沒暈倒&lt;/p&gt;
+&lt;p&gt;只能回家想辦法再修正時間，畢竟照片不能重拍啊&lt;/p&gt;
+&lt;p&gt;要在 Linux 上處理 EXIF 的話，有個工具叫 &lt;code&gt;exiftool&lt;/code&gt; 可以用&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo apt install libimage-exiftool-perl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;要看-exif&#34;&gt;要看 EXIF&lt;/h2&gt;
+&lt;p&gt;看所有的 EXIF 資料&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ exiftool -a -u -g1 IMG_001.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;看 EXIF 日期資料&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ exiftool -AllDate IMG_001.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;要改-exif&#34;&gt;要改 EXIF&lt;/h2&gt;
+&lt;p&gt;要改時間可以直接指定日期&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ exiftool DateTimeOriginal=&amp;#39;2018:01:01 12:11:10&amp;#39; IMG_001.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或是加減時間&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ exiftool DateTimeOriginal-=2:0:0 -TimeZone=+08:00 IMG_001.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;有修改 EXIF 時， exiftool 會幫你複製一份原始檔案，並在檔案加上 &lt;code&gt;_original&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果不想要備份的話，指令上多加個 &lt;code&gt;-overwrite_original&lt;/code&gt; 就可以了&lt;/p&gt;
+&lt;h2 id=&#34;清-exif&#34;&gt;清 EXIF&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ exiftool -all= image.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/&#34;&gt;http://dimitar.me/change-the-date-and-time-or-any-other-exif-image-meta-data-of-pictures-with-ubuntu/&lt;/a&gt;
+&lt;a href=&#34;http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html&#34;&gt;http://blog.elleryq.idv.tw/2015/04/exif-exiftool.html&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -17,7 +17,88 @@
       <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
-      <description>Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
+      <description>&lt;h2 id=&#34;golang-原生的-error-type&#34;&gt;Golang 原生的 Error Type&lt;/h2&gt;
+&lt;p&gt;先認識 golang 的 error interface&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;type error interface {
+    Error() string
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/os/#PathError&#34;&gt;https://golang.org/pkg/os/#PathError&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// PathError records an error and the operation and file path that caused it.
+type PathError struct {
+	Op   string
+	Path string
+	Err  error
+}
+
+func (e *PathError) Error() string { return e.Op + &amp;#34; &amp;#34; + e.Path + &amp;#34;: &amp;#34; + e.Err.Error() }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;建立自己程式裡的-error-struct&#34;&gt;建立自己程式裡的 Error struct&lt;/h2&gt;
+&lt;p&gt;依照使用情境 error strcut&lt;/p&gt;
+&lt;h3 id=&#34;restful-api-error&#34;&gt;RESTful API Error&lt;/h3&gt;
+&lt;p&gt;RESTful API 除了訊息之後，要幫各種情況的錯誤加上編號，方便程式做後續的應對&lt;/p&gt;
+&lt;p&gt;並可以把其他來源的錯誤一並放入，方便追蹤錯誤&lt;/p&gt;
+&lt;p&gt;strcut fields: code, message, error&lt;/p&gt;
+&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// AppError struct with code and message
+type AppError struct {
+	code    int
+	message string
+	err     error
+}
+
+// New create Error instance
+func New(code int, message string, err error) *AppError {
+	return &amp;amp;AppError{code, message, err}
+}
+
+// Error getter
+func (e *AppError) Error() string {
+	return fmt.Sprintf(&amp;#34;%d: %s&amp;#34;, e.code, e.message)
+}
+
+// Code getter
+func (e *AppError) Code() int {
+	return e.code
+}
+
+// Message getter
+func (e *AppError) Message() string {
+	return e.message
+}
+
+// ErrorSummry getter
+func (e *AppError) ErrorSummry() string {
+	return fmt.Sprintf(&amp;#34;%d: %s, [%s]&amp;#34;, e.code, e.message, e.err.Error())
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;api-gateway-error&#34;&gt;API Gateway Error&lt;/h3&gt;
+&lt;p&gt;Gateway 公開提供服務在網路上，有時候會有安全性的需要，要隱藏一些內部錯誤訊息&lt;/p&gt;
+&lt;p&gt;但是維運上還是會需要有足夠的資訊來了解服務當下的狀況，可以放一個內部的代碼，多一點線索&lt;/p&gt;
+&lt;p&gt;strcut fields: code, message, internal code&lt;/p&gt;
+&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// Error for gateway
+type Error struct {
+	code      int
+	message   string
+	interCode int
+}
+
+// New Error instance
+func New(code int, message string, interCode int) *Error {
+	return &amp;amp;Error{code, message, interCode}
+}
+
+// Error getter
+func (e *Error) Error() string {
+	return fmt.Sprintf(&amp;#34;%d: %s (%d)&amp;#34;, e.code, e.message, e.interCode)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;full-example&#34;&gt;Full Example&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/nyogjtrc/practice-go/tree/master/error-code&#34;&gt;https://github.com/nyogjtrc/practice-go/tree/master/error-code&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/error-handling-and-go&#34;&gt;https://blog.golang.org/error-handling-and-go&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee&#34;&gt;https://medium.com/@sebdah/go-best-practices-error-handling-2d15e1f0c5ee&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

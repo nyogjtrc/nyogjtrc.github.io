@@ -17,7 +17,30 @@
       <pubDate>Sun, 06 May 2018 18:32:55 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/05/some-evernote-tools/</guid>
-      <description>Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。 web client 的基本功能已經很好用了，只是想</description>
+      <description>&lt;p&gt;Evernote 官方沒有出 Linux Application，只有在網站上介紹 NixNote，在 Linux 上，我都是直接用 web client。&lt;/p&gt;
+&lt;p&gt;web client 的基本功能已經很好用了，只是想要整理筆記的時候覺得有點不夠力&lt;/p&gt;
+&lt;p&gt;所以再來找找有什麼好工具可以用&lt;/p&gt;
+&lt;h2 id=&#34;nixnote&#34;&gt;NixNote&lt;/h2&gt;
+&lt;p&gt;前幾年試過 NixNote 但是中文輸入會變亂碼(也許是我沒設定好編碼，不過不重要了)
+2017 年 2 月時，NixNote2 釋出 Stable 版本&lt;/p&gt;
+&lt;h3 id=&#34;安裝-debian&#34;&gt;安裝 (Debian)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo apt install nixnote2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;開始之後，登入 Evernote 帳號，給他一些時間同步筆記&lt;/p&gt;
+&lt;p&gt;這次測試在 NixNote2 輸入中文，在手機跟 Web 上面看都不會亂碼了&lt;/p&gt;
+&lt;p&gt;設定裡面有 UTF-8 的選項，看來可以正常的支援中文了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;posts/2018/05/Screenshot-Nixnote-setting.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;ps. 本文是先用 NixNote2 整理的&lt;/p&gt;
+&lt;h2 id=&#34;evernote-shortcuts&#34;&gt;Evernote Shortcuts&lt;/h2&gt;
+&lt;p&gt;幫 web client 加上快捷鍵，雙手不用在滑鼠跟鍵盤之間移來移去，一個簡單又實用的小插件&lt;/p&gt;
+&lt;h3 id=&#34;安裝&#34;&gt;安裝&lt;/h3&gt;
+&lt;p&gt;從 Chrome Web Store 直接安裝&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nixnote.org/&#34;&gt;http://www.nixnote.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/evernote-shortcuts/clhjalfedcigiomjfmmjhgadnlmegobb&#34;&gt;Evernote Shortcuts - Chrome Web Store&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

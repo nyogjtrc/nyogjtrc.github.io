@@ -17,7 +17,45 @@
       <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
-      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
+      <description>&lt;p&gt;最近有機會寫一下 Python 就順便來改造一下 vim&lt;/p&gt;
+&lt;h2 id=&#34;autocompletion&#34;&gt;Autocompletion&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/davidhalter/jedi&#34;&gt;https://github.com/davidhalter/jedi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/deoplete-plugins/deoplete-jedi&#34;&gt;https://github.com/deoplete-plugins/deoplete-jedi&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能&lt;/p&gt;
+&lt;p&gt;我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi&lt;/p&gt;
+&lt;h3 id=&#34;安裝&#34;&gt;安裝&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ pip install jedi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vimrc&#34;&gt;vimrc&lt;/h3&gt;
+&lt;p&gt;使用 Plug 或其他 vim 套件管理安裝&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;Plug &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;deoplete-plugins/deoplete-jedi&amp;#39;&lt;/span&gt;, { &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;for&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;python&amp;#39;&lt;/span&gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;截圖:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24-21-20-37.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;formatter--linter&#34;&gt;Formatter &amp;amp; Linter&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/google/yapf&#34;&gt;https://github.com/google/yapf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/timothycrosley/isort&#34;&gt;https://github.com/timothycrosley/isort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://flake8.pycqa.org/&#34;&gt;http://flake8.pycqa.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;yapf google 提供的 python code formatter&lt;/p&gt;
+&lt;p&gt;isort 則是會幫忙整理 import 的順序跟組合&lt;/p&gt;
+&lt;p&gt;flake8 檢查 python 的 coding style 是否依照 pep8&lt;/p&gt;
+&lt;p&gt;以上三個工具都可以跟 ale 整合，所以 vim 中只要對 ale 安裝跟設定就好&lt;/p&gt;
+&lt;h3 id=&#34;安裝-1&#34;&gt;安裝&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ pip install yapf isort flake8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vimrc-1&#34;&gt;vimrc&lt;/h3&gt;
+&lt;p&gt;ale 的 python linter 預設有 flake8，所以這邊就不多做設定了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;Plug &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;dense-analysis/ale&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;let&lt;/span&gt; g:ale_fixers = {
+\   &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;python&amp;#39;&lt;/span&gt;: [&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;yapf&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;isort&amp;#39;&lt;/span&gt;],
+\ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;截圖:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24_23-01-01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
+&lt;p&gt;ale 意外的強大，整合了多數的 Linter 跟 Fixer&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +64,58 @@
       <pubDate>Wed, 10 Apr 2019 16:22:20 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/</guid>
-      <description>前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim</description>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 &lt;a href=&#34;https://github.com/spf13/spf13-vim&#34;&gt;spf13-vim&lt;/a&gt;，便開始的了快樂的 vim 生活。&lt;/p&gt;
+&lt;p&gt;spf13-vim 用了數個月之後，熟悉了不少的設定方式，也調整不少符合自己習慣的設定。&lt;/p&gt;
+&lt;p&gt;移掉一些老舊的套件，掛上一些新套件。&lt;/p&gt;
+&lt;p&gt;但是 spf-13 原作終究是停止維護的，要一直從 spf13 擴充做調整會被受限。&lt;/p&gt;
+&lt;p&gt;所以，決定是時候自己重新組織適合自己的工作環境。也記錄一下這次我是怎麼調效我的 vimrc 的。&lt;/p&gt;
+&lt;h2 id=&#34;vim-基本設定&#34;&gt;vim 基本設定&lt;/h2&gt;
+&lt;p&gt;主要是參考 spf13-vim 的，畢竟多數的習慣是雷同的&lt;/p&gt;
+&lt;h2 id=&#34;vim-套件&#34;&gt;vim 套件&lt;/h2&gt;
+&lt;p&gt;要尋找套件可以到 &lt;a href=&#34;https://vimawesome.com/&#34;&gt;https://vimawesome.com/&lt;/a&gt; 上面尋找。&lt;/p&gt;
+&lt;p&gt;首先是套件管理，從幾個之名的工具中，選一下自己滿意的。&lt;/p&gt;
+&lt;p&gt;這次選擇使用 &lt;code&gt;junegunn/vim-plug&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;再來是 UI 改善：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;scrooloose/nerdtree&lt;/li&gt;
+&lt;li&gt;majutsushi/tagbar&lt;/li&gt;
+&lt;li&gt;vim-airline/vim-airline&lt;/li&gt;
+&lt;li&gt;luochen1990/rainbow&lt;/li&gt;
+&lt;li&gt;shougo/denite.nvim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;colorscheme 的話，個人喜歡 &lt;code&gt;morhetz/gruvbox&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;整合工具，整合 git, lint, tmux 等等的工具：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;airblade/vim-gitgutter&lt;/li&gt;
+&lt;li&gt;w0rp/ale&lt;/li&gt;
+&lt;li&gt;christoomey/vim-tmux-navigator&lt;/li&gt;
+&lt;li&gt;benmills/vimux&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;自動完成，選擇沒那麼肥大的 deoplete：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Shougo/deoplete.nvim&lt;/li&gt;
+&lt;li&gt;Shougo/neosnippet.vim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;程式語言，幾乎每個程式語言都會有自己的開發輔助工具，而 vim 套件就是負責整合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fatih/vim-go&lt;/li&gt;
+&lt;li&gt;StanAngeloff/php.vim&lt;/li&gt;
+&lt;li&gt;phpactor/phpactor&lt;/li&gt;
+&lt;li&gt;2072/php-indenting-for-vim&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;key-map&#34;&gt;key map&lt;/h2&gt;
+&lt;p&gt;先把 leader key 換成自己習慣的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;let&lt;/span&gt; mapleader = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;,&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#6272a4&#34;&gt;&amp;#34; Replace leader to &amp;#39;,&amp;#39;, default leader is &amp;#39;\&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;再來就是有海量的快捷鍵要設定跟記憶，&lt;/p&gt;
+&lt;p&gt;好在大部份作者會給一些範本，也可以在網上路參加別人的設定。&lt;/p&gt;
+&lt;h2 id=&#34;後續&#34;&gt;後續&lt;/h2&gt;
+&lt;p&gt;最後就是一寫程式一邊視自己的習慣調整設定&lt;/p&gt;
+&lt;h2 id=&#34;結語&#34;&gt;結語&lt;/h2&gt;
+&lt;p&gt;我的 vimrc 在我的 dotfiles 裡面 &lt;a href=&#34;https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc&#34;&gt;https://github.com/nyogjtrc/dotfiles/blob/master/vim/vimrc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;回顧一下四年前自己整理曾經整理過的 vimrc ，當時才只有 87 行。&lt;/p&gt;
+&lt;p&gt;目前整理的有 436 行，資訊量成長 5 倍！！！&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +124,42 @@
       <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
-      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
+      <description>&lt;p&gt;使用目前最強大的 vim 套件包 &lt;strong&gt;spf13-vim&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安裝-vim&#34;&gt;安裝 vim&lt;/h2&gt;
+&lt;p&gt;需要支援 lua 版本的 vim&lt;/p&gt;
+&lt;h3 id=&#34;mac&#34;&gt;mac&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ brew install macvim --with-cscope --with-lua --override-system-vim
+$ brew install ctags
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;debian&#34;&gt;debian&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo apt install vim vim-gnome vim-doc ctags
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;windows&#34;&gt;windows&lt;/h3&gt;
+&lt;p&gt;我不知道&lt;/p&gt;
+&lt;h2 id=&#34;安裝-spf13-vim&#34;&gt;安裝 spf13-vim&lt;/h2&gt;
+&lt;p&gt;有一鍵無腦安裝的指令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl http://j.mp/spf13-vim3 -L -o - | sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;自定義設定檔&#34;&gt;自定義設定檔&lt;/h2&gt;
+&lt;p&gt;有三隻檔案可以自行調整 vimrc&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.vimrc.before.local&lt;/code&gt;: 載入 spf13-vim 之前會載入這支檔案&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.vimrc.bundles.local&lt;/code&gt;: 要增減套件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.vimrc.local&lt;/code&gt;: 載入 spf13-vim 之後會載入這支檔案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;vimrcbundleslocal&#34;&gt;.vimrc.bundles.local&lt;/h3&gt;
+&lt;p&gt;關掉有問題的套件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&amp;#34; remove problem bundle&lt;/span&gt;
+UnBundle &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;amirh/HTML-AutoCloseTag&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-bundles&#34;&gt;update bundles&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ vim +BundleInstall! +BundleClean +q
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;vim-go&#34;&gt;vim-go&lt;/h2&gt;
+&lt;p&gt;在 vim 裡面執行指令 &lt;code&gt;:GoInstallBinaries&lt;/code&gt; 以安裝必要的套件&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/spf13-vim&#34;&gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://spf13.com/post/ultimate-vim-config/&#34;&gt;http://spf13.com/post/ultimate-vim-config/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://farazdagi.com/2015/vim-as-go-language-ide/&#34;&gt;https://farazdagi.com/2015/vim-as-go-language-ide/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -44,7 +168,27 @@
       <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
-      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+      <description>&lt;p&gt;最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令&lt;/p&gt;
+&lt;p&gt;global command :g&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:[range]g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;cmd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;針對特別的 &lt;em&gt;range&lt;/em&gt; (預設是整個檔案)，找出符合 &lt;em&gt;pattern&lt;/em&gt; 的每一行，執行 &lt;em&gt;cmd&lt;/em&gt; 的處理&lt;/p&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;p&gt;刪掉符合的每一行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;刪掉「不」符合的每一行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g!&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;d
+:v&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;刪掉所有的空白行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/^\s*$/&lt;/span&gt;d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;符合的每一行移到檔案結尾&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;m$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;反轉整份文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/^/&lt;/span&gt;m0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在符合 pattern 的每一行行尾加上「mytext」&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;:g&lt;span style=&#34;color:#f1fa8c&#34;&gt;/pattern/&lt;/span&gt;s&lt;span style=&#34;color:#f1fa8c&#34;&gt;/$/&lt;/span&gt;mytext
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://vim.wikia.com/wiki/Power_of_g&#34;&gt;http://vim.wikia.com/wiki/Power_of_g&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

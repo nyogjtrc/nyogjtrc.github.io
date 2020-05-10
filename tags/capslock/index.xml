@@ -17,7 +17,49 @@
       <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</guid>
-      <description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool $ sudo apt install gnome-tweak-tool 開啟 gnome-tweak-tool</description>
+      <description>&lt;p&gt;身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴
+要提高 Ctrl 的地位，減輕左手小指的負擔&lt;/p&gt;
+&lt;p&gt;ps. 以前的鍵盤配置，Ctrl 在 a 的左邊&lt;/p&gt;
+&lt;h1 id=&#34;ubuntu-1604&#34;&gt;Ubuntu 16.04&lt;/h1&gt;
+&lt;p&gt;安裝 gnome-tweak-tool&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo apt install gnome-tweak-tool
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;開啟 gnome-tweak-tool&lt;/li&gt;
+&lt;li&gt;選單 Typing -&amp;gt; Ctrl key position&lt;/li&gt;
+&lt;li&gt;選擇 Swap Ctrl and Caps Lock&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;mac&#34;&gt;Mac&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;開啟 System Preferences&lt;/li&gt;
+&lt;li&gt;選 Keyboard -&amp;gt; Modifier Keys&lt;/li&gt;
+&lt;li&gt;Ctrl 換 CapsLock, CapsLock 換 Ctrl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;windows-7&#34;&gt;Windows 7&lt;/h1&gt;
+&lt;p&gt;下載 SharpKeys&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開啟 SharpKeys&lt;/li&gt;
+&lt;li&gt;按 &amp;ldquo;Add&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;點 &amp;ldquo;Form key&amp;rdquo; 的 &amp;ldquo;Type Key&amp;rdquo;，再按下 CapsLock&lt;/li&gt;
+&lt;li&gt;點 &amp;ldquo;To key&amp;rdquo; 的 &amp;ldquo;Type Key&amp;rdquo;，再按下 Left Ctrl&lt;/li&gt;
+&lt;li&gt;按 &amp;ldquo;Add&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;點 &amp;ldquo;Form key&amp;rdquo; 的 &amp;ldquo;Type Key&amp;rdquo;，再按下 Left Ctrl&lt;/li&gt;
+&lt;li&gt;點 &amp;ldquo;To key&amp;rdquo; 的 &amp;ldquo;Type Key&amp;rdquo;，再按下 CapsLock&lt;/li&gt;
+&lt;li&gt;點 &amp;ldquo;Write to Registry&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;重開機…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;初期使用心得&#34;&gt;初期使用心得&lt;/h1&gt;
+&lt;p&gt;一開始會不習慣，覺得有一些組合鍵不好按，或是一直按錯
+會覺得小指無力一直按，原本的位置還有大拇指可以幫一下忙&lt;/p&gt;
+&lt;h1 id=&#34;另一個鍵盤設定想法&#34;&gt;另一個鍵盤設定想法&lt;/h1&gt;
+&lt;p&gt;對習慣使用 Shift 的人，沒有 CapsLock 好像沒差
+讓鍵盤上有三個 Ctrl 也是一個不錯的選擇&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/292724/swap-control-and-caps-lock-on-windows-7&#34;&gt;keymap - Swap Control and Caps Lock on Windows 7 - Super User&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/randyrants/sharpkeys&#34;&gt;https://github.com/randyrants/sharpkeys&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://askubuntu.com/questions/33774/how-do-i-remap-the-caps-lock-and-ctrl-keys&#34;&gt;keyboard - How do I remap the Caps Lock and Ctrl keys? - Ask Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

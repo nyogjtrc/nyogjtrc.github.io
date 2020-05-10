@@ -17,7 +17,24 @@
       <pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
-      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
+      <description>&lt;p&gt;不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具&lt;/p&gt;
+&lt;p&gt;專案在此: f2e-jacket &lt;a href=&#34;https://github.com/nyogjtrc/f2e-jacket&#34;&gt;https://github.com/nyogjtrc/f2e-jacket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用方法:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone git@github.com:nyogjtrc/f2e-jacket.git
+$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; f2e-jacket/
+$ yarn
+$ yarn start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在製作的一開始，我以為我只要認識一下 webpack 的新版用法就好。沒想到當我要把 react 加進去的時候，事情就變的有點精彩了。&lt;/p&gt;
+&lt;p&gt;離我上次建置環境的時候，react 的大版本號一樣是 15。嗯，這個還好。react-router 在上次我看的時候是 2.x.x，而現在是 4.0.0，跳了兩個版本，寫法變的完全不一樣，全部重新認識。好在最後放 semantic-ui 的時候沒有遇到什麼奇怪的問題。&lt;/p&gt;
+&lt;h2 id=&#34;whats-inside&#34;&gt;What&amp;rsquo;s inside&lt;/h2&gt;
+&lt;p&gt;目前在 v0.1.1 裡面包括 react, react-router, semantic-ui 這幾個 library&lt;/p&gt;
+&lt;p&gt;在建立這個工具的途中，發現 facebook 有製作一個 react 專用的工具 &lt;a href=&#34;https://github.com/facebookincubator/create-react-app&#34;&gt;https://github.com/facebookincubator/create-react-app&lt;/a&gt;
+也是可以直接拿來用的…&lt;/p&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/nyogjtrc/f2e-jacket&#34;&gt;https://github.com/nyogjtrc/f2e-jacket&lt;/a&gt;
+&lt;a href=&#34;https://webpack.js.org/&#34;&gt;https://webpack.js.org/&lt;/a&gt;
+&lt;a href=&#34;https://github.com/facebookincubator/create-react-app&#34;&gt;https://github.com/facebookincubator/create-react-app&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="軟體開發原則: DRY, KISS, YAGNI"/>
+<meta name="twitter:description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse"/>
+
+    <meta property="og:title" content="軟體開發原則: DRY, KISS, YAGNI" />
+<meta property="og:description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/" />
+<meta property="article:published_time" content="2020-05-11T02:39:34+08:00" />
+<meta property="article:modified_time" content="2020-05-11T02:39:34+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/">
+    
+    <title>
+  軟體開發原則: DRY, KISS, YAGNI · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.70.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">軟體開發原則: DRY, KISS, YAGNI</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-05-11T02:39:34&#43;08:00'>
+                May 11, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/software-development/">software development</a>
+      <span class="separator">•</span>
+    <a href="https://nyogjtrc.github.io/tags/principle/">principle</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>最近在 <code>code review</code> 時，看到不少讓人頭暈的程式碼</p>
+<p>在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路</p>
+<h2 id="dry">DRY</h2>
+<p>wiki: <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">https://en.wikipedia.org/wiki/Don%27t_repeat_yourself</a></p>
+<p>原文: <code>Don't repeat yourself</code>，如同字面上的意思，不要重複你的程式碼。</p>
+<p>最直接的例子就是在開發程式時，不想思考跟設計，直接使用複製貼上。</p>
+<p>這種方式看似可以很快的產出程式碼，實際上只會變成你的拌腳石。
+當你遇到要修改的時候，複製貼上的次數就會變成工作時間的倍數。</p>
+<h5 id="example">Example</h5>
+<p>當你會重複的使用某個 function 時</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#ff79c6">&lt;?php</span>
+
+<span style="color:#ff79c6">function</span> <span style="color:#50fa7b">hello</span>(<span style="color:#8be9fd;font-style:italic">$message</span>)
+{
+    <span style="color:#ff79c6">echo</span> <span style="color:#8be9fd;font-style:italic">$message</span>;
+}
+
+hello(<span style="color:#f1fa8c">&#34;hey&#34;</span>);
+hello(<span style="color:#f1fa8c">&#34;google&#34;</span>);
+
+hello(<span style="color:#f1fa8c">&#34;hi&#34;</span>);
+hello(<span style="color:#f1fa8c">&#34;siri&#34;</span>);
+</code></pre></div><p>請善用 for loop</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#ff79c6">&lt;?php</span>
+
+<span style="color:#ff79c6">function</span> <span style="color:#50fa7b">hello</span>(<span style="color:#8be9fd;font-style:italic">$message</span>)
+{
+    <span style="color:#ff79c6">echo</span> <span style="color:#8be9fd;font-style:italic">$message</span>;
+}
+
+<span style="color:#ff79c6">foreach</span> ([<span style="color:#f1fa8c">&#34;hey&#34;</span>, <span style="color:#f1fa8c">&#34;google&#34;</span>,<span style="color:#f1fa8c">&#34; hi&#34;</span>, <span style="color:#f1fa8c">&#34;siri&#34;</span>] <span style="color:#ff79c6">as</span> <span style="color:#8be9fd;font-style:italic">$message</span>) {
+    hello(<span style="color:#8be9fd;font-style:italic">$message</span>);
+}
+</code></pre></div><h2 id="kiss">KISS</h2>
+<p>wiki: <a href="https://en.wikipedia.org/wiki/KISS_principle">https://en.wikipedia.org/wiki/KISS_principle</a></p>
+<p>原文: Keep It Simple, Stupid，意思是要化繁為簡，保持程式碼簡單。</p>
+<p>足夠直白簡單的程式碼，讓其他人容易閱讀、理解跟維護。</p>
+<h5 id="example-1">Example</h5>
+<p>經典的波動拳程式碼 (我想故意寫寫看，還會寫不太出來…</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#ff79c6">&lt;?php</span>
+
+<span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>is_null(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span><span style="color:#ff79c6">empty</span>(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>is_array(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+            <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>is_boy(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+                <span style="color:#ff79c6">if</span> (is_orange(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+                    <span style="color:#6272a4">// is good cat ...?
+</span><span style="color:#6272a4"></span>                }
+            }
+        }
+    }
+}
+</code></pre></div><p>設計一或多個 function 把條件分類，並且優先排除不附合條件的資料</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#ff79c6">&lt;?php</span>
+
+<span style="color:#ff79c6">function</span> <span style="color:#50fa7b">is_cat</span>(<span style="color:#8be9fd;font-style:italic">$cat</span>) {
+    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">empty</span>(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>
+    }
+    <span style="color:#ff79c6">if</span> (is_array(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>
+    }
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span>
+}
+
+<span style="color:#ff79c6">function</span> <span style="color:#50fa7b">good_cat</span>(<span style="color:#8be9fd;font-style:italic">$cat</span>) {
+    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>is_cat(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>
+    }
+
+    <span style="color:#ff79c6">if</span> (is_boy(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>
+    }
+
+    <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>is_orange(<span style="color:#8be9fd;font-style:italic">$cat</span>)) {
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">false</span>
+    }
+    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">true</span>
+}
+</code></pre></div><h2 id="yagni">YAGNI</h2>
+<p>wiki: <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it</a></p>
+<p>原文: You aren’t gonna need it，你不會需要它</p>
+<p>不要預先寫一些還用不到的程式，只有在你需要用到時，才寫程式。
+在你不知道接下來的程式會需要怎麼樣改動的情況下，多餘的設計是沒有必要的。</p>
+<p>你可能會運用過去的經驗，來評估程式未來的走向，做一些預測的設計。
+但是這些設計，很有可能派不上用場，也等於了你白白的浪費時間。</p>
+<p>說到這邊，一定會有人說，那是不是只要完成需求規格，其他就不管了？這樣反而是誤用了這個原則。
+只要程式還有人在使用，就一定會有一個基礎的標準要滿足。</p>
+<p>YAGNI 原則是希望你不要過早的去優化程式碼。</p>
+<h2 id="小結">小結</h2>
+<p>太過執著於特定的原則，可能會落入過度設計 (Over Engineering) 或是不求甚解的狀況。</p>
+<p>了解這些軟體開發原則並且適當的運用在程式開發上，有助於設計出更加優美的程式。</p>
+<hr>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a href="https://shawnlin0201.github.io/Methodology/Methodology-001-DRY-principle/">程式設計心法 避免重複原則（DRY principle） | 璇之又璇的網路世界</a></li>
+<li><a href="https://dotblogs.com.tw/supershowwei/2017/02/14/175826">料理秘方 KISS，Keep it simple, stupid | 軟體主廚的程式料理廚房 - 點部落</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Developer</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2020
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

@@ -17,7 +17,43 @@
       <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
-      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host $ ssh</description>
+      <description>&lt;p&gt;server 需要經由跳板登入時有幾種做法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh tunnel&lt;/li&gt;
+&lt;li&gt;ProxyCommand&lt;/li&gt;
+&lt;li&gt;ProxyJump&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這邊介紹 ProxyJump 的用法，算是目前最方便的方法&lt;/p&gt;
+&lt;p&gt;支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (&lt;a href=&#34;http://www.openssh.com/txt/release-7.3&#34;&gt;http://www.openssh.com/txt/release-7.3&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id=&#34;ssh-指令加上--j-參數&#34;&gt;ssh 指令加上 -J 參數&lt;/h2&gt;
+&lt;p&gt;經由 jump.host 登入 dist.host&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh -J jump.host dist.host
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;需要打上 username port 的話，一樣的用法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ ssh -J username@jump.host:port username@dist.host:port
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;scp 的話&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ scp -o &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;ProxyJump jump.host&amp;#39;&lt;/span&gt; myfile.txt dist.host:/my/dir
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定-ssh-config&#34;&gt;設定 ssh config&lt;/h2&gt;
+&lt;p&gt;編輯 ~/.ssh/config&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;### First jumphost. Directly reachable
+Host jump
+  HostName jump.host
+
+### Host to jump to via jump.host
+Host dist
+  HostName dist.host
+  ProxyJump jump
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接 ssh&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ ssh dist
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接 scp&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ scp filename dist:~/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.madboa.com/blog/2017/11/02/ssh-proxyjump/&#34;&gt;https://www.madboa.com/blog/2017/11/02/ssh-proxyjump/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.gentoo.org/wiki/SSH_jump_host&#34;&gt;https://wiki.gentoo.org/wiki/SSH_jump_host&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts&#34;&gt;https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

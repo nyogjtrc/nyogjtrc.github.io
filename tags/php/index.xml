@@ -17,7 +17,45 @@
       <pubDate>Fri, 19 Jul 2019 01:01:55 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</guid>
-      <description>邏輯運算子 php 的邏輯運算子除了 &amp;amp;&amp;amp; 跟 || 之外，還有 and 跟 or 他們之間的差異在有不同的優先順序 Precedence 而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想</description>
+      <description>&lt;h2 id=&#34;邏輯運算子&#34;&gt;邏輯運算子&lt;/h2&gt;
+&lt;p&gt;php 的邏輯運算子除了 &amp;amp;&amp;amp; 跟 || 之外，還有 and 跟 or&lt;/p&gt;
+&lt;p&gt;他們之間的差異在有不同的優先順序 &lt;a href=&#34;https://www.php.net/manual/en/language.operators.precedence.php&#34;&gt;Precedence&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;而這個優先順序上的差異，會讓程式在一些情況下，產生跟你想像的不一樣的成果&lt;/p&gt;
+&lt;h3 id=&#34;使用-&#34;&gt;使用 &amp;amp;&amp;amp;&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$a&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;;
+
+&lt;span style=&#34;color:#6272a4&#34;&gt;// equal
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$a&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;);
+
+&lt;span style=&#34;color:#6272a4&#34;&gt;// $a: false
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;使用-and&#34;&gt;使用 and&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;?php&lt;/span&gt;
+
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$a&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;;
+
+&lt;span style=&#34;color:#6272a4&#34;&gt;// equal
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;(&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$a&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;true&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;false&lt;/span&gt;;
+
+&lt;span style=&#34;color:#6272a4&#34;&gt;// $a: true
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&amp;ldquo;=&amp;rdquo; 優先順序高於 &amp;ldquo;and&amp;rdquo; &amp;ldquo;or&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;and-跟-or-的其他用途&#34;&gt;and 跟 or 的其他用途&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;lt;?php&lt;/span&gt;
+
+do_something() &lt;span style=&#34;color:#ff79c6&#34;&gt;and&lt;/span&gt; success() &lt;span style=&#34;color:#ff79c6&#34;&gt;or&lt;/span&gt; failure();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;do_something() 成功的話會執行 success()，失敗的話會執行 failure()&lt;/p&gt;
+&lt;p&gt;類似 bash 中常見的用法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ cmd1 &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; cmd2 &lt;span style=&#34;color:#ff79c6&#34;&gt;||&lt;/span&gt; cmd3
+
+$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;test&lt;/span&gt; -d ./project &lt;span style=&#34;color:#ff79c6&#34;&gt;||&lt;/span&gt; mkdir ./project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/5998309/logical-operators-or-or&#34;&gt;https://stackoverflow.com/questions/5998309/logical-operators-or-or&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.php.net/manual/en/language.operators.precedence.php&#34;&gt;https://www.php.net/manual/en/language.operators.precedence.php&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/2803321/and-vs-as-operator&#34;&gt;https://stackoverflow.com/questions/2803321/and-vs-as-operator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

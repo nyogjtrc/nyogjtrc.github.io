@@ -17,7 +17,36 @@
       <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
+      <description>&lt;p&gt;今天要來和 linux 約會(誤&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;date 是用來看時間或是設定時間用的指令&lt;/p&gt;
+&lt;p&gt;不加任何的參數可以直接看目前的時間&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date
+Sat  &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; Mar 23:52:51 CST &lt;span style=&#34;color:#bd93f9&#34;&gt;2017&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;參數&#34;&gt;參數&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;-d STRING&lt;/code&gt; 輸出字串所描述的日期&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;yesterday&amp;#39;&lt;/span&gt;
+Sat  &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; Mar 00:29:53 CST &lt;span style=&#34;color:#bd93f9&#34;&gt;2017&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;-I[FMT]&lt;/code&gt; 用 ISO 8601 的格式輸出
+FMT 預設為 date 輸出日期而已，FMT 為 s 時會輸出到秒&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date -Is
+2017-03-05T01:08:35+08:00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;+FORMAT&lt;/code&gt; 輸出指定格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date +&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;%F %a&amp;#39;&lt;/span&gt;
+2017-03-05 Sun
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然後就可以用來製造你想要的日期列表了&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;MYLIST&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=(&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next sun&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next sat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34; next fri&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next thu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next wed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next tue&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next mon&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;;
+&lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; i in &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt; 6; &lt;span style=&#34;color:#ff79c6&#34;&gt;do&lt;/span&gt; date -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;MYLIST&lt;/span&gt;[&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$i&lt;/span&gt;]&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; +&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%F %a&amp;#34;&lt;/span&gt;; &lt;span style=&#34;color:#ff79c6&#34;&gt;done&lt;/span&gt;;
+2017-03-12 Sun
+2017-03-11 Sat
+2017-03-10 Fri
+2017-03-09 Thu
+2017-03-08 Wed
+2017-03-07 Tue
+2017-03-06 Mon
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;man date&lt;/code&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -17,7 +17,230 @@
       <pubDate>Mon, 09 Jul 2018 14:14:03 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/try-grpc-with-go/</guid>
-      <description>什麼是 gRPC Google 推出的 RPC framework 採用 Google 制定的 protocol buffers 當作資料傳輸格式 有 proto 工具可以把你寫好的 proto file 直接生成程式碼 比 RESTful API 更快、更有效率 更多請參考官網: grpc / grpc.io 安裝 開</description>
+      <description>&lt;h2 id=&#34;什麼是-grpc&#34;&gt;什麼是 gRPC&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Google 推出的 RPC framework&lt;/li&gt;
+&lt;li&gt;採用 Google 制定的 protocol buffers 當作資料傳輸格式&lt;/li&gt;
+&lt;li&gt;有 &lt;code&gt;proto&lt;/code&gt; 工具可以把你寫好的 proto file 直接生成程式碼&lt;/li&gt;
+&lt;li&gt;比 RESTful API 更快、更有效率&lt;/li&gt;
+&lt;li&gt;更多請參考官網: &lt;a href=&#34;https://grpc.io/&#34;&gt;grpc / grpc.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
+&lt;p&gt;開始寫 gRPC 服務之前，要先安裝一些 protocol buffer 的工具&lt;/p&gt;
+&lt;h3 id=&#34;protocol-buffer-compiler&#34;&gt;protocol buffer compiler&lt;/h3&gt;
+&lt;p&gt;以下是快速安裝的腳本:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;VERSION&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;3.6.0&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PLATFORM&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;linux-x86_64&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;FILENAME&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;protoc-&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$VERSION&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PLATFORM&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;.zip&amp;#34;&lt;/span&gt;
+
+curl -LO &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;https://github.com/google/protobuf/releases/download/v&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$VERSION&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
+sudo unzip -u &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt; -d /usr/local bin/protoc include/*
+
+rm &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$FILENAME&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也可以直接去官網下載: &lt;a href=&#34;https://github.com/google/protobuf/releases&#34;&gt;https://github.com/google/protobuf/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;測試一下沒有安裝成功&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ protoc --version
+libprotoc 3.6.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;plugin-for-genrate-go-code&#34;&gt;plugin for genrate go code&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ go get -u github.com/golang/protobuf/protoc-gen-go
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;grpc-package-for-go&#34;&gt;gRPC package for go&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ go get -u google.golang.org/grpc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;開始寫-grpc-服務&#34;&gt;開始寫 gRPC 服務&lt;/h2&gt;
+&lt;p&gt;要有一個完整的 gRPC 服務，首先要寫 proto file 定義好服務提供的方法跟傳輸的資料格式&lt;/p&gt;
+&lt;p&gt;再由工具產生 pb.go 程式碼，最後跟著 pb.go 實作 server 跟 client 程式了&lt;/p&gt;
+&lt;h3 id=&#34;1-建立-proto-文件&#34;&gt;1. 建立 proto 文件&lt;/h3&gt;
+&lt;p&gt;這裡簡單寫一個 echo service&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ mkdir proto; vi proto/echo.proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;syntax = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; proto;
+
+message EchoMessage {
+  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value = &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
+}
+
+service EchoServer {
+  rpc &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt; (EchoMessage) &lt;span style=&#34;color:#50fa7b&#34;&gt;returns&lt;/span&gt; (EchoMessage) {}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更多的語法請參考: &lt;a href=&#34;https://developers.google.com/protocol-buffers/docs/proto3&#34;&gt;Language Guide (proto3)&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-產生-go-程式碼&#34;&gt;2. 產生 go 程式碼&lt;/h3&gt;
+&lt;p&gt;借由 protoc 產生程式碼&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ protoc --go_out&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;plugins&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;grpc:. proto/*.proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;會產生 &lt;code&gt;echo.pb.go&lt;/code&gt; 裡面包括 server 端的 interface 跟 client 端的 程式&lt;/p&gt;
+&lt;h3 id=&#34;3-建立-server-程式&#34;&gt;3. 建立 server 程式&lt;/h3&gt;
+&lt;p&gt;開始實作 EchoServer&lt;/p&gt;
+&lt;p&gt;import 剛剛產生的 echo.pb.go&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;import (
+	pb &amp;#34;github.com/nyogjtrc/grpc-example/proto&amp;#34;
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;實作 Server 跟 方法:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;type echoServer struct{}
+
+// Echo
+func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMessage, error) {
+	reply := new(pb.EchoMessage)
+	reply.Value = &amp;#34;echo:&amp;#34; + in.Value
+	return reply, nil
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完整程式碼:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; main
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;import&lt;/span&gt; (
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;context&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;fmt&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;log&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;net&amp;#34;&lt;/span&gt;
+
+	pb &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;github.com/nyogjtrc/grpc-example/proto&amp;#34;&lt;/span&gt;
+
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;google.golang.org/grpc&amp;#34;&lt;/span&gt;
+)
+
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; echoServer &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;struct&lt;/span&gt;{}
+
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Echo
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (s &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;echoServer) &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt;(ctx context.Context, in &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;pb.EchoMessage) (&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;pb.EchoMessage, &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt;) {
+	reply &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;new&lt;/span&gt;(pb.EchoMessage)
+	reply.Value = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;echo:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; in.Value
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; reply, &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt;
+}
+
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;main&lt;/span&gt;() {
+	fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;grpc example echo server :8888&amp;#34;&lt;/span&gt;)
+
+	lis, err &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; net.&lt;span style=&#34;color:#50fa7b&#34;&gt;Listen&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;tcp&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;:8888&amp;#34;&lt;/span&gt;)
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#ff79c6&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt; {
+		log.&lt;span style=&#34;color:#50fa7b&#34;&gt;Fatalf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;can not listen %v&amp;#34;&lt;/span&gt;, err)
+	}
+
+	&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; opts []grpc.ServerOption
+	s &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; grpc.&lt;span style=&#34;color:#50fa7b&#34;&gt;NewServer&lt;/span&gt;(opts&lt;span style=&#34;color:#ff79c6&#34;&gt;...&lt;/span&gt;)
+	pb.&lt;span style=&#34;color:#50fa7b&#34;&gt;RegisterEchoServiceServer&lt;/span&gt;(s, &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;echoServer{})
+	s.&lt;span style=&#34;color:#50fa7b&#34;&gt;Serve&lt;/span&gt;(lis)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-建立-client-程式&#34;&gt;4. 建立 client 程式&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; main
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;import&lt;/span&gt; (
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;bufio&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;context&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;fmt&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;log&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt;
+
+	pb &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;github.com/nyogjtrc/grpc-example/proto&amp;#34;&lt;/span&gt;
+	&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;google.golang.org/grpc&amp;#34;&lt;/span&gt;
+)
+
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;main&lt;/span&gt;() {
+	&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; opts []grpc.DialOption
+	opts = &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;append&lt;/span&gt;(opts, grpc.&lt;span style=&#34;color:#50fa7b&#34;&gt;WithInsecure&lt;/span&gt;())
+	conn, err &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; grpc.&lt;span style=&#34;color:#50fa7b&#34;&gt;Dial&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;:8888&amp;#34;&lt;/span&gt;, opts&lt;span style=&#34;color:#ff79c6&#34;&gt;...&lt;/span&gt;)
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#ff79c6&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt; {
+		log.&lt;span style=&#34;color:#50fa7b&#34;&gt;Fatalf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;fail to dial: %v&amp;#34;&lt;/span&gt;, err)
+	}
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;defer&lt;/span&gt; conn.&lt;span style=&#34;color:#50fa7b&#34;&gt;Close&lt;/span&gt;()
+
+	client &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; pb.&lt;span style=&#34;color:#50fa7b&#34;&gt;NewEchoServiceClient&lt;/span&gt;(conn)
+
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; {
+		reader &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; bufio.&lt;span style=&#34;color:#50fa7b&#34;&gt;NewReader&lt;/span&gt;(os.Stdin)
+		fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Print&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;Enter text: &amp;#34;&lt;/span&gt;)
+		text, _ &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; reader.&lt;span style=&#34;color:#50fa7b&#34;&gt;ReadString&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;)
+
+		r, err &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; client.&lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt;(context.&lt;span style=&#34;color:#50fa7b&#34;&gt;Background&lt;/span&gt;(), &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;pb.EchoMessage{Value: text})
+		&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#ff79c6&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt; {
+			log.&lt;span style=&#34;color:#50fa7b&#34;&gt;Fatalf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%v.Echo error: %v&amp;#34;&lt;/span&gt;, client, err)
+		}
+		fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Println&lt;/span&gt;(r.Value)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-實測-grpc-server-client&#34;&gt;5. 實測 gRPC server, client&lt;/h3&gt;
+&lt;p&gt;執行 server&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ go run server/main.go
+grpc example echo server :8888
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;執行 client&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ go run client/main.go
+Enter text: 123
+echo:123
+
+Enter text: hello
+echo:hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;增加-grpc-gateway&#34;&gt;增加 gRPC gateway&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/grpc-ecosystem/grpc-gateway&#34;&gt;https://github.com/grpc-ecosystem/grpc-gateway&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API&lt;/p&gt;
+&lt;p&gt;轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了&lt;/p&gt;
+&lt;h3 id=&#34;1-要安裝的-plugin&#34;&gt;1. 要安裝的 plugin&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-proto-檔案增加-restful-option&#34;&gt;2. proto 檔案增加 RESTful option&lt;/h3&gt;
+&lt;p&gt;就是把 RESTful 的 router 寫進來&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;syntax = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; proto;
+
+&lt;span style=&#34;color:#ff79c6&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;google/api/annotations.proto&amp;#34;&lt;/span&gt;;
+
+message EchoMessage {
+  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value = &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
+}
+
+service EchoService {
+  rpc &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt; (EchoMessage) &lt;span style=&#34;color:#50fa7b&#34;&gt;returns&lt;/span&gt; (EchoMessage) {
+    &lt;span style=&#34;color:#50fa7b&#34;&gt;option&lt;/span&gt; (google.api.http) = {
+        post: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/echo/echo&amp;#34;&lt;/span&gt;
+        body: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;
+    };
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-產生-pbgo-pbgwgo&#34;&gt;3. 產生 pb.go, pb.gw.go&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;protoc -I/usr/local/include -I. \
+    -I$(GOPATH)/src \
+    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+    --go_out=plugins=grpc:. proto/*.proto
+protoc -I/usr/local/include -I. \
+    -I$(GOPATH)/src \
+    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+    --grpc-gateway_out=logtostderr=true:. proto/*.proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-寫-reverse-proxy-的進入點&#34;&gt;4. 寫 reverse proxy 的進入點&lt;/h3&gt;
+&lt;p&gt;把 gRPC 服務加入 proxy 裡面&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;func gatewayServer() {
+	fmt.Println(&amp;#34;RESTful echo server :9999&amp;#34;)
+	grpcAddr := &amp;#34;localhost:8888&amp;#34;
+	ctx := context.Background()
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
+	mux := runtime.NewServeMux()
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	err := pb.RegisterEchoServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
+	if err != nil {
+		log.Fatalf(&amp;#34;can not register endpoint %v&amp;#34;, err)
+	}
+
+	http.ListenAndServe(&amp;#34;:9999&amp;#34;, mux)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-實測&#34;&gt;5. 實測&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -X POST http://localhost:9999/echo/echo -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{ &amp;#34;value&amp;#34;: &amp;#34;hi, how are you?&amp;#34; }&amp;#39;
+{&amp;#34;value&amp;#34;:&amp;#34;echo:hi, how are you?&amp;#34;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;小結&#34;&gt;小結&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟&lt;/li&gt;
+&lt;li&gt;proto 檔案類似 router&lt;/li&gt;
+&lt;li&gt;要實作的 server interface 類似 controller&lt;/li&gt;
+&lt;li&gt;有 gateway 可以轉成 RESTful API 讓測試更方便了&lt;/li&gt;
+&lt;li&gt;一些 server 的設定還要花時間微調&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://grpc.io/docs/tutorials/basic/go.html&#34;&gt;grpc /&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/protocol-buffers/&#34;&gt;Protocol Buffers  |  Google Developers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://yami.io/grpc/&#34;&gt;API 文件就是你的伺服器，REST 的另一個選擇：gRPC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://grpc-ecosystem.github.io/grpc-gateway/&#34;&gt;grpc-gateway | gRPC to JSON proxy generator following the gRPC HTTP spec&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

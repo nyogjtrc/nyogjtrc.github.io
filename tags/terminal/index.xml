@@ -17,7 +17,49 @@
       <pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
-      <description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
+      <description>&lt;p&gt;發現了使用 GPU 的 terminal emulator&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty&#34;&gt;https://github.com/alacritty/alacritty&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sw.kovidgoyal.net/kitty/&#34;&gt;https://sw.kovidgoyal.net/kitty/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式&lt;/p&gt;
+&lt;p&gt;兩個都試用了一下，決定先以 alacritty 當主力試試&lt;/p&gt;
+&lt;p&gt;特色:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目前最快的 terminal emulator&lt;/li&gt;
+&lt;li&gt;使用 GPU&lt;/li&gt;
+&lt;li&gt;支援 Linux, BSD, macOS, Windows&lt;/li&gt;
+&lt;li&gt;rust 開發&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
+&lt;h3 id=&#34;debian--ubuntu&#34;&gt;Debian / Ubuntu&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ apt install alacritty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;macos&#34;&gt;macOS&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew cask install alacritty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定&#34;&gt;設定&lt;/h2&gt;
+&lt;p&gt;把 alacritty.yml 放到以下的其中的一個位置就可以生效&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$XDG_CONFIG_HOME/alacritty/alacritty.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$XDG_CONFIG_HOME/alacritty.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.config/alacritty/alacritty.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.alacritty.yml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;color-schemes&#34;&gt;Color schemes&lt;/h2&gt;
+&lt;p&gt;可以從以下兩個網址去找自己喜歡的顏色&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty/wiki/Color-schemes&#34;&gt;https://github.com/alacritty/alacritty/wiki/Color-schemes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/eendroroy/alacritty-theme&#34;&gt;https://github.com/eendroroy/alacritty-theme&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;心得&#34;&gt;心得&lt;/h2&gt;
+&lt;p&gt;cat log 檔案的時候速度很快，看的感覺很爽快&lt;/p&gt;
+&lt;p&gt;很可惜的，macOS + tmux + vim 這個組合還是會很慢&lt;/p&gt;
+&lt;p&gt;有幾個 terminal emulator 設計的很華麗，也有跨多平台。
+可惜是用 Electron 開發的，感覺太過肥大，就暫時不考慮了&lt;/p&gt;
+&lt;h3 id=&#34;refence&#34;&gt;Refence&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty&#34;&gt;https://github.com/alacritty/alacritty&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +68,53 @@
       <pubDate>Sun, 15 Sep 2019 13:15:40 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</guid>
-      <description>記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯</description>
+      <description>&lt;p&gt;記錄一些比較常用/實用(可能)的快捷鍵&lt;/p&gt;
+&lt;h2 id=&#34;控制&#34;&gt;控制&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+C&lt;/strong&gt;: 中斷正在執行的程式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+D&lt;/strong&gt;: 結束 shell (同 exit)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Z&lt;/strong&gt;: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+X Ctrl+E&lt;/strong&gt;: 使用 vim 編輯 script 並一次執行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;移動&#34;&gt;移動&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+A&lt;/strong&gt;: 到此行最前面 (同 Home 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+E&lt;/strong&gt;: 到此行最後面 (同 End 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alt+B&lt;/strong&gt;: 前進一個字元&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alt+F&lt;/strong&gt;: 後退一個字元&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+B&lt;/strong&gt;: 前進一格&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+F&lt;/strong&gt;: 後退一格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;刪除&#34;&gt;刪除&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+H&lt;/strong&gt;: 移除前一個字元 (同 Backspace 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+D&lt;/strong&gt;: 移除後一個字元 (同 Delete 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+U&lt;/strong&gt;: 移除游標之前的所有文字&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+K&lt;/strong&gt;: 移除游標之後的所有文字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;歷史指令&#34;&gt;歷史指令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+P&lt;/strong&gt;: 上一個指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+N&lt;/strong&gt;: 下一個指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+R&lt;/strong&gt;: 搜尋指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+R&lt;/strong&gt;: 上一個&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Shift+R&lt;/strong&gt;: 下一個&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+G&lt;/strong&gt;: 取消搜尋&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;畫面&#34;&gt;畫面&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+L&lt;/strong&gt;: 清空畫面 (同 clear)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+S&lt;/strong&gt;: 凍結畫面輸出&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Q&lt;/strong&gt;: 回復畫面輸出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.longwin.com.tw/2006/09/bash_hot_key_2006/&#34;&gt;Bash Shell 快速鍵 | Tsung&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://teohm.github.io/blog/2012/01/04/shortcuts-to-move-faster-in-bash-command-line/&#34;&gt;Shortcuts to move faster in Bash command line - teohm.dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/&#34;&gt;The Best Keyboard Shortcuts for Bash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -35,7 +123,15 @@
       <pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
-      <description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
+      <description>&lt;p&gt;用 curl 找一隻鸚鵡來跳舞&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl parrot.live
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://camo.githubusercontent.com/24d967caaac2155e129fded2bb481b0b2fd94049/68747470733a2f2f642e70722f692f6a4b6c7563302e676966&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;來源&#34;&gt;來源&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;curl 版:  &lt;a href=&#34;https://github.com/hugomd/parrot.live&#34;&gt;https://github.com/hugomd/parrot.live&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;terminal 版: &lt;a href=&#34;https://github.com/jmhobbs/terminal-parrot&#34;&gt;https://github.com/jmhobbs/terminal-parrot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

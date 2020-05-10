@@ -17,7 +17,87 @@
       <pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</guid>
-      <description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6</description>
+      <description>&lt;p&gt;被稱作 Linux 神器的工具&lt;/p&gt;
+&lt;p&gt;入門之後我也愛上它了，讓 terminal 變得非常的靈活&lt;/p&gt;
+&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
+&lt;h3 id=&#34;mac&#34;&gt;mac&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ brew install tmux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ubuntu--debian&#34;&gt;ubuntu / debian&lt;/h3&gt;
+&lt;p&gt;apt 上裝的可能會太舊，直接裝 github 上最新 release 的&lt;/p&gt;
+&lt;p&gt;參考別人寫好的腳本: &lt;a href=&#34;https://gist.github.com/P7h/91e14096374075f5316e&#34;&gt;https://gist.github.com/P7h/91e14096374075f5316e&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;VERSION=2.6
+sudo apt -y remove tmux
+sudo apt -y install wget tar libevent-dev libncurses-dev
+wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
+tar xf tmux-${VERSION}.tar.gz
+rm -f tmux-${VERSION}.tar.gz
+cd tmux-${VERSION}
+./configure
+make
+sudo make install
+cd -
+sudo rm -rf /usr/local/src/tmux-*
+sudo mv tmux-${VERSION} /usr/local/src
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;tmuxconf&#34;&gt;tmux.conf&lt;/h2&gt;
+&lt;p&gt;放上幾個我覺得實用的設定&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;set -g default-terminal &amp;#34;screen-256color&amp;#34;
+
+# enable mouse
+set -g mouse on
+
+
+# new prefix
+unbind-key C-b
+set -g prefix C-a
+bind-key C-a send-prefix
+
+# &amp;lt;prefix&amp;gt; + r | reloading config
+bind-key r source-file ~/.tmux.conf \; display-message &amp;#34;Yo~! .tmux.conf reloaded!&amp;#34;
+
+bind-key \ split-window -h -c &amp;#39;#{pane_current_path}&amp;#39;
+bind-key - split-window -v -c &amp;#39;#{pane_current_path}&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;prefix&#34;&gt;prefix&lt;/h3&gt;
+&lt;p&gt;預設是 ctrl + b，不過上面的設定我改成 ctrl + a，目前使用是算順手&lt;br&gt;
+也有人設定成 ctrl + q 之類的&lt;/p&gt;
+&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;建立一個新的 session&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tmux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;建立一個新的 session 並且設定名稱&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tmux new -s name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;列出目前有的 session&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tmux ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;連回 session&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ tmux a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;tmux-使用概念&#34;&gt;Tmux 使用概念&lt;/h2&gt;
+&lt;p&gt;畫面單位由大到小會是 session &amp;gt; window &amp;gt; pane&lt;/p&gt;
+&lt;p&gt;session: 一個整個 tmux 的畫面
+window: 分頁
+pane: 切割畫面&lt;/p&gt;
+&lt;h2 id=&#34;shortcut&#34;&gt;shortcut&lt;/h2&gt;
+&lt;p&gt;部分的 shortcut 筆記，之後再整理完整一點的&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;c create new window
+n switch to next window
+p switch to previous window
+
+\ split h
+- split v
+
+z zoom in/out current pane
+
+w list winodws
+s list sessions
+
+d dettach
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tmux/tmux/wiki&#34;&gt;https://github.com/tmux/tmux/wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://fideloper.com/mac-vim-tmux&#34;&gt;http://fideloper.com/mac-vim-tmux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://danielmiessler.com/study/tmux/&#34;&gt;https://danielmiessler.com/study/tmux/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gist.github.com/MohamedAlaa/2961058&#34;&gt;https://gist.github.com/MohamedAlaa/2961058&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html&#34;&gt;https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

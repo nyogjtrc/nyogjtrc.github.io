@@ -17,7 +17,26 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
+      <description>&lt;p&gt;在 Linux 的 Shell 環境中，要查看 &lt;code&gt;PATH&lt;/code&gt; 變數時，通常都是 &lt;code&gt;echo $PATH&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;當 &lt;code&gt;PATH&lt;/code&gt; variable 中包含太多資料夾時，跟本看不懂&lt;/p&gt;
+&lt;p&gt;改以清單的方式顯示 &lt;code&gt;PATH&lt;/code&gt; 內容&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PATH&lt;/span&gt; | tr &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;//:/&lt;span style=&#34;color:#f1fa8c&#34;&gt;$&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;//:/&lt;span style=&#34;color:#f1fa8c&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接用 echo 的方式好像會因 echo 的版本而有差異&lt;/p&gt;
+&lt;p&gt;列成清單之後發現一堆重複的路徑…&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/40599997/how-to-list-path&#34;&gt;https://stackoverflow.com/questions/40599997/how-to-list-path&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +45,53 @@
       <pubDate>Sun, 15 Sep 2019 13:15:40 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/</guid>
-      <description>記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯</description>
+      <description>&lt;p&gt;記錄一些比較常用/實用(可能)的快捷鍵&lt;/p&gt;
+&lt;h2 id=&#34;控制&#34;&gt;控制&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+C&lt;/strong&gt;: 中斷正在執行的程式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+D&lt;/strong&gt;: 結束 shell (同 exit)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Z&lt;/strong&gt;: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+X Ctrl+E&lt;/strong&gt;: 使用 vim 編輯 script 並一次執行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;移動&#34;&gt;移動&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+A&lt;/strong&gt;: 到此行最前面 (同 Home 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+E&lt;/strong&gt;: 到此行最後面 (同 End 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alt+B&lt;/strong&gt;: 前進一個字元&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alt+F&lt;/strong&gt;: 後退一個字元&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+B&lt;/strong&gt;: 前進一格&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+F&lt;/strong&gt;: 後退一格&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;刪除&#34;&gt;刪除&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+H&lt;/strong&gt;: 移除前一個字元 (同 Backspace 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+D&lt;/strong&gt;: 移除後一個字元 (同 Delete 鍵)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+U&lt;/strong&gt;: 移除游標之前的所有文字&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+K&lt;/strong&gt;: 移除游標之後的所有文字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;歷史指令&#34;&gt;歷史指令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+P&lt;/strong&gt;: 上一個指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+N&lt;/strong&gt;: 下一個指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+R&lt;/strong&gt;: 搜尋指令&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+R&lt;/strong&gt;: 上一個&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Shift+R&lt;/strong&gt;: 下一個&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+G&lt;/strong&gt;: 取消搜尋&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;畫面&#34;&gt;畫面&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+L&lt;/strong&gt;: 清空畫面 (同 clear)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+S&lt;/strong&gt;: 凍結畫面輸出&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ctrl+Q&lt;/strong&gt;: 回復畫面輸出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.longwin.com.tw/2006/09/bash_hot_key_2006/&#34;&gt;Bash Shell 快速鍵 | Tsung&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://teohm.github.io/blog/2012/01/04/shortcuts-to-move-faster-in-bash-command-line/&#34;&gt;Shortcuts to move faster in Bash command line - teohm.dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/&#34;&gt;The Best Keyboard Shortcuts for Bash&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

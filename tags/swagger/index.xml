@@ -17,7 +17,38 @@
       <pubDate>Sun, 23 Feb 2020 22:21:45 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</guid>
-      <description>Swagger 官網: https://swagger.io/ 什麼是 Swagger Swagger 提供了一個規格來描述 API 長什麼樣子。 有了統一的規格，延伸出一系統的工具來輔助開發 API。 目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: https://swagger.io/specification/ 開源工具 Swagger</description>
+      <description>&lt;p&gt;Swagger 官網: &lt;a href=&#34;https://swagger.io/&#34;&gt;https://swagger.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;什麼是-swagger&#34;&gt;什麼是 Swagger&lt;/h2&gt;
+&lt;p&gt;Swagger 提供了一個規格來描述 API 長什麼樣子。&lt;/p&gt;
+&lt;p&gt;有了統一的規格，延伸出一系統的工具來輔助開發 API。&lt;/p&gt;
+&lt;p&gt;目前最新的 Spec 是 OAS (OpenAPI Specification) 3.0: &lt;a href=&#34;https://swagger.io/specification/&#34;&gt;https://swagger.io/specification/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;開源工具&#34;&gt;開源工具&lt;/h2&gt;
+&lt;p&gt;Swagger 團隊身有開源三種工具&lt;/p&gt;
+&lt;h3 id=&#34;swagger-codegen&#34;&gt;Swagger Codegen&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;產生程式碼，生成假 server, client sdk&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/swagger-api/swagger-codegen&#34;&gt;https://github.com/swagger-api/swagger-codegen&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;swagger-editor&#34;&gt;Swagger Editor&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;編輯器，有語法檢查，同步產生文件頁面&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/swagger-api/swagger-editor&#34;&gt;https://github.com/swagger-api/swagger-editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Live Demo: &lt;a href=&#34;https://editor.swagger.io/&#34;&gt;https://editor.swagger.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用 Docker 執行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run -d -p 80:8080 swaggerapi/swagger-editor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;swagger-ui&#34;&gt;Swagger UI&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;生成 API 文件頁面&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/swagger-api/swagger-ui&#34;&gt;https://github.com/swagger-api/swagger-ui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Live Demo: &lt;a href=&#34;https://petstore.swagger.io/&#34;&gt;https://petstore.swagger.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用 Docker 執行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;docker run --rm -p 8080:8080 -e &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;SWAGGER_JSON&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;/docs/index.yml -v &lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;PWD&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;/docs:/docs swaggerapi/swagger-ui
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;使用-swagger&#34;&gt;使用 Swagger&lt;/h2&gt;
+&lt;p&gt;目前我是直接在專案的 docker-compose.yml 中放入 swagger-ui，方便我直接查看文件&lt;/p&gt;
+&lt;p&gt;而在正式環境中，還要考慮這份文件開放目標，要設定 Proxy 或是 CORS 等等&lt;/p&gt;
+</description>
     </item>
     
   </channel>

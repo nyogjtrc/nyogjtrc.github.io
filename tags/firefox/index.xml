@@ -17,7 +17,30 @@
       <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
-      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
+      <description>&lt;p&gt;Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距&lt;/p&gt;
+&lt;p&gt;想要使用最新的 Firefox  就是，直接從官網下載安裝！！！&lt;/p&gt;
+&lt;h2 id=&#34;下載&#34;&gt;下載&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ tar xvf firefox-72.0.2.tar.bz2
+$ sudo mv firefox /opt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;建立-firefoxdesktop&#34;&gt;建立 firefox.desktop&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ sudo vi /usr/share/applications/firefox-stable.desktop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[Desktop Entry]
+Name=Firefox Stable
+Comment=Web Browser
+Exec=/opt/firefox/firefox %u
+Terminal=false
+Type=Application
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然後享用 Firefox&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.debian.org/Firefox&#34;&gt;https://wiki.debian.org/Firefox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>

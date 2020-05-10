@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-05-11T02:39:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/principle/</loc>
+    <lastmod>2020-05-11T02:39:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/software-development/</loc>
+    <lastmod>2020-05-11T02:39:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-05-11T02:39:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/</loc>
+    <lastmod>2020-05-11T02:39:34+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/ansible/</loc>
     <lastmod>2020-04-18T23:14:28+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-04-18T23:14:28+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nyogjtrc.github.io/tags/sudo/</loc>
-    <lastmod>2020-04-18T23:14:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-04-18T23:14:28+08:00</lastmod>
   </url>
   
