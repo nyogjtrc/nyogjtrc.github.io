@@ -6,10 +6,43 @@
     <description>Recent content in software development on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 11 May 2020 02:39:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 01:12:19 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/software-development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cohesion and Coupling</title>
+      <link>https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/</link>
+      <pubDate>Mon, 01 Jun 2020 01:12:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/</guid>
+      <description>&lt;p&gt;想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數&lt;/p&gt;
+&lt;p&gt;其中一個方法就是從內聚跟耦合的程度來評估&lt;/p&gt;
+&lt;h2 id=&#34;cohesion-內聚&#34;&gt;Cohesion (內聚)&lt;/h2&gt;
+&lt;p&gt;一個模組內的不同功能的相關程度&lt;/p&gt;
+&lt;p&gt;例如，當處理某個任務的程式跟資料都在同一個模組內，表示這個模組有很高的內聚力&lt;/p&gt;
+&lt;h2 id=&#34;coupling-耦合&#34;&gt;Coupling (耦合)&lt;/h2&gt;
+&lt;p&gt;不同模組之間的關連或依賴程度&lt;/p&gt;
+&lt;p&gt;例如，當兩個模組都使用到同一個全域變數時，這兩個模組就彼此耦合&lt;/p&gt;
+&lt;h2 id=&#34;好的設計&#34;&gt;好的設計?&lt;/h2&gt;
+&lt;p&gt;那麼，好的軟體設計? 好維護的程式?&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;High Cohesion, Low Coupling (高內聚，低耦合)&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;好處&#34;&gt;好處&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;模組「專注」在同一件事情上，提高模組被「重複使用」的機會&lt;/li&gt;
+&lt;li&gt;增加程式的「可讀性」，程式更容易被閱讀被理解&lt;/li&gt;
+&lt;li&gt;不用怕修改程式時會引發「漣漪效應」，甚至是「蝴蝶效應」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;reference&#34;&gt;Reference&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://teddy-chen-tw.blogspot.com/2011/12/1.html&#34;&gt;搞笑談軟工: 亂談軟體設計（1）：Cohesion and Coupling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://irw.ncut.edu.tw/peterju/se.html&#34;&gt;軟體工程(Software Engineering;SE)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflowcom/questions/3085285/difference-between-cohesion-and-coupling&#34;&gt;oop - Difference Between Cohesion and Coupling - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>軟體開發原則: DRY, KISS, YAGNI</title>

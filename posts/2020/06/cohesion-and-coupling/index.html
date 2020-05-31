@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數 其中一個方法就是從內聚跟耦合的程度來評估 Cohesion (內聚) 一個模組內的不同功能的相">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cohesion and Coupling"/>
+<meta name="twitter:description" content="想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數 其中一個方法就是從內聚跟耦合的程度來評估 Cohesion (內聚) 一個模組內的不同功能的相"/>
+
+    <meta property="og:title" content="Cohesion and Coupling" />
+<meta property="og:description" content="想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數 其中一個方法就是從內聚跟耦合的程度來評估 Cohesion (內聚) 一個模組內的不同功能的相" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/" />
+<meta property="article:published_time" content="2020-06-01T01:12:19+08:00" />
+<meta property="article:modified_time" content="2020-06-01T01:12:19+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/">
+    
+    <title>
+  Cohesion and Coupling · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css" integrity="sha256-pPMyITohzo61IWcMYURwxYkjqq84XipzmCwx3XZC3ss=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.70.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Cohesion and Coupling</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-06-01T01:12:19&#43;08:00'>
+                June 1, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              1-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/software-development/">software development</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數</p>
+<p>其中一個方法就是從內聚跟耦合的程度來評估</p>
+<h2 id="cohesion-內聚">Cohesion (內聚)</h2>
+<p>一個模組內的不同功能的相關程度</p>
+<p>例如，當處理某個任務的程式跟資料都在同一個模組內，表示這個模組有很高的內聚力</p>
+<h2 id="coupling-耦合">Coupling (耦合)</h2>
+<p>不同模組之間的關連或依賴程度</p>
+<p>例如，當兩個模組都使用到同一個全域變數時，這兩個模組就彼此耦合</p>
+<h2 id="好的設計">好的設計?</h2>
+<p>那麼，好的軟體設計? 好維護的程式?</p>
+<p><code>High Cohesion, Low Coupling (高內聚，低耦合)</code></p>
+<h2 id="好處">好處</h2>
+<ul>
+<li>模組「專注」在同一件事情上，提高模組被「重複使用」的機會</li>
+<li>增加程式的「可讀性」，程式更容易被閱讀被理解</li>
+<li>不用怕修改程式時會引發「漣漪效應」，甚至是「蝴蝶效應」</li>
+</ul>
+<hr>
+<h4 id="reference">Reference</h4>
+<ul>
+<li><a href="http://teddy-chen-tw.blogspot.com/2011/12/1.html">搞笑談軟工: 亂談軟體設計（1）：Cohesion and Coupling</a></li>
+<li><a href="https://irw.ncut.edu.tw/peterju/se.html">軟體工程(Software Engineering;SE)</a></li>
+<li><a href="https://stackoverflowcom/questions/3085285/difference-between-cohesion-and-coupling">oop - Difference Between Cohesion and Coupling - Stack Overflow</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Developer</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2020
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

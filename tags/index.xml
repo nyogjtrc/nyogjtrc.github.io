@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 11 May 2020 02:39:34 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 01:12:19 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>software development</title>
+      <link>https://nyogjtrc.github.io/tags/software-development/</link>
+      <pubDate>Mon, 01 Jun 2020 01:12:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/software-development/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>principle</title>
@@ -17,15 +26,6 @@
       <pubDate>Mon, 11 May 2020 02:39:34 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/principle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>software development</title>
-      <link>https://nyogjtrc.github.io/tags/software-development/</link>
-      <pubDate>Mon, 11 May 2020 02:39:34 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/software-development/</guid>
       <description></description>
     </item>
     
