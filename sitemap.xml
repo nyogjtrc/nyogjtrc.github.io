@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/manifesto/</loc>
+    <lastmod>2020-06-03T02:00:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/06/manifesto-software-craftsmanship/</loc>
+    <lastmod>2020-06-03T02:00:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-06-03T02:00:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-06-03T02:00:35+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/</loc>
     <lastmod>2020-06-01T01:12:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-06-01T01:12:19+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nyogjtrc.github.io/tags/software-development/</loc>
-    <lastmod>2020-06-01T01:12:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-06-01T01:12:19+08:00</lastmod>
   </url>
   
