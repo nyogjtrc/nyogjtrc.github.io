@@ -17,23 +17,7 @@
       <pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
-      <description>&lt;p&gt;用 redis-cli 組合一個清除的指令&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ redis-cli --scan --pattern users:* | xargs redis-cli unlink
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;用 scan 找出要刪的 key&lt;/li&gt;
-&lt;li&gt;透過 xargs 傳給 unlink 刪掉 key&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;keys-vs-scan&#34;&gt;KEYS vs SCAN&lt;/h3&gt;
-&lt;p&gt;一樣都會掃過所有的 key，scan 不會阻塞整個 server，而是迭代的收集結果&lt;/p&gt;
-&lt;h3 id=&#34;del-vs-unlink&#34;&gt;DEL vs UNLINK&lt;/h3&gt;
-&lt;p&gt;一樣都是刪除 key ，差別在於 unlink 是非阻塞的刪除，會以非同步的方式回收記憶體&lt;/p&gt;
-&lt;h3 id=&#34;referece&#34;&gt;Referece&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/&#34;&gt;https://rdbtools.com/blog/redis-delete-keys-matching-pattern-using-scan/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://redis.io/commands/scan&#34;&gt;https://redis.io/commands/scan&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://redis.io/commands/unlink&#34;&gt;https://redis.io/commands/unlink&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
     </item>
     
   </channel>

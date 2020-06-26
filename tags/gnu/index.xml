@@ -17,31 +17,7 @@
       <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</guid>
-      <description>&lt;p&gt;最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。&lt;/p&gt;
-&lt;p&gt;macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大&lt;/p&gt;
-&lt;p&gt;這讓習慣以 Linux 開發程式的人很不適應。&lt;/p&gt;
-&lt;p&gt;好在 Linux 裡常用的 command 都是 gnu 的自由軟體，我們可以直接使用 &lt;code&gt;brew&lt;/code&gt; 安裝到 macOS 中&lt;/p&gt;
-&lt;h2 id=&#34;install-gnu-tools&#34;&gt;Install GNU Tools&lt;/h2&gt;
-&lt;p&gt;直接使用以下指令把一些常用的工具裝好&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install coreutils findutils gnu-tar gnu-sed gnu-which gawk gnutls grep gzip wget
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;剛安裝好的 commands 會已掛上前綴 g 的型式設定在 terminal 環境中，如果想要直接使用則需要把 gnubin 資料夾加入 PATH 中&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/usr/local/opt/coreutils/libexec/gnubin:&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PATH&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;colorize-ls&#34;&gt;Colorize ls&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;ls&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;ls --color=tty&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-gnu-tools&#34;&gt;Update GNU Tools&lt;/h2&gt;
-&lt;p&gt;有一些 macOS 本身就有安裝的工具也順手更新一下&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install bash less make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-non-gnu-tools&#34;&gt;Update Non GNU Tools&lt;/h2&gt;
-&lt;p&gt;另外再裝幾個好用的開源工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install git python rsync zsh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands&#34;&gt;List of GNU Core Utilities commands - Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/69223/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities&#34;&gt;terminal - How to replace Mac OS X utilities with GNU core utilities? - Ask Different&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/&#34;&gt;Install and Use GNU Command Line Tools on macOS/OS X - Top Bug Net&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。 macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大 這讓習慣以 Linux 開發程式的</description>
     </item>
     
   </channel>

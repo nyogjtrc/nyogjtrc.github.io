@@ -17,30 +17,7 @@
       <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
-      <description>&lt;p&gt;Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距&lt;/p&gt;
-&lt;p&gt;想要使用最新的 Firefox  就是，直接從官網下載安裝！！！&lt;/p&gt;
-&lt;h2 id=&#34;下載&#34;&gt;下載&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ tar xvf firefox-72.0.2.tar.bz2
-$ sudo mv firefox /opt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;建立-firefoxdesktop&#34;&gt;建立 firefox.desktop&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ sudo vi /usr/share/applications/firefox-stable.desktop
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[Desktop Entry]
-Name=Firefox Stable
-Comment=Web Browser
-Exec=/opt/firefox/firefox %u
-Terminal=false
-Type=Application
-Icon=/opt/firefox/browser/chrome/icons/default/default128.png
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/vnd.mozilla.xul+xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;
-StartupNotify=true
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然後享用 Firefox&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.debian.org/Firefox&#34;&gt;https://wiki.debian.org/Firefox&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
     </item>
     
     <item>
@@ -49,21 +26,7 @@ StartupNotify=true
       <pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
-      <description>&lt;h2 id=&#34;增加-source-list&#34;&gt;增加 source list&lt;/h2&gt;
-&lt;p&gt;debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;增加-apt-key&#34;&gt;增加 apt key&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安裝-virtualbox&#34;&gt;安裝 Virtualbox&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo apt update
-sudo apt install virtualbox-5.2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps. Virtualbox 6.0 在 2018/12/18 發佈了&lt;/p&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.virtualbox.org/wiki/Linux_Downloads&#34;&gt;https://www.virtualbox.org/wiki/Linux_Downloads&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
     </item>
     
     <item>
@@ -72,41 +35,7 @@ sudo apt install virtualbox-5.2
       <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
-      <description>&lt;h2 id=&#34;ssd-優化的幾個要點&#34;&gt;SSD 優化的幾個要點&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;啟用 SSD 的 Trim 功能&lt;/li&gt;
-&lt;li&gt;減少非必要的寫入動作&lt;/li&gt;
-&lt;li&gt;掛載暫存資料夾到 Ram 上&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;啟用排程-trim&#34;&gt;啟用排程 Trim&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo systemctl enable fstrim.timer
-Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps. 不建議使用 /etc/fstab 的 discard 選項&lt;/p&gt;
-&lt;h2 id=&#34;增加-mount-options&#34;&gt;增加 Mount Options&lt;/h2&gt;
-&lt;p&gt;修改前備份 fstab&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo cp /etc/fstab /etc/fstab.bak
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 &lt;code&gt;/etc/fstab&lt;/code&gt;，mount options 增加 &lt;code&gt;noatime&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;mount options 的說明可以在 &lt;code&gt;man mount&lt;/code&gt; 查到&lt;/p&gt;
-&lt;h2 id=&#34;啟用-lvm-trim&#34;&gt;啟用 LVM Trim&lt;/h2&gt;
-&lt;p&gt;修改 &lt;code&gt;/etc/lvm/lvm.conf&lt;/code&gt;， &lt;code&gt;issue_discards = 0&lt;/code&gt; 為 &lt;code&gt;issue_discards = 1&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;掛載-tmpfs&#34;&gt;掛載 tmpfs&lt;/h2&gt;
-&lt;p&gt;將 /tmp 掛載到 tmpfs 上&lt;/p&gt;
-&lt;p&gt;sudo vi /etc/fstab 加上以下設定&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;tmpfs   /tmp    tmpfs   defaults,noatime,nodev,nosuid,mode=1777,size=2G 0       0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;測試-ssd-速度&#34;&gt;測試 ssd 速度&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo hdparm -Tt --direct /dev/nvme0n1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;nvme&#34;&gt;NVMe&lt;/h2&gt;
-&lt;p&gt;要查看 NVMe SSD 的資訊無法使用 hdparm 查詢，要安裝 nvme-cli&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;referece&#34;&gt;Referece&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/&#34;&gt;https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto&#34;&gt;http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.debian.org/SSDOptimization&#34;&gt;https://wiki.debian.org/SSDOptimization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe&#34;&gt;https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Solid_state_drive&#34;&gt;https://wiki.archlinux.org/index.php/Solid_state_drive&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
     </item>
     
     <item>
@@ -115,87 +44,7 @@ Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/sy
       <pubDate>Mon, 03 Dec 2018 14:53:59 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/</guid>
-      <description>&lt;p&gt;入手 ThinkPad X1c 來當工作機&lt;/p&gt;
-&lt;p&gt;在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後，
-就把 OS 換成 Debian 了&lt;/p&gt;
-&lt;h2 id=&#34;安裝-debian-之前&#34;&gt;安裝 Debian 之前&lt;/h2&gt;
-&lt;p&gt;更新 BIOS 到目前最新的版本 1.34&lt;/p&gt;
-&lt;p&gt;調整以下的設定:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Security -&amp;gt; Secure Boot - Set to &amp;ldquo;Disabled&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Config -&amp;gt; Power -&amp;gt; Sleep State - Set to &amp;ldquo;Linux&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Config -&amp;gt; Thunderbolt BIOS Assist Mode - Set to &amp;ldquo;Enabled&amp;rdquo;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;安裝-debian&#34;&gt;安裝 Debian&lt;/h2&gt;
-&lt;p&gt;Linux Distribute: Debian testing&lt;/p&gt;
-&lt;p&gt;Partition: whole disk with LVM&lt;/p&gt;
-&lt;p&gt;Desktop: gnome&lt;/p&gt;
-&lt;h2 id=&#34;安裝-debian-之後&#34;&gt;安裝 Debian 之後&lt;/h2&gt;
-&lt;h2 id=&#34;設定-sudo&#34;&gt;設定 sudo&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# adduser nyo sudo
-# reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;修改-apt-source-list&#34;&gt;修改 apt source list&lt;/h2&gt;
-&lt;p&gt;source list 加入 contrib non-free&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;deb http://deb.debian.org/debian/ buster main contrib non-free
-deb-src http://deb.debian.org/debian/ buster main contrib non-free
-
-deb http://security.debian.org/debian-security buster/updates main contrib non-free
-deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;$ sudo apt install aptitude&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;安裝-firmware-microcode-fwupd&#34;&gt;安裝 firmware, microcode, fwupd&lt;/h2&gt;
-&lt;p&gt;wifi, bluetooth 等裝置需要的 firmware&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ sudo apt install firmware-iwlwifi firmware-misc-nonfree&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Intel microcode&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ sudo apt install intel-microcode&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;fwup BIOS 更新軟體&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ sudo apt install fwupd&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;下載自己的-dotfiles&#34;&gt;下載自己的 dotfiles&lt;/h2&gt;
-&lt;p&gt;建立 ssh key: &lt;code&gt;$ ssh-keygen -t rsa -b 4096&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo apt install -y git
-$ git clone git@github.com:nyogjtrc/dotfiles.git .dotfiles
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安裝常用的-cli-程式&#34;&gt;安裝常用的 cli 程式&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;$ ~/.dotfiles/installation/basic.sh&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh&#34;&gt;https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;安裝-gcin-輸入法&#34;&gt;安裝 gcin 輸入法&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ sudo apt install gcin
-$ sudo im-config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;放置嘸蝦米 gtab 到 &lt;code&gt;~/.gcin/&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;gdm3-停用-wayland&#34;&gt;gdm3 停用 Wayland&lt;/h2&gt;
-&lt;p&gt;過程遇到一些問題，像是登入畫面無法正常顯示，輸入法未啟動等等&lt;/p&gt;
-&lt;p&gt;最後是停用 Wayland 就正常&lt;/p&gt;
-&lt;p&gt;修改 &lt;code&gt;/etc/gdm3/daemon.conf&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[daemon]
-# Uncomment the line below to force the login screen to use Xorg
-WaylandEnable=false
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;安裝-gnome-sell-extension&#34;&gt;安裝 gnome sell extension&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;posts/2018/12/gnome-shell-extensions-currently-using&#34;&gt;目前使用中的 GNOME Shell Extensions&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;設定-gnome-桌面主題&#34;&gt;設定 gnome 桌面主題&lt;/h2&gt;
-&lt;p&gt;NumixPack: &lt;a href=&#34;https://www.opendesktop.org/p/1137261/&#34;&gt;https://www.opendesktop.org/p/1137261/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;截圖
-&lt;img src=&#34;posts/2018/12/Screenshot_from_2018-12-02_20-46-54.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;安裝防火牆&#34;&gt;安裝防火牆&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ sudo apt install ufw
-$ sudo ufw &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;enable&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;grub-開機時間&#34;&gt;grub 開機時間&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;sudo vi /etc/default/grub&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;預設為 5 秒 &lt;code&gt;GRUB_TIMEOUT=5&lt;/code&gt; 改成 1 秒 &lt;code&gt;GRUB_TIMEOUT=1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;存檔後更新 grub: &lt;code&gt;sudo update-grub&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;待處理&#34;&gt;待處理&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;電源管理&lt;/li&gt;
-&lt;li&gt;SSD 優化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;目前不支援的装置&#34;&gt;目前不支援的装置&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;4G Fibocom L850-GL&lt;/li&gt;
-&lt;li&gt;Fingerprint Reader&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)&#34;&gt;https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5&#34;&gt;https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&amp;gt; Secure Boot</description>
     </item>
     
     <item>
@@ -204,20 +53,7 @@ $ sudo ufw &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;enable&lt
       <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
-      <description>&lt;p&gt;安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定&lt;/p&gt;
-&lt;h2 id=&#34;安裝-sudo&#34;&gt;安裝 sudo&lt;/h2&gt;
-&lt;p&gt;切換到 root 安裝&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# su -
-# apt install sudo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定-sudoer&#34;&gt;設定 sudoer&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# usermod -aG sudo nyo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設定好之後，登入並用 &lt;code&gt;sudo&lt;/code&gt; 隨意打個指令試試&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo ls -l /root
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;成功！&lt;/p&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart&lt;/a&gt;
-&lt;a href=&#34;https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian&#34;&gt;https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
     </item>
     
   </channel>

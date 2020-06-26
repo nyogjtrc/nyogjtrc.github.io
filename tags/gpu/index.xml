@@ -17,49 +17,7 @@
       <pubDate>Fri, 13 Mar 2020 21:29:26 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/the-fastest-terminal-emulator/</guid>
-      <description>&lt;p&gt;發現了使用 GPU 的 terminal emulator&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty&#34;&gt;https://github.com/alacritty/alacritty&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://sw.kovidgoyal.net/kitty/&#34;&gt;https://sw.kovidgoyal.net/kitty/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式&lt;/p&gt;
-&lt;p&gt;兩個都試用了一下，決定先以 alacritty 當主力試試&lt;/p&gt;
-&lt;p&gt;特色:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前最快的 terminal emulator&lt;/li&gt;
-&lt;li&gt;使用 GPU&lt;/li&gt;
-&lt;li&gt;支援 Linux, BSD, macOS, Windows&lt;/li&gt;
-&lt;li&gt;rust 開發&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;安裝&#34;&gt;安裝&lt;/h2&gt;
-&lt;h3 id=&#34;debian--ubuntu&#34;&gt;Debian / Ubuntu&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ apt install alacritty
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;macos&#34;&gt;macOS&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew cask install alacritty
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定&#34;&gt;設定&lt;/h2&gt;
-&lt;p&gt;把 alacritty.yml 放到以下的其中的一個位置就可以生效&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$XDG_CONFIG_HOME/alacritty/alacritty.yml&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$XDG_CONFIG_HOME/alacritty.yml&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$HOME/.config/alacritty/alacritty.yml&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$HOME/.alacritty.yml&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;color-schemes&#34;&gt;Color schemes&lt;/h2&gt;
-&lt;p&gt;可以從以下兩個網址去找自己喜歡的顏色&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty/wiki/Color-schemes&#34;&gt;https://github.com/alacritty/alacritty/wiki/Color-schemes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/eendroroy/alacritty-theme&#34;&gt;https://github.com/eendroroy/alacritty-theme&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;心得&#34;&gt;心得&lt;/h2&gt;
-&lt;p&gt;cat log 檔案的時候速度很快，看的感覺很爽快&lt;/p&gt;
-&lt;p&gt;很可惜的，macOS + tmux + vim 這個組合還是會很慢&lt;/p&gt;
-&lt;p&gt;有幾個 terminal emulator 設計的很華麗，也有跨多平台。
-可惜是用 Electron 開發的，感覺太過肥大，就暫時不考慮了&lt;/p&gt;
-&lt;h3 id=&#34;refence&#34;&gt;Refence&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/alacritty/alacritty&#34;&gt;https://github.com/alacritty/alacritty&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>發現了使用 GPU 的 terminal emulator https://github.com/alacritty/alacritty https://sw.kovidgoyal.net/kitty/ 我目前幾乎所有的工作都在 terminal 上處理，無法接太慢的 terminal 程式 兩個都試用了一下，決定先以 alacritty 當主力試試 特色: 目前最快的 terminal emulator 使用 GPU 支</description>
     </item>
     
   </channel>

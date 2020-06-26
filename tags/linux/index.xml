@@ -17,26 +17,7 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>&lt;p&gt;在 Linux 的 Shell 環境中，要查看 &lt;code&gt;PATH&lt;/code&gt; 變數時，通常都是 &lt;code&gt;echo $PATH&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;當 &lt;code&gt;PATH&lt;/code&gt; variable 中包含太多資料夾時，跟本看不懂&lt;/p&gt;
-&lt;p&gt;改以清單的方式顯示 &lt;code&gt;PATH&lt;/code&gt; 內容&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PATH&lt;/span&gt; | tr &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;
-/usr/local/sbin
-/usr/local/bin
-/usr/sbin
-/usr/bin
-/sbin
-/bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;//:/&lt;span style=&#34;color:#f1fa8c&#34;&gt;$&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; -e &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;//:/&lt;span style=&#34;color:#f1fa8c&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接用 echo 的方式好像會因 echo 的版本而有差異&lt;/p&gt;
-&lt;p&gt;列成清單之後發現一堆重複的路徑…&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/40599997/how-to-list-path&#34;&gt;https://stackoverflow.com/questions/40599997/how-to-list-path&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
     </item>
     
     <item>
@@ -45,31 +26,7 @@
       <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/09/use-gnu-commands-on-macos/</guid>
-      <description>&lt;p&gt;最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。&lt;/p&gt;
-&lt;p&gt;macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大&lt;/p&gt;
-&lt;p&gt;這讓習慣以 Linux 開發程式的人很不適應。&lt;/p&gt;
-&lt;p&gt;好在 Linux 裡常用的 command 都是 gnu 的自由軟體，我們可以直接使用 &lt;code&gt;brew&lt;/code&gt; 安裝到 macOS 中&lt;/p&gt;
-&lt;h2 id=&#34;install-gnu-tools&#34;&gt;Install GNU Tools&lt;/h2&gt;
-&lt;p&gt;直接使用以下指令把一些常用的工具裝好&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install coreutils findutils gnu-tar gnu-sed gnu-which gawk gnutls grep gzip wget
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;剛安裝好的 commands 會已掛上前綴 g 的型式設定在 terminal 環境中，如果想要直接使用則需要把 gnubin 資料夾加入 PATH 中&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/usr/local/opt/coreutils/libexec/gnubin:&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PATH&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;colorize-ls&#34;&gt;Colorize ls&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;alias&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;ls&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;ls --color=tty&amp;#39;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-gnu-tools&#34;&gt;Update GNU Tools&lt;/h2&gt;
-&lt;p&gt;有一些 macOS 本身就有安裝的工具也順手更新一下&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install bash less make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;update-non-gnu-tools&#34;&gt;Update Non GNU Tools&lt;/h2&gt;
-&lt;p&gt;另外再裝幾個好用的開源工具&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ brew install git python rsync zsh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands&#34;&gt;List of GNU Core Utilities commands - Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://apple.stackexchange.com/questions/69223/how-to-replace-mac-os-x-utilities-with-gnu-core-utilities&#34;&gt;terminal - How to replace Mac OS X utilities with GNU core utilities? - Ask Different&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/&#34;&gt;Install and Use GNU Command Line Tools on macOS/OS X - Top Bug Net&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>最近突然拿到一台 MacBook Pro，摸了幾天一直很不習慣。 macOS 的核心是基於 Unix 所開發的，terminal 中預設搭載的 command 跟 Linux 差非常的大 這讓習慣以 Linux 開發程式的</description>
     </item>
     
     <item>
@@ -78,29 +35,7 @@
       <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
-      <description>&lt;p&gt;每台機器都會有一些自己唯一的 id&lt;/p&gt;
-&lt;p&gt;在開發程式中，可能會有需要用來分辨機器&lt;/p&gt;
-&lt;h2 id=&#34;machine-id&#34;&gt;machine-id&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cat /etc/machine-id
-
-$ cat /var/lib/dbus/machine-id
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;product_uuid&#34;&gt;product_uuid&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo cat /sys/class/dmi/id/product_uuid
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;mac-address&#34;&gt;MAC address&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ ip link
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;hard-disk-uuid&#34;&gt;Hard Disk UUID&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ blkid
-
-$ ls -l /dev/disk/by-uuid
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;random-uuid&#34;&gt;random UUID&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ cat /proc/sys/kernel/random/uuid
-
-$ uuidgen
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/&#34;&gt;https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/&lt;/a&gt;
-&lt;a href=&#34;http://0pointer.de/blog/projects/ids.html&#34;&gt;http://0pointer.de/blog/projects/ids.html&lt;/a&gt;
-&lt;a href=&#34;https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/&#34;&gt;https://liquidat.wordpress.com/2013/03/13/uuids-and-linux-everything-you-ever-need-to-know/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
     </item>
     
     <item>
@@ -109,20 +44,7 @@ $ uuidgen
       <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
-      <description>&lt;p&gt;安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定&lt;/p&gt;
-&lt;h2 id=&#34;安裝-sudo&#34;&gt;安裝 sudo&lt;/h2&gt;
-&lt;p&gt;切換到 root 安裝&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# su -
-# apt install sudo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;設定-sudoer&#34;&gt;設定 sudoer&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# usermod -aG sudo nyo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;設定好之後，登入並用 &lt;code&gt;sudo&lt;/code&gt; 隨意打個指令試試&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo ls -l /root
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;成功！&lt;/p&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart&#34;&gt;https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart&lt;/a&gt;
-&lt;a href=&#34;https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian&#34;&gt;https://unix.stackexchange.com/questions/292562/adding-a-sudoer-in-debian&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
     </item>
     
     <item>
@@ -131,28 +53,7 @@ $ uuidgen
       <pubDate>Sat, 15 Apr 2017 01:09:42 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/04/linux-edit-photo/</guid>
-      <description>&lt;p&gt;想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具&lt;/p&gt;
-&lt;p&gt;可以直接在 command line 上處理圖檔的工具:
-&lt;strong&gt;convert&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;convert 功能之多，我剛看到時也嚇了一下，可以轉換檔案格式，可以縮放圖片，可以使用濾鏡，可以旋轉圖片等等。不過有沒有比較輕量我也不太清楚，至少我可以快速的得到我要的結果。&lt;/p&gt;
-&lt;h2 id=&#34;使用範例&#34;&gt;使用範例&lt;/h2&gt;
-&lt;p&gt;把 png 檔轉成 jpg 檔&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ convert image.png image.jpg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;轉 90 度&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ convert image.jpg -rotate &lt;span style=&#34;color:#bd93f9&#34;&gt;90&lt;/span&gt; modified-image.jpg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;調整圖片壓縮品質&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ convert image.jpg -quality &lt;span style=&#34;color:#bd93f9&#34;&gt;50&lt;/span&gt; modified-image.jpg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;把所有圖片調整成高度 200&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; file in *.jpg; &lt;span style=&#34;color:#ff79c6&#34;&gt;do&lt;/span&gt; convert &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$file&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; -resize x200 &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;s-&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$file&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;; &lt;span style=&#34;color:#ff79c6&#34;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在圖片上寫字&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ convert image.jpg -font courier -fill white -pointsize &lt;span style=&#34;color:#bd93f9&#34;&gt;20&lt;/span&gt; -annotate +50+50 &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Writing&amp;#39;&lt;/span&gt; write-image.jpg
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/&#34;&gt;5 ImageMagick command line examples – part 1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.imagemagick.org/script/convert.php&#34;&gt;Command-line Tools: Convert @ ImageMagick&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.howtogeek.com/109369/how-to-quickly-resize-convert-modify-images-from-the-linux-terminal/&#34;&gt;How to Quickly Resize, Convert &amp;amp; Modify Images from the Linux Terminal&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具 可以直接在 command line 上處理圖檔的工</description>
     </item>
     
     <item>
@@ -161,36 +62,7 @@ $ uuidgen
       <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-      <description>&lt;p&gt;今天要來和 linux 約會(誤&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;date 是用來看時間或是設定時間用的指令&lt;/p&gt;
-&lt;p&gt;不加任何的參數可以直接看目前的時間&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date
-Sat  &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; Mar 23:52:51 CST &lt;span style=&#34;color:#bd93f9&#34;&gt;2017&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;參數&#34;&gt;參數&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;-d STRING&lt;/code&gt; 輸出字串所描述的日期&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;yesterday&amp;#39;&lt;/span&gt;
-Sat  &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; Mar 00:29:53 CST &lt;span style=&#34;color:#bd93f9&#34;&gt;2017&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;-I[FMT]&lt;/code&gt; 用 ISO 8601 的格式輸出
-FMT 預設為 date 輸出日期而已，FMT 為 s 時會輸出到秒&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date -Is
-2017-03-05T01:08:35+08:00
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;+FORMAT&lt;/code&gt; 輸出指定格式&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ date +&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;%F %a&amp;#39;&lt;/span&gt;
-2017-03-05 Sun
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然後就可以用來製造你想要的日期列表了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;MYLIST&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=(&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next sun&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next sat&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34; next fri&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next thu&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next wed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next tue&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;next mon&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;;
-&lt;span style=&#34;color:#ff79c6&#34;&gt;for&lt;/span&gt; i in &lt;span style=&#34;color:#bd93f9&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;5&lt;/span&gt; 6; &lt;span style=&#34;color:#ff79c6&#34;&gt;do&lt;/span&gt; date -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;MYLIST&lt;/span&gt;[&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$i&lt;/span&gt;]&lt;span style=&#34;color:#f1fa8c&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; +&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%F %a&amp;#34;&lt;/span&gt;; &lt;span style=&#34;color:#ff79c6&#34;&gt;done&lt;/span&gt;;
-2017-03-12 Sun
-2017-03-11 Sat
-2017-03-10 Fri
-2017-03-09 Thu
-2017-03-08 Wed
-2017-03-07 Tue
-2017-03-06 Mon
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;man date&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
     </item>
     
   </channel>

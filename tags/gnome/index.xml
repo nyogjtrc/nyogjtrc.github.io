@@ -17,36 +17,7 @@
       <pubDate>Sat, 01 Dec 2018 21:03:36 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/gnome-shell-extensions-currently-using/</guid>
-      <description>&lt;p&gt;記錄一下目前會用的 Extensions&lt;/p&gt;
-&lt;p&gt;Gnome Shell Extensions 網址: &lt;a href=&#34;https://extensions.gnome.org/&#34;&gt;https://extensions.gnome.org/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;增加操作性&#34;&gt;增加操作性&lt;/h2&gt;
-&lt;h3 id=&#34;top-panel-workspace-scroll&#34;&gt;Top Panel Workspace Scroll&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/&#34;&gt;https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;外觀調整&#34;&gt;外觀調整&lt;/h2&gt;
-&lt;h3 id=&#34;user-themes&#34;&gt;User Themes&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/19/user-themes/&#34;&gt;https://extensions.gnome.org/extension/19/user-themes/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;hide-activities-button&#34;&gt;Hide Activities Button&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/744/hide-activities-button/&#34;&gt;https://extensions.gnome.org/extension/744/hide-activities-button/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;panel-osd&#34;&gt;Panel OSD&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/708/panel-osd/&#34;&gt;https://extensions.gnome.org/extension/708/panel-osd/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;remove-dropdown-arrows&#34;&gt;Remove Dropdown Arrows&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/800/remove-dropdown-arrows/&#34;&gt;https://extensions.gnome.org/extension/800/remove-dropdown-arrows/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;實用功能&#34;&gt;實用功能&lt;/h2&gt;
-&lt;h3 id=&#34;caffeine&#34;&gt;Caffeine&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/517/caffeine/&#34;&gt;https://extensions.gnome.org/extension/517/caffeine/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;lock-keys&#34;&gt;Lock Keys&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/36/lock-keys/&#34;&gt;https://extensions.gnome.org/extension/36/lock-keys/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;extensions&#34;&gt;Extensions&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/1036/extensions/&#34;&gt;https://extensions.gnome.org/extension/1036/extensions/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;suspend-button&#34;&gt;Suspend Button&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/826/suspend-button/&#34;&gt;https://extensions.gnome.org/extension/826/suspend-button/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;night-light-slider&#34;&gt;Night Light Slider&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/1276/night-light-slider/&#34;&gt;https://extensions.gnome.org/extension/1276/night-light-slider/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;clipboard-indicator&#34;&gt;Clipboard Indicator&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/779/clipboard-indicator/&#34;&gt;https://extensions.gnome.org/extension/779/clipboard-indicator/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;openweather&#34;&gt;OpenWeather&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://extensions.gnome.org/extension/750/openweather/&#34;&gt;https://extensions.gnome.org/extension/750/openweather/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>記錄一下目前會用的 Extensions Gnome Shell Extensions 網址: https://extensions.gnome.org/ 增加操作性 Top Panel Workspace Scroll https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/ 外觀調整 User Themes https://extensions.gnome.org/extension/19/user-themes/ Hide Activities Button https://extensions.gnome.org/extension/744/hide-activities-button/ Panel OSD https://extensions.gnome.org/extension/708/panel-osd/ Remove Dropdown Arrows https://extensions.gnome.org/extension/800/remove-dropdown-arrows/ 實用功能 Caffeine https://extensions.gnome.org/extension/517/caffeine/ Lock Keys https://extensions.gnome.org/extension/36/lock-keys/ Extensions https://extensions.gnome.org/extension/1036/extensions/ Suspend Button https://extensions.gnome.org/extension/826/suspend-button/ Night Light Slider https://extensions.gnome.org/extension/1276/night-light-slider/ Clipboard Indicator https://extensions.gnome.org/extension/779/clipboard-indicator/ OpenWeather https://extensions.gnome.org/extension/750/openweather/</description>
     </item>
     
   </channel>

@@ -17,45 +17,7 @@
       <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
-      <description>&lt;p&gt;最近有機會寫一下 Python 就順便來改造一下 vim&lt;/p&gt;
-&lt;h2 id=&#34;autocompletion&#34;&gt;Autocompletion&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/davidhalter/jedi&#34;&gt;https://github.com/davidhalter/jedi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/deoplete-plugins/deoplete-jedi&#34;&gt;https://github.com/deoplete-plugins/deoplete-jedi&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能&lt;/p&gt;
-&lt;p&gt;我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi&lt;/p&gt;
-&lt;h3 id=&#34;安裝&#34;&gt;安裝&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ pip install jedi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vimrc&#34;&gt;vimrc&lt;/h3&gt;
-&lt;p&gt;使用 Plug 或其他 vim 套件管理安裝&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;Plug &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;deoplete-plugins/deoplete-jedi&amp;#39;&lt;/span&gt;, { &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;for&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;python&amp;#39;&lt;/span&gt; }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;截圖:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24-21-20-37.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;formatter--linter&#34;&gt;Formatter &amp;amp; Linter&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/google/yapf&#34;&gt;https://github.com/google/yapf&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/timothycrosley/isort&#34;&gt;https://github.com/timothycrosley/isort&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://flake8.pycqa.org/&#34;&gt;http://flake8.pycqa.org/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;yapf google 提供的 python code formatter&lt;/p&gt;
-&lt;p&gt;isort 則是會幫忙整理 import 的順序跟組合&lt;/p&gt;
-&lt;p&gt;flake8 檢查 python 的 coding style 是否依照 pep8&lt;/p&gt;
-&lt;p&gt;以上三個工具都可以跟 ale 整合，所以 vim 中只要對 ale 安裝跟設定就好&lt;/p&gt;
-&lt;h3 id=&#34;安裝-1&#34;&gt;安裝&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ pip install yapf isort flake8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;vimrc-1&#34;&gt;vimrc&lt;/h3&gt;
-&lt;p&gt;ale 的 python linter 預設有 flake8，所以這邊就不多做設定了&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;Plug &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;dense-analysis/ale&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color:#ff79c6&#34;&gt;let&lt;/span&gt; g:ale_fixers = {
-\   &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;python&amp;#39;&lt;/span&gt;: [&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;yapf&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;isort&amp;#39;&lt;/span&gt;],
-\ }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;截圖:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://nyogjtrc.github.io/posts/2019/11/Screenshot_from_2019-11-24_23-01-01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;總結&#34;&gt;總結&lt;/h2&gt;
-&lt;p&gt;ale 意外的強大，整合了多數的 Linter 跟 Fixer&lt;/p&gt;
-</description>
+      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
     </item>
     
   </channel>

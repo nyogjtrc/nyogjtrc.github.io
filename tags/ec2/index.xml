@@ -17,53 +17,7 @@
       <pubDate>Fri, 17 Mar 2017 11:10:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/aws-solution-of-cant-login-ec2-instance/</guid>
-      <description>&lt;p&gt;在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過&lt;/p&gt;
-&lt;p&gt;還好意外翻到官方文件上有一篇可以解決方案可以試試。最後成功了，救回不少時間&lt;/p&gt;
-&lt;p&gt;這個做法的感覺就像是把電腦的硬碟拔下來裝到別台去讀取資料，詳細流程如以下記錄：&lt;/p&gt;
-&lt;h3 id=&#34;記錄&#34;&gt;記錄&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;查看 Instance 的資訊，把 instance ID, AMI ID, Availability Zone, Root device 記錄下來&lt;/li&gt;
-&lt;li&gt;點擊 Root device，把 &lt;strong&gt;EBS ID&lt;/strong&gt; 記錄下來&lt;/li&gt;
-&lt;li&gt;把 Instance 關機，選 Actions -&amp;gt; Instance State -&amp;gt; &lt;strong&gt;Stop&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;建立新的-instance&#34;&gt;建立新的 Instance&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;點擊 &lt;strong&gt;Launch Instance&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;選擇跟剛剛記錄下來一樣的 AMI&lt;/li&gt;
-&lt;li&gt;在 Configure Instance Details 要選一樣的 Availability Zone&lt;/li&gt;
-&lt;li&gt;在 Add Tags 加上 Name=Temp&lt;/li&gt;
-&lt;li&gt;到 Review 頁面點擊 &lt;strong&gt;Launch Instances&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;將虛擬硬碟裝到新的-instance-上&#34;&gt;將虛擬硬碟裝到新的 Instance 上&lt;/h3&gt;
-&lt;ol start=&#34;5&#34;&gt;
-&lt;li&gt;到 console 左側的功能列表選 Volumes&lt;/li&gt;
-&lt;li&gt;找到原 instance 的 volume 卸載，選 Actions -&amp;gt; &lt;strong&gt;Detach Volume&lt;/strong&gt;，然後等它處理完畢&lt;/li&gt;
-&lt;li&gt;把同個 volume 掛載到 temp instance 上，選 Actions -&amp;gt; &lt;strong&gt;Attach Volume&lt;/strong&gt; -&amp;gt; 選 temp instance -&amp;gt; 記錄 Device name (ex. /dev/sdf) -&amp;gt; 點 &lt;strong&gt;Yes, Attach&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;登入-instance-掛載硬碟&#34;&gt;登入 Instance 掛載硬碟&lt;/h3&gt;
-&lt;ol start=&#34;8&#34;&gt;
-&lt;li&gt;登入 temp instance&lt;/li&gt;
-&lt;li&gt;接下來要 mount volume&lt;/li&gt;
-&lt;li&gt;使用 &lt;code&gt;lsblk&lt;/code&gt; 指令，看到 /dev/sdf 的 device name 以 &lt;code&gt;xvdf&lt;/code&gt; 顯示，然後磁區名稱會是 xvdf1 (/dev/xvdf1)&lt;/li&gt;
-&lt;li&gt;下 mount 指令&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo mkdir /mnt/tempvol
-$ sudo mount /dev/xvdf1 /mnt/tempvol
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;12&#34;&gt;
-&lt;li&gt;接下來就可以進 &lt;code&gt;/mnt/tempvol&lt;/code&gt; ，解救資料，備份資料，修正設定，都可！&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;硬碟裝回原-instance&#34;&gt;硬碟裝回原 Instance&lt;/h3&gt;
-&lt;ol start=&#34;13&#34;&gt;
-&lt;li&gt;資料解救完畢後 umount&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo umount /mnt/tempvol
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;14&#34;&gt;
-&lt;li&gt;&lt;strong&gt;Detach Volume&lt;/strong&gt; 再重新 &lt;strong&gt;Attach Volume&lt;/strong&gt; 掛回原 instance 的 &lt;code&gt;/dev/sda1&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;重新 &lt;strong&gt;Start instance&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair&#34;&gt;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#replacing-lost-key-pair&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>在調整伺服器設定時，一度不小心改錯設定，讓自己無法登入。因為沒有備份，一開始還以為沒救了，打算花時間重新來過 還好意外翻到官方文件上有一篇可以</description>
     </item>
     
   </channel>

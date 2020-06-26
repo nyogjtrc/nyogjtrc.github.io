@@ -17,41 +17,7 @@
       <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
-      <description>&lt;h2 id=&#34;ssd-優化的幾個要點&#34;&gt;SSD 優化的幾個要點&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;啟用 SSD 的 Trim 功能&lt;/li&gt;
-&lt;li&gt;減少非必要的寫入動作&lt;/li&gt;
-&lt;li&gt;掛載暫存資料夾到 Ram 上&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;啟用排程-trim&#34;&gt;啟用排程 Trim&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ sudo systemctl enable fstrim.timer
-Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ps. 不建議使用 /etc/fstab 的 discard 選項&lt;/p&gt;
-&lt;h2 id=&#34;增加-mount-options&#34;&gt;增加 Mount Options&lt;/h2&gt;
-&lt;p&gt;修改前備份 fstab&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo cp /etc/fstab /etc/fstab.bak
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;修改 &lt;code&gt;/etc/fstab&lt;/code&gt;，mount options 增加 &lt;code&gt;noatime&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;mount options 的說明可以在 &lt;code&gt;man mount&lt;/code&gt; 查到&lt;/p&gt;
-&lt;h2 id=&#34;啟用-lvm-trim&#34;&gt;啟用 LVM Trim&lt;/h2&gt;
-&lt;p&gt;修改 &lt;code&gt;/etc/lvm/lvm.conf&lt;/code&gt;， &lt;code&gt;issue_discards = 0&lt;/code&gt; 為 &lt;code&gt;issue_discards = 1&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;掛載-tmpfs&#34;&gt;掛載 tmpfs&lt;/h2&gt;
-&lt;p&gt;將 /tmp 掛載到 tmpfs 上&lt;/p&gt;
-&lt;p&gt;sudo vi /etc/fstab 加上以下設定&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;tmpfs   /tmp    tmpfs   defaults,noatime,nodev,nosuid,mode=1777,size=2G 0       0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;測試-ssd-速度&#34;&gt;測試 ssd 速度&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;sudo hdparm -Tt --direct /dev/nvme0n1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;nvme&#34;&gt;NVMe&lt;/h2&gt;
-&lt;p&gt;要查看 NVMe SSD 的資訊無法使用 hdparm 查詢，要安裝 nvme-cli&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;referece&#34;&gt;Referece&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/&#34;&gt;https://blog.longwin.com.tw/2015/08/linux-ssd-disk-partition-config-2015-2/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto&#34;&gt;http://yblog.org/archive/index.php/ssd_on_ubuntu_linux_howto&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.debian.org/SSDOptimization&#34;&gt;https://wiki.debian.org/SSDOptimization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe&#34;&gt;https://wiki.archlinux.org/index.php/Solid_state_drive/NVMe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Solid_state_drive&#34;&gt;https://wiki.archlinux.org/index.php/Solid_state_drive&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
     </item>
     
   </channel>
