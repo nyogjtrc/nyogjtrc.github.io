@@ -268,7 +268,7 @@
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/tags/golang/</loc>
+    <loc>https://nyogjtrc.github.io/tags/go/</loc>
     <lastmod>2019-09-23T23:53:18+08:00</lastmod>
   </url>
   
@@ -279,11 +279,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/logger/</loc>
-    <lastmod>2019-09-23T23:53:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/zap/</loc>
     <lastmod>2019-09-23T23:53:18+08:00</lastmod>
   </url>
   

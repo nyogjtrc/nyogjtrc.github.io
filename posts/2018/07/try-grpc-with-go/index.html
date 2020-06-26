@@ -132,7 +132,7 @@
   <i class="fas fa-tag"></i>
     <a href="https://nyogjtrc.github.io/tags/grpc/">gRPC</a>
       <span class="separator">•</span>
-    <a href="https://nyogjtrc.github.io/tags/golang/">golang</a>
+    <a href="https://nyogjtrc.github.io/tags/go/">go</a>
       <span class="separator">•</span>
     <a href="https://nyogjtrc.github.io/tags/restful/">RESTful</a></div>
 
@@ -177,16 +177,16 @@ libprotoc 3.6.0
 <h3 id="1-建立-proto-文件">1. 建立 proto 文件</h3>
 <p>這裡簡單寫一個 echo service</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir proto; vi proto/echo.proto
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">syntax = <span style="color:#f1fa8c">&#34;proto3&#34;</span>;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto">syntax <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;proto3&#34;</span>;
 
 <span style="color:#ff79c6">package</span> proto;
 
-message EchoMessage {
-  <span style="color:#8be9fd">string</span> value = <span style="color:#bd93f9">1</span>;
+<span style="color:#8be9fd;font-style:italic">message</span> <span style="color:#50fa7b">EchoMessage</span> {
+  <span style="color:#8be9fd">string</span> value <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
 }
 
-service EchoServer {
-  rpc <span style="color:#50fa7b">Echo</span> (EchoMessage) <span style="color:#50fa7b">returns</span> (EchoMessage) {}
+<span style="color:#8be9fd;font-style:italic">service</span> EchoServer {
+  <span style="color:#ff79c6">rpc</span> Echo (EchoMessage) <span style="color:#ff79c6">returns</span> (EchoMessage) {}
 }
 </code></pre></div><p>更多的語法請參考: <a href="https://developers.google.com/protocol-buffers/docs/proto3">Language Guide (proto3)</a></p>
 <h3 id="2-產生-go-程式碼">2. 產生 go 程式碼</h3>
@@ -196,17 +196,17 @@ service EchoServer {
 <h3 id="3-建立-server-程式">3. 建立 server 程式</h3>
 <p>開始實作 EchoServer</p>
 <p>import 剛剛產生的 echo.pb.go</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">import (
-	pb &#34;github.com/nyogjtrc/grpc-example/proto&#34;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#ff79c6">import</span> (
+	pb <span style="color:#f1fa8c">&#34;github.com/nyogjtrc/grpc-example/proto&#34;</span>
 )
 </code></pre></div><p>實作 Server 跟 方法:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">type echoServer struct{}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> echoServer <span style="color:#8be9fd;font-style:italic">struct</span>{}
 
-// Echo
-func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMessage, error) {
-	reply := new(pb.EchoMessage)
-	reply.Value = &#34;echo:&#34; + in.Value
-	return reply, nil
+<span style="color:#6272a4">// Echo
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (s <span style="color:#ff79c6">*</span>echoServer) <span style="color:#50fa7b">Echo</span>(ctx context.Context, in <span style="color:#ff79c6">*</span>pb.EchoMessage) (<span style="color:#ff79c6">*</span>pb.EchoMessage, <span style="color:#8be9fd">error</span>) {
+	reply <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">new</span>(pb.EchoMessage)
+	reply.Value = <span style="color:#f1fa8c">&#34;echo:&#34;</span> <span style="color:#ff79c6">+</span> in.Value
+	<span style="color:#ff79c6">return</span> reply, <span style="color:#ff79c6">nil</span>
 }
 </code></pre></div><p>完整程式碼:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#ff79c6">package</span> main
@@ -283,11 +283,11 @@ func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMess
 }
 </code></pre></div><h3 id="5-實測-grpc-server-client">5. 實測 gRPC server, client</h3>
 <p>執行 server</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ go run server/main.go
-grpc example echo server :8888
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run server/main.go
+grpc example <span style="color:#8be9fd;font-style:italic">echo</span> server :8888
 </code></pre></div><p>執行 client</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ go run client/main.go
-Enter text: 123
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ go run client/main.go
+Enter text: <span style="color:#bd93f9">123</span>
 echo:123
 
 Enter text: hello
@@ -297,57 +297,57 @@ echo:hello
 <p>grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API</p>
 <p>轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了</p>
 <h3 id="1-要安裝的-plugin">1. 要安裝的 plugin</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 </code></pre></div><h3 id="2-proto-檔案增加-restful-option">2. proto 檔案增加 RESTful option</h3>
 <p>就是把 RESTful 的 router 寫進來</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">syntax = <span style="color:#f1fa8c">&#34;proto3&#34;</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-proto" data-lang="proto">syntax <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;proto3&#34;</span>;
 
 <span style="color:#ff79c6">package</span> proto;
 
 <span style="color:#ff79c6">import</span> <span style="color:#f1fa8c">&#34;google/api/annotations.proto&#34;</span>;
 
-message EchoMessage {
-  <span style="color:#8be9fd">string</span> value = <span style="color:#bd93f9">1</span>;
+<span style="color:#8be9fd;font-style:italic">message</span> <span style="color:#50fa7b">EchoMessage</span> {
+  <span style="color:#8be9fd">string</span> value <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">1</span>;
 }
 
-service EchoService {
-  rpc <span style="color:#50fa7b">Echo</span> (EchoMessage) <span style="color:#50fa7b">returns</span> (EchoMessage) {
-    <span style="color:#50fa7b">option</span> (google.api.http) = {
-        post: <span style="color:#f1fa8c">&#34;/echo/echo&#34;</span>
-        body: <span style="color:#f1fa8c">&#34;*&#34;</span>
+<span style="color:#8be9fd;font-style:italic">service</span> EchoService {
+  <span style="color:#ff79c6">rpc</span> Echo (EchoMessage) <span style="color:#ff79c6">returns</span> (EchoMessage) {
+    <span style="color:#ff79c6">option</span> (google.api.http) <span style="color:#ff79c6">=</span> {
+        post<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;/echo/echo&#34;</span>
+        body<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;*&#34;</span>
     };
   }
 }
 </code></pre></div><h3 id="3-產生-pbgo-pbgwgo">3. 產生 pb.go, pb.gw.go</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --go_out=plugins=grpc:. proto/*.proto
-protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --grpc-gateway_out=logtostderr=true:. proto/*.proto
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">protoc -I/usr/local/include -I. <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    -I<span style="color:#ff79c6">$(</span>GOPATH<span style="color:#ff79c6">)</span>/src <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    -I<span style="color:#ff79c6">$(</span>GOPATH<span style="color:#ff79c6">)</span>/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    --go_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">plugins</span><span style="color:#ff79c6">=</span>grpc:. proto/*.proto
+protoc -I/usr/local/include -I. <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    -I<span style="color:#ff79c6">$(</span>GOPATH<span style="color:#ff79c6">)</span>/src <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    -I<span style="color:#ff79c6">$(</span>GOPATH<span style="color:#ff79c6">)</span>/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis <span style="color:#f1fa8c">\
+</span><span style="color:#f1fa8c"></span>    --grpc-gateway_out<span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic">logtostderr</span><span style="color:#ff79c6">=</span>true:. proto/*.proto
 </code></pre></div><h3 id="4-寫-reverse-proxy-的進入點">4. 寫 reverse proxy 的進入點</h3>
 <p>把 gRPC 服務加入 proxy 裡面</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">func gatewayServer() {
-	fmt.Println(&#34;RESTful echo server :9999&#34;)
-	grpcAddr := &#34;localhost:8888&#34;
-	ctx := context.Background()
-	ctx, cancel := context.WithCancel(ctx)
-	defer cancel()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">gatewayServer</span>() {
+	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;RESTful echo server :9999&#34;</span>)
+	grpcAddr <span style="color:#ff79c6">:=</span> <span style="color:#f1fa8c">&#34;localhost:8888&#34;</span>
+	ctx <span style="color:#ff79c6">:=</span> context.<span style="color:#50fa7b">Background</span>()
+	ctx, cancel <span style="color:#ff79c6">:=</span> context.<span style="color:#50fa7b">WithCancel</span>(ctx)
+	<span style="color:#ff79c6">defer</span> <span style="color:#50fa7b">cancel</span>()
 
-	mux := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := pb.RegisterEchoServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
-	if err != nil {
-		log.Fatalf(&#34;can not register endpoint %v&#34;, err)
+	mux <span style="color:#ff79c6">:=</span> runtime.<span style="color:#50fa7b">NewServeMux</span>()
+	opts <span style="color:#ff79c6">:=</span> []grpc.DialOption{grpc.<span style="color:#50fa7b">WithInsecure</span>()}
+	err <span style="color:#ff79c6">:=</span> pb.<span style="color:#50fa7b">RegisterEchoServiceHandlerFromEndpoint</span>(ctx, mux, grpcAddr, opts)
+	<span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+		log.<span style="color:#50fa7b">Fatalf</span>(<span style="color:#f1fa8c">&#34;can not register endpoint %v&#34;</span>, err)
 	}
 
-	http.ListenAndServe(&#34;:9999&#34;, mux)
+	http.<span style="color:#50fa7b">ListenAndServe</span>(<span style="color:#f1fa8c">&#34;:9999&#34;</span>, mux)
 }
 </code></pre></div><h3 id="5-實測">5. 實測</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ curl -X POST http://localhost:9999/echo/echo -H &#39;Content-Type: application/json&#39; -d &#39;{ &#34;value&#34;: &#34;hi, how are you?&#34; }&#39;
-{&#34;value&#34;:&#34;echo:hi, how are you?&#34;}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X POST http://localhost:9999/echo/echo -H <span style="color:#f1fa8c">&#39;Content-Type: application/json&#39;</span> -d <span style="color:#f1fa8c">&#39;{ &#34;value&#34;: &#34;hi, how are you?&#34; }&#39;</span>
+<span style="color:#ff79c6">{</span><span style="color:#f1fa8c">&#34;value&#34;</span>:<span style="color:#f1fa8c">&#34;echo:hi, how are you?&#34;</span><span style="color:#ff79c6">}</span>
 </code></pre></div><h2 id="小結">小結</h2>
 <ul>
 <li>這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟</li>

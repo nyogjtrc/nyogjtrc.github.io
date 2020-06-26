@@ -7,15 +7,15 @@
     <meta http-equiv="Content-Language" content="en">
 
     <meta name="author" content="nyo">
-    <meta name="description" content="Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err">
+    <meta name="description" content="Go 原生的 Error Type 先認識 go 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err">
     <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Error Handling in Golang"/>
-<meta name="twitter:description" content="Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err"/>
+<meta name="twitter:title" content="Error Handling in Go"/>
+<meta name="twitter:description" content="Go 原生的 Error Type 先認識 go 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err"/>
 
-    <meta property="og:title" content="Error Handling in Golang" />
-<meta property="og:description" content="Golang 原生的 Error Type 先認識 golang 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err" />
+    <meta property="og:title" content="Error Handling in Go" />
+<meta property="og:description" content="Go 原生的 Error Type 先認識 go 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/" />
 <meta property="article:published_time" content="2018-07-26T15:50:07+08:00" />
@@ -26,7 +26,7 @@
       <base href="https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/">
     
     <title>
-  Error Handling in Golang · Nyo&#39;s Study Book
+  Error Handling in Go · Nyo&#39;s Study Book
 </title>
 
     
@@ -112,7 +112,7 @@
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">Error Handling in Golang</h1>
+          <h1 class="title">Error Handling in Go</h1>
         </div>
         <div class="post-meta">
           <div class="date">
@@ -130,7 +130,7 @@
           
           <div class="tags">
   <i class="fas fa-tag"></i>
-    <a href="https://nyogjtrc.github.io/tags/golang/">golang</a>
+    <a href="https://nyogjtrc.github.io/tags/go/">go</a>
       <span class="separator">•</span>
     <a href="https://nyogjtrc.github.io/tags/error/">error</a></div>
 
@@ -139,21 +139,21 @@
 
       <div>
         
-        <h2 id="golang-原生的-error-type">Golang 原生的 Error Type</h2>
-<p>先認識 golang 的 error interface</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">type error interface {
-    Error() string
+        <h2 id="go-原生的-error-type">Go 原生的 Error Type</h2>
+<p>先認識 go 的 error interface</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> <span style="color:#8be9fd">error</span> <span style="color:#8be9fd;font-style:italic">interface</span> {
+	<span style="color:#50fa7b">Error</span>() <span style="color:#8be9fd">string</span>
 }
 </code></pre></div><p>只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError</p>
 <p><a href="https://golang.org/pkg/os/#PathError">https://golang.org/pkg/os/#PathError</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// PathError records an error and the operation and file path that caused it.
-type PathError struct {
-	Op   string
-	Path string
-	Err  error
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// PathError records an error and the operation and file path that caused it.
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> PathError <span style="color:#8be9fd;font-style:italic">struct</span> {
+	Op   <span style="color:#8be9fd">string</span>
+	Path <span style="color:#8be9fd">string</span>
+	Err  <span style="color:#8be9fd">error</span>
 }
 
-func (e *PathError) Error() string { return e.Op + &#34; &#34; + e.Path + &#34;: &#34; + e.Err.Error() }
+<span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>PathError) <span style="color:#50fa7b">Error</span>() <span style="color:#8be9fd">string</span> { <span style="color:#ff79c6">return</span> e.Op <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34; &#34;</span> <span style="color:#ff79c6">+</span> e.Path <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;: &#34;</span> <span style="color:#ff79c6">+</span> e.Err.<span style="color:#50fa7b">Error</span>() }
 </code></pre></div><h2 id="建立自己程式裡的-error-struct">建立自己程式裡的 Error struct</h2>
 <p>依照使用情境 error strcut</p>
 <h3 id="restful-api-error">RESTful API Error</h3>
@@ -161,57 +161,57 @@ func (e *PathError) Error() string { return e.Op + &#34; &#34; + e.Path + &#34;:
 <p>並可以把其他來源的錯誤一並放入，方便追蹤錯誤</p>
 <p>strcut fields: code, message, error</p>
 <p>example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// AppError struct with code and message
-type AppError struct {
-	code    int
-	message string
-	err     error
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// AppError struct with code and message
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> AppError <span style="color:#8be9fd;font-style:italic">struct</span> {
+	code    <span style="color:#8be9fd">int</span>
+	message <span style="color:#8be9fd">string</span>
+	err     <span style="color:#8be9fd">error</span>
 }
 
-// New create Error instance
-func New(code int, message string, err error) *AppError {
-	return &amp;AppError{code, message, err}
+<span style="color:#6272a4">// New create Error instance
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">New</span>(code <span style="color:#8be9fd">int</span>, message <span style="color:#8be9fd">string</span>, err <span style="color:#8be9fd">error</span>) <span style="color:#ff79c6">*</span>AppError {
+	<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">&amp;</span>AppError{code, message, err}
 }
 
-// Error getter
-func (e *AppError) Error() string {
-	return fmt.Sprintf(&#34;%d: %s&#34;, e.code, e.message)
+<span style="color:#6272a4">// Error getter
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>AppError) <span style="color:#50fa7b">Error</span>() <span style="color:#8be9fd">string</span> {
+	<span style="color:#ff79c6">return</span> fmt.<span style="color:#50fa7b">Sprintf</span>(<span style="color:#f1fa8c">&#34;%d: %s&#34;</span>, e.code, e.message)
 }
 
-// Code getter
-func (e *AppError) Code() int {
-	return e.code
+<span style="color:#6272a4">// Code getter
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>AppError) <span style="color:#50fa7b">Code</span>() <span style="color:#8be9fd">int</span> {
+	<span style="color:#ff79c6">return</span> e.code
 }
 
-// Message getter
-func (e *AppError) Message() string {
-	return e.message
+<span style="color:#6272a4">// Message getter
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>AppError) <span style="color:#50fa7b">Message</span>() <span style="color:#8be9fd">string</span> {
+	<span style="color:#ff79c6">return</span> e.message
 }
 
-// ErrorSummry getter
-func (e *AppError) ErrorSummry() string {
-	return fmt.Sprintf(&#34;%d: %s, [%s]&#34;, e.code, e.message, e.err.Error())
+<span style="color:#6272a4">// ErrorSummry getter
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>AppError) <span style="color:#50fa7b">ErrorSummry</span>() <span style="color:#8be9fd">string</span> {
+	<span style="color:#ff79c6">return</span> fmt.<span style="color:#50fa7b">Sprintf</span>(<span style="color:#f1fa8c">&#34;%d: %s, [%s]&#34;</span>, e.code, e.message, e.err.<span style="color:#50fa7b">Error</span>())
 }
 </code></pre></div><h3 id="api-gateway-error">API Gateway Error</h3>
 <p>Gateway 公開提供服務在網路上，有時候會有安全性的需要，要隱藏一些內部錯誤訊息</p>
 <p>但是維運上還是會需要有足夠的資訊來了解服務當下的狀況，可以放一個內部的代碼，多一點線索</p>
 <p>strcut fields: code, message, internal code</p>
 <p>example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// Error for gateway
-type Error struct {
-	code      int
-	message   string
-	interCode int
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Error for gateway
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> Error <span style="color:#8be9fd;font-style:italic">struct</span> {
+	code      <span style="color:#8be9fd">int</span>
+	message   <span style="color:#8be9fd">string</span>
+	interCode <span style="color:#8be9fd">int</span>
 }
 
-// New Error instance
-func New(code int, message string, interCode int) *Error {
-	return &amp;Error{code, message, interCode}
+<span style="color:#6272a4">// New Error instance
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">New</span>(code <span style="color:#8be9fd">int</span>, message <span style="color:#8be9fd">string</span>, interCode <span style="color:#8be9fd">int</span>) <span style="color:#ff79c6">*</span>Error {
+	<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">&amp;</span>Error{code, message, interCode}
 }
 
-// Error getter
-func (e *Error) Error() string {
-	return fmt.Sprintf(&#34;%d: %s (%d)&#34;, e.code, e.message, e.interCode)
+<span style="color:#6272a4">// Error getter
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> (e <span style="color:#ff79c6">*</span>Error) <span style="color:#50fa7b">Error</span>() <span style="color:#8be9fd">string</span> {
+	<span style="color:#ff79c6">return</span> fmt.<span style="color:#50fa7b">Sprintf</span>(<span style="color:#f1fa8c">&#34;%d: %s (%d)&#34;</span>, e.code, e.message, e.interCode)
 }
 </code></pre></div><h3 id="full-example">Full Example</h3>
 <p><a href="https://github.com/nyogjtrc/practice-go/tree/master/error-code">https://github.com/nyogjtrc/practice-go/tree/master/error-code</a></p>

@@ -282,11 +282,11 @@
     </item>
     
     <item>
-      <title>golang</title>
-      <link>https://nyogjtrc.github.io/tags/golang/</link>
+      <title>go</title>
+      <link>https://nyogjtrc.github.io/tags/go/</link>
       <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
       
-      <guid>https://nyogjtrc.github.io/tags/golang/</guid>
+      <guid>https://nyogjtrc.github.io/tags/go/</guid>
       <description></description>
     </item>
     
@@ -296,15 +296,6 @@
       <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/logger/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>zap</title>
-      <link>https://nyogjtrc.github.io/tags/zap/</link>
-      <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/zap/</guid>
       <description></description>
     </item>
     

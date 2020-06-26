@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on Nyo&#39;s Study Book</title>
-    <link>https://nyogjtrc.github.io/tags/golang/</link>
-    <description>Recent content in golang on Nyo&#39;s Study Book</description>
+    <title>go on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/go/</link>
+    <description>Recent content in go on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Mon, 23 Sep 2019 23:53:18 +0800</lastBuildDate>
     
-	<atom:link href="https://nyogjtrc.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nyogjtrc.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -59,26 +59,26 @@ logger &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; zap.&lt;span st
     </item>
     
     <item>
-      <title>Error Handling in Golang</title>
+      <title>Error Handling in Go</title>
       <link>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</link>
       <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
-      <description>&lt;h2 id=&#34;golang-原生的-error-type&#34;&gt;Golang 原生的 Error Type&lt;/h2&gt;
-&lt;p&gt;先認識 golang 的 error interface&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;type error interface {
-    Error() string
+      <description>&lt;h2 id=&#34;go-原生的-error-type&#34;&gt;Go 原生的 Error Type&lt;/h2&gt;
+&lt;p&gt;先認識 go 的 error interface&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;interface&lt;/span&gt; {
+	&lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://golang.org/pkg/os/#PathError&#34;&gt;https://golang.org/pkg/os/#PathError&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// PathError records an error and the operation and file path that caused it.
-type PathError struct {
-	Op   string
-	Path string
-	Err  error
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;// PathError records an error and the operation and file path that caused it.
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; PathError &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;struct&lt;/span&gt; {
+	Op   &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;
+	Path &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;
+	Err  &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt;
 }
 
-func (e *PathError) Error() string { return e.Op + &amp;#34; &amp;#34; + e.Path + &amp;#34;: &amp;#34; + e.Err.Error() }
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;PathError) &lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; { &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; e.Op &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; e.Path &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; e.Err.&lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;() }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;建立自己程式裡的-error-struct&#34;&gt;建立自己程式裡的 Error struct&lt;/h2&gt;
 &lt;p&gt;依照使用情境 error strcut&lt;/p&gt;
 &lt;h3 id=&#34;restful-api-error&#34;&gt;RESTful API Error&lt;/h3&gt;
@@ -86,57 +86,57 @@ func (e *PathError) Error() string { return e.Op + &amp;#34; &amp;#34; + e.Path 
 &lt;p&gt;並可以把其他來源的錯誤一並放入，方便追蹤錯誤&lt;/p&gt;
 &lt;p&gt;strcut fields: code, message, error&lt;/p&gt;
 &lt;p&gt;example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// AppError struct with code and message
-type AppError struct {
-	code    int
-	message string
-	err     error
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;// AppError struct with code and message
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; AppError &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;struct&lt;/span&gt; {
+	code    &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;
+	message &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;
+	err     &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt;
 }
 
-// New create Error instance
-func New(code int, message string, err error) *AppError {
-	return &amp;amp;AppError{code, message, err}
+&lt;span style=&#34;color:#6272a4&#34;&gt;// New create Error instance
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;New&lt;/span&gt;(code &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;, message &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;, err &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;AppError {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;AppError{code, message, err}
 }
 
-// Error getter
-func (e *AppError) Error() string {
-	return fmt.Sprintf(&amp;#34;%d: %s&amp;#34;, e.code, e.message)
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Error getter
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;AppError) &lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Sprintf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%d: %s&amp;#34;&lt;/span&gt;, e.code, e.message)
 }
 
-// Code getter
-func (e *AppError) Code() int {
-	return e.code
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Code getter
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;AppError) &lt;span style=&#34;color:#50fa7b&#34;&gt;Code&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt; {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; e.code
 }
 
-// Message getter
-func (e *AppError) Message() string {
-	return e.message
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Message getter
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;AppError) &lt;span style=&#34;color:#50fa7b&#34;&gt;Message&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; e.message
 }
 
-// ErrorSummry getter
-func (e *AppError) ErrorSummry() string {
-	return fmt.Sprintf(&amp;#34;%d: %s, [%s]&amp;#34;, e.code, e.message, e.err.Error())
+&lt;span style=&#34;color:#6272a4&#34;&gt;// ErrorSummry getter
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;AppError) &lt;span style=&#34;color:#50fa7b&#34;&gt;ErrorSummry&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Sprintf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%d: %s, [%s]&amp;#34;&lt;/span&gt;, e.code, e.message, e.err.&lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;())
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;api-gateway-error&#34;&gt;API Gateway Error&lt;/h3&gt;
 &lt;p&gt;Gateway 公開提供服務在網路上，有時候會有安全性的需要，要隱藏一些內部錯誤訊息&lt;/p&gt;
 &lt;p&gt;但是維運上還是會需要有足夠的資訊來了解服務當下的狀況，可以放一個內部的代碼，多一點線索&lt;/p&gt;
 &lt;p&gt;strcut fields: code, message, internal code&lt;/p&gt;
 &lt;p&gt;example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;// Error for gateway
-type Error struct {
-	code      int
-	message   string
-	interCode int
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;// Error for gateway
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; Error &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;struct&lt;/span&gt; {
+	code      &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;
+	message   &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;
+	interCode &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;
 }
 
-// New Error instance
-func New(code int, message string, interCode int) *Error {
-	return &amp;amp;Error{code, message, interCode}
+&lt;span style=&#34;color:#6272a4&#34;&gt;// New Error instance
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;New&lt;/span&gt;(code &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;, message &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt;, interCode &lt;span style=&#34;color:#8be9fd&#34;&gt;int&lt;/span&gt;) &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;Error {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;&amp;amp;&lt;/span&gt;Error{code, message, interCode}
 }
 
-// Error getter
-func (e *Error) Error() string {
-	return fmt.Sprintf(&amp;#34;%d: %s (%d)&amp;#34;, e.code, e.message, e.interCode)
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Error getter
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (e &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;Error) &lt;span style=&#34;color:#50fa7b&#34;&gt;Error&lt;/span&gt;() &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; {
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Sprintf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;%d: %s (%d)&amp;#34;&lt;/span&gt;, e.code, e.message, e.interCode)
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;full-example&#34;&gt;Full Example&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/nyogjtrc/practice-go/tree/master/error-code&#34;&gt;https://github.com/nyogjtrc/practice-go/tree/master/error-code&lt;/a&gt;&lt;/p&gt;
@@ -190,16 +190,16 @@ libprotoc 3.6.0
 &lt;h3 id=&#34;1-建立-proto-文件&#34;&gt;1. 建立 proto 文件&lt;/h3&gt;
 &lt;p&gt;這裡簡單寫一個 echo service&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ mkdir proto; vi proto/echo.proto
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;syntax = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-proto&#34; data-lang=&#34;proto&#34;&gt;syntax &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
 
 &lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; proto;
 
-message EchoMessage {
-  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value = &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;message&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;EchoMessage&lt;/span&gt; {
+  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
 }
 
-service EchoServer {
-  rpc &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt; (EchoMessage) &lt;span style=&#34;color:#50fa7b&#34;&gt;returns&lt;/span&gt; (EchoMessage) {}
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;service&lt;/span&gt; EchoServer {
+  &lt;span style=&#34;color:#ff79c6&#34;&gt;rpc&lt;/span&gt; Echo (EchoMessage) &lt;span style=&#34;color:#ff79c6&#34;&gt;returns&lt;/span&gt; (EchoMessage) {}
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更多的語法請參考: &lt;a href=&#34;https://developers.google.com/protocol-buffers/docs/proto3&#34;&gt;Language Guide (proto3)&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;2-產生-go-程式碼&#34;&gt;2. 產生 go 程式碼&lt;/h3&gt;
@@ -209,17 +209,17 @@ service EchoServer {
 &lt;h3 id=&#34;3-建立-server-程式&#34;&gt;3. 建立 server 程式&lt;/h3&gt;
 &lt;p&gt;開始實作 EchoServer&lt;/p&gt;
 &lt;p&gt;import 剛剛產生的 echo.pb.go&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;import (
-	pb &amp;#34;github.com/nyogjtrc/grpc-example/proto&amp;#34;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;import&lt;/span&gt; (
+	pb &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;github.com/nyogjtrc/grpc-example/proto&amp;#34;&lt;/span&gt;
 )
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;實作 Server 跟 方法:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;type echoServer struct{}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;type&lt;/span&gt; echoServer &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;struct&lt;/span&gt;{}
 
-// Echo
-func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMessage, error) {
-	reply := new(pb.EchoMessage)
-	reply.Value = &amp;#34;echo:&amp;#34; + in.Value
-	return reply, nil
+&lt;span style=&#34;color:#6272a4&#34;&gt;// Echo
+&lt;/span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; (s &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;echoServer) &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt;(ctx context.Context, in &lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;pb.EchoMessage) (&lt;span style=&#34;color:#ff79c6&#34;&gt;*&lt;/span&gt;pb.EchoMessage, &lt;span style=&#34;color:#8be9fd&#34;&gt;error&lt;/span&gt;) {
+	reply &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;new&lt;/span&gt;(pb.EchoMessage)
+	reply.Value = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;echo:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;+&lt;/span&gt; in.Value
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; reply, &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完整程式碼:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; main
@@ -296,11 +296,11 @@ func (s *echoServer) Echo(ctx context.Context, in *pb.EchoMessage) (*pb.EchoMess
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-實測-grpc-server-client&#34;&gt;5. 實測 gRPC server, client&lt;/h3&gt;
 &lt;p&gt;執行 server&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ go run server/main.go
-grpc example echo server :8888
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ go run server/main.go
+grpc example &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; server :8888
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;執行 client&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ go run client/main.go
-Enter text: 123
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ go run client/main.go
+Enter text: &lt;span style=&#34;color:#bd93f9&#34;&gt;123&lt;/span&gt;
 echo:123
 
 Enter text: hello
@@ -310,57 +310,57 @@ echo:hello
 &lt;p&gt;grpc-gateway 會建立一個 reverse proxy server 把 gRPC 服務轉換成 RESTful JSON API&lt;/p&gt;
 &lt;p&gt;轉成 RESTful API 之後，就可以使用 Postman 之類的工具測試寫好的服務了&lt;/p&gt;
 &lt;h3 id=&#34;1-要安裝的-plugin&#34;&gt;1. 要安裝的 plugin&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-proto-檔案增加-restful-option&#34;&gt;2. proto 檔案增加 RESTful option&lt;/h3&gt;
 &lt;p&gt;就是把 RESTful 的 router 寫進來&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;syntax = &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-proto&#34; data-lang=&#34;proto&#34;&gt;syntax &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;;
 
 &lt;span style=&#34;color:#ff79c6&#34;&gt;package&lt;/span&gt; proto;
 
 &lt;span style=&#34;color:#ff79c6&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;google/api/annotations.proto&amp;#34;&lt;/span&gt;;
 
-message EchoMessage {
-  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value = &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;message&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;EchoMessage&lt;/span&gt; {
+  &lt;span style=&#34;color:#8be9fd&#34;&gt;string&lt;/span&gt; value &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;;
 }
 
-service EchoService {
-  rpc &lt;span style=&#34;color:#50fa7b&#34;&gt;Echo&lt;/span&gt; (EchoMessage) &lt;span style=&#34;color:#50fa7b&#34;&gt;returns&lt;/span&gt; (EchoMessage) {
-    &lt;span style=&#34;color:#50fa7b&#34;&gt;option&lt;/span&gt; (google.api.http) = {
-        post: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/echo/echo&amp;#34;&lt;/span&gt;
-        body: &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;service&lt;/span&gt; EchoService {
+  &lt;span style=&#34;color:#ff79c6&#34;&gt;rpc&lt;/span&gt; Echo (EchoMessage) &lt;span style=&#34;color:#ff79c6&#34;&gt;returns&lt;/span&gt; (EchoMessage) {
+    &lt;span style=&#34;color:#ff79c6&#34;&gt;option&lt;/span&gt; (google.api.http) &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; {
+        post&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;/echo/echo&amp;#34;&lt;/span&gt;
+        body&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;
     };
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-產生-pbgo-pbgwgo&#34;&gt;3. 產生 pb.go, pb.gw.go&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --go_out=plugins=grpc:. proto/*.proto
-protoc -I/usr/local/include -I. \
-    -I$(GOPATH)/src \
-    -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    --grpc-gateway_out=logtostderr=true:. proto/*.proto
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;protoc -I/usr/local/include -I. &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    -I&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;GOPATH&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;/src &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    -I&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;GOPATH&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    --go_out&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;plugins&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;grpc:. proto/*.proto
+protoc -I/usr/local/include -I. &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    -I&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;GOPATH&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;/src &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    -I&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;GOPATH&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis &lt;span style=&#34;color:#f1fa8c&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&lt;/span&gt;    --grpc-gateway_out&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;logtostderr&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;true:. proto/*.proto
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4-寫-reverse-proxy-的進入點&#34;&gt;4. 寫 reverse proxy 的進入點&lt;/h3&gt;
 &lt;p&gt;把 gRPC 服務加入 proxy 裡面&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;func gatewayServer() {
-	fmt.Println(&amp;#34;RESTful echo server :9999&amp;#34;)
-	grpcAddr := &amp;#34;localhost:8888&amp;#34;
-	ctx := context.Background()
-	ctx, cancel := context.WithCancel(ctx)
-	defer cancel()
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;gatewayServer&lt;/span&gt;() {
+	fmt.&lt;span style=&#34;color:#50fa7b&#34;&gt;Println&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;RESTful echo server :9999&amp;#34;&lt;/span&gt;)
+	grpcAddr &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;localhost:8888&amp;#34;&lt;/span&gt;
+	ctx &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; context.&lt;span style=&#34;color:#50fa7b&#34;&gt;Background&lt;/span&gt;()
+	ctx, cancel &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; context.&lt;span style=&#34;color:#50fa7b&#34;&gt;WithCancel&lt;/span&gt;(ctx)
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;defer&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;cancel&lt;/span&gt;()
 
-	mux := runtime.NewServeMux()
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := pb.RegisterEchoServiceHandlerFromEndpoint(ctx, mux, grpcAddr, opts)
-	if err != nil {
-		log.Fatalf(&amp;#34;can not register endpoint %v&amp;#34;, err)
+	mux &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; runtime.&lt;span style=&#34;color:#50fa7b&#34;&gt;NewServeMux&lt;/span&gt;()
+	opts &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; []grpc.DialOption{grpc.&lt;span style=&#34;color:#50fa7b&#34;&gt;WithInsecure&lt;/span&gt;()}
+	err &lt;span style=&#34;color:#ff79c6&#34;&gt;:=&lt;/span&gt; pb.&lt;span style=&#34;color:#50fa7b&#34;&gt;RegisterEchoServiceHandlerFromEndpoint&lt;/span&gt;(ctx, mux, grpcAddr, opts)
+	&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; err &lt;span style=&#34;color:#ff79c6&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;nil&lt;/span&gt; {
+		log.&lt;span style=&#34;color:#50fa7b&#34;&gt;Fatalf&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;can not register endpoint %v&amp;#34;&lt;/span&gt;, err)
 	}
 
-	http.ListenAndServe(&amp;#34;:9999&amp;#34;, mux)
+	http.&lt;span style=&#34;color:#50fa7b&#34;&gt;ListenAndServe&lt;/span&gt;(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;:9999&amp;#34;&lt;/span&gt;, mux)
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-實測&#34;&gt;5. 實測&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ curl -X POST http://localhost:9999/echo/echo -H &amp;#39;Content-Type: application/json&amp;#39; -d &amp;#39;{ &amp;#34;value&amp;#34;: &amp;#34;hi, how are you?&amp;#34; }&amp;#39;
-{&amp;#34;value&amp;#34;:&amp;#34;echo:hi, how are you?&amp;#34;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -X POST http://localhost:9999/echo/echo -H &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; -d &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;{ &amp;#34;value&amp;#34;: &amp;#34;hi, how are you?&amp;#34; }&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#ff79c6&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;value&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;echo:hi, how are you?&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;小結&#34;&gt;小結&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;這邊才剛開始摸 gRPC，對他底層的運作方式還不是很熟&lt;/li&gt;
@@ -381,7 +381,7 @@ protoc -I/usr/local/include -I. \
     </item>
     
     <item>
-      <title>Golang Test All Testing in Project</title>
+      <title>Go Test All Testing in Project</title>
       <link>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</link>
       <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
       
@@ -389,7 +389,9 @@ protoc -I/usr/local/include -I. \
       <description>&lt;p&gt;想要跑當前專案下的所有 test&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;$ go test ./...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://stackoverflow.com/questions/16353016/how-to-go-test-all-testings-in-my-project&#34;&gt;How to &lt;code&gt;go test&lt;/code&gt; all testings in my project? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/16353016/how-to-go-test-all-testings-in-my-project&#34;&gt;How to &lt;code&gt;go test&lt;/code&gt; all testings in my project? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
