@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>functional programming on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/functional-programming/</link>
+    <description>Recent content in functional programming on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 26 Jun 2020 15:58:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://nyogjtrc.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functional Programming With Go</title>
+      <link>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</link>
+      <pubDate>Fri, 26 Jun 2020 15:58:41 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</guid>
+      <description>Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming</description>
+    </item>
+    
+  </channel>
+</rss>

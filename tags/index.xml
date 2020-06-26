@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 03 Jun 2020 02:00:35 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2020 15:58:41 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>functional programming</title>
+      <link>https://nyogjtrc.github.io/tags/functional-programming/</link>
+      <pubDate>Fri, 26 Jun 2020 15:58:41 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://nyogjtrc.github.io/tags/go/</link>
+      <pubDate>Fri, 26 Jun 2020 15:58:41 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>manifesto</title>
@@ -278,15 +296,6 @@
       <pubDate>Thu, 26 Sep 2019 00:48:40 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://nyogjtrc.github.io/tags/go/</link>
-      <pubDate>Mon, 23 Sep 2019 23:53:18 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/go/</guid>
       <description></description>
     </item>
     

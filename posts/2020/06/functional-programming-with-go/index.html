@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Functional Programming With Go"/>
+<meta name="twitter:description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming"/>
+
+    <meta property="og:title" content="Functional Programming With Go" />
+<meta property="og:description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/" />
+<meta property="article:published_time" content="2020-06-26T15:58:41+08:00" />
+<meta property="article:modified_time" content="2020-06-26T15:58:41+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/">
+    
+    <title>
+  Functional Programming With Go · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Functional Programming With Go</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-06-26T15:58:41&#43;08:00'>
+                June 26, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/functional-programming/">functional programming</a>
+      <span class="separator">•</span>
+    <a href="https://nyogjtrc.github.io/tags/go/">go</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種</p>
+<p>所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data)</p>
+<p>以下是一些 Functional Programming 的特點</p>
+<h2 id="pure-functions-純函數">Pure functions (純函數)</h2>
+<p>函數會基於傳入的參數來回傳結果，不依懶全域變數</p>
+<p>只要給一個 function 相同的傳入參數，就一定會得到相同的回傳結果，不會有任可的副作用 (side effects)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// pure function
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">add</span>(a, b <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+	<span style="color:#ff79c6">return</span> a <span style="color:#ff79c6">+</span> b
+}
+
+
+<span style="color:#6272a4">// not pure function
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> z <span style="color:#8be9fd">int</span>
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">addFive</span>(x <span style="color:#8be9fd">int</span>) {
+	z <span style="color:#ff79c6">+=</span> x
+}
+</code></pre></div><h2 id="first-class-and-higher-order-functions-一等公民高階函數">First-class and Higher-order functions (一等公民，高階函數)</h2>
+<p>First-class 是指函數可以當做一種資料型別，好比直接賦值到變數中，存放到資料結構當中</p>
+<p>Higher-order functions 是指函數可以當作參數傳遞或是其他函數的回傳值</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">add <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">func</span>(x, y <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+	<span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">+</span> y
+}
+
+calculate <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">func</span>(m, n <span style="color:#8be9fd">int</span>, f <span style="color:#8be9fd;font-style:italic">func</span>(<span style="color:#8be9fd">int</span>, <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+	<span style="color:#ff79c6">return</span> <span style="color:#50fa7b">f</span>(m, n)
+}
+
+fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">calculate</span>(<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, add))
+</code></pre></div><h2 id="recursion-遞迴">Recursion (遞迴)</h2>
+<p>Functional Programming 通常用遞迴來完成迭代</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">factorial</span>(num <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+	<span style="color:#ff79c6">if</span> num <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> {
+		<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>
+	}
+	<span style="color:#ff79c6">return</span> num <span style="color:#ff79c6">*</span> <span style="color:#50fa7b">factorial</span>(num<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>)
+}
+
+fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">factorial</span>(<span style="color:#bd93f9">5</span>))
+</code></pre></div><p>但是在現實情況下，考慮到效能問題，多數還是以迴圈 (loops) 為主</p>
+<h2 id="lazy-evaluation-延遲執行">Lazy evaluation (延遲執行)</h2>
+<p>Lazy evaluation 是指說程式只會在需要的時候才運行，可以提升程式的效能</p>
+<p>Go 中有 closures, goroutines 跟 channels 可以達到 Lazy evaluation 的效果</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">adder</span>() <span style="color:#8be9fd;font-style:italic">func</span>(<span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+	sum <span style="color:#ff79c6">:=</span> <span style="color:#bd93f9">0</span>
+	<span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">func</span>(x <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+		sum <span style="color:#ff79c6">+=</span> x
+		<span style="color:#ff79c6">return</span> sum
+	}
+}
+
+pos, neg <span style="color:#ff79c6">:=</span> <span style="color:#50fa7b">adder</span>(), <span style="color:#50fa7b">adder</span>()
+<span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">:=</span> <span style="color:#bd93f9">0</span>; i &lt; <span style="color:#bd93f9">10</span>; i<span style="color:#ff79c6">++</span> {
+	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">pos</span>(i), <span style="color:#50fa7b">neg</span>(<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">*</span>i))
+}
+
+</code></pre></div><h2 id="小結">小結</h2>
+<p>尋找適合的場景善加運用 Functional programming，<br>
+讓單元測試 (unit test) 更加容易，提高可維護性 (maintainable)</p>
+<p>我自己會從復雜的運算中整理出一些純綷的邏輯，以 Functional programming 的方式實作</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Functional_programming">Functional programming - Wikipedia</a></li>
+<li><a href="https://l3x.github.io/golang-code-examples/2014/08/14/functional-programming.html">Functional Programming</a></li>
+<li><a href="https://deepu.tech/functional-programming-in-go/">7 Easy functional programming techniques in Go | Technorage</a></li>
+<li><a href="https://blog.miniasp.com/post/2016/12/10/Functional-Programming-in-JavaScript">前端工程研究：理解函式編程核心概念與如何進行 JavaScript 函式編程 | The Will Will Web</a></li>
+<li><a href="https://mgleon08.github.io/blog/2019/07/26/functional-programming">Functional Programming 函式程式設計 - Leon&rsquo;s Blogging</a></li>
+<li><a href="https://ithome.com.tw/node/49122">思考函數編程(3)函數編程能做些什麼？ | iThome</a></li>
+<li><a href="https://dev.to/jamesrweb/principles-of-functional-programming-4b7c">Principles of Functional Programming - DEV</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Developer</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2020
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>
