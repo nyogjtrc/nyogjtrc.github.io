@@ -6,10 +6,19 @@
     <description>Recent content in go on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 26 Jun 2020 15:58:41 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2020 02:43:49 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go Modules With Private Git Repository</title>
+      <link>https://nyogjtrc.github.io/posts/2020/07/go-modules-with-private-git-repository/</link>
+      <pubDate>Sat, 11 Jul 2020 02:43:49 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/07/go-modules-with-private-git-repository/</guid>
+      <description>go 1.14 開始，go modules 可以在正式環境上使用了 你可能會建立自己私人的工具庫，這時要搭配 go modules 就需要做一些設定 基本的設定 假設現在要建立一個私有 module 倉庫，放</description>
+    </item>
     
     <item>
       <title>Functional Programming With Go</title>

@@ -3,32 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/go/</loc>
+    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/07/go-modules-with-private-git-repository/</loc>
+    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/functional-programming/</loc>
     <lastmod>2020-06-26T15:58:41+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</loc>
-    <lastmod>2020-06-26T15:58:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/go/</loc>
-    <lastmod>2020-06-26T15:58:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-06-26T15:58:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-06-26T15:58:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-06-26T15:58:41+08:00</lastmod>
   </url>
   
