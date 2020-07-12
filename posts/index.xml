@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 11 Jul 2020 02:43:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2020 23:28:47 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>新的 Github Profile 區塊</title>
+      <link>https://nyogjtrc.github.io/posts/2020/07/new-github-profile-block/</link>
+      <pubDate>Sun, 12 Jul 2020 23:28:47 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/07/new-github-profile-block/</guid>
+      <description>最近在 github 上發現一個功能，不確定是什麼時候開始有的 就是只要建立一個跟自己帳號同名的 repository 裡面 README.md 的內容就會顯示在 profile 上面 建立新的倉庫 輸入自己的帳號，g</description>
+    </item>
     
     <item>
       <title>Go Modules With Private Git Repository</title>

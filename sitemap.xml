@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/github/</loc>
+    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/07/new-github-profile-block/</loc>
+    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/go/</loc>
     <lastmod>2020-07-11T02:43:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/07/go-modules-with-private-git-repository/</loc>
-    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-07-11T02:43:49+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-07-11T02:43:49+08:00</lastmod>
   </url>
   
@@ -219,11 +229,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/git/</loc>
-    <lastmod>2020-02-02T12:37:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/github/</loc>
     <lastmod>2020-02-02T12:37:15+08:00</lastmod>
   </url>
   
