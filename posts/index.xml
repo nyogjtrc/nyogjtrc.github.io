@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 12 Jul 2020 23:28:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2020 02:23:10 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我們需要 Readme</title>
+      <link>https://nyogjtrc.github.io/posts/2020/07/we-need-readme/</link>
+      <pubDate>Tue, 21 Jul 2020 02:23:10 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/07/we-need-readme/</guid>
+      <description>問題情境 拿到一份程式碼，但是不知道可以做什麼，不知道怎麼運行它 一個宣稱幫你解決很多麻煩的工具，但是沒有說明清楚怎麼使用 想要參與專案的開發，但</description>
+    </item>
     
     <item>
       <title>新的 Github Profile 區塊</title>
