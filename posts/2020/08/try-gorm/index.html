@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="試用 GORM"/>
+<meta name="twitter:description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點："/>
+
+    <meta property="og:title" content="試用 GORM" />
+<meta property="og:description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/08/try-gorm/" />
+<meta property="article:published_time" content="2020-08-05T00:39:46+08:00" />
+<meta property="article:modified_time" content="2020-08-05T00:39:46+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/08/try-gorm/">
+    
+    <title>
+  試用 GORM · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/08/try-gorm/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">試用 GORM</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-08-05T00:39:46&#43;08:00'>
+                August 5, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              1-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/go/">go</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="orm-object-relational-mapping">ORM (Object Relational Mapping)</h2>
+<p>ORM 是一種把 <strong>資料庫</strong> 對應到 <strong>程式物件</strong> 的技術，可以讓開發者更快速的開發處理資料庫的程式</p>
+<p>使用上常見優點：</p>
+<ul>
+<li>快速開發</li>
+<li>較高的安全性</li>
+</ul>
+<p>也是有相對的缺點：</p>
+<ul>
+<li>犧牲效能</li>
+<li>額外的學習成本</li>
+<li>難以處理複雜查詢</li>
+</ul>
+<p>這次看在優點上，小試了一下 Go 裡面的 ORM 工具</p>
+<h2 id="gorm">GORM</h2>
+<p>GORM 是 Go 裡面熱門的 ORM 套件之一</p>
+<p>ps. 我練習的程式碼在此 <a href="https://github.com/nyogjtrc/practice-go/tree/master/using-gorm">https://github.com/nyogjtrc/practice-go/tree/master/using-gorm</a></p>
+<h2 id="定義資料表結構">定義資料表結構</h2>
+<p>我們要建立一個 Product 的 table 如下</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Product _
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> Product <span style="color:#8be9fd;font-style:italic">struct</span> {
+	ID        <span style="color:#8be9fd">uint</span>   <span style="color:#f1fa8c">`gorm:&#34;primary_key&#34;`</span>
+	Code      <span style="color:#8be9fd">string</span> <span style="color:#f1fa8c">`gorm:&#34;not null;unique_index&#34;`</span>
+	Price     <span style="color:#8be9fd">uint</span>
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}
+</code></pre></div><ul>
+<li>struct 的 field 會直接對應到 table 欄位</li>
+<li>有需要微調結構的話，可以透過 <strong>gorm</strong> 這個 tag 定義
+<ul>
+<li>例如要建立 unique index 的話，就加上 <code>unique_index</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="migrate">Migrate</h2>
+<p>GORM 有一套 Migrate 工具</p>
+<p>如果要寫測試的話 AutoMigrate() 是個簡單的工具，不過官方有提醒這個 function 不適合用在 Production 上</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Migrate the schema
+</span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">AutoMigrate</span>(<span style="color:#ff79c6">&amp;</span>Product{})
+
+<span style="color:#6272a4">// Drop table
+</span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">DropTable</span>(Product{})
+</code></pre></div><h2 id="crud">CRUD</h2>
+<h3 id="create">Create</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Create
+</span><span style="color:#6272a4"></span>err = db.<span style="color:#50fa7b">Create</span>(<span style="color:#ff79c6">&amp;</span>Product{Code: <span style="color:#f1fa8c">&#34;L1212&#34;</span>, Price: <span style="color:#bd93f9">1000</span>}).Error
+<span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
+}
+
+err = db.<span style="color:#50fa7b">Create</span>(<span style="color:#ff79c6">&amp;</span>Product{Code: <span style="color:#f1fa8c">&#34;L1234&#34;</span>, Price: <span style="color:#bd93f9">1234</span>}).Error
+<span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
+}
+</code></pre></div><h3 id="read">Read</h3>
+<p>查詢有 First(), Find() 等等的方法，也有跟 SQL 一樣用法的 Where()</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Read
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> products []Product
+<span style="color:#8be9fd;font-style:italic">var</span> product Product
+
+<span style="color:#6272a4">// find product with id 1
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">:=</span> db.<span style="color:#50fa7b">Find</span>(<span style="color:#ff79c6">&amp;</span>products).Error; err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;error&#34;</span>, err)
+}
+fmt.<span style="color:#50fa7b">Println</span>(products)
+
+<span style="color:#6272a4">// find product with code l1212
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">:=</span> db.<span style="color:#50fa7b">Where</span>(<span style="color:#f1fa8c">&#34;code = ?&#34;</span>, <span style="color:#f1fa8c">&#34;L1212&#34;</span>).<span style="color:#50fa7b">First</span>(<span style="color:#ff79c6">&amp;</span>product).Error; err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
+}
+
+fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;product&#34;</span>, product)
+</code></pre></div><h3 id="update">Update</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Update - update product&#39;s price to 2000
+</span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">Model</span>(<span style="color:#ff79c6">&amp;</span>product).<span style="color:#50fa7b">Update</span>(<span style="color:#f1fa8c">&#34;Price&#34;</span>, <span style="color:#bd93f9">2000</span>)
+fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;product&#34;</span>, product)
+</code></pre></div><h3 id="delete">Delete</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Delete - delete product
+</span><span style="color:#6272a4"></span>err = db.<span style="color:#50fa7b">Debug</span>().<span style="color:#50fa7b">Delete</span>(Product{}).Error
+<span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
+	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
+}
+</code></pre></div><p>如果需要查看 GORM 實際執行的 SQL，可以使用 Debug() 方法</p>
+<p>Debug() 會把 SQL 資訊輸出到 terminal 上</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[2020-08-05 00:26:18]  [3.83ms]  DELETE FROM `products`
+[2 rows affected or returned ]
+</code></pre></div><h3 id="reference">Reference</h3>
+<ul>
+<li><a href="http://gorm.io/docs/">http://gorm.io/docs/</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Developer</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2020
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

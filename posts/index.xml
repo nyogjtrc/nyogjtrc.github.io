@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 21 Jul 2020 02:23:10 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2020 00:39:46 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>試用 GORM</title>
+      <link>https://nyogjtrc.github.io/posts/2020/08/try-gorm/</link>
+      <pubDate>Wed, 05 Aug 2020 00:39:46 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/08/try-gorm/</guid>
+      <description>ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：</description>
+    </item>
     
     <item>
       <title>我們需要 Readme</title>
