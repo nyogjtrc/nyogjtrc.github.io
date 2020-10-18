@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 05 Aug 2020 00:39:46 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2020 23:54:20 +0800</lastBuildDate>
     
 	<atom:link href="https://nyogjtrc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ci</title>
+      <link>https://nyogjtrc.github.io/tags/ci/</link>
+      <pubDate>Sun, 18 Oct 2020 23:54:20 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://nyogjtrc.github.io/tags/git/</link>
+      <pubDate>Sun, 18 Oct 2020 23:54:20 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/tags/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>go</title>
@@ -210,15 +228,6 @@
     </item>
     
     <item>
-      <title>ci</title>
-      <link>https://nyogjtrc.github.io/tags/ci/</link>
-      <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/ci/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>gitlab</title>
       <link>https://nyogjtrc.github.io/tags/gitlab/</link>
       <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
@@ -233,15 +242,6 @@
       <pubDate>Sun, 09 Feb 2020 22:29:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/tags/gitlab-ci/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://nyogjtrc.github.io/tags/git/</link>
-      <pubDate>Sun, 02 Feb 2020 12:37:15 +0800</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/tags/git/</guid>
       <description></description>
     </item>
     

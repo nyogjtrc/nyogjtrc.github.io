@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks) 討論的過程式中，發現有些人會認為只要能夠自動執行測試，效果上都是一樣的。但實">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CI vs Hooks 自動化工具比較"/>
+<meta name="twitter:description" content="前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks) 討論的過程式中，發現有些人會認為只要能夠自動執行測試，效果上都是一樣的。但實"/>
+
+    <meta property="og:title" content="CI vs Hooks 自動化工具比較" />
+<meta property="og:description" content="前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks) 討論的過程式中，發現有些人會認為只要能夠自動執行測試，效果上都是一樣的。但實" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/" />
+<meta property="article:published_time" content="2020-10-18T23:54:20+08:00" />
+<meta property="article:modified_time" content="2020-10-18T23:54:20+08:00" />
+
+
+    
+      <base href="https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/">
+    
+    <title>
+  CI vs Hooks 自動化工具比較 · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">CI vs Hooks 自動化工具比較</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-10-18T23:54:20&#43;08:00'>
+                October 18, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://nyogjtrc.github.io/tags/ci/">ci</a>
+      <span class="separator">•</span>
+    <a href="https://nyogjtrc.github.io/tags/git/">git</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks)</p>
+<p>討論的過程式中，發現有些人會認為只要能夠<strong>自動執行</strong>測試，效果上都是一樣的。但實際上，每個工具想要解決的問題並不一樣。</p>
+<p>先看看這幾個工具:</p>
+<p>Git hooks</p>
+<ul>
+<li>Git 本身的機制</li>
+<li>在 commit, push 等等特定的指令操作之前或之後觸發 scripts</li>
+<li>用 script 連動 lint 跟 unit test 工具的話，能夠確保程式碼的品質</li>
+<li>觸發的工作會在「工程師的電腦」上執行</li>
+</ul>
+<p>Phabricator Arcanist</p>
+<ul>
+<li>Phabricator 的 cli 工具</li>
+<li>整合 lint 跟 unit test 工具，在上傳程式碼之前觸發</li>
+<li>觸發的工作會在「工程師的電腦」上執行</li>
+</ul>
+<p>CI (Continuous Integration)，中文：持續整合</p>
+<ul>
+<li>CI 自動化工具有多種選擇: Gitlab Runner, CircleCI, GitHub Actions &hellip;etc</li>
+<li>在每次 push 程式碼到 git hosting server 之後觸發一系列的工作以測試跟驗證程式碼，也可以設定成定時觸發</li>
+<li>觸發的工作會在「CI 服務」上執行</li>
+</ul>
+<p>這幾個工具都可以整合 unit test 跟 lint 等工具，在指定的時間自動執行，確保程式碼的品質。</p>
+<p>當你只是一個人獨立開發程式，需要一個自動化工具，相信都是不錯的選擇。</p>
+<p>但是當開發者不止一個人，又或者是遇到龐大的系統時，情況可能會有一點不一樣了。</p>
+<h2 id="執行環境一致性">執行環境一致性</h2>
+<ul>
+<li>要確保團隊裡每個人的電腦環境一模一樣是不可能的</li>
+<li>CI 服務能夠確保每次處理的工作內容跟環境都是相同的</li>
+<li>能夠保證你所看到「通過驗證」的訊息確實是在你所預期的環境下執行你所預期的工作內容</li>
+</ul>
+<h2 id="小型輕量的系統-vs-大型復雜的系統">小型輕量的系統 vs 大型復雜的系統</h2>
+<ul>
+<li>執行測試所需要的「時間」跟「機器資源」會隨著系統的復雜度提高而增加</li>
+<li>工程師不可能每次都要等到測試全部跑完，才繼續工作</li>
+<li>把工作交給 CI 服務去消化，不佔用開發者的電腦，也不會卡住工作的進行</li>
+<li>隨著系統成長，我們只要建構出適合的 CI 服務，開發團隊就能夠繼續運作</li>
+</ul>
+<h2 id="總結">總結</h2>
+<p>以現在大家都在討論「敏捷開發」跟「DevOps」的驅勢之下，CI 服務基本上是必備的工具。</p>
+<p>部署好的 CI 服務，可以讓開發團隊更順暢的迭代，工程師能夠更舒服的寫程式。</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/49994976/why-test-in-continuous-integration-if-you-can-test-on-pre-commit-and-pre-push-gi">https://stackoverflow.com/questions/49994976/why-test-in-continuous-integration-if-you-can-test-on-pre-commit-and-pre-push-gi</a></li>
+<li><a href="https://devops.stackexchange.com/questions/8447/ci-platforms-versus-simple-git-hooks">https://devops.stackexchange.com/questions/8447/ci-platforms-versus-simple-git-hooks</a></li>
+<li><a href="https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks">https://git-scm.com/book/zh-tw/v2/Customizing-Git-Git-Hooks</a></li>
+<li><a href="https://secure.phabricator.com/book/phabricator">https://secure.phabricator.com/book/phabricator</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Continuous_integration">https://en.wikipedia.org/wiki/Continuous_integration</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Developer</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2020
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+  </body>
+
+</html>

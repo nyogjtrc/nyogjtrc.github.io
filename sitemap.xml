@@ -3,22 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://nyogjtrc.github.io/tags/go/</loc>
-    <lastmod>2020-08-05T00:39:46+08:00</lastmod>
+    <loc>https://nyogjtrc.github.io/tags/ci/</loc>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/</loc>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/git/</loc>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-08-05T00:39:46+08:00</lastmod>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-08-05T00:39:46+08:00</lastmod>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/go/</loc>
     <lastmod>2020-08-05T00:39:46+08:00</lastmod>
   </url>
   
@@ -223,11 +238,6 @@
   </url>
   
   <url>
-    <loc>https://nyogjtrc.github.io/tags/ci/</loc>
-    <lastmod>2020-02-09T22:29:39+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://nyogjtrc.github.io/tags/gitlab/</loc>
     <lastmod>2020-02-09T22:29:39+08:00</lastmod>
   </url>
@@ -240,11 +250,6 @@
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/02/create-your-own-gitlab-ci/</loc>
     <lastmod>2020-02-09T22:29:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/git/</loc>
-    <lastmod>2020-02-02T12:37:15+08:00</lastmod>
   </url>
   
   <url>
