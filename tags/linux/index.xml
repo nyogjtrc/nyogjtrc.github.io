@@ -6,11 +6,7 @@
     <description>Recent content in linux on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 15 Feb 2020 21:04:39 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 15 Feb 2020 21:04:39 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>把 PATH 變數列成清單</title>
       <link>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</link>

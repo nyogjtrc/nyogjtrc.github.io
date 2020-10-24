@@ -6,11 +6,7 @@
     <description>Recent content in nginx on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 30 May 2015 16:14:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 30 May 2015 16:14:00 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 Vagrant 建立開發環境</title>
       <link>https://nyogjtrc.github.io/posts/2015/05/vagrant-set-up-development-environment/</link>

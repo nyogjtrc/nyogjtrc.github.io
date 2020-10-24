@@ -6,10 +6,15 @@
     <description>Recent content in Posts on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 18 Oct 2020 23:54:20 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 25 Oct 2020 00:28:29 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>四個「簡單設計」規則 (Xp Simplicity Rules)</title>
+      <link>https://nyogjtrc.github.io/posts/2020/10/four-rules-of-simple-design/</link>
+      <pubDate>Sun, 25 Oct 2020 00:28:29 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/10/four-rules-of-simple-design/</guid>
+      <description>一直想找看看有沒有更加簡單好懂，更為基本的原則，當做程式設計時核心理念。 看過 SOLID，讀過 Clean Code，在實戰中不斷的練習。研究設計模式 (Design P</description>
+    </item>
     
     <item>
       <title>CI vs Hooks 自動化工具比較</title>
@@ -17,7 +22,7 @@
       <pubDate>Sun, 18 Oct 2020 23:54:20 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/</guid>
-      <description>前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks) 討論的過程式中，發現有些人會認為只要能夠自動執行測試，效果上都是一樣的。但實</description>
+      <description>前陣子在一場討論中，聊到一些能夠觸發測試的自動化工具 (Gitlab CI, Phabricator Arcanist, Git hooks) 討論的過程中，發現有些人會認為只要能夠自動執行測試，效果上都是一樣的。但實際</description>
     </item>
     
     <item>

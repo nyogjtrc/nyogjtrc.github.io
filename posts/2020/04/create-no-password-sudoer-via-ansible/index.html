@@ -64,7 +64,7 @@
     <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.72.0" />
+    <meta name="generator" content="Hugo 0.76.5" />
   </head>
 
   
@@ -157,7 +157,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
 - <span style="color:#ff79c6">name</span>: Create new user with sudo privilege
   <span style="color:#ff79c6">hosts</span>: all
-  <span style="color:#ff79c6">become</span>: yes
+  <span style="color:#ff79c6">become</span>: <span style="color:#ff79c6">yes</span>
   <span style="color:#ff79c6">tasks</span>:
     - <span style="color:#ff79c6">name</span>: Create new user
       <span style="color:#ff79c6">user</span>:
@@ -171,11 +171,11 @@
     - <span style="color:#ff79c6">name</span>: Add user rookie to sudo
       <span style="color:#ff79c6">lineinfile</span>:
         <span style="color:#ff79c6">path</span>: /etc/sudoers.d/rookie
-        <span style="color:#ff79c6">line: &#39;rookie ALL=(ALL) NOPASSWD</span>: ALL<span style="color:#f1fa8c">&#39;
-</span><span style="color:#f1fa8c">        state: present
-</span><span style="color:#f1fa8c">        mode: 0440
-</span><span style="color:#f1fa8c">        create: yes
-</span><span style="color:#f1fa8c">        validate: &#39;</span>visudo -cf %s&#39;
+        <span style="color:#ff79c6">line: &#39;rookie ALL=(ALL) NOPASSWD</span>: ALL&#39;
+        <span style="color:#ff79c6">state</span>: present
+        <span style="color:#ff79c6">mode</span>: <span style="color:#bd93f9">0440</span>
+        <span style="color:#ff79c6">create</span>: <span style="color:#ff79c6">yes</span>
+        <span style="color:#ff79c6">validate</span>: <span style="color:#f1fa8c">&#39;visudo -cf %s&#39;</span>
 </code></pre></div><p>執行</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ansible-playbook -i host rookie.yml
 </code></pre></div>

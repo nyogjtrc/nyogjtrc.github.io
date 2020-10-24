@@ -6,11 +6,7 @@
     <description>Recent content in php on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 19 Jul 2019 01:01:55 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 19 Jul 2019 01:01:55 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>php 的邏輯運算子  and vs &amp;&amp;</title>
       <link>https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in functional programming on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 26 Jun 2020 15:58:41 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 26 Jun 2020 15:58:41 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Functional Programming With Go</title>
       <link>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</link>

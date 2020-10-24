@@ -6,11 +6,7 @@
     <description>Recent content in ubuntu on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 20 Mar 2017 22:47:43 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 20 Mar 2017 22:47:43 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu Change Timezone</title>
       <link>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</link>

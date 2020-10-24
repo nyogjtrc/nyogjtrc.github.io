@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/programming/</link>
+    <description>Recent content in programming on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 25 Oct 2020 00:28:29 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>四個「簡單設計」規則 (Xp Simplicity Rules)</title>
+      <link>https://nyogjtrc.github.io/posts/2020/10/four-rules-of-simple-design/</link>
+      <pubDate>Sun, 25 Oct 2020 00:28:29 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/10/four-rules-of-simple-design/</guid>
+      <description>一直想找看看有沒有更加簡單好懂，更為基本的原則，當做程式設計時核心理念。 看過 SOLID，讀過 Clean Code，在實戰中不斷的練習。研究設計模式 (Design P</description>
+    </item>
+    
+    <item>
+      <title>Functional Programming With Go</title>
+      <link>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</link>
+      <pubDate>Fri, 26 Jun 2020 15:58:41 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/</guid>
+      <description>Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming</description>
+    </item>
+    
+    <item>
+      <title>Cohesion and Coupling</title>
+      <link>https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/</link>
+      <pubDate>Mon, 01 Jun 2020 01:12:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/06/cohesion-and-coupling/</guid>
+      <description>想要評估一份程式碼是不是好的設計，不會是比較資深的工程師說了就算數 其中一個方法就是從內聚跟耦合的程度來評估 Cohesion (內聚) 一個模組內的不同功能的相</description>
+    </item>
+    
+    <item>
+      <title>軟體開發原則: DRY, KISS, YAGNI</title>
+      <link>https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/</link>
+      <pubDate>Mon, 11 May 2020 02:39:34 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/</guid>
+      <description>最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -64,7 +64,7 @@
     <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
 
-    <meta name="generator" content="Hugo 0.72.0" />
+    <meta name="generator" content="Hugo 0.76.5" />
   </head>
 
   
@@ -185,9 +185,9 @@ sudo apt-get install -y curl openssh-server ca-certificates
     <span style="color:#ff79c6">image</span>: <span style="color:#f1fa8c">&#39;gitlab/gitlab-ce:latest&#39;</span>
     <span style="color:#ff79c6">restart</span>: always
     <span style="color:#ff79c6">environment</span>:
-      <span style="color:#ff79c6">GITLAB_OMNIBUS_CONFIG</span>: <span style="color:#f1fa8c">|
-</span><span style="color:#f1fa8c">        external_url &#39;https://gitlab.example.com&#39;</span>
-        gitlab_rails[<span style="color:#f1fa8c">&#39;gitlab_shell_ssh_port&#39;</span>] = <span style="color:#bd93f9">2224</span>
+      <span style="color:#ff79c6">GITLAB_OMNIBUS_CONFIG</span>: |<span style="color:#f1fa8c">
+</span><span style="color:#f1fa8c">        external_url &#39;https://gitlab.example.com&#39;
+</span><span style="color:#f1fa8c">        gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 2224</span>        
     <span style="color:#ff79c6">ports</span>:
       - <span style="color:#f1fa8c">&#39;80:80&#39;</span>
       - <span style="color:#f1fa8c">&#39;443:443&#39;</span>

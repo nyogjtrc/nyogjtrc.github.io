@@ -6,11 +6,7 @@
     <description>Recent content in date on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 04 Mar 2017 15:46:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/date/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Mar 2017 15:46:00 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/date/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux 指令 date</title>
       <link>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</link>

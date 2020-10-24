@@ -6,11 +6,7 @@
     <description>Recent content in ab on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 29 Feb 2020 01:30:46 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/ab/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 29 Feb 2020 01:30:46 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/ab/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用 ab (apache benchmark) 測試網站效能</title>
       <link>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</link>

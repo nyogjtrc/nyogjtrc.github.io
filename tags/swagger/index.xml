@@ -6,11 +6,7 @@
     <description>Recent content in swagger on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 23 Feb 2020 22:21:45 +0800</lastBuildDate>
-    
-	<atom:link href="https://nyogjtrc.github.io/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 23 Feb 2020 22:21:45 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Swagger 入門</title>
       <link>https://nyogjtrc.github.io/posts/2020/02/introduce-swagger/</link>
