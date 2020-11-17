@@ -161,6 +161,8 @@ Error response from daemon: conflict: unable to delete 63130206b0fa (must be for
 <ul>
 <li>清除沒有被 tag 的 image
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
 </code></pre></div></li>
 <li>清除沒有被 tag 也沒有被引用的 image
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ docker image prune -a
