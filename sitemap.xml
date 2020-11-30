@@ -3,22 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://nyogjtrc.github.io/tags/docker/</loc>
-    <lastmod>2020-11-17T23:32:37+08:00</lastmod>
+    <loc>https://nyogjtrc.github.io/tags/git/</loc>
+    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</loc>
+    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-11-17T23:32:37+08:00</lastmod>
+    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-11-17T23:32:37+08:00</lastmod>
+    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/docker/</loc>
     <lastmod>2020-11-17T23:32:37+08:00</lastmod>
   </url>
   
@@ -44,11 +54,6 @@
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/</loc>
-    <lastmod>2020-10-18T23:54:20+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/git/</loc>
     <lastmod>2020-10-18T23:54:20+08:00</lastmod>
   </url>
   

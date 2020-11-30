@@ -6,7 +6,16 @@
     <description>Recent content in git on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 18 Oct 2020 23:54:20 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Dec 2020 02:25:33 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git Pull Warning and Foxtrot Merge</title>
+      <link>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</link>
+      <pubDate>Tue, 01 Dec 2020 02:25:33 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</guid>
+      <description>最近把 git 升級到 2.27 版 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy)</description>
+    </item>
+    
     <item>
       <title>CI vs Hooks 自動化工具比較</title>
       <link>https://nyogjtrc.github.io/posts/2020/10/ci-vs-hooks-comparing-automation-tools/</link>
