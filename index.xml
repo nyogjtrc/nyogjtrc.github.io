@@ -6,7 +6,16 @@
     <description>Recent content on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 01 Dec 2020 02:25:33 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Dec 2020 22:55:19 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>找到 github 上面專案的最新版本</title>
+      <link>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</link>
+      <pubDate>Tue, 01 Dec 2020 22:55:19 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</guid>
+      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
+    </item>
+    
     <item>
       <title>Git Pull Warning and Foxtrot Merge</title>
       <link>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</link>

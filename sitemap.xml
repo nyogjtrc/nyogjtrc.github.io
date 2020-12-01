@@ -3,27 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://nyogjtrc.github.io/tags/bash/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/github/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/tags/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</loc>
+    <lastmod>2020-12-01T22:55:19+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://nyogjtrc.github.io/tags/git/</loc>
     <lastmod>2020-12-01T02:25:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</loc>
-    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/</loc>
-    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/posts/</loc>
-    <lastmod>2020-12-01T02:25:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/</loc>
     <lastmod>2020-12-01T02:25:33+08:00</lastmod>
   </url>
   
@@ -75,11 +90,6 @@
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/07/we-need-readme/</loc>
     <lastmod>2020-07-21T02:23:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/github/</loc>
-    <lastmod>2020-07-12T23:28:47+08:00</lastmod>
   </url>
   
   <url>
@@ -225,11 +235,6 @@
   <url>
     <loc>https://nyogjtrc.github.io/posts/2020/02/my-task-manage-flow/</loc>
     <lastmod>2020-02-19T00:41:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nyogjtrc.github.io/tags/bash/</loc>
-    <lastmod>2020-02-15T21:04:39+08:00</lastmod>
   </url>
   
   <url>
