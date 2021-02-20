@@ -6,7 +6,16 @@
     <description>Recent content in vim on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 24 Nov 2019 20:35:27 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Feb 2021 01:52:30 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim File Explorer - Defx</title>
+      <link>https://nyogjtrc.github.io/posts/2021/02/vim-file-explorer-defx/</link>
+      <pubDate>Sun, 21 Feb 2021 01:52:30 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/02/vim-file-explorer-defx/</guid>
+      <description>原本的 vim file explorer 是用 NERDTree，最近發現 vim 大師 Shougo 有推出 Defx，所以就來試試新工具 Defx 沒有預設的快捷鍵，需要自己做大量設定。一開始我把快捷鍵</description>
+    </item>
+    
     <item>
       <title>配置開發 Python 的 vim 環境</title>
       <link>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</link>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="原本的 vim file explorer 是用 NERDTree，最近發現 vim 大師 Shougo 有推出 Defx，所以就來試試新工具 Defx 沒有預設的快捷鍵，需要自己做大量設定。一開始我把快捷鍵">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vim File Explorer - Defx"/>
+<meta name="twitter:description" content="原本的 vim file explorer 是用 NERDTree，最近發現 vim 大師 Shougo 有推出 Defx，所以就來試試新工具 Defx 沒有預設的快捷鍵，需要自己做大量設定。一開始我把快捷鍵"/>
+
+    <meta property="og:title" content="Vim File Explorer - Defx" />
+<meta property="og:description" content="原本的 vim file explorer 是用 NERDTree，最近發現 vim 大師 Shougo 有推出 Defx，所以就來試試新工具 Defx 沒有預設的快捷鍵，需要自己做大量設定。一開始我把快捷鍵" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2021/02/vim-file-explorer-defx/" />
+<meta property="article:published_time" content="2021-02-21T01:52:30+08:00" />
+<meta property="article:modified_time" content="2021-02-21T01:52:30+08:00" />
+
+
+    <title>
+  Vim File Explorer - Defx · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2021/02/vim-file-explorer-defx/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-dark"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+            </li>
+          
+        
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Vim File Explorer - Defx</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-02-21T01:52:30&#43;08:00'>
+                February 21, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="https://nyogjtrc.github.io/tags/vim/">vim</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>原本的 vim file explorer 是用 NERDTree，最近發現 vim 大師 Shougo 有推出 <a href="https://github.com/Shougo/defx.nvim">Defx</a>，所以就來試試新工具</p>
+<p><a href="https://github.com/Shougo/defx.nvim">Defx</a> 沒有預設的快捷鍵，需要自己做大量設定。一開始我把快捷鍵設定成跟 NERDTree 很相似，但是怎麼試都不太順手，就不再使用過去的習慣了。</p>
+<p>目前還要花點時間熟悉跟調整。</p>
+<p>除了 <a href="https://github.com/Shougo/defx.nvim">Defx</a> 本身之外，我還多安裝了 <a href="https://github.com/kristijanhusak/defx-git">defx-git</a> 跟 <a href="https://github.com/kristijanhusak/defx-icons">defx-icons</a></p>
+<ul>
+<li>defx-git: 顯示 git status</li>
+<li>defx-icons: 顯示檔案 icon，需要 Nerd font</li>
+</ul>
+<h2 id="安裝">安裝</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">Plug <span style="color:#f1fa8c">&#39;Shougo/defx.nvim&#39;</span>
+Plug <span style="color:#f1fa8c">&#39;kristijanhusak/defx-git&#39;</span>
+Plug <span style="color:#f1fa8c">&#39;kristijanhusak/defx-icons&#39;</span>
+</code></pre></div><h2 id="設定">設定</h2>
+<p>開啟 defx 快捷鍵: <!-- raw HTML omitted -->e</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">nnoremap &lt;silent&gt; &lt;leader&gt;e :&lt;C-U&gt;Defx&lt;CR&gt;
+</code></pre></div><p>顯示設定</p>
+<ul>
+<li>加入 git 跟 icons 的顯示</li>
+<li>把一些 icon 換成自己喜歡的</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">call defx#custom#option(<span style="color:#f1fa8c">&#39;_&#39;</span>, {
+    \ <span style="color:#f1fa8c">&#39;buffer_name&#39;</span>: <span style="color:#f1fa8c">&#39;tabfx&#39;</span>,
+    \ <span style="color:#f1fa8c">&#39;listed&#39;</span>: <span style="color:#bd93f9">1</span>,
+    \ <span style="color:#f1fa8c">&#39;show_ignored_files&#39;</span>: <span style="color:#bd93f9">1</span>,
+    \ <span style="color:#f1fa8c">&#39;resume&#39;</span>: <span style="color:#bd93f9">1</span>,
+    \ <span style="color:#f1fa8c">&#39;columns&#39;</span>: <span style="color:#f1fa8c">&#39;indent:mark:icon:icons:filename:git:size&#39;</span>,
+    \ })
+
+call defx#custom#column(<span style="color:#f1fa8c">&#39;icon&#39;</span>, {
+    \ <span style="color:#f1fa8c">&#39;directory_icon&#39;</span>: <span style="color:#f1fa8c">&#39;▸&#39;</span>,
+    \ <span style="color:#f1fa8c">&#39;opened_icon&#39;</span>: <span style="color:#f1fa8c">&#39;▾&#39;</span>,
+    \ <span style="color:#f1fa8c">&#39;root_icon&#39;</span>: <span style="color:#f1fa8c">&#39;+&#39;</span>,
+    \ })
+
+call defx#custom#column(<span style="color:#f1fa8c">&#39;mark&#39;</span>, {
+    \ <span style="color:#f1fa8c">&#39;readonly_icon&#39;</span>: <span style="color:#f1fa8c">&#39;✗&#39;</span>,
+    \ <span style="color:#f1fa8c">&#39;selected_icon&#39;</span>: <span style="color:#f1fa8c">&#39;✓&#39;</span>,
+    \ })
+</code></pre></div><p>在 Defx 內的快捷鍵</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">autocmd FileType defx call s:defx_my_settings()
+<span style="color:#ff79c6">function</span>! s:defx_my_settings() abort
+<span style="color:#6272a4">    &#34; Define mappings</span>
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;CR&gt;
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;open&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; c
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;copy&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; m
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;move&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; p
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;paste&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; l
+        \ defx#is_directory() ? defx#do_action(<span style="color:#f1fa8c">&#39;open&#39;</span>) : <span style="color:#bd93f9">0</span>
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; E
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;open&#39;</span>, <span style="color:#f1fa8c">&#39;vsplit&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; P
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;preview&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; o
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;open_tree&#39;</span>, <span style="color:#f1fa8c">&#39;toggle&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; K
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;new_directory&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; N
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;new_file&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; M
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;new_multiple_files&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; d
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;remove&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; r
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;rename&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; !
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;execute_command&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; yy
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;yank_path&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; .
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;toggle_ignored_files&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; h
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;cd&#39;</span>, [<span style="color:#f1fa8c">&#39;..&#39;</span>])
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; cd
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;cd&#39;</span>, getcwd())
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; q
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;quit&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;Space&gt;
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;toggle_select&#39;</span>) . <span style="color:#f1fa8c">&#39;j&#39;</span>
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; *
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;toggle_select_all&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; j
+        \ line(<span style="color:#f1fa8c">&#39;.&#39;</span>) == line(<span style="color:#f1fa8c">&#39;$&#39;</span>) ? <span style="color:#f1fa8c">&#39;gg&#39;</span> : <span style="color:#f1fa8c">&#39;j&#39;</span>
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; k
+        \ line(<span style="color:#f1fa8c">&#39;.&#39;</span>) == <span style="color:#bd93f9">1</span> ? <span style="color:#f1fa8c">&#39;G&#39;</span> : <span style="color:#f1fa8c">&#39;k&#39;</span>
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-r&gt;
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;redraw&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; &lt;C-g&gt;
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;print&#39;</span>)
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; v
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;multi&#39;</span>, [[<span style="color:#f1fa8c">&#39;drop&#39;</span>, <span style="color:#f1fa8c">&#39;vsplit&#39;</span>], <span style="color:#f1fa8c">&#39;quit&#39;</span>])
+    nnoremap &lt;silent&gt;&lt;buffer&gt;&lt;expr&gt; f
+        \ defx#do_action(<span style="color:#f1fa8c">&#39;search&#39;</span>, expand(<span style="color:#f1fa8c">&#39;%:p:h&#39;</span>))
+<span style="color:#ff79c6">endfunction</span>
+</code></pre></div><hr>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://github.com/Shougo/defx.nvim">https://github.com/Shougo/defx.nvim</a></li>
+<li><a href="https://github.com/kristijanhusak/defx-git">https://github.com/kristijanhusak/defx-git</a></li>
+<li><a href="https://github.com/kristijanhusak/defx-icons">https://github.com/kristijanhusak/defx-icons</a></li>
+<li><a href="https://amikai.github.io/2020/09/03/go_neovim_env/">Golang 開發環境 - 使用 neovim | no code no pain</a></li>
+<li><a href="https://eed3si9n.com/defx">Defx: file explorer plugin for Neovim | eed3si9n</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>nyo, vim user, gopher, keep learn</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2021
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+    
+
+    
+  </body>
+
+</html>
