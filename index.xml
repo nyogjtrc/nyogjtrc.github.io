@@ -6,7 +6,16 @@
     <description>Recent content on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 21 Feb 2021 01:52:30 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Feb 2021 23:27:39 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IPv6 簡介</title>
+      <link>https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/</link>
+      <pubDate>Fri, 26 Feb 2021 23:27:39 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/</guid>
+      <description>IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導的零</description>
+    </item>
+    
     <item>
       <title>Vim File Explorer - Defx</title>
       <link>https://nyogjtrc.github.io/posts/2021/02/vim-file-explorer-defx/</link>
