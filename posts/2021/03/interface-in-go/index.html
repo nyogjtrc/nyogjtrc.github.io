@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="nyo">
+    <meta name="description" content="Interface Go 的 interface (介面) 是一堆方法簽章集合而成的 type (型態)， 只要一個 type 實作出 interface 定義的所有方法，就是實作 interface interface 是 Go 用來定義物件行為的方式，其概念是： 如果">
+    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Interface in Go"/>
+<meta name="twitter:description" content="Interface Go 的 interface (介面) 是一堆方法簽章集合而成的 type (型態)， 只要一個 type 實作出 interface 定義的所有方法，就是實作 interface interface 是 Go 用來定義物件行為的方式，其概念是： 如果"/>
+
+    <meta property="og:title" content="Interface in Go" />
+<meta property="og:description" content="Interface Go 的 interface (介面) 是一堆方法簽章集合而成的 type (型態)， 只要一個 type 實作出 interface 定義的所有方法，就是實作 interface interface 是 Go 用來定義物件行為的方式，其概念是： 如果" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2021/03/interface-in-go/" />
+<meta property="article:published_time" content="2021-03-16T21:13:05+08:00" />
+<meta property="article:modified_time" content="2021-03-16T21:13:05+08:00" />
+
+
+    <title>
+  Interface in Go · Nyo&#39;s Study Book
+</title>
+
+    
+      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2021/03/interface-in-go/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.80.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-dark"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://nyogjtrc.github.io/">
+      Nyo&#39;s Study Book
+    </a>
+    
+      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
+            </li>
+          
+        
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Interface in Go</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-16T21:13:05&#43;08:00'>
+                March 16, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="https://nyogjtrc.github.io/tags/go/">go</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="interface">Interface</h2>
+<p>Go 的 interface (介面) 是一堆方法簽章集合而成的 type (型態)，
+只要一個 type 實作出 interface 定義的所有方法，就是實作 interface</p>
+<p>interface 是 Go 用來定義物件行為的方式，其概念是：</p>
+<blockquote>
+<p>如果某個物件可以做「這件事」，那麼它就可以用來當成是「這種東西」。</p>
+</blockquote>
+<blockquote>
+<p>(if something can do this, then it can be used here.)</p>
+</blockquote>
+<p>看看以下範例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> Shape <span style="color:#8be9fd;font-style:italic">interface</span> {
+	<span style="color:#50fa7b">Area</span>() <span style="color:#8be9fd">float64</span>
+}
+
+<span style="color:#8be9fd;font-style:italic">type</span> Rectangle <span style="color:#8be9fd;font-style:italic">struct</span> {
+	Width, Height <span style="color:#8be9fd">float64</span>
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> (r Rectangle) <span style="color:#50fa7b">Area</span>() <span style="color:#8be9fd">float64</span> {
+	<span style="color:#ff79c6">return</span> r.Width <span style="color:#ff79c6">*</span> r.Height
+}
+
+<span style="color:#8be9fd;font-style:italic">type</span> Circle <span style="color:#8be9fd;font-style:italic">struct</span> {
+	Radius <span style="color:#8be9fd">float64</span>
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> (c Circle) <span style="color:#50fa7b">Area</span>() <span style="color:#8be9fd">float64</span> {
+	<span style="color:#ff79c6">return</span> math.Pi <span style="color:#ff79c6">*</span> c.Radius <span style="color:#ff79c6">*</span> c.Radius
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">printArea</span>(shape Shape) {
+	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;area:&#34;</span>, shape.<span style="color:#50fa7b">Area</span>())
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">main</span>() {
+	r <span style="color:#ff79c6">:=</span> Rectangle{Width: <span style="color:#bd93f9">7</span>, Height: <span style="color:#bd93f9">8</span>}
+	c <span style="color:#ff79c6">:=</span> Circle{Radius: <span style="color:#bd93f9">5</span>}
+
+	<span style="color:#50fa7b">printArea</span>(r) <span style="color:#6272a4">// output: area: 56
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">printArea</span>(c) <span style="color:#6272a4">// output: area: 78.53981633974483
+</span><span style="color:#6272a4"></span>}
+</code></pre></div><p>我們定義了 Shape interface，只要實作 Shape 定義的方法 Area() 就是實作 Shape</p>
+<p>而 Rectangle 跟 Circle 兩個 struct 都有實作出 Area()，所以都符合 Shape interface</p>
+<p>所以都可以使用 printArea() 印出結果</p>
+<h2 id="implicit-interface">Implicit Interface</h2>
+<p>跟其他程式語言不太一樣的地方是 Go 的 interface 是 implicit interface，
+不需要使用 <strong>implements</strong> 關鍵字實作，只要設計好對應的方法就可以達成實作</p>
+<p>這個特性增加了 interface 使用上的彈性</p>
+<ul>
+<li>程式不會在實作 interface 時跟任何的 package 相依</li>
+<li>一個 type 可以實作多個 interface</li>
+</ul>
+<p>看看以下範例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">type</span> Rectangle <span style="color:#8be9fd;font-style:italic">struct</span> {
+	Width, Height <span style="color:#8be9fd">float64</span>
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> (r Rectangle) <span style="color:#50fa7b">Area</span>() <span style="color:#8be9fd">float64</span> {
+	<span style="color:#ff79c6">return</span> r.Width <span style="color:#ff79c6">*</span> r.Height
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> (r Rectangle) <span style="color:#50fa7b">Info</span>() <span style="color:#8be9fd">string</span> {
+	<span style="color:#ff79c6">return</span> fmt.<span style="color:#50fa7b">Sprintf</span>(<span style="color:#f1fa8c">&#34;w: %f, h: %f, a: %f&#34;</span>, r.Width, r.Height, r.<span style="color:#50fa7b">Area</span>())
+}
+
+<span style="color:#8be9fd;font-style:italic">type</span> Information <span style="color:#8be9fd;font-style:italic">interface</span> {
+	<span style="color:#50fa7b">Info</span>() <span style="color:#8be9fd">string</span>
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">printInfo</span>(i Information) {
+	fmt.<span style="color:#50fa7b">Println</span>(i.<span style="color:#50fa7b">Info</span>())
+}
+
+<span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">main</span>() {
+	r <span style="color:#ff79c6">:=</span> Rectangle{Width: <span style="color:#bd93f9">7</span>, Height: <span style="color:#bd93f9">8</span>}
+
+	<span style="color:#50fa7b">printArea</span>(r) <span style="color:#6272a4">// output: area: 56
+</span><span style="color:#6272a4"></span>	<span style="color:#50fa7b">printInfo</span>(r) <span style="color:#6272a4">// output: w: 7.00, h: 8.00, a: 56.00
+</span><span style="color:#6272a4"></span>}
+</code></pre></div><p>我們增加了 Information interface，並且在 Rectangle 藉由實作 Info() 方法來實作 Information interface</p>
+<p>現在 Rectangle 同時實作了 Shape 跟 Information interface</p>
+<h2 id="empty-interface">Empty Interface</h2>
+<p>當 interface 不包含任何方法時，稱之為 empty interface (空介面)</p>
+<p>空介面可以裝入任何型態的數值，因為每一種型態都會實作至少 0 個方法</p>
+<p>如果要存取 empty interface 的數值時，可以使用 type assertion 或是 type switch</p>
+<p>看看以下範例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// 宣告 a 為 empty interface
+</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> a <span style="color:#8be9fd;font-style:italic">interface</span>{}
+
+<span style="color:#6272a4">// 放入任意數值
+</span><span style="color:#6272a4"></span>a = <span style="color:#bd93f9">5</span>
+a = <span style="color:#f1fa8c">&#34;xyz&#34;</span>
+
+<span style="color:#6272a4">// type assertion
+</span><span style="color:#6272a4"></span>s, ok = a.(<span style="color:#8be9fd">string</span>)
+fmt.<span style="color:#50fa7b">Println</span>(s, ok) <span style="color:#6272a4">// output: xyz true
+</span><span style="color:#6272a4"></span>
+<span style="color:#6272a4">// type switch
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">switch</span> v <span style="color:#ff79c6">:=</span> a.(<span style="color:#8be9fd;font-style:italic">type</span>) {
+<span style="color:#ff79c6">case</span> <span style="color:#8be9fd">string</span>:
+	fmt.<span style="color:#50fa7b">Printf</span>(<span style="color:#f1fa8c">&#34;type string: %s\n&#34;</span>, v)
+<span style="color:#ff79c6">case</span> <span style="color:#8be9fd">int</span>:
+	fmt.<span style="color:#50fa7b">Printf</span>(<span style="color:#f1fa8c">&#34;type int: %d\n&#34;</span>, v)
+}
+<span style="color:#6272a4">// output: type string: xyz
+</span><span style="color:#6272a4"></span>
+</code></pre></div><p>其實官網的教學 <a href="https://tour.golang.org/">A Tour of Go</a> 都有說明</p>
+<hr>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://tour.golang.org/methods/9">A Tour of Go - Interfaces</a></li>
+<li><a href="https://ronmi.github.io/post/go/effectivego/">有效地去 - Effective go 正體中文翻譯 - 程式、雜談</a></li>
+<li><a href="https://golang.org/doc/effective_go#interfaces_and_types">Effective Go - Interfaces and other types</a></li>
+<li><a href="https://zetcode.com/golang/interface/">Go interface - working with interfaces in Golang</a></li>
+<li><a href="https://yami.io/golang-interface/">解釋 Golang 中的 Interface 到底是什麼 – 電腦玩瞎咪</a></li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>nyo, vim user, gopher, keep learn</p>
+      
+      
+        ©
+        
+          2015 -
+        
+        2021
+         nyo 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    
+
+    
+
+    
+  </body>
+
+</html>

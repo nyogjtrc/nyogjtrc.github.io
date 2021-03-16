@@ -6,7 +6,16 @@
     <description>Recent content in go on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 05 Aug 2020 00:39:46 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 21:13:05 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Interface in Go</title>
+      <link>https://nyogjtrc.github.io/posts/2021/03/interface-in-go/</link>
+      <pubDate>Tue, 16 Mar 2021 21:13:05 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/03/interface-in-go/</guid>
+      <description>Interface Go 的 interface (介面) 是一堆方法簽章集合而成的 type (型態)， 只要一個 type 實作出 interface 定義的所有方法，就是實作 interface interface 是 Go 用來定義物件行為的方式，其概念是： 如果</description>
+    </item>
+    
     <item>
       <title>試用 GORM</title>
       <link>https://nyogjtrc.github.io/posts/2020/08/try-gorm/</link>
