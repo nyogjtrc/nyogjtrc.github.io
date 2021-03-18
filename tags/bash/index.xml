@@ -13,7 +13,7 @@
       <pubDate>Tue, 01 Dec 2020 22:55:19 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</guid>
-      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
+      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq 1 2 3 4 5 6 latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 1 2 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 1 2 3 4 5 6 7 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin</description>
     </item>
     
     <item>

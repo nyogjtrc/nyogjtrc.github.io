@@ -13,7 +13,7 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 1 2 3 4 5 6 7 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
-      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
+      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id 1 2 3 $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid 1 $ sudo cat /sys/class/dmi/id/product_uuid MAC address 1 $ ip link Hard Disk UUID 1 2 3 $ blkid $ ls -l /dev/disk/by-uuid random UUID</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
-      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 1 2 # su - # apt install sudo 設定 sudoer 1 # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個</description>
     </item>
     
     <item>
@@ -58,7 +58,7 @@
       <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
+      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 1 2 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 1 2</description>
     </item>
     
   </channel>

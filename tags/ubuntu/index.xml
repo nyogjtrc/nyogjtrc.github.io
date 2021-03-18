@@ -13,7 +13,7 @@
       <pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
-      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
+      <description>改變 Ubuntu 的時區，請使用以下指令 1 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 1 2 3 4 5 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
-      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MONETARY = &amp;#34;en_GB.UTF-8&amp;#34;, LC_ADDRESS = &amp;#34;en_GB.UTF-8&amp;#34;, LC_TELEPHONE = &amp;#34;en_GB.UTF-8&amp;#34;, LC_NAME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MEASUREMENT = &amp;#34;en_GB.UTF-8&amp;#34;,</description>
+      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME</description>
     </item>
     
     <item>

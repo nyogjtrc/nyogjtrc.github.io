@@ -13,7 +13,7 @@
       <pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
-      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
+      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 1 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key 1 2 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox 1 2 sudo apt update sudo apt install virtualbox-5.2 ps.</description>
     </item>
     
     <item>

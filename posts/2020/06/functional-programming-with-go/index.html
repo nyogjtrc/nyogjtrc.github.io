@@ -1,162 +1,248 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Functional Programming With Go | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="programming, functional programming, go" />
+<meta name="description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Functional Programming With Go"/>
-<meta name="twitter:description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming"/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="Functional Programming With Go" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Functional Programming With Go" />
 <meta property="og:description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/" />
 <meta property="article:published_time" content="2020-06-26T15:58:41+08:00" />
 <meta property="article:modified_time" content="2020-06-26T15:58:41+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Functional Programming With Go"/>
+<meta name="twitter:description" content="Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming"/>
 
 
-    <title>
-  Functional Programming With Go · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Functional Programming With Go",
+      "item": "https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Functional Programming With Go",
+  "name": "Functional Programming With Go",
+  "description": "Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種 所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data) 以下是一些 Functional Programming",
+  "keywords": [
+    "programming", "functional programming", "go"
+  ],
+  "articleBody": "Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種\n所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data)\n以下是一些 Functional Programming 的特點\nPure functions (純函數) 函數會基於傳入的參數來回傳結果，不依懶全域變數\n只要給一個 function 相同的傳入參數，就一定會得到相同的回傳結果，不會有任可的副作用 (side effects)\n1 2 3 4 5 6 7 8 9 10 11  // pure function func add(a, b int) int { return a + b } // not pure function var z int func addFive(x int) { z += x }   First-class and Higher-order functions (一等公民，高階函數) First-class 是指函數可以當做一種資料型別，好比直接賦值到變數中，存放到資料結構當中\nHigher-order functions 是指函數可以當作參數傳遞或是其他函數的回傳值\n1 2 3 4 5 6 7 8 9  add := func(x, y int) int { return x + y } calculate := func(m, n int, f func(int, int) int) int { return f(m, n) } fmt.Println(calculate(1, 2, add))   Recursion (遞迴) Functional Programming 通常用遞迴來完成迭代\n1 2 3 4 5 6 7 8  func factorial(num int) int { if num == 0 { return 1 } return num * factorial(num-1) } fmt.Println(factorial(5))   但是在現實情況下，考慮到效能問題，多數還是以迴圈 (loops) 為主\nLazy evaluation (延遲執行) Lazy evaluation 是指說程式只會在需要的時候才運行，可以提升程式的效能\nGo 中有 closures, goroutines 跟 channels 可以達到 Lazy evaluation 的效果\n1 2 3 4 5 6 7 8 9 10 11 12 13  func adder() func(int) int { sum := 0 return func(x int) int { sum += x return sum } } pos, neg := adder(), adder() for i := 0; i 10; i++ { fmt.Println(pos(i), neg(-2*i)) }   小結 尋找適合的場景善加運用 Functional programming，\n讓單元測試 (unit test) 更加容易，提高可維護性 (maintainable)\n我自己會從復雜的運算中整理出一些純綷的邏輯，以 Functional programming 的方式實作\n Reference  Functional programming - Wikipedia Functional Programming 7 Easy functional programming techniques in Go | Technorage 前端工程研究：理解函式編程核心概念與如何進行 JavaScript 函式編程 | The Will Will Web Functional Programming 函式程式設計 - Leon’s Blogging 思考函數編程(3)函數編程能做些什麼？ | iThome Principles of Functional Programming - DEV  ",
+  "wordCount" : "630",
+  "inLanguage": "en",
+  "datePublished": "2020-06-26T15:58:41+08:00",
+  "dateModified": "2020-06-26T15:58:41+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2020/06/functional-programming-with-go/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Functional Programming With Go</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2020-06-26T15:58:41&#43;08:00'>
-                June 26, 2020
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              2-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/programming/">programming</a>
-      <span class="separator">•</span>
-    <a href="https://nyogjtrc.github.io/tags/functional-programming/">functional programming</a>
-      <span class="separator">•</span>
-    <a href="https://nyogjtrc.github.io/tags/go/">go</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <p>Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種</p>
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      Functional Programming With Go
+    </h1>
+    <div class="post-meta">
+
+June 26, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#pure-functions-%e7%b4%94%e5%87%bd%e6%95%b8" aria-label="Pure functions (純函數)">Pure functions (純函數)</a></li><li>
+        <a href="#first-class-and-higher-order-functions-%e4%b8%80%e7%ad%89%e5%85%ac%e6%b0%91%e9%ab%98%e9%9a%8e%e5%87%bd%e6%95%b8" aria-label="First-class and Higher-order functions (一等公民，高階函數)">First-class and Higher-order functions (一等公民，高階函數)</a></li><li>
+        <a href="#recursion-%e9%81%9e%e8%bf%b4" aria-label="Recursion (遞迴)">Recursion (遞迴)</a></li><li>
+        <a href="#lazy-evaluation-%e5%bb%b6%e9%81%b2%e5%9f%b7%e8%a1%8c" aria-label="Lazy evaluation (延遲執行)">Lazy evaluation (延遲執行)</a></li><li>
+        <a href="#%e5%b0%8f%e7%b5%90" aria-label="小結">小結</a><ul>
+            <li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>Functional Programming 中文：函數式程式設計，是程式設計方法 (programming paradigm) 的其中一種</p>
 <p>所謂的 Functional Programming 是以數學函數的概念來設計程式，並避免有狀態 (state) 與避免可變資料 (mutable data)</p>
 <p>以下是一些 Functional Programming 的特點</p>
-<h2 id="pure-functions-純函數">Pure functions (純函數)</h2>
+<h2 id="pure-functions-純函數">Pure functions (純函數)<a hidden class="anchor" aria-hidden="true" href="#pure-functions-純函數">#</a></h2>
 <p>函數會基於傳入的參數來回傳結果，不依懶全域變數</p>
 <p>只要給一個 function 相同的傳入參數，就一定會得到相同的回傳結果，不會有任可的副作用 (side effects)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// pure function
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// pure function
 </span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">add</span>(a, b <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
 	<span style="color:#ff79c6">return</span> a <span style="color:#ff79c6">+</span> b
 }
@@ -167,10 +253,25 @@
 <span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">addFive</span>(x <span style="color:#8be9fd">int</span>) {
 	z <span style="color:#ff79c6">+=</span> x
 }
-</code></pre></div><h2 id="first-class-and-higher-order-functions-一等公民高階函數">First-class and Higher-order functions (一等公民，高階函數)</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="first-class-and-higher-order-functions-一等公民高階函數">First-class and Higher-order functions (一等公民，高階函數)<a hidden class="anchor" aria-hidden="true" href="#first-class-and-higher-order-functions-一等公民高階函數">#</a></h2>
 <p>First-class 是指函數可以當做一種資料型別，好比直接賦值到變數中，存放到資料結構當中</p>
 <p>Higher-order functions 是指函數可以當作參數傳遞或是其他函數的回傳值</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">add <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">func</span>(x, y <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">add <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-style:italic">func</span>(x, y <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
 	<span style="color:#ff79c6">return</span> x <span style="color:#ff79c6">+</span> y
 }
 
@@ -179,9 +280,23 @@ calculate <span style="color:#ff79c6">:=</span> <span style="color:#8be9fd;font-
 }
 
 fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">calculate</span>(<span style="color:#bd93f9">1</span>, <span style="color:#bd93f9">2</span>, add))
-</code></pre></div><h2 id="recursion-遞迴">Recursion (遞迴)</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="recursion-遞迴">Recursion (遞迴)<a hidden class="anchor" aria-hidden="true" href="#recursion-遞迴">#</a></h2>
 <p>Functional Programming 通常用遞迴來完成迭代</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">factorial</span>(num <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">factorial</span>(num <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
 	<span style="color:#ff79c6">if</span> num <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> {
 		<span style="color:#ff79c6">return</span> <span style="color:#bd93f9">1</span>
 	}
@@ -189,11 +304,30 @@ fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">calcu
 }
 
 fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">factorial</span>(<span style="color:#bd93f9">5</span>))
-</code></pre></div><p>但是在現實情況下，考慮到效能問題，多數還是以迴圈 (loops) 為主</p>
-<h2 id="lazy-evaluation-延遲執行">Lazy evaluation (延遲執行)</h2>
+</code></pre></td></tr></table>
+</div>
+</div><p>但是在現實情況下，考慮到效能問題，多數還是以迴圈 (loops) 為主</p>
+<h2 id="lazy-evaluation-延遲執行">Lazy evaluation (延遲執行)<a hidden class="anchor" aria-hidden="true" href="#lazy-evaluation-延遲執行">#</a></h2>
 <p>Lazy evaluation 是指說程式只會在需要的時候才運行，可以提升程式的效能</p>
 <p>Go 中有 closures, goroutines 跟 channels 可以達到 Lazy evaluation 的效果</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">adder</span>() <span style="color:#8be9fd;font-style:italic">func</span>(<span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">adder</span>() <span style="color:#8be9fd;font-style:italic">func</span>(<span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
 	sum <span style="color:#ff79c6">:=</span> <span style="color:#bd93f9">0</span>
 	<span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">func</span>(x <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">int</span> {
 		sum <span style="color:#ff79c6">+=</span> x
@@ -206,12 +340,14 @@ pos, neg <span style="color:#ff79c6">:=</span> <span style="color:#50fa7b">adder
 	fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#50fa7b">pos</span>(i), <span style="color:#50fa7b">neg</span>(<span style="color:#ff79c6">-</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">*</span>i))
 }
 
-</code></pre></div><h2 id="小結">小結</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="小結">小結<a hidden class="anchor" aria-hidden="true" href="#小結">#</a></h2>
 <p>尋找適合的場景善加運用 Functional programming，<br>
 讓單元測試 (unit test) 更加容易，提高可維護性 (maintainable)</p>
 <p>我自己會從復雜的運算中整理出一些純綷的邏輯，以 Functional programming 的方式實作</p>
 <hr>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Functional_programming">Functional programming - Wikipedia</a></li>
 <li><a href="https://l3x.github.io/golang-code-examples/2014/08/14/functional-programming.html">Functional Programming</a></li>
@@ -222,72 +358,95 @@ pos, neg <span style="color:#ff79c6">:=</span> <span style="color:#50fa7b">adder
 <li><a href="https://dev.to/jamesrweb/principles-of-functional-programming-4b7c">Principles of Functional Programming - DEV</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/programming/">programming</a></li>
+      <li><a href="https://nyogjtrc.github.io/tags/functional-programming/">functional programming</a></li>
+      <li><a href="https://nyogjtrc.github.io/tags/go/">go</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

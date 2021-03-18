@@ -13,7 +13,7 @@
       <pubDate>Tue, 01 Dec 2020 22:55:19 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</guid>
-      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
+      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq 1 2 3 4 5 6 latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 1 2 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
     </item>
     
     <item>

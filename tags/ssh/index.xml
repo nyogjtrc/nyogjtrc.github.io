@@ -13,7 +13,7 @@
       <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
-      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host $ ssh</description>
+      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host 1 $</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</guid>
-      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指</description>
+      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key 1 $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i</description>
     </item>
     
   </channel>

@@ -13,7 +13,7 @@
       <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
-      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
+      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 1 2 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop</description>
     </item>
     
   </channel>

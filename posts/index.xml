@@ -31,7 +31,7 @@
       <pubDate>Fri, 26 Feb 2021 23:27:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/</guid>
-      <description>IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導的零</description>
+      <description>IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 1 2 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Sun, 24 Jan 2021 02:48:08 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2021/01/makefile-phony-targets/</guid>
-      <description>Makefile Rule Makefile Rule 格式如下 target: prerequisites recipe target: 要產生的檔案名稱 prerequisites: 產生 target 所需要的檔案 recipe: 要執行的動作 這裡準備一個寫 golang 會用到的 Makefile 如下面: build: go build -o main main.go 執行 make build，M</description>
+      <description>Makefile Rule Makefile Rule 格式如下 1 2 target: prerequisites recipe target: 要產生的檔案名稱 prerequisites: 產生 target 所需要的檔案 recipe: 要執行的動作 這裡準備一個寫 golang 會用到的 Makefile 如下面: 1 2 build: go build -o main main.go 執行 make bui</description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@
       <pubDate>Tue, 01 Dec 2020 22:55:19 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/12/find-latest-release-from-github/</guid>
-      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
+      <description>使用 github api 就可以查到最新的版本 需要的 command: curl jq 1 2 3 4 5 6 latest_release() { repo_name=$1 curl --silent \ https://api.github.com/repos/$repo_name/releases/latest | \ jq -r &amp;#39;.tag_name&amp;#39; } 執行結果，以 tmux 當範例 1 2 $ latest_release tmux/tmux 3.1c Reference Shell - Get latest release from GitHub</description>
     </item>
     
     <item>
@@ -76,7 +76,7 @@
       <pubDate>Tue, 01 Dec 2020 02:25:33 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</guid>
-      <description>最近把 git 升級到 2.27 版 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy)</description>
+      <description>最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
       <pubDate>Tue, 17 Nov 2020 23:32:37 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/11/clean-up-unused-docker-images/</guid>
-      <description>寫這篇文章時的 docker 版本 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi &amp;lt;image_id&amp;gt; 正在使用的 image 不能刪除 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is being used by stopped</description>
+      <description>寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi &amp;lt;image_id&amp;gt; 正在使用的 image 不能刪除 1 2 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is</description>
     </item>
     
     <item>
@@ -202,7 +202,7 @@
       <pubDate>Sun, 15 Mar 2020 22:53:09 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/03/ssh-proxyjump/</guid>
-      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host $ ssh</description>
+      <description>server 需要經由跳板登入時有幾種做法 ssh tunnel ProxyCommand ProxyJump 這邊介紹 ProxyJump 的用法，算是目前最方便的方法 支援 ProxyJump 的是從 OpenSSH 7.3 開始，在 August 2016 released (http://www.openssh.com/txt/release-7.3) ssh 指令加上 -J 參數 經由 jump.host 登入 dist.host 1 $</description>
     </item>
     
     <item>
@@ -220,7 +220,7 @@
       <pubDate>Sat, 29 Feb 2020 01:30:46 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/test-web-site-performance-with-apache-benchmark/</guid>
-      <description>指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian sudo apt-get install apache2-utils centos yum install httpd-tools 執行結果 $ ab -n 100 -c 10 https://google.com/ This is ApacheBench, Version 2.3 &amp;lt;$Revision: 1826891 $&amp;gt; Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/ Licensed to The Apache Software Foundation, http://www.apache.org/ Benchmarking google.com (be patient).....done Server Software: gws Server Hostname: google.com Server Port: 443 SSL/TLS Protocol: TLSv1.2,ECDHE-ECDSA-CHACHA20-POLY1305,256,256 TLS Server Name:</description>
+      <description>指令說明: http://httpd.apache.org/docs/current/programs/ab.html 安裝 debian 1 sudo apt-get install apache2-utils centos 1 yum install httpd-tools 執行結果 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 $</description>
     </item>
     
     <item>
@@ -247,7 +247,7 @@
       <pubDate>Sat, 15 Feb 2020 21:04:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/how-to-list-path-variable/</guid>
-      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin echo &amp;#34;${PATH//:/$&amp;#39;\n&amp;#39;}&amp;#34; echo -e &amp;#34;${PATH//:/\n}&amp;#34;</description>
+      <description>在 Linux 的 Shell 環境中，要查看 PATH 變數時，通常都是 echo $PATH 當 PATH variable 中包含太多資料夾時，跟本看不懂 改以清單的方式顯示 PATH 內容 1 2 3 4 5 6 7 $ echo $PATH | tr &amp;#34;:&amp;#34; &amp;#34;\n&amp;#34; /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin</description>
     </item>
     
     <item>
@@ -256,7 +256,7 @@
       <pubDate>Mon, 10 Feb 2020 23:06:49 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2020/02/install-latest-firefox-on-debian/</guid>
-      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop $ sudo</description>
+      <description>Debian 的套件庫中只有 Firefox-ESR，跟 Firefox 官網的版本有點差距 想要使用最新的 Firefox 就是，直接從官網下載安裝！！！ 下載 1 2 $ tar xvf firefox-72.0.2.tar.bz2 $ sudo mv firefox /opt 建立 firefox.desktop</description>
     </item>
     
     <item>
@@ -283,7 +283,7 @@
       <pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
-      <description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
+      <description>用 redis-cli 組合一個清除的指令 1 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server</description>
     </item>
     
     <item>
@@ -292,7 +292,7 @@
       <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
-      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
+      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 1 $ pip install jedi vimrc 使用</description>
     </item>
     
     <item>
@@ -373,7 +373,7 @@
       <pubDate>Sun, 30 Dec 2018 15:01:29 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/install-virtualbox-5.2-on-debian-testing/</guid>
-      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox sudo apt update sudo apt install virtualbox-5.2 ps. Virtualbox 6.0 在 2018/12/18 發</description>
+      <description>增加 source list debian testing (buster, 10) 要選擇 bionic 版本, 避免套件相依問題 1 echo &amp;#34;deb https://download.virtualbox.org/virtualbox/debian bionic contrib&amp;#34; | sudo tee /etc/apt/sources.list.d/virtualbox.list 增加 apt key 1 2 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add - 安裝 Virtualbox 1 2 sudo apt update sudo apt install virtualbox-5.2 ps.</description>
     </item>
     
     <item>
@@ -382,7 +382,7 @@
       <pubDate>Fri, 14 Dec 2018 23:20:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/x1c-6th-ssd-optimization-on-debian/</guid>
-      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前備份</description>
+      <description>SSD 優化的幾個要點 啟用 SSD 的 Trim 功能 減少非必要的寫入動作 掛載暫存資料夾到 Ram 上 啟用排程 Trim 1 2 $ sudo systemctl enable fstrim.timer Created symlink /etc/systemd/system/timers.target.wants/fstrim.timer → /lib/systemd/system/fstrim.timer. ps. 不建議使用 /etc/fstab 的 discard 選項 增加 Mount Options 修改前</description>
     </item>
     
     <item>
@@ -391,7 +391,7 @@
       <pubDate>Mon, 10 Dec 2018 11:34:35 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/12/some-unique-id-in-linux/</guid>
-      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid $ sudo cat /sys/class/dmi/id/product_uuid MAC address $ ip link Hard Disk UUID $ blkid $ ls -l /dev/disk/by-uuid random UUID $ cat /proc/sys/kernel/random/uuid $ uuidgen Reference https://www.thegeekdiary.com/centos-rhel-7-how-to-change-the-machine-id/ http://0pointer.de/blog/projects/ids.html</description>
+      <description>每台機器都會有一些自己唯一的 id 在開發程式中，可能會有需要用來分辨機器 machine-id 1 2 3 $ cat /etc/machine-id $ cat /var/lib/dbus/machine-id product_uuid 1 $ sudo cat /sys/class/dmi/id/product_uuid MAC address 1 $ ip link Hard Disk UUID 1 2 3 $ blkid $ ls -l /dev/disk/by-uuid random UUID</description>
     </item>
     
     <item>
@@ -418,7 +418,7 @@
       <pubDate>Thu, 26 Jul 2018 15:50:07 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/error-handling-in-golang/</guid>
-      <description>Go 原生的 Error Type 先認識 go 的 error interface type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError // PathError records an error and the operation and file path that caused it. type PathError struct { Op string Path string Err</description>
+      <description>Go 原生的 Error Type 先認識 go 的 error interface 1 2 3 type error interface { Error() string } 只要 struct 實作 Error() 方法，就會是 error type，例如 os package 裡面的 PathError https://golang.org/pkg/os/#PathError 1 2 3 4 5 6 7 8 // PathError records an error and the operation and file path that</description>
     </item>
     
     <item>
@@ -436,7 +436,7 @@
       <pubDate>Mon, 16 Jul 2018 11:31:19 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/07/daning-parrot-on-terminal/</guid>
-      <description>用 curl 找一隻鸚鵡來跳舞 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
+      <description>用 curl 找一隻鸚鵡來跳舞 1 $ curl parrot.live 來源 curl 版: https://github.com/hugomd/parrot.live terminal 版: https://github.com/jmhobbs/terminal-parrot</description>
     </item>
     
     <item>
@@ -463,7 +463,7 @@
       <pubDate>Sat, 10 Feb 2018 22:24:57 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/02/set-sudo-on-debian/</guid>
-      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 # su - # apt install sudo 設定 sudoer # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個指令試</description>
+      <description>安裝好基本款的 debian 是沒有 sudo 指令可以使用的，需要自行安裝設定 安裝 sudo 切換到 root 安裝 1 2 # su - # apt install sudo 設定 sudoer 1 # usermod -aG sudo nyo 設定好之後，登入並用 sudo 隨意打個</description>
     </item>
     
     <item>
@@ -472,7 +472,7 @@
       <pubDate>Thu, 25 Jan 2018 16:11:13 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/try-tmux/</guid>
-      <description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6</description>
+      <description>被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac 1 $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e</description>
     </item>
     
     <item>
@@ -481,7 +481,7 @@
       <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
-      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
+      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac 1 2 $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian 1 $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 1 $ curl</description>
     </item>
     
     <item>
@@ -499,7 +499,7 @@
       <pubDate>Thu, 09 Nov 2017 13:24:42 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/11/copy-ssh-key-to-another-machine/</guid>
-      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i 指</description>
+      <description>發現了可以快速複製 key 到別台機器的好工具 可以不用再傻傻的 copy paste 了 產生 key 首先自己要有 ssh key 1 $ ssh-keygen 複製 key 到另一台遠端機器 快速複製的好工具是 ssh-copy-id 指令加上 -i</description>
     </item>
     
     <item>
@@ -508,7 +508,7 @@
       <pubDate>Thu, 12 Oct 2017 13:34:47 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/10/golang-test-all-testing-in-project/</guid>
-      <description>想要跑當前專案下的所有 test $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
+      <description>想要跑當前專案下的所有 test 1 $ go test ./... Reference How to go test all testings in my project? - Stack Overflow</description>
     </item>
     
     <item>
@@ -517,7 +517,7 @@
       <pubDate>Wed, 04 Oct 2017 18:11:31 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/10/swap-left-ctrl-and-capslock-to-save-your-finger/</guid>
-      <description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool $ sudo apt install gnome-tweak-tool 開啟 gnome-tweak-tool</description>
+      <description>身為 vi 跟 terminal 的主要使用者，Ctrl 是重要的夥伴 要提高 Ctrl 的地位，減輕左手小指的負擔 ps. 以前的鍵盤配置，Ctrl 在 a 的左邊 Ubuntu 16.04 安裝 gnome-tweak-tool 1 $ sudo apt install gnome-tweak-tool 開啟</description>
     </item>
     
     <item>
@@ -553,7 +553,7 @@
       <pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
-      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
+      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: 1 2 3 4 $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只</description>
     </item>
     
     <item>
@@ -562,7 +562,7 @@
       <pubDate>Mon, 20 Mar 2017 22:47:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-change-timezone/</guid>
-      <description>改變 Ubuntu 的時區，請使用以下指令 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal Time is now: Mon Mar 20</description>
+      <description>改變 Ubuntu 的時區，請使用以下指令 1 $ sudo dpkg-reconfigure tzdata 接著會跳出一個畫面讓你選時區，選好之後會看到以下資訊 1 2 3 4 5 $ sudo dpkg-reconfigure tzdata Current default time zone: &amp;#39;Asia/Taipei&amp;#39; Local time is now: Mon 20 Mar 22:32:45 CST 2017. Universal</description>
     </item>
     
     <item>
@@ -571,7 +571,7 @@
       <pubDate>Mon, 20 Mar 2017 22:40:37 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/ubuntu-setting-locale-failed/</guid>
-      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MONETARY = &amp;#34;en_GB.UTF-8&amp;#34;, LC_ADDRESS = &amp;#34;en_GB.UTF-8&amp;#34;, LC_TELEPHONE = &amp;#34;en_GB.UTF-8&amp;#34;, LC_NAME = &amp;#34;en_GB.UTF-8&amp;#34;, LC_MEASUREMENT = &amp;#34;en_GB.UTF-8&amp;#34;,</description>
+      <description>在 AWS 上新開的一台 EC2 主機，ssh 登入操作時跳出一些語系相關的警告訊息 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 perl: warning: Setting locale failed. perl: warning: Please check that your locale settings: LANGUAGE = (unset), LC_ALL = (unset), LC_TIME</description>
     </item>
     
     <item>
@@ -589,7 +589,7 @@
       <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
-      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g 1 :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的</description>
     </item>
     
     <item>
@@ -598,7 +598,7 @@
       <pubDate>Sat, 04 Mar 2017 15:46:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/linux-command-date/</guid>
-      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 $ date -d &amp;#39;yesterday&amp;#39;</description>
+      <description>今天要來和 linux 約會(誤 date 是用來看時間或是設定時間用的指令 不加任何的參數可以直接看目前的時間 1 2 $ date Sat 4 Mar 23:52:51 CST 2017 參數 -d STRING 輸出字串所描述的日期 1 2</description>
     </item>
     
     <item>

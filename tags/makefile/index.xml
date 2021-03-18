@@ -13,7 +13,7 @@
       <pubDate>Sun, 24 Jan 2021 02:48:08 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2021/01/makefile-phony-targets/</guid>
-      <description>Makefile Rule Makefile Rule 格式如下 target: prerequisites recipe target: 要產生的檔案名稱 prerequisites: 產生 target 所需要的檔案 recipe: 要執行的動作 這裡準備一個寫 golang 會用到的 Makefile 如下面: build: go build -o main main.go 執行 make build，M</description>
+      <description>Makefile Rule Makefile Rule 格式如下 1 2 target: prerequisites recipe target: 要產生的檔案名稱 prerequisites: 產生 target 所需要的檔案 recipe: 要執行的動作 這裡準備一個寫 golang 會用到的 Makefile 如下面: 1 2 build: go build -o main main.go 執行 make bui</description>
     </item>
     
   </channel>

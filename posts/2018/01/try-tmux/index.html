@@ -1,160 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Try Tmux | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="tmux" />
+<meta name="description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac 1 $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/01/try-tmux/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Try Tmux"/>
-<meta name="twitter:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6"/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="Try Tmux" />
-<meta property="og:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e VERSION=2.6" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Try Tmux" />
+<meta property="og:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac 1 $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/01/try-tmux/" />
 <meta property="article:published_time" content="2018-01-25T16:11:13+08:00" />
 <meta property="article:modified_time" content="2018-01-25T16:11:13+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Try Tmux"/>
+<meta name="twitter:description" content="被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac 1 $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e"/>
 
 
-    <title>
-  Try Tmux · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/01/try-tmux/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Try Tmux",
+      "item": "https://nyogjtrc.github.io/posts/2018/01/try-tmux/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Try Tmux",
+  "name": "Try Tmux",
+  "description": "被稱作 Linux 神器的工具 入門之後我也愛上它了，讓 terminal 變得非常的靈活 安裝 mac 1 $ brew install tmux ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的 參考別人寫好的腳本: …",
+  "keywords": [
+    "tmux"
+  ],
+  "articleBody": "被稱作 Linux 神器的工具\n入門之後我也愛上它了，讓 terminal 變得非常的靈活\n安裝 mac 1  $ brew install tmux   ubuntu / debian apt 上裝的可能會太舊，直接裝 github 上最新 release 的\n參考別人寫好的腳本: https://gist.github.com/P7h/91e14096374075f5316e\n1 2 3 4 5 6 7 8 9 10 11 12 13  VERSION=2.6 sudo apt -y remove tmux sudo apt -y install wget tar libevent-dev libncurses-dev wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz tar xf tmux-${VERSION}.tar.gz rm -f tmux-${VERSION}.tar.gz cd tmux-${VERSION} ./configure make sudo make install cd - sudo rm -rf /usr/local/src/tmux-* sudo mv tmux-${VERSION} /usr/local/src   tmux.conf 放上幾個我覺得實用的設定\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  set -g default-terminal \"screen-256color\" # enable mouse set -g mouse on # new prefix unbind-key C-b set -g prefix C-a bind-key C-a send-prefix #  + r | reloading config bind-key r source-file ~/.tmux.conf \\; display-message \"Yo~! .tmux.conf reloaded!\" bind-key \\ split-window -h -c '#{pane_current_path}' bind-key - split-window -v -c '#{pane_current_path}'   prefix 預設是 ctrl + b，不過上面的設定我改成 ctrl + a，目前使用是算順手\n也有人設定成 ctrl + q 之類的\nUsage 建立一個新的 session\n1  $ tmux   建立一個新的 session 並且設定名稱\n1  $ tmux new -s name   列出目前有的 session\n1  $ tmux ls   連回 session\n1  $ tmux a   Tmux 使用概念 畫面單位由大到小會是 session  window  pane\nsession: 一個整個 tmux 的畫面 window: 分頁 pane: 切割畫面\nshortcut 部分的 shortcut 筆記，之後再整理完整一點的\n1 2 3 4 5 6 7 8 9 10 11 12 13  c create new window n switch to next window p switch to previous window \\ split h - split v z zoom in/out current pane w list winodws s list sessions d dettach    Reference  https://github.com/tmux/tmux/wiki http://fideloper.com/mac-vim-tmux https://danielmiessler.com/study/tmux/ https://gist.github.com/MohamedAlaa/2961058 https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html  ",
+  "wordCount" : "399",
+  "inLanguage": "en",
+  "datePublished": "2018-01-25T16:11:13+08:00",
+  "dateModified": "2018-01-25T16:11:13+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2018/01/try-tmux/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Try Tmux</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2018-01-25T16:11:13&#43;08:00'>
-                January 25, 2018
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              One-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/tmux/">tmux</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <p>被稱作 Linux 神器的工具</p>
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      Try Tmux
+    </h1>
+    <div class="post-meta">
+
+January 25, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#%e5%ae%89%e8%a3%9d" aria-label="安裝">安裝</a><ul>
+            <li>
+        <a href="#mac" aria-label="mac">mac</a></li><li>
+        <a href="#ubuntu--debian" aria-label="ubuntu / debian">ubuntu / debian</a></li></ul>
+    </li><li>
+        <a href="#tmuxconf" aria-label="tmux.conf">tmux.conf</a><ul>
+            <li>
+        <a href="#prefix" aria-label="prefix">prefix</a></li></ul>
+    </li><li>
+        <a href="#usage" aria-label="Usage">Usage</a></li><li>
+        <a href="#tmux-%e4%bd%bf%e7%94%a8%e6%a6%82%e5%bf%b5" aria-label="Tmux 使用概念">Tmux 使用概念</a></li><li>
+        <a href="#shortcut" aria-label="shortcut">shortcut</a><ul>
+            <li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>被稱作 Linux 神器的工具</p>
 <p>入門之後我也愛上它了，讓 terminal 變得非常的靈活</p>
-<h2 id="安裝">安裝</h2>
-<h3 id="mac">mac</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew install tmux
-</code></pre></div><h3 id="ubuntu--debian">ubuntu / debian</h3>
+<h2 id="安裝">安裝<a hidden class="anchor" aria-hidden="true" href="#安裝">#</a></h2>
+<h3 id="mac">mac<a hidden class="anchor" aria-hidden="true" href="#mac">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew install tmux
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="ubuntu--debian">ubuntu / debian<a hidden class="anchor" aria-hidden="true" href="#ubuntu--debian">#</a></h3>
 <p>apt 上裝的可能會太舊，直接裝 github 上最新 release 的</p>
 <p>參考別人寫好的腳本: <a href="https://gist.github.com/P7h/91e14096374075f5316e">https://gist.github.com/P7h/91e14096374075f5316e</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">VERSION=2.6
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">VERSION=2.6
 sudo apt -y remove tmux
 sudo apt -y install wget tar libevent-dev libncurses-dev
 wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
@@ -167,9 +273,31 @@ sudo make install
 cd -
 sudo rm -rf /usr/local/src/tmux-*
 sudo mv tmux-${VERSION} /usr/local/src
-</code></pre></div><h2 id="tmuxconf">tmux.conf</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="tmuxconf">tmux.conf<a hidden class="anchor" aria-hidden="true" href="#tmuxconf">#</a></h2>
 <p>放上幾個我覺得實用的設定</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">set -g default-terminal &#34;screen-256color&#34;
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">set -g default-terminal &#34;screen-256color&#34;
 
 # enable mouse
 set -g mouse on
@@ -185,26 +313,73 @@ bind-key r source-file ~/.tmux.conf \; display-message &#34;Yo~! .tmux.conf relo
 
 bind-key \ split-window -h -c &#39;#{pane_current_path}&#39;
 bind-key - split-window -v -c &#39;#{pane_current_path}&#39;
-</code></pre></div><h3 id="prefix">prefix</h3>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="prefix">prefix<a hidden class="anchor" aria-hidden="true" href="#prefix">#</a></h3>
 <p>預設是 ctrl + b，不過上面的設定我改成 ctrl + a，目前使用是算順手<br>
 也有人設定成 ctrl + q 之類的</p>
-<h2 id="usage">Usage</h2>
+<h2 id="usage">Usage<a hidden class="anchor" aria-hidden="true" href="#usage">#</a></h2>
 <p>建立一個新的 session</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux
-</code></pre></div><p>建立一個新的 session 並且設定名稱</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux new -s name
-</code></pre></div><p>列出目前有的 session</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux ls
-</code></pre></div><p>連回 session</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux a
-</code></pre></div><h2 id="tmux-使用概念">Tmux 使用概念</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux
+</code></pre></td></tr></table>
+</div>
+</div><p>建立一個新的 session 並且設定名稱</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux new -s name
+</code></pre></td></tr></table>
+</div>
+</div><p>列出目前有的 session</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux ls
+</code></pre></td></tr></table>
+</div>
+</div><p>連回 session</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ tmux a
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="tmux-使用概念">Tmux 使用概念<a hidden class="anchor" aria-hidden="true" href="#tmux-使用概念">#</a></h2>
 <p>畫面單位由大到小會是 session &gt; window &gt; pane</p>
 <p>session: 一個整個 tmux 的畫面
 window: 分頁
 pane: 切割畫面</p>
-<h2 id="shortcut">shortcut</h2>
+<h2 id="shortcut">shortcut<a hidden class="anchor" aria-hidden="true" href="#shortcut">#</a></h2>
 <p>部分的 shortcut 筆記，之後再整理完整一點的</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">c create new window
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">c create new window
 n switch to next window
 p switch to previous window
 
@@ -217,8 +392,10 @@ w list winodws
 s list sessions
 
 d dettach
-</code></pre></div><hr>
-<h3 id="reference">Reference</h3>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="https://github.com/tmux/tmux/wiki">https://github.com/tmux/tmux/wiki</a></li>
 <li><a href="http://fideloper.com/mac-vim-tmux">http://fideloper.com/mac-vim-tmux</a></li>
@@ -227,72 +404,93 @@ d dettach
 <li><a href="https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html">https://www.unwiredcouch.com/2013/11/15/my-tmux-setup.html</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/tmux/">tmux</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

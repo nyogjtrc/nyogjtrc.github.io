@@ -22,7 +22,7 @@
       <pubDate>Sun, 24 Nov 2019 20:35:27 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/11/setup-vim-for-python-development/</guid>
-      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 $ pip install jedi vimrc 使用 Plug</description>
+      <description>最近有機會寫一下 Python 就順便來改造一下 vim Autocompletion https://github.com/davidhalter/jedi https://github.com/deoplete-plugins/deoplete-jedi jedi 這個 library 提供編輯器對 python 程式碼的 autocompletion 跟 goto 的功能 我的 vim 是使用 deoplete 這套 autocompletion 工具，則是使用 deoplete-jedi 安裝 1 $ pip install jedi vimrc 使用</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@
       <pubDate>Tue, 23 Jan 2018 22:45:54 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2018/01/try-spf13-vim/</guid>
-      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 $ curl http://j.mp/spf13-vim3 -L -o -</description>
+      <description>使用目前最強大的 vim 套件包 spf13-vim 安裝 vim 需要支援 lua 版本的 vim mac 1 2 $ brew install macvim --with-cscope --with-lua --override-system-vim $ brew install ctags debian 1 $ sudo apt install vim vim-gnome vim-doc ctags windows 我不知道 安裝 spf13-vim 有一鍵無腦安裝的指令 1 $ curl</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@
       <pubDate>Sun, 12 Mar 2017 04:56:43 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/vim-global-command-g/</guid>
-      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的每</description>
+      <description>最近在使用 vim 處理文字時，想要刪掉特定的幾行，試了幾個方法後，發現一個好像很方便的 :g 指令 global command :g 1 :[range]g/pattern/cmd 針對特別的 range (預設是整個檔案)，找出符合 pattern 的</description>
     </item>
     
   </channel>

@@ -1,156 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Git Pull Warning and Foxtrot Merge | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="最近把 git 升級到 2.27 版 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy)">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="git" />
+<meta name="description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Git Pull Warning and Foxtrot Merge"/>
-<meta name="twitter:description" content="最近把 git 升級到 2.27 版 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy)"/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="Git Pull Warning and Foxtrot Merge" />
-<meta property="og:description" content="最近把 git 升級到 2.27 版 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy)" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Git Pull Warning and Foxtrot Merge" />
+<meta property="og:description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/" />
 <meta property="article:published_time" content="2020-12-01T02:25:33+08:00" />
 <meta property="article:modified_time" content="2020-12-01T02:25:33+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git Pull Warning and Foxtrot Merge"/>
+<meta name="twitter:description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following"/>
 
 
-    <title>
-  Git Pull Warning and Foxtrot Merge · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Git Pull Warning and Foxtrot Merge",
+      "item": "https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git Pull Warning and Foxtrot Merge",
+  "name": "Git Pull Warning and Foxtrot Merge",
+  "description": "最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile …",
+  "keywords": [
+    "git"
+  ],
+  "articleBody": "最近把 git 升級到 2.27 版\n1 2  $ git version git version 2.27.0   執行 git pull 指令時，會跳出一篇警告\n1 2 3 4 5 6 7 8 9 10 11 12 13  $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following commands sometime before your next pull: git config pull.rebase false # merge (the default strategy) git config pull.rebase true # rebase git config pull.ff only # fast-forward only You can replace \"git config\" with \"git config --global\" to set a default preference for all repositories. You can also pass --rebase, --no-rebase, or --ff-only on the command line to override the configured default per invocation.   大致上是要你決定在 pull 遇到分支衝突的處理方式。\n先說結論 強烈建議 pull 行為設定成 fast-forward only，這樣的設定可以減少不必要的記錄錯亂以及糟糕的 git 使用體驗。\n設定指令如下:\n1  $ git config --global pull.ff only   預設方式: merge git 裡栽預設的行為是 merge。以下舉列一個情境說明\n一開始的 master 在 B commit， 當 local 增加了一些 commit (E, F, G)， remote 的 master 也增加一些 commit (C, D)， 這時兩邊的 master 就長得不一樣。\n1 2 3 4 5  E---F---G master / A---B---C---D origin/master ^ old master   為了更新 Repository 的資料進行後續的工作， 這時候你執行 git pull， pull 指令會把 origin/master 合併到 master 上，產生一個 merge commit H。\n1 2 3  E---F---G---H master / / A---B---C-------D origin/master   這時候你可能還沒有發現有什麼問題，最後把 master 推到 remote， 執行 git push，這時 Repository 的記錄會變成以下情況\n1 2 3  C-----------D / \\ A---B---E---F---G---H master, origin/master   發生了什麼事? 這邊的操作產生了 Foxtrot Merge\nFoxtrot Merge 的問題  改變 origin/master 的 first parent 記錄 上面的例子中，原本應該是 origin/master 的主要 commit C 跟 D 變成從其他分支合併進來的 commit 這樣的變化會使你在回顧歷史記錄時很錯亂，有一種 commit 被亂改的感覺  這個變化會影響:\n 使用波浪符號 (ex. HEAD~) 對應的 commit 要 revert merge commit 時，要選擇的 parent number git log –graph 的排列 git log –first-parent 顯示的 commit  fast forward only 方式 同樣的情況下使用 fast forward only 的方式會收到一個錯誤\n1 2  $ git pull --ff-only fatal: Not possible to fast-forward, aborting.   接下來依照情況不同選擇處理方式，可能會是:\n 把 local 增加的 commit rebase 到 origin/master 先 reset merge commit，重新 pull master，再執行原本的 merge 動作  結論  如果你不是 Repository 的維護者，你可能比較不會遇到這樣的事情 如果你完全沒在看記錄的話當然是沒差，最終的程式碼都會是一樣的 在使用一些 git 指令出來的結果會有差異 當你在看這一些歷史記錄時會錯亂，分不清上一個 commit 到底是哪一個  Reference  https://www.reddit.com/r/git/comments/h7kv0y/git_2270_starts_yelling_during_pull/ https://blog.developer.atlassian.com/stop-foxtrots-now/ https://blog.sffc.xyz/post/185195398930/why-you-should-use-git-pull-ff-only-git-is-a https://stackoverflow.com/questions/57090638/foxtrot-merge-how-to-solve-it  ",
+  "wordCount" : "775",
+  "inLanguage": "en",
+  "datePublished": "2020-12-01T02:25:33+08:00",
+  "dateModified": "2020-12-01T02:25:33+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Git Pull Warning and Foxtrot Merge</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2020-12-01T02:25:33&#43;08:00'>
-                December 1, 2020
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              2-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/git/">git</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <p>最近把 git 升級到 2.27 版</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git version
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      Git Pull Warning and Foxtrot Merge
+    </h1>
+    <div class="post-meta">
+
+December 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#%e5%85%88%e8%aa%aa%e7%b5%90%e8%ab%96" aria-label="先說結論">先說結論</a></li><li>
+        <a href="#%e9%a0%90%e8%a8%ad%e6%96%b9%e5%bc%8f-merge" aria-label="預設方式: merge">預設方式: merge</a></li><li>
+        <a href="#foxtrot-merge-%e7%9a%84%e5%95%8f%e9%a1%8c" aria-label="Foxtrot Merge 的問題">Foxtrot Merge 的問題</a></li><li>
+        <a href="#fast-forward-only-%e6%96%b9%e5%bc%8f" aria-label="fast forward only 方式">fast forward only 方式</a></li><li>
+        <a href="#%e7%b5%90%e8%ab%96" aria-label="結論">結論</a><ul>
+            <li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>最近把 git 升級到 2.27 版</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git version
 git version 2.27.0
-</code></pre></div><p>執行 git pull 指令時，會跳出一篇警告</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git pull
+</code></pre></td></tr></table>
+</div>
+</div><p>執行 git pull 指令時，會跳出一篇警告</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git pull
 warning: Pulling without specifying how to reconcile divergent branches is
 discouraged. You can squelch this message by running one of the following
 commands sometime before your next pull:
@@ -163,35 +263,73 @@ You can replace <span style="color:#f1fa8c">&#34;git config&#34;</span> with <sp
 preference <span style="color:#ff79c6">for</span> all repositories. You can also pass --rebase, --no-rebase,
 or --ff-only on the <span style="color:#8be9fd;font-style:italic">command</span> line to override the configured default per
 invocation.
-</code></pre></div><p>大致上是要你決定在 pull 遇到分支衝突的處理方式。</p>
-<h2 id="先說結論">先說結論</h2>
+</code></pre></td></tr></table>
+</div>
+</div><p>大致上是要你決定在 pull 遇到分支衝突的處理方式。</p>
+<h2 id="先說結論">先說結論<a hidden class="anchor" aria-hidden="true" href="#先說結論">#</a></h2>
 <p>強烈建議 pull 行為設定成 <code>fast-forward only</code>，這樣的設定可以減少不必要的記錄錯亂以及糟糕的 git 使用體驗。</p>
 <p>設定指令如下:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git config --global pull.ff only
-</code></pre></div><h2 id="預設方式-merge">預設方式: merge</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ git config --global pull.ff only
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="預設方式-merge">預設方式: merge<a hidden class="anchor" aria-hidden="true" href="#預設方式-merge">#</a></h2>
 <p>git 裡栽預設的行為是 merge。以下舉列一個情境說明</p>
 <p>一開始的 master 在 B commit，
 當 local 增加了一些 commit (E, F, G)，
 remote 的 master 也增加一些 commit (C, D)，
 這時兩邊的 master 就長得不一樣。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      E---F---G master
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      E---F---G master
      /
 A---B---C---D origin/master
     ^
     old master
-</code></pre></div><p>為了更新 Repository 的資料進行後續的工作，
+</code></pre></td></tr></table>
+</div>
+</div><p>為了更新 Repository 的資料進行後續的工作，
 這時候你執行 git pull，
 pull 指令會把 origin/master 合併到 master 上，產生一個 merge commit H。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      E---F---G---H master
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      E---F---G---H master
      /           /
 A---B---C-------D origin/master
-</code></pre></div><p>這時候你可能還沒有發現有什麼問題，最後把 master 推到 remote，
+</code></pre></td></tr></table>
+</div>
+</div><p>這時候你可能還沒有發現有什麼問題，最後把 master 推到 remote，
 執行 <code>git push</code>，這時 Repository 的記錄會變成以下情況</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      C-----------D
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">      C-----------D
      /             \
 A---B---E---F---G---H master, origin/master
-</code></pre></div><p>發生了什麼事? 這邊的操作產生了 <code>Foxtrot Merge</code></p>
-<h2 id="foxtrot-merge-的問題">Foxtrot Merge 的問題</h2>
+</code></pre></td></tr></table>
+</div>
+</div><p>發生了什麼事? 這邊的操作產生了 <code>Foxtrot Merge</code></p>
+<h2 id="foxtrot-merge-的問題">Foxtrot Merge 的問題<a hidden class="anchor" aria-hidden="true" href="#foxtrot-merge-的問題">#</a></h2>
 <ul>
 <li>改變 origin/master 的 first parent 記錄</li>
 <li>上面的例子中，原本應該是 origin/master 的主要 commit C 跟 D 變成從其他分支合併進來的 commit</li>
@@ -204,23 +342,31 @@ A---B---E---F---G---H master, origin/master
 <li>git log &ndash;graph 的排列</li>
 <li>git log &ndash;first-parent 顯示的 commit</li>
 </ul>
-<h2 id="fast-forward-only-方式">fast forward only 方式</h2>
+<h2 id="fast-forward-only-方式">fast forward only 方式<a hidden class="anchor" aria-hidden="true" href="#fast-forward-only-方式">#</a></h2>
 <p>同樣的情況下使用 fast forward only 的方式會收到一個錯誤</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git pull --ff-only
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git pull --ff-only
 fatal: Not possible to fast-forward, aborting.
-</code></pre></div><p>接下來依照情況不同選擇處理方式，可能會是:</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下來依照情況不同選擇處理方式，可能會是:</p>
 <ul>
 <li>把 local 增加的 commit rebase 到 origin/master</li>
 <li>先 reset merge commit，重新 pull master，再執行原本的 merge 動作</li>
 </ul>
-<h2 id="結論">結論</h2>
+<h2 id="結論">結論<a hidden class="anchor" aria-hidden="true" href="#結論">#</a></h2>
 <ul>
 <li>如果你不是 Repository 的維護者，你可能比較不會遇到這樣的事情</li>
 <li>如果你完全沒在看記錄的話當然是沒差，最終的程式碼都會是一樣的</li>
 <li>在使用一些 git 指令出來的結果會有差異</li>
 <li>當你在看這一些歷史記錄時會錯亂，分不清上一個 commit 到底是哪一個</li>
 </ul>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="https://www.reddit.com/r/git/comments/h7kv0y/git_2270_starts_yelling_during_pull/">https://www.reddit.com/r/git/comments/h7kv0y/git_2270_starts_yelling_during_pull/</a></li>
 <li><a href="https://blog.developer.atlassian.com/stop-foxtrots-now/">https://blog.developer.atlassian.com/stop-foxtrots-now/</a></li>
@@ -228,72 +374,93 @@ fatal: Not possible to fast-forward, aborting.
 <li><a href="https://stackoverflow.com/questions/57090638/foxtrot-merge-how-to-solve-it">https://stackoverflow.com/questions/57090638/foxtrot-merge-how-to-solve-it</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/git/">git</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

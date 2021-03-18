@@ -13,7 +13,7 @@
       <pubDate>Fri, 26 Feb 2021 23:27:39 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/</guid>
-      <description>IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導的零</description>
+      <description>IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 1 2 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導</description>
     </item>
     
   </channel>

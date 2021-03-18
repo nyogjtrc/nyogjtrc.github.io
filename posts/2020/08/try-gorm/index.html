@@ -1,152 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>試用 GORM | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="go" />
+<meta name="description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/08/try-gorm/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="試用 GORM"/>
-<meta name="twitter:description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點："/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="試用 GORM" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="試用 GORM" />
 <meta property="og:description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/08/try-gorm/" />
 <meta property="article:published_time" content="2020-08-05T00:39:46+08:00" />
 <meta property="article:modified_time" content="2020-08-05T00:39:46+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="試用 GORM"/>
+<meta name="twitter:description" content="ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點："/>
 
 
-    <title>
-  試用 GORM · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/08/try-gorm/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "試用 GORM",
+      "item": "https://nyogjtrc.github.io/posts/2020/08/try-gorm/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "試用 GORM",
+  "name": "試用 GORM",
+  "description": "ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式 使用上常見優點： 快速開發 較高的安全性 也是有相對的缺點：",
+  "keywords": [
+    "go"
+  ],
+  "articleBody": "ORM (Object Relational Mapping) ORM 是一種把 資料庫 對應到 程式物件 的技術，可以讓開發者更快速的開發處理資料庫的程式\n使用上常見優點：\n 快速開發 較高的安全性  也是有相對的缺點：\n 犧牲效能 額外的學習成本 難以處理複雜查詢  這次看在優點上，小試了一下 Go 裡面的 ORM 工具\nGORM GORM 是 Go 裡面熱門的 ORM 套件之一\nps. 我練習的程式碼在此 https://github.com/nyogjtrc/practice-go/tree/master/using-gorm\n定義資料表結構 我們要建立一個 Product 的 table 如下\n1 2 3 4 5 6 7 8  // Product _ type Product struct { ID uint `gorm:\"primary_key\"` Code string `gorm:\"not null;unique_index\"` Price uint CreatedAt time.Time UpdatedAt time.Time }    struct 的 field 會直接對應到 table 欄位 有需要微調結構的話，可以透過 gorm 這個 tag 定義  例如要建立 unique index 的話，就加上 unique_index    Migrate GORM 有一套 Migrate 工具\n如果要寫測試的話 AutoMigrate() 是個簡單的工具，不過官方有提醒這個 function 不適合用在 Production 上\n1 2 3 4 5  // Migrate the schema db.AutoMigrate(\u0026Product{}) // Drop table db.DropTable(Product{})   CRUD Create 1 2 3 4 5 6 7 8 9 10  // Create err = db.Create(\u0026Product{Code: \"L1212\", Price: 1000}).Error if err != nil { panic(err) } err = db.Create(\u0026Product{Code: \"L1234\", Price: 1234}).Error if err != nil { panic(err) }   Read 查詢有 First(), Find() 等等的方法，也有跟 SQL 一樣用法的 Where()\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  // Read var products []Product var product Product // find product with id 1 if err := db.Find(\u0026products).Error; err != nil { fmt.Println(\"error\", err) } fmt.Println(products) // find product with code l1212 if err := db.Where(\"code = ?\", \"L1212\").First(\u0026product).Error; err != nil { panic(err) } fmt.Println(\"product\", product)   Update 1 2 3  // Update - update product's price to 2000 db.Model(\u0026product).Update(\"Price\", 2000) fmt.Println(\"product\", product)   Delete 1 2 3 4 5  // Delete - delete product err = db.Debug().Delete(Product{}).Error if err != nil { panic(err) }   如果需要查看 GORM 實際執行的 SQL，可以使用 Debug() 方法\nDebug() 會把 SQL 資訊輸出到 terminal 上\n1 2  [2020-08-05 00:26:18] [3.83ms] DELETE FROM `products` [2 rows affected or returned ]   Reference  http://gorm.io/docs/  ",
+  "wordCount" : "496",
+  "inLanguage": "en",
+  "datePublished": "2020-08-05T00:39:46+08:00",
+  "dateModified": "2020-08-05T00:39:46+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2020/08/try-gorm/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">試用 GORM</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2020-08-05T00:39:46&#43;08:00'>
-                August 5, 2020
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              One-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/go/">go</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <h2 id="orm-object-relational-mapping">ORM (Object Relational Mapping)</h2>
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      試用 GORM
+    </h1>
+    <div class="post-meta">
+
+August 5, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#orm-object-relational-mapping" aria-label="ORM (Object Relational Mapping)">ORM (Object Relational Mapping)</a></li><li>
+        <a href="#gorm" aria-label="GORM">GORM</a></li><li>
+        <a href="#%e5%ae%9a%e7%be%a9%e8%b3%87%e6%96%99%e8%a1%a8%e7%b5%90%e6%a7%8b" aria-label="定義資料表結構">定義資料表結構</a></li><li>
+        <a href="#migrate" aria-label="Migrate">Migrate</a></li><li>
+        <a href="#crud" aria-label="CRUD">CRUD</a><ul>
+            <li>
+        <a href="#create" aria-label="Create">Create</a></li><li>
+        <a href="#read" aria-label="Read">Read</a></li><li>
+        <a href="#update" aria-label="Update">Update</a></li><li>
+        <a href="#delete" aria-label="Delete">Delete</a></li><li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<h2 id="orm-object-relational-mapping">ORM (Object Relational Mapping)<a hidden class="anchor" aria-hidden="true" href="#orm-object-relational-mapping">#</a></h2>
 <p>ORM 是一種把 <strong>資料庫</strong> 對應到 <strong>程式物件</strong> 的技術，可以讓開發者更快速的開發處理資料庫的程式</p>
 <p>使用上常見優點：</p>
 <ul>
@@ -160,12 +239,24 @@
 <li>難以處理複雜查詢</li>
 </ul>
 <p>這次看在優點上，小試了一下 Go 裡面的 ORM 工具</p>
-<h2 id="gorm">GORM</h2>
+<h2 id="gorm">GORM<a hidden class="anchor" aria-hidden="true" href="#gorm">#</a></h2>
 <p>GORM 是 Go 裡面熱門的 ORM 套件之一</p>
 <p>ps. 我練習的程式碼在此 <a href="https://github.com/nyogjtrc/practice-go/tree/master/using-gorm">https://github.com/nyogjtrc/practice-go/tree/master/using-gorm</a></p>
-<h2 id="定義資料表結構">定義資料表結構</h2>
+<h2 id="定義資料表結構">定義資料表結構<a hidden class="anchor" aria-hidden="true" href="#定義資料表結構">#</a></h2>
 <p>我們要建立一個 Product 的 table 如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Product _
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Product _
 </span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">type</span> Product <span style="color:#8be9fd;font-style:italic">struct</span> {
 	ID        <span style="color:#8be9fd">uint</span>   <span style="color:#f1fa8c">`gorm:&#34;primary_key&#34;`</span>
 	Code      <span style="color:#8be9fd">string</span> <span style="color:#f1fa8c">`gorm:&#34;not null;unique_index&#34;`</span>
@@ -173,7 +264,9 @@
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
-</code></pre></div><ul>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>struct 的 field 會直接對應到 table 欄位</li>
 <li>有需要微調結構的話，可以透過 <strong>gorm</strong> 這個 tag 定義
 <ul>
@@ -181,17 +274,42 @@
 </ul>
 </li>
 </ul>
-<h2 id="migrate">Migrate</h2>
+<h2 id="migrate">Migrate<a hidden class="anchor" aria-hidden="true" href="#migrate">#</a></h2>
 <p>GORM 有一套 Migrate 工具</p>
 <p>如果要寫測試的話 AutoMigrate() 是個簡單的工具，不過官方有提醒這個 function 不適合用在 Production 上</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Migrate the schema
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Migrate the schema
 </span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">AutoMigrate</span>(<span style="color:#ff79c6">&amp;</span>Product{})
 
 <span style="color:#6272a4">// Drop table
 </span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">DropTable</span>(Product{})
-</code></pre></div><h2 id="crud">CRUD</h2>
-<h3 id="create">Create</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Create
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="crud">CRUD<a hidden class="anchor" aria-hidden="true" href="#crud">#</a></h2>
+<h3 id="create">Create<a hidden class="anchor" aria-hidden="true" href="#create">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Create
 </span><span style="color:#6272a4"></span>err = db.<span style="color:#50fa7b">Create</span>(<span style="color:#ff79c6">&amp;</span>Product{Code: <span style="color:#f1fa8c">&#34;L1212&#34;</span>, Price: <span style="color:#bd93f9">1000</span>}).Error
 <span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
 	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
@@ -201,9 +319,31 @@ err = db.<span style="color:#50fa7b">Create</span>(<span style="color:#ff79c6">&
 <span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
 	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
 }
-</code></pre></div><h3 id="read">Read</h3>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="read">Read<a hidden class="anchor" aria-hidden="true" href="#read">#</a></h3>
 <p>查詢有 First(), Find() 等等的方法，也有跟 SQL 一樣用法的 Where()</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Read
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Read
 </span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> products []Product
 <span style="color:#8be9fd;font-style:italic">var</span> product Product
 
@@ -219,91 +359,142 @@ fmt.<span style="color:#50fa7b">Println</span>(products)
 }
 
 fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;product&#34;</span>, product)
-</code></pre></div><h3 id="update">Update</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Update - update product&#39;s price to 2000
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="update">Update<a hidden class="anchor" aria-hidden="true" href="#update">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Update - update product&#39;s price to 2000
 </span><span style="color:#6272a4"></span>db.<span style="color:#50fa7b">Model</span>(<span style="color:#ff79c6">&amp;</span>product).<span style="color:#50fa7b">Update</span>(<span style="color:#f1fa8c">&#34;Price&#34;</span>, <span style="color:#bd93f9">2000</span>)
 fmt.<span style="color:#50fa7b">Println</span>(<span style="color:#f1fa8c">&#34;product&#34;</span>, product)
-</code></pre></div><h3 id="delete">Delete</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Delete - delete product
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="delete">Delete<a hidden class="anchor" aria-hidden="true" href="#delete">#</a></h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#6272a4">// Delete - delete product
 </span><span style="color:#6272a4"></span>err = db.<span style="color:#50fa7b">Debug</span>().<span style="color:#50fa7b">Delete</span>(Product{}).Error
 <span style="color:#ff79c6">if</span> err <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nil</span> {
 	<span style="color:#8be9fd;font-style:italic">panic</span>(err)
 }
-</code></pre></div><p>如果需要查看 GORM 實際執行的 SQL，可以使用 Debug() 方法</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果需要查看 GORM 實際執行的 SQL，可以使用 Debug() 方法</p>
 <p>Debug() 會把 SQL 資訊輸出到 terminal 上</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[2020-08-05 00:26:18]  [3.83ms]  DELETE FROM `products`
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[2020-08-05 00:26:18]  [3.83ms]  DELETE FROM `products`
 [2 rows affected or returned ]
-</code></pre></div><h3 id="reference">Reference</h3>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="http://gorm.io/docs/">http://gorm.io/docs/</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/go/">go</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

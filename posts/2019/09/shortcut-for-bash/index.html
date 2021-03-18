@@ -1,162 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Bash 常用快捷鍵 | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl&#43;C: 中斷正在執行的程式 Ctrl&#43;D: 結束 shell (同 exit) Ctrl&#43;Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl&#43;X Ctrl&#43;E: 使用 vim 編輯">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="terminal, bash" />
+<meta name="description" content="記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl&#43;C: 中斷正在執行的程式 Ctrl&#43;D: 結束 shell (同 exit) Ctrl&#43;Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl&#43;X Ctrl&#43;E: 使用 vim 編輯">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Bash 常用快捷鍵"/>
-<meta name="twitter:description" content="記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl&#43;C: 中斷正在執行的程式 Ctrl&#43;D: 結束 shell (同 exit) Ctrl&#43;Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl&#43;X Ctrl&#43;E: 使用 vim 編輯"/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="Bash 常用快捷鍵" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="Bash 常用快捷鍵" />
 <meta property="og:description" content="記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl&#43;C: 中斷正在執行的程式 Ctrl&#43;D: 結束 shell (同 exit) Ctrl&#43;Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl&#43;X Ctrl&#43;E: 使用 vim 編輯" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/" />
 <meta property="article:published_time" content="2019-09-15T13:15:40+08:00" />
 <meta property="article:modified_time" content="2019-09-15T13:15:40+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bash 常用快捷鍵"/>
+<meta name="twitter:description" content="記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl&#43;C: 中斷正在執行的程式 Ctrl&#43;D: 結束 shell (同 exit) Ctrl&#43;Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl&#43;X Ctrl&#43;E: 使用 vim 編輯"/>
 
 
-    <title>
-  Bash 常用快捷鍵 · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Bash 常用快捷鍵",
+      "item": "https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bash 常用快捷鍵",
+  "name": "Bash 常用快捷鍵",
+  "description": "記錄一些比較常用/實用(可能)的快捷鍵 控制 Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯",
+  "keywords": [
+    "terminal", "bash"
+  ],
+  "articleBody": "記錄一些比較常用/實用(可能)的快捷鍵\n控制  Ctrl+C: 中斷正在執行的程式 Ctrl+D: 結束 shell (同 exit) Ctrl+Z: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來) Ctrl+X Ctrl+E: 使用 vim 編輯 script 並一次執行  移動  Ctrl+A: 到此行最前面 (同 Home 鍵) Ctrl+E: 到此行最後面 (同 End 鍵) Alt+B: 前進一個字元 Alt+F: 後退一個字元 Ctrl+B: 前進一格 Ctrl+F: 後退一格  刪除  Ctrl+H: 移除前一個字元 (同 Backspace 鍵) Ctrl+D: 移除後一個字元 (同 Delete 鍵) Ctrl+U: 移除游標之前的所有文字 Ctrl+K: 移除游標之後的所有文字  歷史指令  Ctrl+P: 上一個指令 Ctrl+N: 下一個指令 Ctrl+R: 搜尋指令 Ctrl+R: 上一個 Ctrl+Shift+R: 下一個 Ctrl+G: 取消搜尋  畫面  Ctrl+L: 清空畫面 (同 clear) Ctrl+S: 凍結畫面輸出 Ctrl+Q: 回復畫面輸出   Reference  Bash Shell 快速鍵 | Tsung’s Blog Shortcuts to move faster in Bash command line - teohm.dev The Best Keyboard Shortcuts for Bash  ",
+  "wordCount" : "261",
+  "inLanguage": "en",
+  "datePublished": "2019-09-15T13:15:40+08:00",
+  "dateModified": "2019-09-15T13:15:40+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2019/09/shortcut-for-bash/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Bash 常用快捷鍵</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2019-09-15T13:15:40&#43;08:00'>
-                September 15, 2019
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              One-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/terminal/">terminal</a>
-      <span class="separator">•</span>
-    <a href="https://nyogjtrc.github.io/tags/bash/">bash</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <p>記錄一些比較常用/實用(可能)的快捷鍵</p>
-<h2 id="控制">控制</h2>
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      Bash 常用快捷鍵
+    </h1>
+    <div class="post-meta">
+
+September 15, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#%e6%8e%a7%e5%88%b6" aria-label="控制">控制</a></li><li>
+        <a href="#%e7%a7%bb%e5%8b%95" aria-label="移動">移動</a></li><li>
+        <a href="#%e5%88%aa%e9%99%a4" aria-label="刪除">刪除</a></li><li>
+        <a href="#%e6%ad%b7%e5%8f%b2%e6%8c%87%e4%bb%a4" aria-label="歷史指令">歷史指令</a></li><li>
+        <a href="#%e7%95%ab%e9%9d%a2" aria-label="畫面">畫面</a><ul>
+            <li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>記錄一些比較常用/實用(可能)的快捷鍵</p>
+<h2 id="控制">控制<a hidden class="anchor" aria-hidden="true" href="#控制">#</a></h2>
 <ul>
 <li><strong>Ctrl+C</strong>: 中斷正在執行的程式</li>
 <li><strong>Ctrl+D</strong>: 結束 shell (同 exit)</li>
 <li><strong>Ctrl+Z</strong>: 暫停正在執行的程式，放入背景 (使用 fg 可以叫回來)</li>
 <li><strong>Ctrl+X Ctrl+E</strong>: 使用 vim 編輯 script 並一次執行</li>
 </ul>
-<h2 id="移動">移動</h2>
+<h2 id="移動">移動<a hidden class="anchor" aria-hidden="true" href="#移動">#</a></h2>
 <ul>
 <li><strong>Ctrl+A</strong>: 到此行最前面 (同 Home 鍵)</li>
 <li><strong>Ctrl+E</strong>: 到此行最後面 (同 End 鍵)</li>
@@ -165,14 +238,14 @@
 <li><strong>Ctrl+B</strong>: 前進一格</li>
 <li><strong>Ctrl+F</strong>: 後退一格</li>
 </ul>
-<h2 id="刪除">刪除</h2>
+<h2 id="刪除">刪除<a hidden class="anchor" aria-hidden="true" href="#刪除">#</a></h2>
 <ul>
 <li><strong>Ctrl+H</strong>: 移除前一個字元 (同 Backspace 鍵)</li>
 <li><strong>Ctrl+D</strong>: 移除後一個字元 (同 Delete 鍵)</li>
 <li><strong>Ctrl+U</strong>: 移除游標之前的所有文字</li>
 <li><strong>Ctrl+K</strong>: 移除游標之後的所有文字</li>
 </ul>
-<h2 id="歷史指令">歷史指令</h2>
+<h2 id="歷史指令">歷史指令<a hidden class="anchor" aria-hidden="true" href="#歷史指令">#</a></h2>
 <ul>
 <li><strong>Ctrl+P</strong>: 上一個指令</li>
 <li><strong>Ctrl+N</strong>: 下一個指令</li>
@@ -181,86 +254,108 @@
 <li><strong>Ctrl+Shift+R</strong>: 下一個</li>
 <li><strong>Ctrl+G</strong>: 取消搜尋</li>
 </ul>
-<h2 id="畫面">畫面</h2>
+<h2 id="畫面">畫面<a hidden class="anchor" aria-hidden="true" href="#畫面">#</a></h2>
 <ul>
 <li><strong>Ctrl+L</strong>: 清空畫面 (同 clear)</li>
 <li><strong>Ctrl+S</strong>: 凍結畫面輸出</li>
 <li><strong>Ctrl+Q</strong>: 回復畫面輸出</li>
 </ul>
 <hr>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="https://blog.longwin.com.tw/2006/09/bash_hot_key_2006/">Bash Shell 快速鍵 | Tsung&rsquo;s Blog</a></li>
 <li><a href="http://teohm.github.io/blog/2012/01/04/shortcuts-to-move-faster-in-bash-command-line/">Shortcuts to move faster in Bash command line - teohm.dev</a></li>
 <li><a href="https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/">The Best Keyboard Shortcuts for Bash</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/terminal/">terminal</a></li>
+      <li><a href="https://nyogjtrc.github.io/tags/bash/">bash</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

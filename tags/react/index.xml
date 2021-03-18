@@ -13,7 +13,7 @@
       <pubDate>Fri, 31 Mar 2017 14:15:00 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2017/03/webpack-2-2-sample-f2e-jacket/</guid>
-      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只要認識一</description>
+      <description>不小心看到 webpack 2.2 發佈，就來小玩一下，用 webpack 打包一個 front end 開發工具 專案在此: f2e-jacket https://github.com/nyogjtrc/f2e-jacket 使用方法: 1 2 3 4 $ git clone git@github.com:nyogjtrc/f2e-jacket.git $ cd f2e-jacket/ $ yarn $ yarn start 在製作的一開始，我以為我只</description>
     </item>
     
   </channel>

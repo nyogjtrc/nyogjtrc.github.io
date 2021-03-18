@@ -1,155 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="auto">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>ThinkPad X1 Carbon 6th 的 Debian 安裝記錄 | Nyo&#39;s Study Book</title>
 
-    <meta name="author" content="nyo">
-    <meta name="description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot">
-    <meta name="keywords" content="nyo,nyogjtrc,blog,developer,personal,note">
+<meta name="keywords" content="debian" />
+<meta name="description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot">
+<meta name="author" content="nyo">
+<link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/" />
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+    as="style">
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄"/>
-<meta name="twitter:description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot"/>
+<link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://nyogjtrc.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://nyogjtrc.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://nyogjtrc.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://nyogjtrc.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.80.0" />
 
-    <meta property="og:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-43264564-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<meta property="og:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄" />
 <meta property="og:description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/" />
 <meta property="article:published_time" content="2018-12-03T14:53:59+08:00" />
 <meta property="article:modified_time" content="2018-12-03T14:53:59+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ThinkPad X1 Carbon 6th 的 Debian 安裝記錄"/>
+<meta name="twitter:description" content="入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -&gt; Secure Boot"/>
 
 
-    <title>
-  ThinkPad X1 Carbon 6th 的 Debian 安裝記錄 · Nyo&#39;s Study Book
-</title>
-
-    
-      <link rel="canonical" href="https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
-    
-      
-      
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder.min.f19a84724525d6c44f67f32a7454077c01059aa7249da07789336656eaf64489.css" integrity="sha256-8ZqEckUl1sRPZ/MqdFQHfAEFmqcknaB3iTNmVur2RIk=" crossorigin="anonymous" media="screen" />
-    
-
-    
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://nyogjtrc.github.io/css/coder-dark.min.ba5a9c70b9b1a615a836cc5f491aceda69f2fbda59bc30b873d6d37213b77c7b.css" integrity="sha256-ulqccLmxphWoNsxfSRrO2mny&#43;9pZvDC4c9bTchO3fHs=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-      <link rel="stylesheet" href="https://nyogjtrc.github.io/css/custom.css" />
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://nyogjtrc.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://nyogjtrc.github.io/images/apple-touch-icon.png">
-
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=""
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://nyogjtrc.github.io/">
-      Nyo&#39;s Study Book
-    </a>
-    
-      
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/posts/">Posts</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/tags/">Tags</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/productivity/">Productivity</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="https://nyogjtrc.github.io/about/">About</a>
-            </li>
-          
-        
-        
-        
-      </ul>
-    
-  </section>
-</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://nyogjtrc.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "ThinkPad X1 Carbon 6th 的 Debian 安裝記錄",
+      "item": "https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ThinkPad X1 Carbon 6th 的 Debian 安裝記錄",
+  "name": "ThinkPad X1 Carbon 6th 的 Debian 安裝記錄",
+  "description": "入手 ThinkPad X1c 來當工作機 在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了 安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34 調整以下的設定: Security -\u0026amp;gt; Secure Boot",
+  "keywords": [
+    "debian"
+  ],
+  "articleBody": "入手 ThinkPad X1c 來當工作機\n在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後， 就把 OS 換成 Debian 了\n安裝 Debian 之前 更新 BIOS 到目前最新的版本 1.34\n調整以下的設定:\n Security - Secure Boot - Set to “Disabled” Config - Power - Sleep State - Set to “Linux” Config - Thunderbolt BIOS Assist Mode - Set to “Enabled”  安裝 Debian Linux Distribute: Debian testing\nPartition: whole disk with LVM\nDesktop: gnome\n安裝 Debian 之後 設定 sudo 1 2  # adduser nyo sudo # reboot   修改 apt source list source list 加入 contrib non-free\n1 2 3 4 5  deb http://deb.debian.org/debian/ buster main contrib non-free deb-src http://deb.debian.org/debian/ buster main contrib non-free deb http://security.debian.org/debian-security buster/updates main contrib non-free deb-src http://security.debian.org/debian-security buster/updates main contrib non-free   $ sudo apt install aptitude\n安裝 firmware, microcode, fwupd wifi, bluetooth 等裝置需要的 firmware\n$ sudo apt install firmware-iwlwifi firmware-misc-nonfree\nIntel microcode\n$ sudo apt install intel-microcode\nfwup BIOS 更新軟體\n$ sudo apt install fwupd\n下載自己的 dotfiles 建立 ssh key: $ ssh-keygen -t rsa -b 4096\n1 2  $ sudo apt install -y git $ git clone git@github.com:nyogjtrc/dotfiles.git .dotfiles   安裝常用的 cli 程式 $ ~/.dotfiles/installation/basic.sh\nhttps://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh\n安裝 gcin 輸入法 1 2  $ sudo apt install gcin $ sudo im-config   放置嘸蝦米 gtab 到 ~/.gcin/\ngdm3 停用 Wayland 過程遇到一些問題，像是登入畫面無法正常顯示，輸入法未啟動等等\n最後是停用 Wayland 就正常\n修改 /etc/gdm3/daemon.conf\n1 2 3  [daemon] # Uncomment the line below to force the login screen to use Xorg WaylandEnable=false   安裝 gnome sell extension 目前使用中的 GNOME Shell Extensions\n設定 gnome 桌面主題 NumixPack: https://www.opendesktop.org/p/1137261/\n截圖 安裝防火牆 1 2  $ sudo apt install ufw $ sudo ufw enable   grub 開機時間 sudo vi /etc/default/grub\n預設為 5 秒 GRUB_TIMEOUT=5 改成 1 秒 GRUB_TIMEOUT=1\n存檔後更新 grub: sudo update-grub\n待處理  電源管理 SSD 優化  目前不支援的装置  4G Fibocom L850-GL Fingerprint Reader  Reference  https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6) https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5  ",
+  "wordCount" : "429",
+  "inLanguage": "en",
+  "datePublished": "2018-12-03T14:53:59+08:00",
+  "dateModified": "2018-12-03T14:53:59+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "nyo"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://nyogjtrc.github.io/posts/2018/12/record-of-thinkpad-x1c-6th-with-debian/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nyo's Study Book",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nyogjtrc.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">ThinkPad X1 Carbon 6th 的 Debian 安裝記錄</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2018-12-03T14:53:59&#43;08:00'>
-                December 3, 2018
-              </time>
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://nyogjtrc.github.io/" accesskey="h" title="Nyo&#39;s Study Book (Alt + H)">Nyo&#39;s Study Book</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
             </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              One-minute read
-            </span>
-          </div>
-          
-          
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="https://nyogjtrc.github.io/tags/debian/">debian</a></div>
-
         </div>
-      </header>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://nyogjtrc.github.io/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/productivity/" title="Productivity">
+                    <span>Productivity</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://nyogjtrc.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
 
-      <div>
-        
-        <p>入手 ThinkPad X1c 來當工作機</p>
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://nyogjtrc.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://nyogjtrc.github.io/posts/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      ThinkPad X1 Carbon 6th 的 Debian 安裝記錄
+    </h1>
+    <div class="post-meta">
+
+December 3, 2018&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner"><ul><li>
+        <a href="#%e5%ae%89%e8%a3%9d-debian-%e4%b9%8b%e5%89%8d" aria-label="安裝 Debian 之前">安裝 Debian 之前</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d-debian" aria-label="安裝 Debian">安裝 Debian</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d-debian-%e4%b9%8b%e5%be%8c" aria-label="安裝 Debian 之後">安裝 Debian 之後</a></li><li>
+        <a href="#%e8%a8%ad%e5%ae%9a-sudo" aria-label="設定 sudo">設定 sudo</a></li><li>
+        <a href="#%e4%bf%ae%e6%94%b9-apt-source-list" aria-label="修改 apt source list">修改 apt source list</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d-firmware-microcode-fwupd" aria-label="安裝 firmware, microcode, fwupd">安裝 firmware, microcode, fwupd</a></li><li>
+        <a href="#%e4%b8%8b%e8%bc%89%e8%87%aa%e5%b7%b1%e7%9a%84-dotfiles" aria-label="下載自己的 dotfiles">下載自己的 dotfiles</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d%e5%b8%b8%e7%94%a8%e7%9a%84-cli-%e7%a8%8b%e5%bc%8f" aria-label="安裝常用的 cli 程式">安裝常用的 cli 程式</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d-gcin-%e8%bc%b8%e5%85%a5%e6%b3%95" aria-label="安裝 gcin 輸入法">安裝 gcin 輸入法</a></li><li>
+        <a href="#gdm3-%e5%81%9c%e7%94%a8-wayland" aria-label="gdm3 停用 Wayland">gdm3 停用 Wayland</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d-gnome-sell-extension" aria-label="安裝 gnome sell extension">安裝 gnome sell extension</a></li><li>
+        <a href="#%e8%a8%ad%e5%ae%9a-gnome-%e6%a1%8c%e9%9d%a2%e4%b8%bb%e9%a1%8c" aria-label="設定 gnome 桌面主題">設定 gnome 桌面主題</a></li><li>
+        <a href="#%e5%ae%89%e8%a3%9d%e9%98%b2%e7%81%ab%e7%89%86" aria-label="安裝防火牆">安裝防火牆</a></li><li>
+        <a href="#grub-%e9%96%8b%e6%a9%9f%e6%99%82%e9%96%93" aria-label="grub 開機時間">grub 開機時間</a></li><li>
+        <a href="#%e5%be%85%e8%99%95%e7%90%86" aria-label="待處理">待處理</a></li><li>
+        <a href="#%e7%9b%ae%e5%89%8d%e4%b8%8d%e6%94%af%e6%8f%b4%e7%9a%84%e8%a3%85%e7%bd%ae" aria-label="目前不支援的装置">目前不支援的装置</a><ul>
+            <li>
+        <a href="#reference" aria-label="Reference">Reference</a></li></ul>
+</li></ul>
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>入手 ThinkPad X1c 來當工作機</p>
 <p>在使用了幾天不習慣的 windows 10 確定機器沒有什麼問題之後，
 就把 OS 換成 Debian 了</p>
-<h2 id="安裝-debian-之前">安裝 Debian 之前</h2>
+<h2 id="安裝-debian-之前">安裝 Debian 之前<a hidden class="anchor" aria-hidden="true" href="#安裝-debian-之前">#</a></h2>
 <p>更新 BIOS 到目前最新的版本 1.34</p>
 <p>調整以下的設定:</p>
 <ul>
@@ -157,142 +243,216 @@
 <li>Config -&gt; Power -&gt; Sleep State - Set to &ldquo;Linux&rdquo;</li>
 <li>Config -&gt; Thunderbolt BIOS Assist Mode - Set to &ldquo;Enabled&rdquo;</li>
 </ul>
-<h2 id="安裝-debian">安裝 Debian</h2>
+<h2 id="安裝-debian">安裝 Debian<a hidden class="anchor" aria-hidden="true" href="#安裝-debian">#</a></h2>
 <p>Linux Distribute: Debian testing</p>
 <p>Partition: whole disk with LVM</p>
 <p>Desktop: gnome</p>
-<h2 id="安裝-debian-之後">安裝 Debian 之後</h2>
-<h2 id="設定-sudo">設定 sudo</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># adduser nyo sudo
+<h2 id="安裝-debian-之後">安裝 Debian 之後<a hidden class="anchor" aria-hidden="true" href="#安裝-debian-之後">#</a></h2>
+<h2 id="設定-sudo">設定 sudo<a hidden class="anchor" aria-hidden="true" href="#設定-sudo">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># adduser nyo sudo
 # reboot
-</code></pre></div><h2 id="修改-apt-source-list">修改 apt source list</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="修改-apt-source-list">修改 apt source list<a hidden class="anchor" aria-hidden="true" href="#修改-apt-source-list">#</a></h2>
 <p>source list 加入 contrib non-free</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">deb http://deb.debian.org/debian/ buster main contrib non-free
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">deb http://deb.debian.org/debian/ buster main contrib non-free
 deb-src http://deb.debian.org/debian/ buster main contrib non-free
 
 deb http://security.debian.org/debian-security buster/updates main contrib non-free
 deb-src http://security.debian.org/debian-security buster/updates main contrib non-free
-</code></pre></div><p><code>$ sudo apt install aptitude</code></p>
-<h2 id="安裝-firmware-microcode-fwupd">安裝 firmware, microcode, fwupd</h2>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>$ sudo apt install aptitude</code></p>
+<h2 id="安裝-firmware-microcode-fwupd">安裝 firmware, microcode, fwupd<a hidden class="anchor" aria-hidden="true" href="#安裝-firmware-microcode-fwupd">#</a></h2>
 <p>wifi, bluetooth 等裝置需要的 firmware</p>
 <p><code>$ sudo apt install firmware-iwlwifi firmware-misc-nonfree</code></p>
 <p>Intel microcode</p>
 <p><code>$ sudo apt install intel-microcode</code></p>
 <p>fwup BIOS 更新軟體</p>
 <p><code>$ sudo apt install fwupd</code></p>
-<h2 id="下載自己的-dotfiles">下載自己的 dotfiles</h2>
+<h2 id="下載自己的-dotfiles">下載自己的 dotfiles<a hidden class="anchor" aria-hidden="true" href="#下載自己的-dotfiles">#</a></h2>
 <p>建立 ssh key: <code>$ ssh-keygen -t rsa -b 4096</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo apt install -y git
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo apt install -y git
 $ git clone git@github.com:nyogjtrc/dotfiles.git .dotfiles
-</code></pre></div><h2 id="安裝常用的-cli-程式">安裝常用的 cli 程式</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="安裝常用的-cli-程式">安裝常用的 cli 程式<a hidden class="anchor" aria-hidden="true" href="#安裝常用的-cli-程式">#</a></h2>
 <p><code>$ ~/.dotfiles/installation/basic.sh</code></p>
 <p><a href="https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh">https://github.com/nyogjtrc/dotfiles/blob/master/installation/basic.sh</a></p>
-<h2 id="安裝-gcin-輸入法">安裝 gcin 輸入法</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt install gcin
+<h2 id="安裝-gcin-輸入法">安裝 gcin 輸入法<a hidden class="anchor" aria-hidden="true" href="#安裝-gcin-輸入法">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt install gcin
 $ sudo im-config
-</code></pre></div><p>放置嘸蝦米 gtab 到 <code>~/.gcin/</code></p>
-<h2 id="gdm3-停用-wayland">gdm3 停用 Wayland</h2>
+</code></pre></td></tr></table>
+</div>
+</div><p>放置嘸蝦米 gtab 到 <code>~/.gcin/</code></p>
+<h2 id="gdm3-停用-wayland">gdm3 停用 Wayland<a hidden class="anchor" aria-hidden="true" href="#gdm3-停用-wayland">#</a></h2>
 <p>過程遇到一些問題，像是登入畫面無法正常顯示，輸入法未啟動等等</p>
 <p>最後是停用 Wayland 就正常</p>
 <p>修改 <code>/etc/gdm3/daemon.conf</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[daemon]
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[daemon]
 # Uncomment the line below to force the login screen to use Xorg
 WaylandEnable=false
-</code></pre></div><h2 id="安裝-gnome-sell-extension">安裝 gnome sell extension</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="安裝-gnome-sell-extension">安裝 gnome sell extension<a hidden class="anchor" aria-hidden="true" href="#安裝-gnome-sell-extension">#</a></h2>
 <p><a href="posts/2018/12/gnome-shell-extensions-currently-using">目前使用中的 GNOME Shell Extensions</a></p>
-<h2 id="設定-gnome-桌面主題">設定 gnome 桌面主題</h2>
+<h2 id="設定-gnome-桌面主題">設定 gnome 桌面主題<a hidden class="anchor" aria-hidden="true" href="#設定-gnome-桌面主題">#</a></h2>
 <p>NumixPack: <a href="https://www.opendesktop.org/p/1137261/">https://www.opendesktop.org/p/1137261/</a></p>
 <p>截圖
-<img src="posts/2018/12/Screenshot_from_2018-12-02_20-46-54.png" alt=""></p>
-<h2 id="安裝防火牆">安裝防火牆</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt install ufw
+<img loading="lazy" src="posts/2018/12/Screenshot_from_2018-12-02_20-46-54.png" alt=""  />
+</p>
+<h2 id="安裝防火牆">安裝防火牆<a hidden class="anchor" aria-hidden="true" href="#安裝防火牆">#</a></h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sudo apt install ufw
 $ sudo ufw <span style="color:#8be9fd;font-style:italic">enable</span>
-</code></pre></div><h2 id="grub-開機時間">grub 開機時間</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="grub-開機時間">grub 開機時間<a hidden class="anchor" aria-hidden="true" href="#grub-開機時間">#</a></h2>
 <p><code>sudo vi /etc/default/grub</code></p>
 <p>預設為 5 秒 <code>GRUB_TIMEOUT=5</code> 改成 1 秒 <code>GRUB_TIMEOUT=1</code></p>
 <p>存檔後更新 grub: <code>sudo update-grub</code></p>
-<h2 id="待處理">待處理</h2>
+<h2 id="待處理">待處理<a hidden class="anchor" aria-hidden="true" href="#待處理">#</a></h2>
 <ul>
 <li>電源管理</li>
 <li>SSD 優化</li>
 </ul>
-<h2 id="目前不支援的装置">目前不支援的装置</h2>
+<h2 id="目前不支援的装置">目前不支援的装置<a hidden class="anchor" aria-hidden="true" href="#目前不支援的装置">#</a></h2>
 <ul>
 <li>4G Fibocom L850-GL</li>
 <li>Fingerprint Reader</li>
 </ul>
-<h3 id="reference">Reference</h3>
+<h3 id="reference">Reference<a hidden class="anchor" aria-hidden="true" href="#reference">#</a></h3>
 <ul>
 <li><a href="https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)">https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)</a></li>
 <li><a href="https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5">https://medium.com/@hkdb/ubuntu-18-04-on-lenovo-x1-carbon-6g-d99d5667d4d5</a></li>
 </ul>
 
-      </div>
-
-
-      <footer>
-        
-
-
-        
-        
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>nyo, vim user, gopher, keep learn</p>
-      
-      
-        ©
-        
-          2015 -
-        
-        2021
-         nyo 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
-
-    </main>
-
-    
-
-    
-
-    
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-43264564-2', 'auto');
-	
-	ga('send', 'pageview');
-}
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://nyogjtrc.github.io/tags/debian/">debian</a></li>
+    </ul>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="nyogjtrc/nyogjtrc.github.io"
+        issue-term="pathname"
+        label="comment"
+        theme="photon-dark"
+        crossorigin="anonymous"
+        async>
 </script>
 
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://nyogjtrc.github.io/">Nyo&#39;s Study Book</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
 
-    
 
-    
 
-    
-  </body>
+<script defer src="https://nyogjtrc.github.io/assets/js/highlight.min.27cd435cc9ed6abb4b496581b151804f79f366c412620272bb94e2f5f598ebcc.js" integrity="sha256-J81DXMntartLSWWBsVGAT3nzZsQSYgJyu5Ti9fWY68w="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
 
 </html>

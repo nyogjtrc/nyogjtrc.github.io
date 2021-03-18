@@ -13,7 +13,7 @@
       <pubDate>Sun, 29 Dec 2019 17:47:45 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2019/12/delete-keys-matching-a-pattern-in-redis/</guid>
-      <description>用 redis-cli 組合一個清除的指令 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server，</description>
+      <description>用 redis-cli 組合一個清除的指令 1 $ redis-cli --scan --pattern users:* | xargs redis-cli unlink 用 scan 找出要刪的 key 透過 xargs 傳給 unlink 刪掉 key KEYS vs SCAN 一樣都會掃過所有的 key，scan 不會阻塞整個 server</description>
     </item>
     
   </channel>
