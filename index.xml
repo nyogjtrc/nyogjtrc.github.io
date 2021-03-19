@@ -6,7 +6,16 @@
     <description>Recent content on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 16 Mar 2021 21:13:05 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 01:20:32 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>utterances: 使用 github issue 做部落格的留言系統</title>
+      <link>https://nyogjtrc.github.io/posts/2021/03/utterances-use-github-issue-as-blog-comment-system/</link>
+      <pubDate>Sat, 20 Mar 2021 01:20:32 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/03/utterances-use-github-issue-as-blog-comment-system/</guid>
+      <description>說到留言系統，過去最常看到的大概是 Disqus 但是實際使用過會發現 Disqus 的檔案太肥大，會拉長網站的載入速度，所以在我把部落格移到 github 上面的時候，就完全不想要</description>
+    </item>
+    
     <item>
       <title>Interface in Go</title>
       <link>https://nyogjtrc.github.io/posts/2021/03/interface-in-go/</link>
