@@ -11,7 +11,7 @@
 <meta name="description" content="寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi &lt;image_id&gt; 正在使用的 image 不能刪除 1 2 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/11/clean-up-unused-docker-images/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -38,9 +38,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="清除沒有用的 Docker Image" />
 <meta property="og:description" content="寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi &lt;image_id&gt; 正在使用的 image 不能刪除 1 2 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/11/clean-up-unused-docker-images/" />
-<meta property="article:published_time" content="2020-11-17T23:32:37+08:00" />
-<meta property="article:modified_time" content="2020-11-17T23:32:37+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/11/clean-up-unused-docker-images/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-17T23:32:37&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-17T23:32:37&#43;08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="清除沒有用的 Docker Image"/>
 <meta name="twitter:description" content="寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi &lt;image_id&gt; 正在使用的 image 不能刪除 1 2 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is"/>
@@ -72,7 +73,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "清除沒有用的 Docker Image",
   "name": "清除沒有用的 Docker Image",
-  "description": "寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi \u0026amp;lt;image_id\u0026amp;gt; 正在使用的 image 不能刪除 1 2 $ …",
+  "description": "寫這篇文章時的 docker 版本 1 2 $ docker -v Docker version 19.03.13, build 4484c46d9d 查看、刪除 Image 查看 images $ docker images 刪除 images $ docker rmi \u0026lt;image_id\u0026gt; 正在使用的 image 不能刪除 1 2 $ docker rmi 63130206b0fa Error response from daemon: conflict: unable to delete 63130206b0fa (must be forced) - image is",
   "keywords": [
     "docker"
   ],
@@ -125,6 +126,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -199,6 +228,7 @@ if (!doNotTrack) {
     <div class="post-meta">
 
 November 17, 2020&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
 
 </div>
   </header> 
@@ -328,6 +358,11 @@ Are you sure you want to continue? [y/N] y
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -346,6 +381,9 @@ Are you sure you want to continue? [y/N] y
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -356,10 +394,6 @@ Are you sure you want to continue? [y/N] y
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>

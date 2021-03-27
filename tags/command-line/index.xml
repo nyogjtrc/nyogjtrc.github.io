@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>command-line on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/command-line/</link>
+    <description>Recent content in command-line on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 27 Mar 2021 14:04:56 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exa: 更棒的 ls 指令</title>
+      <link>https://nyogjtrc.github.io/posts/2021/03/exa-a-better-ls-command/</link>
+      <pubDate>Sat, 27 Mar 2021 14:04:56 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/03/exa-a-better-ls-command/</guid>
+      <description>exa 是 ls 指令的另一個選擇，使用 rust 開發的 github: https://github.com/ogham/exa exa 的特色 幫檔案跟一些屬性都上色，更容易閱覽 可以用樹狀圖顯示，tree 的另一個選擇 可以支援 git status 以及一些</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -11,7 +11,7 @@
 <meta name="description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -38,9 +38,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="Git Pull Warning and Foxtrot Merge" />
 <meta property="og:description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/" />
-<meta property="article:published_time" content="2020-12-01T02:25:33+08:00" />
-<meta property="article:modified_time" content="2020-12-01T02:25:33+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-12-01T02:25:33&#43;08:00" />
+<meta property="article:modified_time" content="2020-12-01T02:25:33&#43;08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git Pull Warning and Foxtrot Merge"/>
 <meta name="twitter:description" content="最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following"/>
@@ -72,7 +73,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "Git Pull Warning and Foxtrot Merge",
   "name": "Git Pull Warning and Foxtrot Merge",
-  "description": "最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile …",
+  "description": "最近把 git 升級到 2.27 版 1 2 $ git version git version 2.27.0 執行 git pull 指令時，會跳出一篇警告 1 2 3 4 5 6 7 8 9 10 11 12 13 $ git pull warning: Pulling without specifying how to reconcile divergent branches is discouraged. You can squelch this message by running one of the following",
   "keywords": [
     "git"
   ],
@@ -125,6 +126,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -199,6 +228,7 @@ if (!doNotTrack) {
     <div class="post-meta">
 
 December 1, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+
 
 </div>
   </header> 
@@ -414,6 +444,11 @@ fatal: Not possible to fast-forward, aborting.
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -432,6 +467,9 @@ fatal: Not possible to fast-forward, aborting.
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -442,10 +480,6 @@ fatal: Not possible to fast-forward, aborting.
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>

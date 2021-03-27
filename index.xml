@@ -6,7 +6,16 @@
     <description>Recent content on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 20 Mar 2021 01:20:32 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Mar 2021 14:04:56 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exa: 更棒的 ls 指令</title>
+      <link>https://nyogjtrc.github.io/posts/2021/03/exa-a-better-ls-command/</link>
+      <pubDate>Sat, 27 Mar 2021 14:04:56 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/03/exa-a-better-ls-command/</guid>
+      <description>exa 是 ls 指令的另一個選擇，使用 rust 開發的 github: https://github.com/ogham/exa exa 的特色 幫檔案跟一些屬性都上色，更容易閱覽 可以用樹狀圖顯示，tree 的另一個選擇 可以支援 git status 以及一些</description>
+    </item>
+    
     <item>
       <title>utterances: 使用 github issue 做部落格的留言系統</title>
       <link>https://nyogjtrc.github.io/posts/2021/03/utterances-use-github-issue-as-blog-comment-system/</link>
@@ -646,14 +655,6 @@
       <description>身為一個程式設計師，一定會做一件事，就是建立開發環境，而建立開發環境卻是很煩人的過程。 之前為了解決這個問題，自己動手記錄了開發環境會使用的工</description>
     </item>
     
-    <item>
-      <title>Archive</title>
-      <link>https://nyogjtrc.github.io/archives/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://nyogjtrc.github.io/archives/</guid>
-      <description>archives</description>
-    </item>
     
   </channel>
 </rss>

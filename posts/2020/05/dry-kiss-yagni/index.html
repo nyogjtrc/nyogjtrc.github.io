@@ -11,7 +11,7 @@
 <meta name="description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -38,9 +38,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="軟體開發原則: DRY, KISS, YAGNI" />
 <meta property="og:description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/" />
-<meta property="article:published_time" content="2020-05-11T02:39:34+08:00" />
-<meta property="article:modified_time" content="2020-05-11T02:39:34+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-11T02:39:34&#43;08:00" />
+<meta property="article:modified_time" content="2020-05-11T02:39:34&#43;08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="軟體開發原則: DRY, KISS, YAGNI"/>
 <meta name="twitter:description" content="最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse"/>
@@ -72,7 +73,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "軟體開發原則: DRY, KISS, YAGNI",
   "name": "軟體開發原則: DRY, KISS, YAGNI",
-  "description": "最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don\u0026#39;t repeat yourse",
+  "description": "最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don't repeat yourse",
   "keywords": [
     "programming", "principle"
   ],
@@ -125,6 +126,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -199,6 +228,7 @@ if (!doNotTrack) {
     <div class="post-meta">
 
 May 11, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+
 
 </div>
   </header> 
@@ -460,6 +490,11 @@ hello(<span style="color:#f1fa8c">&#34;siri&#34;</span>);
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -478,6 +513,9 @@ hello(<span style="color:#f1fa8c">&#34;siri&#34;</span>);
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -488,10 +526,6 @@ hello(<span style="color:#f1fa8c">&#34;siri&#34;</span>);
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>

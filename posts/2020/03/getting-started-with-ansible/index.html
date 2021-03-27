@@ -11,7 +11,7 @@
 <meta name="description" content="介紹 命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -38,9 +38,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="Ansible 新手上路" />
 <meta property="og:description" content="介紹 命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/" />
-<meta property="article:published_time" content="2020-03-29T17:58:46+08:00" />
-<meta property="article:modified_time" content="2020-03-29T17:58:46+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2020/03/getting-started-with-ansible/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-29T17:58:46&#43;08:00" />
+<meta property="article:modified_time" content="2020-03-29T17:58:46&#43;08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ansible 新手上路"/>
 <meta name="twitter:description" content="介紹 命名由來：小說 Ender&rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,"/>
@@ -72,7 +73,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "Ansible 新手上路",
   "name": "Ansible 新手上路",
-  "description": "介紹 命名由來：小說 Ender\u0026amp;rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,",
+  "description": "介紹 命名由來：小說 Ender\u0026rsquo;s Game (安德的遊戲 or 戰爭遊戲) 官網上的 slogan Automation for everyone 一個自動化工具，幫你完成組態管理、程式部署等工作 實現 Infrastructure as code (IaC) 其他類似的工具: Puppet,",
   "keywords": [
     "ansible"
   ],
@@ -125,6 +126,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -199,6 +228,7 @@ if (!doNotTrack) {
     <div class="post-meta">
 
 March 29, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+
 
 </div>
   </header> 
@@ -504,6 +534,11 @@ server-01                  : <span style="color:#8be9fd;font-style:italic">ok</s
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -522,6 +557,9 @@ server-01                  : <span style="color:#8be9fd;font-style:italic">ok</s
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -532,10 +570,6 @@ server-01                  : <span style="color:#8be9fd;font-style:italic">ok</s
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>

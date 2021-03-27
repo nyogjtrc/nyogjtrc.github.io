@@ -11,7 +11,7 @@
 <meta name="description" content="IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 1 2 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -38,9 +38,10 @@ if (!doNotTrack) {
 <meta property="og:title" content="IPv6 簡介" />
 <meta property="og:description" content="IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 1 2 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/" />
-<meta property="article:published_time" content="2021-02-26T23:27:39+08:00" />
-<meta property="article:modified_time" content="2021-02-26T23:27:39+08:00" />
+<meta property="og:url" content="https://nyogjtrc.github.io/posts/2021/02/ipv6-introduction/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-26T23:27:39&#43;08:00" />
+<meta property="article:modified_time" content="2021-02-26T23:27:39&#43;08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="IPv6 簡介"/>
 <meta name="twitter:description" content="IPv6 是為了解決 IPv4 位址用盡問題而誕生的 長度從 IPv4 的 32 位元增加到 128 位元 常用表示方法 使用冒號組合 8 組 4 個十六進位數字 1 2 ex. 2001:0db8:86a3:08d3:1319:8a2e:0370:7344 簡短 IPv6 的規則 每一組數字前導"/>
@@ -125,6 +126,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -199,6 +228,7 @@ if (!doNotTrack) {
     <div class="post-meta">
 
 February 26, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
+
 
 </div>
   </header> 
@@ -334,6 +364,11 @@ February 26, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -352,6 +387,9 @@ February 26, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -362,10 +400,6 @@ February 26, 2021&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>

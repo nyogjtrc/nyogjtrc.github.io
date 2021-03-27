@@ -11,7 +11,7 @@
 <meta name="description" content="nyo&#39;s study note. researching programming, devops, vim ...etc">
 <meta name="author" content="nyo">
 <link rel="canonical" href="https://nyogjtrc.github.io/posts/" />
-<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.0e4a1b49e740c28140e9ee4945aab2f86cb0a7bfbf5a5d612d0cb5df7d6141f4.css" integrity="sha256-DkobSedAwoFA6e5JRaqy&#43;Gywp7&#43;/Wl1hLQy1331hQfQ=" rel="preload stylesheet"
+<link href="https://nyogjtrc.github.io/assets/css/stylesheet.min.e7fdcebb37aa7bdecf8b9159a8b3cab1ba4a084f27d375288d3416558b340888.css" integrity="sha256-5/3Ouzeqe97Pi5FZqLPKsbpKCE8n03UojTQWVYs0CIg=" rel="preload stylesheet"
     as="style">
 
 <link rel="icon" href="https://nyogjtrc.github.io/favicon.ico">
@@ -40,7 +40,7 @@ if (!doNotTrack) {
 <meta property="og:description" content="nyo&#39;s study note. researching programming, devops, vim ...etc" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://nyogjtrc.github.io/posts/" />
-<meta property="og:updated_time" content="2021-03-20T01:20:32+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="nyo&#39;s study note. researching programming, devops, vim ...etc"/>
@@ -85,6 +85,34 @@ if (!doNotTrack) {
         }
 
     </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
 </noscript>
 <header class="header">
     <nav class="nav">
@@ -157,6 +185,23 @@ if (!doNotTrack) {
 
 
 
+
+<article class="post-entry"> 
+
+  <header class="entry-header">
+    <h2>
+      軟體開發原則: DRY, KISS, YAGNI
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>最近在 code review 時，看到不少讓人頭暈的程式碼 在討論如何寫出更好的程式碼之外，應該要回顧幾個軟體開發原則，避免自己走歪路 DRY wiki: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself 原文: Don&#39;t repeat yourse...</p>
+  </section>
+  <footer class="entry-footer">
+
+May 11, 2020&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
+</footer>
+  <a class="entry-link" aria-label="post link to 軟體開發原則: DRY, KISS, YAGNI" href="https://nyogjtrc.github.io/posts/2020/05/dry-kiss-yagni/"></a>
+</article>
 
 <article class="post-entry"> 
 
@@ -480,23 +525,6 @@ July 19, 2019&nbsp;·&nbsp;1 min&nbsp;·&nbsp;nyo
 </footer>
   <a class="entry-link" aria-label="post link to php 的邏輯運算子  and vs &amp;&amp;" href="https://nyogjtrc.github.io/posts/2019/07/php-logical-operator-and-vs-and/"></a>
 </article>
-
-<article class="post-entry"> 
-
-  <header class="entry-header">
-    <h2>
-      離開 spf13-vim 的日子
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>前言 回歸使用 vim 當作主要開發工具後，為了省下調效 vimrc 的時間，決定先用別人整理好的設定，於是乎找到了 spf13-vim，便開始的了快樂的 vim 生活。 spf13-vim...</p>
-  </section>
-  <footer class="entry-footer">
-
-April 10, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
-</footer>
-  <a class="entry-link" aria-label="post link to 離開 spf13-vim 的日子" href="https://nyogjtrc.github.io/posts/2019/04/away-from-spf13-vim/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://nyogjtrc.github.io/posts/">« Prev Page</a>
@@ -527,6 +555,11 @@ April 10, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
             document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -545,6 +578,9 @@ April 10, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
             }
         });
     });
+
+</script>
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -555,10 +591,6 @@ April 10, 2019&nbsp;·&nbsp;2 min&nbsp;·&nbsp;nyo
             mybutton.style.opacity = "0";
         }
     };
-
-    function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
-    }
 
 </script>
 <script>
