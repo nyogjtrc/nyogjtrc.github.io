@@ -13,7 +13,7 @@
       <pubDate>Sat, 27 Mar 2021 14:04:56 +0800</pubDate>
       
       <guid>https://nyogjtrc.github.io/posts/2021/03/exa-a-better-ls-command/</guid>
-      <description>exa 是 ls 指令的另一個選擇，使用 rust 開發的 github: https://github.com/ogham/exa exa 的特色 幫檔案跟一些屬性都上色，更容易閱覽 可以用樹狀圖顯示，tree 的另一個選擇 可以支援 git status 以及一些</description>
+      <description>exa 是 ls 指令的另一個選擇，使用 rust 開發的 github: https://github.com/ogham/exa exa 的特色 幫檔案跟一些屬性都上色，甚至加上 icons，更容易閱覽 可以用樹狀圖顯示，tree 的另一個選擇</description>
     </item>
     
     <item>
