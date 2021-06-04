@@ -6,7 +6,16 @@
     <description>Recent content in git on Nyo&#39;s Study Book</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 01 Dec 2020 02:25:33 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 02:52:22 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog Git Log Gource</title>
+      <link>https://nyogjtrc.github.io/posts/2021/06/blog-git-log-gource/</link>
+      <pubDate>Sat, 05 Jun 2021 02:52:22 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/06/blog-git-log-gource/</guid>
+      <description>gource 是一個可以把版本控制記錄製作成動畫的視覺化工具 看到別人 perl 開發歷史紀錄之視覺化 在玩這工具 就也想來玩看看 不知道要找哪個專案來試，就拿來跑看看 blog</description>
+    </item>
+    
     <item>
       <title>Git Pull Warning and Foxtrot Merge</title>
       <link>https://nyogjtrc.github.io/posts/2020/12/git-pull-warning-and-foxtrot-merge/</link>
