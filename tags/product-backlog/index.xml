@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Product Backlog on Nyo&#39;s Study Book</title>
+    <link>https://nyogjtrc.github.io/tags/product-backlog/</link>
+    <description>Recent content in Product Backlog on Nyo&#39;s Study Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 04 Jul 2021 23:43:41 +0800</lastBuildDate><atom:link href="https://nyogjtrc.github.io/tags/product-backlog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>怎樣的 PBI 寫法比較好</title>
+      <link>https://nyogjtrc.github.io/posts/2021/07/what-kind-of-pbi-is-better/</link>
+      <pubDate>Sun, 04 Jul 2021 23:43:41 +0800</pubDate>
+      
+      <guid>https://nyogjtrc.github.io/posts/2021/07/what-kind-of-pbi-is-better/</guid>
+      <description>PBL: Product Backlog，產品的工作項目清單 PBI: Product Backlog Item，產品的工作項目 身為 Scrum 團隊的一員，每個 Sprint 的重要任務之一，就是搞懂 PBL (Product Backlog) 上的項目，想辦法實</description>
+    </item>
+    
+  </channel>
+</rss>
