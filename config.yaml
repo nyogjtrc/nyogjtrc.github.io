@@ -10,7 +10,7 @@ taxonomies:
 
 googleAnalytics: G-1XXW38NEN1
 hasCJKLanguage: true
-publishDir: ../nyogjtrc.github.io
+#publishDir: ../nyogjtrc.github.io
 permalinks:
   posts: /posts/:year/:month/:filename/
 
