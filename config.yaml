@@ -2,7 +2,6 @@ baseurl: https://nyogjtrc.github.io/
 title: "Nyo's Study Book"
 languageCode: zh-tw
 theme: "PaperMod"
-canonifyurls: true
 paginate: 20
 
 taxonomies:
@@ -10,38 +9,28 @@ taxonomies:
 
 googleAnalytics: G-1XXW38NEN1
 hasCJKLanguage: true
-#publishDir: ../nyogjtrc.github.io
 permalinks:
   posts: /posts/:year/:month/:filename/
 
 SectionPagesMenu: main
 
-#pygmentsStyle: dracula
-#pygmentsCodeFences: true
-#pygmentsCodeFencesGuessSyntax: true
-
 markup:
-    highlight:
-        # anchorLineNos: true
-        codeFences: true
-        guessSyntax: true
-        lineNos: true
-        # noClasses: false
-        style: dracula
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    style: dracula
+
 params:
   env: production
   title: "Nyo's Study Book"
   author: nyo
   description: nyo's study note. researching programming, devops, vim ...etc
-  keywords: [ nyo, nyogjtrc, blog, developer, personal, linux, go, php ]
-  #info: 後端工程師の研究筆記
-  #avatarurl: https://avatars0.githubusercontent.com/u/515965
-  #footercontent: nyo, vim user, gopher, keep learn
-  #
+  keywords: [nyo, nyogjtrc, blog, developer, personal, linux, go, php]
 
   comments: true
 
-  defaultTheme: auto # dark, light
+  defaultTheme: auto
   disableThemeToggle: false
 
   ShowReadingTime: true
@@ -49,32 +38,13 @@ params:
   showtoc: true
   ShowBreadCrumbs: true
 
-  dateform: "Jan 2, 2006"
-  dateformShort: "Jan 2"
-  dateformNum: "2006-01-02"
-  dateformNumTime: "2006-01-02 15:04 -0700"
-  #relatedPosts: true
-  since: 2015
-
-  colorscheme: dark
-  hidecolorschemetoggle: true
-
-  maxSeeAlsoItems: 5
-
-  #customcss:
-    #- "css/custom.css"
-
   socialIcons:
     - name: Github
-      #icon: "fa fa-github"
       url: https://github.com/nyogjtrc
     - name: Twitter
-      #icon: "fa fa-twitter"
       url: https://twitter.com/nyogjtrc
     - name: rss
-      #icon: "fa fa-rss-square"
       url: /index.xml
-      #type: "application/rss+xml"
 
 menu:
   main:
