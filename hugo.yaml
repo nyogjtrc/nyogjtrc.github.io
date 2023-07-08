@@ -27,6 +27,7 @@ params:
   author: nyo
   description: nyo's study note. researching programming, devops, vim ...etc
   keywords: [nyo, nyogjtrc, blog, developer, personal, linux, go, php]
+  DateFormat: "02 January 2006"
 
   comments: true
 
