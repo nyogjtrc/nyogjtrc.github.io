@@ -2,7 +2,6 @@
 title: "在 Linux 上處理圖檔"
 date: 2017-04-15T01:09:42+08:00
 tags: [Linux]
-
 ---
 
 想要在 Linux 上處理圖檔，我一開始想到的是 GIMP，但是這個軟體巨大到不太想專程去安裝，於是開始尋找其他輕量一點的工具
@@ -40,7 +39,7 @@ $ for file in *.jpg; do convert "$file" -resize x200 "s-$file"; done
 $ convert image.jpg -font courier -fill white -pointsize 20 -annotate +50+50 'Writing' write-image.jpg
 ```
 
-### Reference
+## Reference
 
 - [5 ImageMagick command line examples – part 1](http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/)
 - [Command-line Tools: Convert @ ImageMagick](https://www.imagemagick.org/script/convert.php)

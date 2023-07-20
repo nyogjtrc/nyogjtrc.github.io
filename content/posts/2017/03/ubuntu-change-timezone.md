@@ -27,7 +27,5 @@ $ date
 Mon 20 Mar 22:32:48 CST 2017
 ```
 
-
-
-### Reference
-http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux
+## Reference
+- http://unix.stackexchange.com/questions/110522/timezone-setting-in-linux

@@ -27,7 +27,7 @@ $ yarn start
 在建立這個工具的途中，發現 facebook 有製作一個 react 專用的工具 https://github.com/facebookincubator/create-react-app
 也是可以直接拿來用的…
 
-### Reference
-https://github.com/nyogjtrc/f2e-jacket
-https://webpack.js.org/
-https://github.com/facebookincubator/create-react-app
+## Reference
+- https://github.com/nyogjtrc/f2e-jacket
+- https://webpack.js.org/
+- https://github.com/facebookincubator/create-react-app

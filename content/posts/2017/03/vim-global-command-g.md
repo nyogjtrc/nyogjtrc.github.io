@@ -46,4 +46,4 @@ global command :g
 ```
 
 ### Reference
-http://vim.wikia.com/wiki/Power_of_g
+- http://vim.wikia.com/wiki/Power_of_g

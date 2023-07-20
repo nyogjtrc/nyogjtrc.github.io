@@ -5,8 +5,6 @@ tags: [linux,date]
 ---
 今天要來和 linux 約會(誤
 
----
-
 date 是用來看時間或是設定時間用的指令
 
 不加任何的參數可以直接看目前的時間
@@ -54,5 +52,5 @@ for i in 0 1 2 3 4 5 6; do date -d "${MYLIST[$i]}" +"%F %a"; done;
 2017-03-06 Mon
 ```
 
-### Reference
-`man date`
+## Reference
+- `man date`

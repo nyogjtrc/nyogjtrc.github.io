@@ -30,7 +30,6 @@ GRUB_CMDLINE_LINUX="locale=zh_TW"
 設定 `GRUB_TIMEOUT` 至我們要的秒數
 
 最後變成以下的樣子：
-
 ```conf
 GRUB_DEFAULT=0
 #GRUB_HIDDEN_TIMEOUT=0

@@ -37,8 +37,8 @@ Generating locales (this might take a while)...
 Generation complete.
 ```
 
-### Reference
+## Reference
 
-https://ubuntuforums.org/showthread.php?t=1346581
-http://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue
+- https://ubuntuforums.org/showthread.php?t=1346581
+- http://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue
 

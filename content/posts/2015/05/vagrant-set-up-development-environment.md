@@ -147,9 +147,8 @@ $ curl localhost:8080
 
 再另外附帶一提，之後打算加上 Docker 來試試。
 
----
 
-### Reference
-https://docs.vagrantup.com/v2/
-http://gogojimmy.net/2013/05/26/vagrant-tutorial/
-http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/
+## Reference
+- https://docs.vagrantup.com/v2/
+- http://gogojimmy.net/2013/05/26/vagrant-tutorial/
+- http://www.codedata.com.tw/social-coding/vagrant-tutorial-1-developer-and-vm/

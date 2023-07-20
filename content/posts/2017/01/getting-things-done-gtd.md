@@ -57,7 +57,7 @@ Getting Things Done，縮寫成 GTD，是由 David Allen 提出的一套個人�
 最近我重新回顧一次 GTD 的原則，跟我的使用方法。發現到我原本的方法很少回顧任務清單，整理的分類也有點復雜，使用起來很沒有效率。這一次的回顧對原來的方法進行了一些調整，目標是讓執行方法更簡單，並且更集中注意力。有沒有效就要運作一段時間才知道了。
 
 ## Reference
-[David Allen's Getting Things Done® Methodology](http://gettingthingsdone.com/)
-[搞定! GTD | ihower { blogging }](https://ihower.tw/blog/archives/1483)
-[儘管去做 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E5%B0%BD%E7%AE%A1%E5%8E%BB%E5%81%9A)
-[Evernote GTD 方法教學：我的「搞定」時間管理實踐 2016 版 - 電腦玩物](http://www.playpcesor.com/2016/08/evernote-gtd-2016.html)
+- [David Allen's Getting Things Done® Methodology](http://gettingthingsdone.com/)
+- [搞定! GTD | ihower { blogging }](https://ihower.tw/blog/archives/1483)
+- [儘管去做 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E5%B0%BD%E7%AE%A1%E5%8E%BB%E5%81%9A)
+- [Evernote GTD 方法教學：我的「搞定」時間管理實踐 2016 版 - 電腦玩物](http://www.playpcesor.com/2016/08/evernote-gtd-2016.html)
