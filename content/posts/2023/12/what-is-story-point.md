@@ -3,6 +3,8 @@ title: "什麼是估點"
 date: 2023-12-04T23:18:15+08:00
 tags: [story point]
 ---
+> 在 [團隊的估點(Story Point)經歷 | Nyo's Study Book](https://nyogjtrc.github.io/posts/2022/05/a-story-of-the-team-using-story-point/) 這篇分享過一些估點的經驗，今天回頭過來介紹什麼是估點
+
 軟體開發往往會遇到評估開發時程的難題，直覺上多數人都會以「工時」進行估計。但現實是開發過程總是會遇到各式各樣的問題，讓估計跟現實有很大的差距。
 
 ## 估點的出現
@@ -21,21 +23,23 @@ ps. Story Point 的概念一開始是在 XP(極限開發) 框架中出現的。
 
 ## 如何進行估點
 
-時間: 在 Scrum 框架裡，會在 Planning Meeting 時進行估點
+### 時間
+在 Scrum 框架裡，會在 Planning Meeting 時進行估點
 
-成員: 參與估點的成員只會有要開發團隊，另外還要有 PO/PM 來跟開發團隊說明 Story。沒有要參與開發的角色就旁聽就好，避免影響估點的因素。
+### 成員
+參與估點的成員只會有要開發團隊，另外還要有 PO/PM 來跟開發團隊說明 Story。沒有要參與開發的角色就旁聽就好，避免影響估點的因素。
 
-估點工具: Planning Poker
+### 估點工具: Planning Poker
 - 由費氏數列組成的 Story Point 卡片「0, 1, 2, 3, 5, 8, 13, 20, 40, 100」
 - 費氏數列越後面的數字差距越大，估點的情況也是，越大的 Story，估算的準確度會越差
 - 如果 Story 出現很大的數字，可能要看看 Story 是不是可以切小
 - ps. 也有其他的工具 ex. T-Shirt Size，或是團隊可以自己設計
 
-準備好的 Backlog
+### 準備好的 Backlog
 - Story 內容清楚，並且經過充分的討論
 - 排好優先順序
 
-會議流程
+### 會議流程
 1. PO 說明 Story 內容，讓團隊成員了解
 2. 設定基準 Story Point
    - 找一個大家覺得適合的 Story，設定 Story Point 為 1
