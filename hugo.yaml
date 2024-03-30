@@ -12,8 +12,6 @@ hasCJKLanguage: true
 permalinks:
   posts: /posts/:year/:month/:filename/
 
-SectionPagesMenu: main
-
 markup:
   highlight:
     codeFences: true
@@ -50,29 +48,29 @@ params:
 menu:
   main:
     - name: Search
-      weight: -130
       identifier: search
-      url: /search/
+      pageRef: /search/
+      weight: 10
     - name: Archives
-      weight: -120
       identifier: archives
-      url: /archives/
+      pageRef: /archives/
+      weight: 20
     - name: Posts
-      weight: -115
       identifier: posts
-      url: /posts/
+      pageRef: /posts
+      weight: 70
     - name: Tags
-      weight: -110
       identifier: tags
-      url: /tags/
+      pageRef: /tags
+      weight: 80
     - name: Productivity
-      weight: -105
       identifier: productivity
-      url: /productivity/
+      url: /productivity
+      weight: 90
     - name: About
-      weight: -100
       identifier: about
-      url: /about/
+      pageRef: /about
+      weight: 100
 
 outputs:
   home:
