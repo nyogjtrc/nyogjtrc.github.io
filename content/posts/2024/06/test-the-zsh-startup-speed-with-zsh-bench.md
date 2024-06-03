@@ -4,7 +4,7 @@ date: 2024-06-03T23:30:56+08:00
 tags: [terminal, zsh, prezto, benchmark]
 ---
 
-在調效 zsh 環境時 (使用 prezto 取代 oh-my-zsh)，找到一個算是簡單上手的效能測試工具 zsh-bench (<https://github.com/romkatv/zsh-bench>)，在設定 prezto 時就是用它來比較各種設定下的 zsh 啟動速度。
+在調效 zsh 環境時 ([使用 Prezto 取代 Oh-My-Zsh](/posts/2024/05/replace-oh-my-zsh-with-prezto/))，找到一個算是簡單上手的效能測試工具 zsh-bench (<https://github.com/romkatv/zsh-bench>)，在設定 prezto 時就是用它來比較各種設定下的 zsh 啟動速度。
 
 
 ## 執行 zsh-bench
